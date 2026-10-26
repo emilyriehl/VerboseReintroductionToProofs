@@ -17,11 +17,11 @@ Introduction "In this world, we will study the proposition `False` and the logic
 
 Recall that an element `p : P` of a proposition `P` may be thought of as a proof that the proposition is true. We do not have any proofs of the proposition `False`, so it does not contain any elements.
 
-For any proposition `P`, we define its *negation* to be the proposition `P → False`, pronounced &ldquo;`P` implies false&rdquo;. This is commonly abbreviated with the shorthand `¬ P`, pronounced &ldquo;not P&rdquo;.
+For any proposition `P`, we define its *negation* to be the proposition `P ⇒ False`, pronounced &ldquo;`P` implies false&rdquo;. This is commonly abbreviated with the shorthand `¬ P`, pronounced &ldquo;not P&rdquo;.
 
 A *proof of negation* means a proof of a proposition of the form `¬ P` for some proposition `P`.
 
-Using the introduction rule for implications, such a proof starts by assuming `p : P` and then deriving an element of `False`.
+Using the introduction rule for implications, such a proof starts by assuming `p : P` &mdash; the sentence `Assume p : P` works when the goal is `¬ P`, just as for an implication &mdash; and then deriving an element of `False`. The symbol `¬` is typed `\\not`.
 
 Since `False` has no elements, we think of this process as deriving a contradiction.
 

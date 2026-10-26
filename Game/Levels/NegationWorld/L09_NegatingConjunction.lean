@@ -22,20 +22,20 @@ In this level, we will prove that `¬ P ∨ ¬ Q` implies `¬ (P ∧ Q)`.
 
 /-- For any propositions `P` and `Q`, if `P` is false or `Q` is false then `P ∧ Q` is false. -/
 Statement {P Q : Prop} : ¬ P ∨ ¬ Q → ¬ (P ∧ Q) := by
-  intro hyp
+  Assume hyp : ¬ P ∨ ¬ Q
   Hint (hidden := true) "What proof technique is available when you have a hypothesis like `{hyp}`?"
-  rcases hyp with np | nq
+  Let's first consider the case where hyp is inl np
   Hint (hidden := true) "What is the logical structure of the goal?"
-  intro pq
+  Assume pq : P ∧ Q
   Hint (hidden := true) "What can we prove with the hypothesis `{pq}`?"
   Hint (hidden := true) "How can we apply the hypothesis `{np}`?"
-  apply np
-  exact pq.1
+  We apply np
+  We conclude by pq.1
+  Let's next consider the case where hyp is inr nq
   Hint (hidden := true) "What is the logical structure of the goal?"
-  intro pq
-  Hint (hidden := true) "What can we prove with the hypothesis `{pq}`?"
+  Assume pq : P ∧ Q
   Hint (hidden := true) "How can we apply the hypothesis `{nq}`?"
-  apply nq
-  exact pq.2
+  We apply nq
+  We conclude by pq.2
 
 Conclusion "The converse implication is more subtle because if `P ∧ Q` is false we don't know which of `P` or `Q` is false. This will be addressed in Classical World."

@@ -11,10 +11,10 @@ Title "Classical World"
 Introduction
 "In Negation World, we proved various tautologies involving negation such as
 
-* `P → ¬ ¬ P`
-* `(P → Q) → (¬ Q → ¬ P)`
-* `¬ P ∨ ¬ Q → ¬ (P ∧ Q)`
-* `(P ∧ ¬ Q) → ¬ (P → Q)`
+* `P ⇒ ¬ ¬ P`
+* `(P ⇒ Q) ⇒ (¬ Q ⇒ ¬ P)`
+* `¬ P ∨ ¬ Q ⇒ ¬ (P ∧ Q)`
+* `(P ∧ ¬ Q) ⇒ ¬ (P ⇒ Q)`
 
 for arbitrary propositions `P` and `Q`.
 
@@ -37,13 +37,13 @@ The first axiom, called the *law of excluded middle*, asserts that for any propo
 
 This permits the strategy of proof by cases. Under the assumption that `P ∨ ¬ P` is true, you can split the argument into two cases, one assuming `P` is true and the other assuming `P` is false.
 
-The other axiom, called *double negation elimination*, asserts that for any proposition `P`, `¬ ¬ P → P` is true.
+The other axiom, called *double negation elimination*, asserts that for any proposition `P`, `¬ ¬ P ⇒ P` is true.
 
-This permits a proof strategy called *proof by contradiction*. If the goal is to prove `P` we can use the assumption `¬ ¬ P → P` to reason as follows:
+This permits a proof strategy called *proof by contradiction*, announced in this game with the sentence `Assume for contradiction np : ¬ P`. If the goal is to prove `P` we can use the assumption `¬ ¬ P ⇒ P` to reason as follows:
 
 * First assume that `P` is false, so `¬ P` is true.
 * Then use the assumption `¬ P` to derive a contradiction, thus constructing a proof of `¬ ¬ P`.
-* Finally, apply the implication `¬ ¬ P → P` to convert the proof of `¬ ¬ P` into a proof of `P`.
+* Finally, apply the implication `¬ ¬ P ⇒ P` to convert the proof of `¬ ¬ P` into a proof of `P`.
 
 In fact, as statements concerning arbitrary propositions, the law of excluded middle and double negation elimination are equivalent &mdash; even constructively &mdash; as we will show in the Boss Level of this world.
 "

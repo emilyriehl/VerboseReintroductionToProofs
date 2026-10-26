@@ -21,27 +21,31 @@ The goal is again to derive an element of `False`, also known as a contradiction
 
 Such a proof &mdash; assuming `np : ¬ P` and then deriving an element of `False` &mdash; constructs an element of `¬ ¬ P`.
 
-In classical logic, there is an implication `¬ ¬ P → P`, which is why &ldquo;proof by contradiction&rdquo; can be used to ultimately prove that `P` is true.
+In classical logic, there is an implication `¬ ¬ P ⇒ P`, which is why &ldquo;proof by contradiction&rdquo; can be used to ultimately prove that `P` is true.
 
-To prove `¬ ¬ P → P` in Lean, type `exact byContradiction` to tell Lean that we are appealing to the proof by contradiction strategy."
+In this game, a proof by contradiction of a goal `P` is started with the sentence `Assume for contradiction np : ¬ P`: it adds `np : ¬ P` to the context and changes the goal to `False`. The classical principle itself is available as `Classical.byContradiction : ¬ ¬ P ⇒ P`, so `We conclude by Classical.byContradiction` also solves this level."
 
 section
 open Classical
 
 /-- In classical logic, for any proposition `P`, `¬ ¬ P` implies `P`. -/
 Statement {P : Prop} : ¬ ¬ P → P := by
-  exact byContradiction
+  Hint (hidden := true) "Start as for any implication: `Assume h : ¬ ¬ {P}`."
+  Assume h : ¬ ¬ P
+  Hint "Now argue by contradiction: `Assume for contradiction np : ¬ {P}`."
+  Assume for contradiction np : ¬ P
+  Hint (hidden := true) "The goal is `False`. Write `We conclude by {h} applied to {np}`."
+  We conclude by h applied to np
 
 end
 
-Conclusion "Lean has a built-in name `Classical.byContradiction : ¬ ¬ P → P` for this implication,
-which is also called *double negation elimination*. In the source files for Classical World, we have
-told Lean that we want to use classical reasoning (by opening the `Classical` namespace), which is why typing `exact byContradiction` suffices to solve this level."
+Conclusion "Lean has a built-in name `Classical.byContradiction : ¬ ¬ P ⇒ P` for this implication,
+which is also called *double negation elimination*. Verbose Lean's `Assume for contradiction` applies it for you; the sentence refuses to argue by contradiction when the goal is itself a negation, because then a direct `Assume` does the job."
 
 TheoremTab "Classical"
 
 /--
-For any proposition `P`, `Classical.byContradiction : ¬ ¬ P → P` proves that if `P` is not false, then `P` is true.
+For any proposition `P`, `Classical.byContradiction : ¬ ¬ P ⇒ P` proves that if `P` is not false, then `P` is true.
 -/
 TheoremDoc Classical.byContradiction as "byContradiction" in "Classical"
 
