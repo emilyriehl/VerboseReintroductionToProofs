@@ -2098,7 +2098,7 @@ msgid "For the Boss Level of Equivalence World you are asked to establish an equ
 "Be careful how you define the functions §4 and §5. If you make a wrong choice, you will not be able to solve the rest of this level."
 msgstr ""
 
-#. §0: `¬ (true = false)`
+#. §0: `¬ (false = true)`
 #: Game/Levels/NaturalNumbersWorld/L11_BossLevel.lean:7
 msgid "For the Boss Level of Natural Numbers World you are challenged to prove the fifth Peano axiom, that zero is not the successor of any natural numbers.\n"
 "\n"
@@ -4523,11 +4523,11 @@ msgid "Mathematicians from all over &mdash; most of whom have never met one anot
 "\n"
 "While the idea of a mathematical proof is over 2000 years old, the practice of proof writing continues to evolve. Today mathematicians may elect to use a tool called a computer proof assistant that can provide real-time feedback to a theorem prover which verifies the status of a logical argument that is currently under development.\n"
 "\n"
-"The aim of this game will be to introduce proof writing in a computer proof assistant while developing skils that can be used to develop proofs in other contexts: on paper, in conversation with a friend, or in your head.\n"
+"The aim of this game will be to introduce proof writing in a computer proof assistant while developing skills that can be used to develop proofs in other contexts: on paper, in conversation with a friend, or in your head.\n"
 "\n"
 "In this edition of the game you will talk to the proof assistant in a controlled form of English, provided by *Verbose Lean*: you write things like §0 or §1, and the computer checks every step. There is a sister version of the game, *Reintroduction to Proofs*, in which the same levels are solved with Lean's own, terser commands.\n"
 "\n"
-"There is one caveat to this introduction to proof writing, which we now address explicitly. The formal vocabulary we will introduce to discuss mathematical proofs is somewhat different from the one that most mathematicians learn. The mathematics we will be developing is essentially unchanged but the formal language introduced here will make it easier to be fully precise about every step in a proof, as is required to convince a computer that a logical argument in sound.\n"
+"There is one caveat to this introduction to proof writing, which we now address explicitly. The formal vocabulary we will introduce to discuss mathematical proofs is somewhat different from the one that most mathematicians learn. The mathematics we will be developing is essentially unchanged but the formal language introduced here will make it easier to be fully precise about every step in a proof, as is required to convince a computer that a logical argument is sound.\n"
 "\n"
 "In particular, we will explore an analogy between mathematical *propositions* and another form of primitive mathematical structure called *types*. Examples of types include:\n"
 "\n"
@@ -6270,7 +6270,7 @@ msgstr ""
 #. §22: `Let's prove by induction that _`
 #. §23: `∀ k : ℕ, P k ⇒ P (k + 1)`
 #: Game/Levels/NaturalNumbersWorld/L03_Induction.lean:8
-msgid "The *principal of mathematical induction* &mdash; also known as the elimination rule for the type of natural numbers &mdash; is a strategy for proving statements of the form\n"
+msgid "The *principle of mathematical induction* &mdash; also known as the elimination rule for the type of natural numbers &mdash; is a strategy for proving statements of the form\n"
 "\n"
 "§0\n"
 "\n"
@@ -6289,7 +6289,7 @@ msgid "The *principal of mathematical induction* &mdash; also known as the elimi
 "* the *base case*: proving that §10 is true\n"
 "* the *inductive step*: proving that for any §11, §12 implies §13.\n"
 "\n"
-"By combining these hypothesis, from the fact that §14 is true and §15 is true, we can conclude that §16 is true. Then from the fact that §17 is true, we can conclude that §18 is true. Then from the fact that §19 is true, we can conclude that §20 is true. And so on.\n"
+"By combining these hypotheses, from the fact that §14 is true and §15 is true, we can conclude that §16 is true. Then from the fact that §17 is true, we can conclude that §18 is true. Then from the fact that §19 is true, we can conclude that §20 is true. And so on.\n"
 "\n"
 "In this level, we will use induction to prove that every natural number is even or odd.\n"
 "\n"
@@ -6622,6 +6622,7 @@ msgid "The function §0 is defined by recursion to send §1 to §2 and §3 to §
 msgstr ""
 
 #. §0: `not : Bool → Bool`
+#: Game/Levels/AdvancedFunctionWorld/L05_Injectivity.lean:21
 #: Game/Levels/AdvancedFunctionWorld/L05_Injectivity.lean:26
 msgid "The function §0 is injective."
 msgstr ""
@@ -6635,7 +6636,6 @@ msgstr ""
 #. §0: `not : Bool → Bool`
 #: Game/Levels/AdvancedFunctionWorld/L02_Surjectivity.lean:20
 #: Game/Levels/AdvancedFunctionWorld/L02_Surjectivity.lean:25
-#: Game/Levels/AdvancedFunctionWorld/L05_Injectivity.lean:21
 msgid "The function §0 is surjective."
 msgstr ""
 
@@ -7421,8 +7421,12 @@ msgstr ""
 
 #. §0: `and : Bool → Bool → Bool`
 #: Game/Levels/BooleanWorld/L03_Conjunction.lean:15
-#: Game/Levels/BooleanWorld/L05_Disjunction.lean:17
 msgid "There is a function §0 that captures the logical operation of conjunction."
+msgstr ""
+
+#. §0: `or : Bool → Bool → Bool`
+#: Game/Levels/BooleanWorld/L05_Disjunction.lean:17
+msgid "There is a function §0 that captures the logical operation of disjunction."
 msgstr ""
 
 #. §0: `pred : ℕ → ℕ`
@@ -9386,7 +9390,7 @@ msgstr ""
 #. §0: `We apply`
 #: Game/Levels/AdvancedFunctionWorld/L06_ComposingInjectivity.lean:21
 #: Game/Levels/AdvancedFunctionWorld/L06_ComposingInjectivity.lean:23
-msgid "You have two similar hypothesis. Only one of them applies. Which one is it? Try the sentence §0."
+msgid "You have two similar hypotheses. Only one of them applies. Which one is it? Try the sentence §0."
 msgstr ""
 
 #. §0: `Let's first prove that ∀ a : A, «{g}» (f a) = a`

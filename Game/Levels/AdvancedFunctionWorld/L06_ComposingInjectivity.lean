@@ -18,9 +18,9 @@ namespace ReintroductionToProofs
 Statement Function.Injective.comp {A B C : Type} (f : A → B) (g : B → C) (f_is_inj : ∀ x y : A, f x = f y → x = y) (g_is_inj : ∀ x y : B, g x = g y → x = y) : ∀ x y : A, (g ∘ f) x = (g ∘ f) y → x = y := by
   Fix (x : A) (y : A)
   Assume p : (g ∘ f) x = (g ∘ f) y
-  Hint (hidden := true) "You have two similar hypothesis. Only one of them applies. Which one is it? Try the sentence `We apply`."
+  Hint (hidden := true) "You have two similar hypotheses. Only one of them applies. Which one is it? Try the sentence `We apply`."
   We apply f_is_inj
-  Hint (hidden := true) "You have two similar hypothesis. Only one of them applies. Which one is it? Try the sentence `We apply`."
+  Hint (hidden := true) "You have two similar hypotheses. Only one of them applies. Which one is it? Try the sentence `We apply`."
   We apply g_is_inj
   Hint (hidden := true) "Your goal `g (f {x}) = g (f {y})` is very similar to one of your assumptions `(g ∘ f) {x} = (g ∘ f) {y}`. Try `We conclude by {p}`."
   We conclude by p
