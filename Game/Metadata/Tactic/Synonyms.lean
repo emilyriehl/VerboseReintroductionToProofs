@@ -21,3 +21,8 @@ elab "By " e:maybeApplied " we get " colGt news:newObjectNameLess : tactic => do
 pair `p : A × B` or a conjunction. Verbose's own form is `By p we get (a : A) (b : B)`. -/
 elab (name := gameByWeGetAnd) "By " e:maybeApplied " we get " x:maybeTypedIdent " and " y:maybeTypedIdent : tactic => do
   obtainTac (← maybeAppliedToTerm e) #[toMaybeTypedIdent x, toMaybeTypedIdent y]
+
+/-- `Let's use an assumption`: close the goal with whichever element or proof in the context has
+the right type, without naming it (the counterpart of the `assumption` tactic). -/
+elab "Let's" " use an assumption" : tactic => do
+  evalTactic (← `(tactic| assumption))

@@ -191,17 +191,15 @@ msgstr ""
 #. §3: `z : B`
 #. §4: `B`
 #. §5: `B`
-#. §6: `assumption`
-#. §7: `exact`
-#. §8: `E`
-#. §9: `e : E`
-#. §10: `exact e`
-#. §11: `e`
-#. §12: `exact`
-#. §13: `P`
-#. §14: `p : P`
-#. §15: `exact p`
-#. §16: `exact`
+#. §6: `Let's use an assumption`
+#. §7: `E`
+#. §8: `e : E`
+#. §9: `Let's use e`
+#. §10: `e`
+#. §11: `P`
+#. §12: `p : P`
+#. §13: `Let's use p`
+#. §14: `We conclude by p`
 #: Game/Levels/TypeWorld/L03_ExactElements.lean:8
 msgid "A more elaborate context may contain multiple types and multiple elements, or a mix of types, elements, propositions, and proofs.\n"
 "\n"
@@ -209,13 +207,11 @@ msgid "A more elaborate context may contain multiple types and multiple elements
 "\n"
 "In this level, our context includes two types §0 and §1 with three elements between them. Note the use of a space rather than a list to indicate that §2 and §3 each define elements of type §4.\n"
 "\n"
-"Our goal is to define an element of type §5 and the tactic §6 will solve this goal. But this tactic does not convey to the reader which assumption was used.\n"
+"Our goal is to define an element of type §5 and the sentence §6 will solve this goal. But this sentence does not convey to the reader which assumption was used.\n"
 "\n"
-"In this sort of setting, it is better practice to use the tactic §7. If the goal has type §8 and there is an element §9 in the context, then §10 uses the element §11 to close the goal.\n"
+"In this sort of setting, it is better practice to name the element. If the goal has type §7 and there is an element §8 in the context, then §9 uses the element §10 to close the goal.\n"
 "\n"
-"The §12 tactic can also be used when the goal is a proposition §13 and the context includes a proof §14. Then §15 will solve the goal.\n"
-"\n"
-"The tactic §16 can now be found in the library."
+"The same works when the goal is a proposition §11 and the context includes a proof §12: then §13 solves the goal, and so does §14."
 msgstr ""
 
 #. §0: `P ∨ Q`
@@ -313,8 +309,8 @@ msgid "After introducing the hypothesis §0, type §1 to ask Lean to consider bo
 msgstr ""
 
 #. §0: `Retry`
-#. §1: `exact x`
-#: Game/Levels/TypeWorld/L03_ExactElements.lean:27
+#. §1: `Let's use x`
+#: Game/Levels/TypeWorld/L03_ExactElements.lean:25
 msgid "After solving this level, use the §0 button to solve it again. What happens if you try §1?"
 msgstr ""
 
@@ -371,10 +367,12 @@ msgstr ""
 #. §5: `a : A`
 #. §6: `A`
 #. §7: `A`
-#. §8: `assumption`
+#. §8: `Let's use an assumption`
 #. §9: `enter`
 #. §10: `Execute`
-#. §11: `assumption`
+#. §11: `Let's use an assumption`
+#. §12: `Let's`
+#. §13: `help`
 #: Game/Levels/TypeWorld/L01_Elements.lean:8
 msgid "An interactive theorem prover &mdash; in this case Lean &mdash; helps the user &mdash; this means you &mdash; keep track of the state of a proof or a mathematical construction.\n"
 "\n"
@@ -386,9 +384,11 @@ msgid "An interactive theorem prover &mdash; in this case Lean &mdash; helps the
 "\n"
 "On the right-hand side we see the name of a type, which is the *goal* for this level. Here that type is §6, which means that our goal is to define an element of type §7.\n"
 "\n"
-"We have such an element by assumption, and you can type §8 to tell Lean this. Then type §9 or click the button §10 to ask Lean to check your work.\n"
+"We have such an element by assumption, and you can tell Lean this by writing the sentence §8. Then press §9 or click the button §10 to ask Lean to check your work.\n"
 "\n"
-"Here §11 is an example of a *tactic*, which is built into Lean. You can find this in the tactic library on the upper right."
+"In this game you talk to Lean in short English sentences like this one. Each sentence is checked by the computer, so it has to be written exactly as shown (capital letter at the start, no period at the end). The sentences you have learned so far are listed in the library on the upper right, under the word they start with; §11 is listed under §12.\n"
+"\n"
+"One more sentence is available from the start: §13, on a line by itself, asks Lean which sentences apply to the current goal."
 msgstr ""
 
 #. §0: `0 : ℕ`
@@ -1222,14 +1222,14 @@ msgid "Double Negation"
 msgstr ""
 
 #. §0: `Boss Level`
-#. §1: `assumption`
-#. §2: `exact`
+#. §1: `Let's use an assumption`
+#. §2: `Let's use e`
 #. §3: `Type`
 #. §4: `Type`
 #: Game/Levels/TypeWorld/L07_BossLevel.lean:8
 msgid "Each world will end with a §0, which is intended to be more challenging than the levels that came before.\n"
 "\n"
-"It is not so easy to design a challenging exercise involving only the tactics §1 and §2 but nevertheless, we will end with a puzzle that you may find interesting.\n"
+"It is not so easy to design a challenging exercise involving only the sentences §1 and §2 but nevertheless, we will end with a puzzle that you may find interesting.\n"
 "\n"
 "Your task in this level, like in the previous level, is to define an element in the type §3.\n"
 "\n"
@@ -2919,13 +2919,6 @@ msgstr ""
 msgid "If the proposition §0 is true, then §1 is true."
 msgstr ""
 
-#. §0: `e : E`
-#. §1: `E`
-#. §2: `exact e`
-#: Game/Levels/TypeWorld/L03_ExactElements.lean:29
-msgid "If there is an assumption §0 and the goal has type §1, then §2 closes the goal."
-msgstr ""
-
 #: Game/Levels/ProductWorld/L08_ComponentFunctions.lean:32
 #: Game/Levels/ProductWorld/L08_ComponentFunctions.lean:37
 msgid "If this is not the term you want, how can you use it to define the correct term?"
@@ -3519,16 +3512,16 @@ msgstr ""
 msgid "In the next level, we will introduce another tactic that can be used to solve this goal."
 msgstr ""
 
-#: Game/Levels/TypeWorld/L02_Proofs.lean:26
-msgid "In the next level, we will learn a new tactic, which allows us to be more precise about which assumption is being used."
-msgstr ""
-
-#: Game/Levels/TypeWorld/L01_Elements.lean:27
+#: Game/Levels/TypeWorld/L01_Elements.lean:29
 msgid "In the next level, we will learn about elements of propositions."
 msgstr ""
 
 #: Game/Levels/QuantifierWorld/L08_NegatingExistence.lean:42
 msgid "In the next level, we will learn about negating universal quantifiers."
+msgstr ""
+
+#: Game/Levels/TypeWorld/L02_Proofs.lean:26
+msgid "In the next level, we will learn to be more precise about which assumption is being used."
 msgstr ""
 
 #: Game/Levels/AdvancedFunctionWorld/L07_CancelingInjectivity.lean:27
@@ -3623,9 +3616,9 @@ msgstr ""
 
 #. §0: `Unit`
 #. §1: `Type`
-#. §2: `exact Unit`
+#. §2: `Let's use Unit`
 #: Game/Levels/TypeWorld/L06_TypeOfTypes.lean:25
-msgid "In the previous level, we introduced the type §0. This is an element of the type §1, so you can solve this level by typing §2."
+msgid "In the previous level, we introduced the type §0. This is an element of the type §1, so you can solve this level by writing §2."
 msgstr ""
 
 #. §0: `f`
@@ -3678,8 +3671,8 @@ msgstr ""
 #. §14: `P`
 #. §15: `P`
 #. §16: `P`
-#. §17: `assumption`
-#. §18: `P`
+#. §17: `Let's use an assumption`
+#. §18: `We conclude by hypothesis`
 #: Game/Levels/TypeWorld/L02_Proofs.lean:8
 msgid "In this level, we consider a proposition §0 in place of a type §1.\n"
 "\n"
@@ -3691,7 +3684,7 @@ msgid "In this level, we consider a proposition §0 in place of a type §1.\n"
 "\n"
 "Our goal, which is displayed to the right of the vertical line, is to prove the proposition §14.\n"
 "\n"
-"We know that §15 is true because we have assumed that §16 is true. So the tactic §17 can be used to tell Lean that §18 is true by assumption."
+"We know that §15 is true because we have assumed that §16 is true. The sentence §17 from the previous level works here too. When the goal is a proposition, there is a second sentence for the same step that reads more like a proof on paper: §18."
 msgstr ""
 
 #. §0: `A → Empty`
@@ -4111,14 +4104,12 @@ msgstr ""
 #. §3: `Type`
 #. §4: `Type 0`
 #. §5: `Type`
-#. §6: `exact Type`
+#. §6: `Let's use Type`
 #. §7: `Type`
 #. §8: `Type 1`
-#. §9: `#check Type`
-#. §10: `Type`
-#. §11: `exact Type`
-#. §12: `retry`
-#. §13: `Type`
+#. §9: `Let's use Type`
+#. §10: `retry`
+#. §11: `Type`
 #: Game/Levels/TypeWorld/L06_TypeOfTypes.lean:8
 msgid "Lean also has a built in type of types denoted §0, which can be found in your library of definitions.\n"
 "\n"
@@ -4129,10 +4120,10 @@ msgid "Lean also has a built in type of types denoted §0, which can be found in
 "The goal in this level is to define an element of the type §5 of types.\n"
 "\n"
 "Note §6 will not work, because the type §7 belongs to the type of types in a larger\n"
-"universe(§8). You can verify this using §9 to see what type §10 has or by trying §11 and reading the error message. \n"
-"After these experiments, you can should undo that step by clicking §12.\n"
+"universe (§8). You can verify this by trying §9 and reading the error message.\n"
+"After this experiment, undo that step by clicking §10.\n"
 "\n"
-"However, we have introduced a type that is small enough to define an element of §13. Use this to solve this level."
+"However, we have introduced a type that is small enough to define an element of §11. Use this to solve this level."
 msgstr ""
 
 #. §0: `Prod.swap`
@@ -5021,6 +5012,94 @@ msgstr ""
 msgid "Pairs"
 msgstr ""
 
+#. §0: `and`
+#: Game/Levels/TypeWorld/L01_Elements.lean:44
+#: Game/Levels/TypeWorld/L01_Elements.lean:46
+#: Game/Levels/TypeWorld/L01_Elements.lean:48
+#: Game/Levels/TypeWorld/L01_Elements.lean:50
+#: Game/Levels/TypeWorld/L01_Elements.lean:52
+#: Game/Levels/TypeWorld/L01_Elements.lean:54
+#: Game/Levels/TypeWorld/L01_Elements.lean:56
+#: Game/Levels/TypeWorld/L01_Elements.lean:58
+#: Game/Levels/TypeWorld/L01_Elements.lean:60
+#: Game/Levels/TypeWorld/L01_Elements.lean:62
+#: Game/Levels/TypeWorld/L01_Elements.lean:64
+#: Game/Levels/TypeWorld/L01_Elements.lean:66
+#: Game/Levels/TypeWorld/L01_Elements.lean:68
+#: Game/Levels/TypeWorld/L01_Elements.lean:70
+#: Game/Levels/TypeWorld/L01_Elements.lean:72
+#: Game/Levels/TypeWorld/L01_Elements.lean:74
+#: Game/Levels/TypeWorld/L01_Elements.lean:76
+#: Game/Levels/TypeWorld/L01_Elements.lean:78
+#: Game/Levels/TypeWorld/L01_Elements.lean:80
+#: Game/Levels/TypeWorld/L01_Elements.lean:82
+#: Game/Levels/TypeWorld/L01_Elements.lean:84
+#: Game/Levels/TypeWorld/L01_Elements.lean:86
+#: Game/Levels/TypeWorld/L01_Elements.lean:88
+#: Game/Levels/TypeWorld/L01_Elements.lean:90
+#: Game/Levels/TypeWorld/L01_Elements.lean:92
+#: Game/Levels/TypeWorld/L01_Elements.lean:94
+#: Game/Levels/TypeWorld/L01_Elements.lean:96
+#: Game/Levels/TypeWorld/L01_Elements.lean:98
+#: Game/Levels/TypeWorld/L01_Elements.lean:100
+#: Game/Levels/TypeWorld/L01_Elements.lean:102
+#: Game/Levels/TypeWorld/L01_Elements.lean:104
+#: Game/Levels/TypeWorld/L01_Elements.lean:106
+#: Game/Levels/TypeWorld/L01_Elements.lean:108
+#: Game/Levels/TypeWorld/L01_Elements.lean:110
+#: Game/Levels/TypeWorld/L01_Elements.lean:112
+#: Game/Levels/TypeWorld/L01_Elements.lean:114
+#: Game/Levels/TypeWorld/L01_Elements.lean:116
+#: Game/Levels/TypeWorld/L01_Elements.lean:118
+#: Game/Levels/TypeWorld/L01_Elements.lean:120
+#: Game/Levels/TypeWorld/L01_Elements.lean:122
+#: Game/Levels/TypeWorld/L01_Elements.lean:124
+#: Game/Levels/TypeWorld/L01_Elements.lean:126
+#: Game/Levels/TypeWorld/L01_Elements.lean:128
+#: Game/Levels/TypeWorld/L01_Elements.lean:130
+#: Game/Levels/TypeWorld/L01_Elements.lean:132
+#: Game/Levels/TypeWorld/L01_Elements.lean:134
+#: Game/Levels/TypeWorld/L01_Elements.lean:136
+#: Game/Levels/TypeWorld/L01_Elements.lean:138
+#: Game/Levels/TypeWorld/L01_Elements.lean:140
+#: Game/Levels/TypeWorld/L01_Elements.lean:142
+#: Game/Levels/TypeWorld/L01_Elements.lean:144
+#: Game/Levels/TypeWorld/L01_Elements.lean:146
+#: Game/Levels/TypeWorld/L01_Elements.lean:148
+#: Game/Levels/TypeWorld/L01_Elements.lean:150
+#: Game/Levels/TypeWorld/L01_Elements.lean:152
+#: Game/Levels/TypeWorld/L01_Elements.lean:154
+#: Game/Levels/TypeWorld/L01_Elements.lean:156
+#: Game/Levels/TypeWorld/L01_Elements.lean:158
+#: Game/Levels/TypeWorld/L01_Elements.lean:160
+#: Game/Levels/TypeWorld/L01_Elements.lean:162
+#: Game/Levels/TypeWorld/L01_Elements.lean:164
+#: Game/Levels/TypeWorld/L01_Elements.lean:166
+#: Game/Levels/TypeWorld/L01_Elements.lean:168
+#: Game/Levels/TypeWorld/L01_Elements.lean:170
+#: Game/Levels/TypeWorld/L01_Elements.lean:172
+#: Game/Levels/TypeWorld/L01_Elements.lean:174
+#: Game/Levels/TypeWorld/L01_Elements.lean:176
+#: Game/Levels/TypeWorld/L01_Elements.lean:178
+#: Game/Levels/TypeWorld/L01_Elements.lean:180
+#: Game/Levels/TypeWorld/L01_Elements.lean:182
+#: Game/Levels/TypeWorld/L01_Elements.lean:184
+#: Game/Levels/TypeWorld/L01_Elements.lean:186
+#: Game/Levels/TypeWorld/L01_Elements.lean:188
+#: Game/Levels/TypeWorld/L01_Elements.lean:190
+msgid "Part of a Verbose phrase (word §0)."
+msgstr ""
+
+#. §0: `We`
+#. §1: `We conclude by …`
+#. §2: `We apply …`
+#. §3: `We rewrite using …`
+#. §4: `We compute`
+#. §5: `We proceed using …`
+#: Game/Levels/TypeWorld/L01_Elements.lean:212
+msgid "Phrases starting with §0: §1, §2, §3, §4, §5, …"
+msgstr ""
+
 #: Game/Levels/NaturalNumbersWorld/L05_PredecessorOfSuccessor.lean:6
 msgid "Predecessor of Successor"
 msgstr ""
@@ -5704,6 +5783,66 @@ msgstr ""
 msgid "Second Projection"
 msgstr ""
 
+#. §0: `Let's`
+#. §1: `Let's use an assumption`
+#. §2: `Let's use e`
+#. §3: `e`
+#. §4: `Let's prove that P`
+#. §5: `Let's first prove that P`
+#. §6: `Let's now prove that Q`
+#. §7: `Let's prove that x works`
+#. §8: `Let's prove by induction that _`
+#. §9: `Let's construct it componentwise`
+#. §10: `Let's construct an element of A`
+#. §11: `Let's consider all cases for b`
+#. §12: `Let's first consider the case where b is …`
+#. §13: `Let's define it by recursion on n`
+#: Game/Levels/TypeWorld/L01_Elements.lean:31
+msgid "Sentences starting with §0 announce what you are about to do:\n"
+"\n"
+"* §1 closes the goal with whichever element or proof in your context has the right type.\n"
+"* §2 closes the goal with the element or proof §3 (you name it).\n"
+"* §4, §5 / §6, §7, §8: for proofs, introduced in later worlds.\n"
+"* §9, §10, §11, §12, §13: for constructions, introduced in later worlds."
+msgstr ""
+
+#. §0: `We`
+#. §1: `We conclude by hypothesis`
+#. §2: `We conclude by h`
+#. §3: `h`
+#. §4: `We conclude by h applied to x`
+#. §5: `We conclude by h applied to x and y`
+#. §6: `We conclude by rfl`
+#. §7: `We apply h`
+#. §8: `h : P ⇒ Q`
+#. §9: `Q`
+#. §10: `P`
+#. §11: `We rewrite using h`
+#. §12: `h : a = b`
+#. §13: `a`
+#. §14: `b`
+#. §15: `We rewrite using ← h`
+#. §16: `… at h'`
+#. §17: `We compute`
+#. §18: `We proceed using h`
+#. §19: `h : P ∨ Q`
+#. §20: `h : A ⊕ B`
+#. §21: `We discuss depending on whether P or ¬ P`
+#: Game/Levels/TypeWorld/L02_Proofs.lean:28
+msgid "Sentences starting with §0 finish or transform the goal.\n"
+"\n"
+"Finishing:\n"
+"* §1 closes the goal with an assumption, without naming it.\n"
+"* §2 closes the goal with the hypothesis or proof term §3; also §4, §5, and §6 when both sides of an equation are equal by definition.\n"
+"\n"
+"Transforming the goal (introduced in later worlds):\n"
+"* §7 when §8 and the goal is §9: the goal becomes §10.\n"
+"* §11 when §12 replaces §13 by §14 in the goal (backwards: §15; in a hypothesis: §16).\n"
+"* §17 normalises arithmetic on both sides of an equation.\n"
+"* §18 when §19 or §20: one goal per case.\n"
+"* §21: case split on a proposition."
+msgstr ""
+
 #. §0: `P`
 #. §1: `Q`
 #. §2: `R`
@@ -5919,6 +6058,11 @@ msgstr ""
 #: Game/Levels/DisjunctionWorld/L04_Symmetry.lean:6
 #: Game/Levels/EqualityWorld/L04_Symmetry.lean:6
 msgid "Symmetry"
+msgstr ""
+
+#. §0: `Fact`
+#: Game/Levels/TypeWorld/L01_Elements.lean:196
+msgid "Synonym of §0."
 msgstr ""
 
 #. §0: `P`
@@ -6764,8 +6908,8 @@ msgstr ""
 #. §0: `Unit`
 #. §1: `⟨⟩ : Unit`
 #. §2: `Unit`
-#. §3: `assumption`
-#. §4: `exact`
+#. §3: `Let's use an assumption`
+#. §4: `Let's use`
 #. §5: `\\<`
 #. §6: `\\>`
 #. §7: `⟨⟩`
@@ -6776,9 +6920,9 @@ msgid "The previous levels involved type variables or proposition variables.\n"
 "\n"
 "One example is the unit type §0 which has a canonical element §1.\n"
 "\n"
-"Here our goal has type §2. We cannot solve this goal with the tactic §3 because we have not made an assumptions!\n"
+"Here our goal has type §2. We cannot solve this goal with §3 because we have not made any assumptions!\n"
 "\n"
-"But we can solve this level with the tactic §4 by typing the name of the canonical element.\n"
+"But we can solve this level with §4 followed by the name of the canonical element.\n"
 "\n"
 "Use §5 and §6 to type the angle brackets §7."
 msgstr ""
@@ -7171,11 +7315,6 @@ msgstr ""
 msgid "The §0 tactic is now in your library.\n"
 "\n"
 "It is a bit surprising that the last equation §1 holds by §2. This has to do with the way that addition and multiplication are defined in Lean. We will explore the definition of addition in a future level."
-msgstr ""
-
-#. §0: `assumption`
-#: Game/Levels/TypeWorld/L01_Elements.lean:29
-msgid "The §0 tactic tries to solve the main goal using a hypothesis of compatible type, or else fails."
 msgstr ""
 
 #. §0: `intro`
@@ -7894,20 +8033,6 @@ msgstr ""
 msgid "Type §0 to tell Lean that §1 is a proof of §2."
 msgstr ""
 
-#. §0: `assumption`
-#. §1: `A`
-#. §2: `A`
-#: Game/Levels/TypeWorld/L01_Elements.lean:24
-msgid "Type §0 to tell Lean to use the assumed element of §1 to define an element of §2."
-msgstr ""
-
-#. §0: `assumption`
-#. §1: `P`
-#. §2: `P`
-#: Game/Levels/TypeWorld/L02_Proofs.lean:23
-msgid "Type §0 to tell Lean to use the assumption that §1 is true to conclude that §2 is true."
-msgstr ""
-
 #. §0: `use ??`
 #. §1: `??`
 #: Game/Levels/NaturalNumbersWorld/L03_Induction.lean:52
@@ -7933,7 +8058,7 @@ msgstr ""
 #. §0: `A`
 #. §1: `a : A`
 #. §2: `A`
-#: Game/Levels/TypeWorld/L01_Elements.lean:22
+#: Game/Levels/TypeWorld/L01_Elements.lean:24
 msgid "Under the hypothesis that we have a type §0 and an element §1, we may define an element of §2."
 msgstr ""
 
@@ -7942,7 +8067,7 @@ msgstr ""
 #. §2: `x : A`
 #. §3: `y z : B`
 #. §4: `B`
-#: Game/Levels/TypeWorld/L03_ExactElements.lean:23
+#: Game/Levels/TypeWorld/L03_ExactElements.lean:21
 msgid "Under the hypothesis that we have types §0 and §1 and elements §2 and §3, we may define an element of type §4."
 msgstr ""
 
@@ -9087,6 +9212,27 @@ msgstr ""
 msgid "While the tactics used in this level and the previous one are different, both solutions ultimately tell Lean to use the element §0 built by applying the function §1 to the element §2."
 msgstr ""
 
+#. §0: `We conclude by hypothesis`
+#. §1: `Let's use an assumption`
+#. §2: `P`
+#: Game/Levels/TypeWorld/L02_Proofs.lean:23
+msgid "Write §0 (or §1) to tell Lean that §2 is true by assumption."
+msgstr ""
+
+#. §0: `help`
+#. §1: `help h`
+#. §2: `h`
+#: Game/Levels/TypeWorld/L01_Elements.lean:39
+msgid "Write §0 on a line by itself and Lean lists the sentences that apply to the current goal, with the statements filled in. §1 does the same for a hypothesis §2."
+msgstr ""
+
+#. §0: `Let's use an assumption`
+#. §1: `A`
+#. §2: `A`
+#: Game/Levels/TypeWorld/L01_Elements.lean:26
+msgid "Write §0 to tell Lean to use the assumed element of §1 to define an element of §2."
+msgstr ""
+
 #. §0: `n`
 #. §1: `0`
 #. §2: `(∃ m : ℕ, 0 = 2 * m) ∨ (∃ m : ℕ, 0 = 2 * m + 1)`
@@ -9274,6 +9420,19 @@ msgstr ""
 msgid "level completed! 🎉"
 msgstr ""
 
+#. §0: `Assume h : P`
+#. §1: `Assume that P`
+#. §2: `Assume for contradiction h : ¬ Q`
+#: Game/Levels/TypeWorld/L01_Elements.lean:206
+msgid "§0 / §1 / §2: see the level where it is introduced."
+msgstr ""
+
+#. §0: `Calc a = b from h`
+#. §1: `_ = c by computation`
+#: Game/Levels/TypeWorld/L01_Elements.lean:200
+msgid "§0 followed by lines §1: a chain of equalities or inequalities (editor mode, several lines)."
+msgstr ""
+
 #. §0: `(P ∨ Q) ∧ (R ∨ S)`
 #. §1: `(P ∧ R) ∨ (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S)`
 #: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:16
@@ -9332,6 +9491,63 @@ msgstr ""
 #. §3: `(P → Q) ∧ (Q → P)`
 #: Game/Levels/ConjunctionWorld/L04_LogicalEquivalence.lean:9
 msgid "§0, read as &ldquo;§1 if and only if §2&rdquo; is an abbreviation for §3."
+msgstr ""
+
+#. §0: `Fact h : P from e`
+#. §1: `Fact h : P since …`
+#. §2: `Fact h : P by computation`
+#. §3: `Fact h : P by`
+#. §4: `h`
+#. §5: `Claim`
+#: Game/Levels/TypeWorld/L01_Elements.lean:194
+msgid "§0, §1, §2, §3 followed by an indented proof: establish an intermediate fact named §4. §5 is a synonym."
+msgstr ""
+
+#. §0: `Since P ∧ Q we get (hp : P) (hq : Q)`
+#. §1: `Since ∃ x, P x we get x such that hx : P x`
+#. §2: `Since P and P ⇒ Q we conclude that Q`
+#. §3: `Since P ⇒ Q it suffices to prove that P`
+#: Game/Levels/TypeWorld/L01_Elements.lean:192
+msgid "§0, §1, §2, §3: use facts by *stating* them rather than naming hypotheses."
+msgstr ""
+
+#. §0: `By h we get …`
+#. §1: `By h applied to a we get …`
+#. §2: `By h it suffices to prove that …`
+#: Game/Levels/TypeWorld/L01_Elements.lean:210
+msgid "§0, §1, §2: use a named hypothesis."
+msgstr ""
+
+#. §0: `This is impossible because of e`
+#. §1: `e : Empty`
+#. §2: `h : False`
+#. §3: `h applied to p`
+#. §4: `h : ¬ P`
+#. §5: `p : P`
+#: Game/Levels/TypeWorld/L01_Elements.lean:204
+msgid "§0: finish any goal from an element §1, a proof §2, or a contradiction such as §3 with §4 and §5."
+msgstr ""
+
+#. §0: `Set x := e`
+#. §1: `x`
+#. §2: `e`
+#: Game/Levels/TypeWorld/L01_Elements.lean:198
+msgid "§0: introduce a local definition §1 with value §2."
+msgstr ""
+
+#. §0: `Fix x : A`
+#. §1: `A`
+#. §2: `A → B`
+#. §3: `∀ x : A, …`
+#: Game/Levels/TypeWorld/L01_Elements.lean:208
+msgid "§0: introduce an arbitrary element of §1 when the goal is a function type §2 or §3."
+msgstr ""
+
+#. §0: `It suffices to prove that P`
+#. §1: `P`
+#. §2: `P`
+#: Game/Levels/TypeWorld/L01_Elements.lean:202
+msgid "§0: reduce the goal to §1 when an available fact turns §2 into the goal."
 msgstr ""
 
 #. §0: `cases «{p}»`

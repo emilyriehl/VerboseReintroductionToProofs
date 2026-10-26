@@ -11,16 +11,16 @@ But there are other specific types or propositions that exist in the empty conte
 
 One example is the unit type `Unit` which has a canonical element `⟨⟩ : Unit`.
 
-Here our goal has type `Unit`. We cannot solve this goal with the tactic `assumption` because we have not made an assumptions!
+Here our goal has type `Unit`. We cannot solve this goal with `Let's use an assumption` because we have not made any assumptions!
 
-But we can solve this level with the tactic `exact` by typing the name of the canonical element.
+But we can solve this level with `Let's use` followed by the name of the canonical element.
 
 Use `\\<` and `\\>` to type the angle brackets `⟨⟩`.
 "
 
 /-- The unit type `Unit` has a canonical element `⟨⟩`. -/
 Statement : Unit := by
-  exact ⟨⟩
+  Let's use ⟨⟩
 
 Conclusion "The unit type can be found in the library of definitions in the folder `Type`."
 

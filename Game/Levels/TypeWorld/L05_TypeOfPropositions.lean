@@ -18,7 +18,7 @@ Under these assumptions, either `P` or `Q` define elements of `Prop`. Use the `R
 
 /-- The type of propositions `Prop` contains propositions like `True`. -/
 Statement (P Q : Prop) (p : P) : Prop := by
-  exact Q
+  Let's use Q
 
 Conclusion "The proposition `True` and the type `Prop` are now in your library of definitions."
 

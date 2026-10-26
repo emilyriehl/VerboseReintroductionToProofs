@@ -15,12 +15,28 @@ As we will see, it is useful to have an explicit name `p` for the proof that `P`
 
 Our goal, which is displayed to the right of the vertical line, is to prove the proposition `P`.
 
-We know that `P` is true because we have assumed that `P` is true. So the tactic `assumption` can be used to tell Lean that `P` is true by assumption.
+We know that `P` is true because we have assumed that `P` is true. The sentence `Let's use an assumption` from the previous level works here too. When the goal is a proposition, there is a second sentence for the same step that reads more like a proof on paper: `We conclude by hypothesis`.
 "
 
 /-- Under the hypothesis that we have a proposition `P` and a proof `p : P`, we may conclude that `P` is true. -/
 Statement {P : Prop} (p : P) : P := by
-  Hint (hidden := true) "Type `assumption` to tell Lean to use the assumption that `P` is true to conclude that `P` is true."
-  assumption
+  Hint (hidden := true) "Write `We conclude by hypothesis` (or `Let's use an assumption`) to tell Lean that `P` is true by assumption."
+  We conclude by hypothesis
 
-Conclusion "In the next level, we will learn a new tactic, which allows us to be more precise about which assumption is being used."
+Conclusion "In the next level, we will learn to be more precise about which assumption is being used."
+
+/-- Sentences starting with `We` finish or transform the goal.
+
+Finishing:
+* `We conclude by hypothesis` closes the goal with an assumption, without naming it.
+* `We conclude by h` closes the goal with the hypothesis or proof term `h`; also `We conclude by h applied to x`, `We conclude by h applied to x and y`, and `We conclude by rfl` when both sides of an equation are equal by definition.
+
+Transforming the goal (introduced in later worlds):
+* `We apply h` when `h : P ⇒ Q` and the goal is `Q`: the goal becomes `P`.
+* `We rewrite using h` when `h : a = b` replaces `a` by `b` in the goal (backwards: `We rewrite using ← h`; in a hypothesis: `… at h'`).
+* `We compute` normalises arithmetic on both sides of an equation.
+* `We proceed using h` when `h : P ∨ Q` or `h : A ⊕ B`: one goal per case.
+* `We discuss depending on whether P or ¬ P`: case split on a proposition. -/
+TacticDoc «We»
+
+NewTactic «We»
