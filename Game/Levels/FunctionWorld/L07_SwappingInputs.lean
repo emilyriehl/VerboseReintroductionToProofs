@@ -11,7 +11,7 @@ Given `f : A → B → C`, `a : A`, and `b : B`, `f a b : C` denotes `f` applied
 
 From a function of type `A → B → C`, we can define a function of type `B → A → C` by exchanging the order of the variables that are input into the function.
 
-Here the goal is a multivariable function type that takes three inputs &mdash; of types `A → B → C` and `B` and `A` &mdash; and returns one ouput, of type `C`. Introduce the three inputs one at a time with three `Fix` sentences (`Fix f : _` lets Lean fill in the type), or all at once with `Fix (f : A → B → C) (b : B) (a : A)`.
+Here the goal is a multivariable function type that takes three inputs &mdash; of types `A → B → C` and `B` and `A` &mdash; and returns one ouput, of type `C`. Introduce the three inputs one at a time with three `Fix` sentences (`Fix f : _` lets Lean fill in the type), or all at once with `Fix (f : A → B → C) (b : B) (a : A)`, or simply `Fix f b a` when you are happy to let Lean fill in all the types.
 "
 
 /-- From a function of two variables, define another function of two variables, where the inputs are swapped. -/
