@@ -5096,7 +5096,7 @@ msgstr ""
 #. §3: `We rewrite using …`
 #. §4: `We compute`
 #. §5: `We proceed using …`
-#: Game/Levels/TypeWorld/L01_Elements.lean:212
+#: Game/Levels/TypeWorld/L01_Elements.lean:218
 msgid "Phrases starting with §0: §1, §2, §3, §4, §5, …"
 msgstr ""
 
@@ -5783,6 +5783,11 @@ msgstr ""
 msgid "Second Projection"
 msgstr ""
 
+#. §0: `Type`
+#: Game/Levels/TypeWorld/L01_Elements.lean:194
+msgid "See §0."
+msgstr ""
+
 #. §0: `Let's`
 #. §1: `Let's use an assumption`
 #. §2: `Let's use e`
@@ -6061,7 +6066,7 @@ msgid "Symmetry"
 msgstr ""
 
 #. §0: `Fact`
-#: Game/Levels/TypeWorld/L01_Elements.lean:196
+#: Game/Levels/TypeWorld/L01_Elements.lean:202
 msgid "Synonym of §0."
 msgstr ""
 
@@ -7315,6 +7320,11 @@ msgstr ""
 msgid "The §0 tactic is now in your library.\n"
 "\n"
 "It is a bit surprising that the last equation §1 holds by §2. This has to do with the way that addition and multiplication are defined in Lean. We will explore the definition of addition in a future level."
+msgstr ""
+
+#. §0: `exact`
+#: Game/Levels/TypeWorld/L01_Elements.lean:196
+msgid "The §0 tactic of the original game; still accepted while the port is in progress."
 msgstr ""
 
 #. §0: `intro`
@@ -9423,13 +9433,20 @@ msgstr ""
 #. §0: `Assume h : P`
 #. §1: `Assume that P`
 #. §2: `Assume for contradiction h : ¬ Q`
-#: Game/Levels/TypeWorld/L01_Elements.lean:206
+#: Game/Levels/TypeWorld/L01_Elements.lean:212
 msgid "§0 / §1 / §2: see the level where it is introduced."
+msgstr ""
+
+#. §0: `Type`
+#. §1: `Sort`
+#. §2: `Let's use Type`
+#: Game/Levels/TypeWorld/L01_Elements.lean:192
+msgid "§0 and §1 may appear inside the element you supply (§2 is an instructive error)."
 msgstr ""
 
 #. §0: `Calc a = b from h`
 #. §1: `_ = c by computation`
-#: Game/Levels/TypeWorld/L01_Elements.lean:200
+#: Game/Levels/TypeWorld/L01_Elements.lean:206
 msgid "§0 followed by lines §1: a chain of equalities or inequalities (editor mode, several lines)."
 msgstr ""
 
@@ -9499,7 +9516,7 @@ msgstr ""
 #. §3: `Fact h : P by`
 #. §4: `h`
 #. §5: `Claim`
-#: Game/Levels/TypeWorld/L01_Elements.lean:194
+#: Game/Levels/TypeWorld/L01_Elements.lean:200
 msgid "§0, §1, §2, §3 followed by an indented proof: establish an intermediate fact named §4. §5 is a synonym."
 msgstr ""
 
@@ -9507,14 +9524,14 @@ msgstr ""
 #. §1: `Since ∃ x, P x we get x such that hx : P x`
 #. §2: `Since P and P ⇒ Q we conclude that Q`
 #. §3: `Since P ⇒ Q it suffices to prove that P`
-#: Game/Levels/TypeWorld/L01_Elements.lean:192
+#: Game/Levels/TypeWorld/L01_Elements.lean:198
 msgid "§0, §1, §2, §3: use facts by *stating* them rather than naming hypotheses."
 msgstr ""
 
 #. §0: `By h we get …`
 #. §1: `By h applied to a we get …`
 #. §2: `By h it suffices to prove that …`
-#: Game/Levels/TypeWorld/L01_Elements.lean:210
+#: Game/Levels/TypeWorld/L01_Elements.lean:216
 msgid "§0, §1, §2: use a named hypothesis."
 msgstr ""
 
@@ -9524,14 +9541,14 @@ msgstr ""
 #. §3: `h applied to p`
 #. §4: `h : ¬ P`
 #. §5: `p : P`
-#: Game/Levels/TypeWorld/L01_Elements.lean:204
+#: Game/Levels/TypeWorld/L01_Elements.lean:210
 msgid "§0: finish any goal from an element §1, a proof §2, or a contradiction such as §3 with §4 and §5."
 msgstr ""
 
 #. §0: `Set x := e`
 #. §1: `x`
 #. §2: `e`
-#: Game/Levels/TypeWorld/L01_Elements.lean:198
+#: Game/Levels/TypeWorld/L01_Elements.lean:204
 msgid "§0: introduce a local definition §1 with value §2."
 msgstr ""
 
@@ -9539,14 +9556,14 @@ msgstr ""
 #. §1: `A`
 #. §2: `A → B`
 #. §3: `∀ x : A, …`
-#: Game/Levels/TypeWorld/L01_Elements.lean:208
+#: Game/Levels/TypeWorld/L01_Elements.lean:214
 msgid "§0: introduce an arbitrary element of §1 when the goal is a function type §2 or §3."
 msgstr ""
 
 #. §0: `It suffices to prove that P`
 #. §1: `P`
 #. §2: `P`
-#: Game/Levels/TypeWorld/L01_Elements.lean:202
+#: Game/Levels/TypeWorld/L01_Elements.lean:208
 msgid "§0: reduce the goal to §1 when an available fact turns §2 into the goal."
 msgstr ""
 

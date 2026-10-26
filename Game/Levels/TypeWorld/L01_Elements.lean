@@ -189,6 +189,12 @@ TacticDoc «impossible»
 TacticDoc «because»
 /-- Part of a Verbose phrase (word `Calc?`). -/
 TacticDoc «Calc?»
+/-- `Type` and `Sort` may appear inside the element you supply (`Let's use Type` is an instructive error). -/
+TacticDoc «Type»
+/-- See `Type`. -/
+TacticDoc «Sort»
+/-- The `exact` tactic of the original game; still accepted while the port is in progress. -/
+TacticDoc exact
 /-- `Since P ∧ Q we get (hp : P) (hq : Q)`, `Since ∃ x, P x we get x such that hx : P x`, `Since P and P ⇒ Q we conclude that Q`, `Since P ⇒ Q it suffices to prove that P`: use facts by *stating* them rather than naming hypotheses. -/
 TacticDoc «Since»
 /-- `Fact h : P from e`, `Fact h : P since …`, `Fact h : P by computation`, `Fact h : P by` followed by an indented proof: establish an intermediate fact named `h`. `Claim` is a synonym. -/
@@ -215,4 +221,4 @@ TacticDoc «We»
 -- The game checks each sentence word by word against the library. Every word of every
 -- sentence must be allowed; these are the words that are not themselves the first word of a
 -- library entry. Declared once here, they are available in all later levels.
-NewHiddenTactic «and» «applied» «apply» «as» «assumption» «becomes» «choose» «combine» «computation» «compute» «conclude» «contradicting» «contradiction» «contradictory» «contrapose» «contrapositive:» «depending» «discuss» «everywhere» «finally» «first» «for» «forget» «from» «get» «hence» «hypothesis» «induction» «it» «it's» «negation» «now» «next» «observe» «obtain» «on» «or» «proceed» «prove» «push» «reformulate» «rename» «rewrite» «simply» «since» «since?» «such» «suffices» «that» «the» «to» «unfold» «we» «whether» «which» «works» «use» «an» «element» «of» «construct» «componentwise» «pair» «consider» «all» «cases» «case» «where» «is» «define» «recursion» «impossible» «because» «Calc?» «Since» «Fact» «Claim» «Set» «Calc» «It» «This» «Assume» «Fix» «By» «We»
+NewHiddenTactic «and» «applied» «apply» «as» «assumption» «becomes» «choose» «combine» «computation» «compute» «conclude» «contradicting» «contradiction» «contradictory» «contrapose» «contrapositive:» «depending» «discuss» «everywhere» «finally» «first» «for» «forget» «from» «get» «hence» «hypothesis» «induction» «it» «it's» «negation» «now» «next» «observe» «obtain» «on» «or» «proceed» «prove» «push» «reformulate» «rename» «rewrite» «simply» «since» «since?» «such» «suffices» «that» «the» «to» «unfold» «we» «whether» «which» «works» «use» «an» «element» «of» «construct» «componentwise» «pair» «consider» «all» «cases» «case» «where» «is» «define» «recursion» «impossible» «because» «Calc?» «Since» «Fact» «Claim» «Set» «Calc» «It» «This» «Assume» «Fix» «By» «We» «Type» «Sort» exact

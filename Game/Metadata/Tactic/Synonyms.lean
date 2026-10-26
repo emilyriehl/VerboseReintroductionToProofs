@@ -5,12 +5,23 @@ import Verbose.English.All
 Verbose Lean phrases are ordinary Lean syntax, so synonyms are just extra `syntax`/`elab`
 declarations that call the same elaborators. Phrasing here is provisional (Emily's call). -/
 
-open Lean Elab Tactic Verbose.English
+open Lean Meta Elab Tactic Verbose.English
 
 /-- `Let's use b`: close the goal with the element (or proof) `b`. Synonym of `We conclude by b`,
 meant for goals that are types rather than propositions. -/
-elab "Let's" " use " e:term : tactic => do
-  concludeTac e
+elab "Let's" " use " e:term : tactic => withMainContext do
+  try concludeTac e
+  catch err =>
+    let goal ← instantiateMVars (← getMainTarget)
+    let ty? ← try
+        let v ← Term.elabTerm e none
+        some <$> instantiateMVars (← inferType v)
+      catch _ => pure none
+    match ty? with
+    | some ty =>
+      if ← isDefEq ty goal then throw err
+      throwError m!"{e} has type {ty}, but the goal asks for an element of {goal}."
+    | none => throw err
 
 /-- `By h we get m such that k = 2 * m`: like `By h we get m such that hm : k = 2 * m` but the
 new fact is named automatically (here `hm`). -/
