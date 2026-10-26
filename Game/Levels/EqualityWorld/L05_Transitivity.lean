@@ -14,10 +14,10 @@ In this level, we will prove that equality is *transitive*: if `x = y` and `y = 
 
 /-- Equality is transitive: if `x = y` and `y = z` then `x = z`. -/
 Statement {A : Type} {x y z : A} (p : x = y) (q : y = z) : x = z  := by
-  rw [← q, ← p]
-  rfl
+  We rewrite using [← q, ← p]
+  We conclude by rfl
 
-Conclusion "Try solving the goal by rewriting in both directions. You can also experiment with multiple rewrites at once, using a comma to separate multiple proofs of equality inside the brackets. Why does `rw [p, q]` work but `rw [q, p]` not? Why does `rw [← q, ← p]` or `rw [← q, p]` work but `rw [← p, ← q]` not?"
+Conclusion "Try solving the goal by rewriting in both directions. You can also perform several rewrites at once, separating the equalities by commas inside square brackets: `We rewrite using [p, q]`. Why does `We rewrite using [p, q]` work but `We rewrite using [q, p]` not? Why does `We rewrite using [← q, ← p]` or `We rewrite using [← q, p]` work but `We rewrite using [← p, ← q]` not?"
 
 /-- Given elements `x y z : A` and proofs `p : x = y` and `q : y = z`, `Eq.trans p q` or `p.trans q` are two names for the corresponding proof `x = z`. -/
 TheoremDoc Eq.trans as "trans" in "Eq"

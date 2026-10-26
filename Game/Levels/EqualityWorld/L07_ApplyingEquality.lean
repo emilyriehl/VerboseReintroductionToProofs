@@ -18,8 +18,8 @@ Can you prove this?
 
 /-- Functions are well-defined: if `f g : A → B` are equal and `a : A`, then `f a = g a`. -/
 Statement {A B : Type} {f g : A → B} (p : f = g) (a : A) : f a = g a  := by
-  rw [p]
-  rfl
+  We rewrite using p
+  We conclude by rfl
 
 Conclusion "For functions `f g : A → B` between types, a proof `p : f = g`, and an element `a : A`, then `congrFun p a : f a = g a`. This theorem has been added to the library."
 

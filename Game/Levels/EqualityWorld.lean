@@ -40,5 +40,5 @@ The introduction rule for proving equality is surprisingly weak, only proving eq
 
 By contrast, the elimination rule for using proofs of equality is quite strong, expressing something like the *indiscernibility of identicals*: informally, if we have `p : x = y`, then anything that is true of `x` must also be true of `y` (and conversely).
 
-Lean provides a tactic that can be applied to the proof `p` to convert a goal involving the element `x` to an analogous goal with `y` substituted in place of `x`.
+The sentence `We rewrite using p` uses the proof `p` to convert a goal involving the element `x` to an analogous goal with `y` substituted in place of `x`.
 "

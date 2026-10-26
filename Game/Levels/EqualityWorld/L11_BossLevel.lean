@@ -34,12 +34,11 @@ Good luck!
 /-- Functions out of product types are well-defined, both regarding equalities between elements and equalities between hypotheses. -/
 Statement {A B C D : Type} {a a' : A} {b b' : B} (f g : A × B → C) (h k : C → D)
     (p : a = a') (q : b = b') (r : h ∘ f = k ∘ g) : h (f ⟨a, b⟩) = k (g ⟨a', b'⟩) := by
-  rw [← p, ← q]
-  have eq1 : (h ∘ f) ⟨a, b⟩ = h (f ⟨a, b⟩) := rfl
---  have eq2 : (k ∘ g) ⟨a, b⟩ = k (g ⟨a, b⟩) := rfl
-  rw [← eq1]
-  rw [r]
-  rfl
+  We rewrite using [← p, ← q]
+  Fact eq1 : (h ∘ f) ⟨a, b⟩ = h (f ⟨a, b⟩) from rfl
+  We rewrite using ← eq1
+  We rewrite using r
+  We conclude by rfl
 
 Conclusion "We will meet some further applications of the equality type in Boolean World. Head there next."
 

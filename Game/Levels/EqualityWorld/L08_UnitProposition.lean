@@ -14,6 +14,6 @@ More precisely, if `x y : Unit` are elements of the unit type, then we can prove
 
 /-- The unit type is a proposition: for `x y : Unit`, `x = y`. -/
 Statement {x y : Unit} : x = y  := by
-  rfl
+  We conclude by rfl
 
 Conclusion "In the next level, we will prove that the empty type is also a proposition."

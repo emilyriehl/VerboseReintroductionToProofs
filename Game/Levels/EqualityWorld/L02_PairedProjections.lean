@@ -8,7 +8,7 @@ Title "Paired Projections"
 Introduction "
 The introduction rule for equality types is surprisingly weak, telling us only that proofs of equality can be defined by reflexivity.
 
-This tactic is stronger than it initially appears on account of the *computation rules* for elements of certain types.
+This rule is stronger than it initially appears on account of the *computation rules* for elements of certain types.
 
 To illustrate, consider an element in a product type `p : A × B`. Using the projections, we obtain terms
 `p.1 : A` and `p.2 : B`. These can then be paired back to form an element `⟨p.1, p.2⟩ : A × B` in the product type.
@@ -25,6 +25,6 @@ Note Lean uses `p.fst` and `p.snd` as synonyms for `p.1` and `p.2` respectively.
 
 /-- A term `p : A × B` in a product type is definitionally equal to the pairing of its projections `⟨p.1, p.2⟩`. -/
 Statement {A B : Type} (p : A × B) : p = ⟨p.1, p.2⟩ := by
-  rfl
+  We conclude by rfl
 
-Conclusion "In summary, `rfl` can also be used to prove propositions of the form `x = y` when `x` and `y` are equal *by definition*, rather than by a more complicated chain of reasoning."
+Conclusion "In summary, `We conclude by rfl` can also be used to prove propositions of the form `x = y` when `x` and `y` are equal *by definition*, rather than by a more complicated chain of reasoning."

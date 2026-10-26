@@ -14,6 +14,6 @@ Put more precisely, if `p q : x = y` are two proofs that `x` equals `y`, then de
 
 /-- The equality type is a proposition: for `x y : A` if `p q : x = y` then `p = q` -/
 Statement {A : Type} {x y : A} (p q : x = y) : p = q  := by
-  rfl
+  We conclude by rfl
 
 Conclusion "We are now ready for the Boss Level of Equality World."
