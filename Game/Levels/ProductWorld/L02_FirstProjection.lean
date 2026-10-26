@@ -18,10 +18,10 @@ Your task in this level is to define the first projection function.
 
 /-- Define the canonical function projecting from a product type to its first argument. -/
 Statement {A B : Type} : A × B → A:= by
-  Hint (hidden := true) "The goal is a term of a function type so type `intro p` to give yourself a term `p : A × B`."
-  intro p
-  Hint (hidden := true) "Now type `exact {p}.1` to return the first projection."
-  exact p.1
+  Hint (hidden := true) "The goal is a term of a function type so write `Fix p : A × B` to give yourself a term `p : A × B`."
+  Fix p : A × B
+  Hint (hidden := true) "Now write `Let's use {p}.1` to return the first projection."
+  Let's use p.1
 
 Conclusion "Lean uses the name `Prod.fst : A × B → A` for the function you have just defined. This function has been added to the library of definitions."
 

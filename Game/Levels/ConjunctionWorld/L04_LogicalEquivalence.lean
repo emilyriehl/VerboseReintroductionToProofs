@@ -7,31 +7,32 @@ Title "Logical Equivalence"
 
 
 /--
-`P ↔ Q`, read as &ldquo;`P` if and only if `Q`&rdquo; is an abbreviation for `(P → Q) ∧ (Q → P)`.
+`P ⇔ Q`, read as &ldquo;`P` if and only if `Q`&rdquo; is an abbreviation for `(P ⇒ Q) ∧ (Q ⇒ P)`.
 -/
-DefinitionDoc iff as "↔" in "Logic"
+DefinitionDoc iff as "⇔" in "Logic"
 
 NewDefinition iff
 
 Introduction "Two propositions `P` and `Q` are *logically equivalent* if `P` implies `Q` and `Q` also implies `P`.
 
-The assertion that `P` and `Q` are logically equivalent can be expressed by the compound proposition `(P → Q) ∧ (Q → P)`.
+The assertion that `P` and `Q` are logically equivalent can be expressed by the compound proposition `(P ⇒ Q) ∧ (Q ⇒ P)`.
 
-Because this notion will appear frequently in what follows, we introduce `P ↔ Q` as a useful shorthand for `(P → Q) ∧ (Q → P)`.
+Because this notion will appear frequently in what follows, we introduce `P ⇔ Q` as a useful shorthand for `(P ⇒ Q) ∧ (Q ⇒ P)`.
 
-The proposition `P ↔ Q` asserts that `P` is true *if and only if* `Q` is true. In fact, the symbol `↔` is typed using `\\iff`.
+The proposition `P ⇔ Q` asserts that `P` is true *if and only if* `Q` is true. The symbol is typed using `\\iff` (which gives `↔`; the game displays it as `⇔`, and `\\<=>` types that directly).
 
-See the library of definitions to the right for a reminder about what the symbol `↔` means.
+See the library of definitions to the right for a reminder about what the symbol `⇔` means.
 
 The notion of logical equivalence enables us to upgrade our understanding of associativity of symmetry as follows."
 
 /-- `P ∧ Q` is true if and only if `Q ∧ P` is true. -/
 Statement {P Q : Prop} : P ∧ Q ↔ Q ∧ P := by
-  Hint (hidden := true) "Recall that `S ↔ T` is an abbreviation for `(S → T) ∧ (T → S)`. What is the outermost connective here? Which tactic can be used to break this into subgoals?"
-  constructor
-  intro h
-  exact ⟨h.2,h.1⟩
-  intro k
-  exact ⟨k.2,k.1⟩
+  Hint (hidden := true) "Recall that `S ⇔ T` is an abbreviation for `(S ⇒ T) ∧ (T ⇒ S)`. What is the outermost connective here? Which sentence can be used to break this into subgoals? (You will have to announce the first implication in full.)"
+  Let's first prove that P ∧ Q → Q ∧ P
+  Assume h : P ∧ Q
+  We conclude by ⟨h.2, h.1⟩
+  Let's now prove that Q ∧ P → P ∧ Q
+  Assume k : Q ∧ P
+  We conclude by ⟨k.2, k.1⟩
 
-Conclusion "Did you give the same proof twice? If so, why does this make sense? If not, could you have done this? In fact, we gave a name `And.symm` to the proof given in the previous level, as you can see in the list of theorems to the right. Try typing `exact And.symm` at an appropriate place in your proof."
+Conclusion "Did you give the same proof twice? If so, why does this make sense? If not, could you have done this? In fact, we gave a name `And.symm` to the proof given in the previous level, as you can see in the list of theorems to the right. Try writing `We conclude by And.symm` at an appropriate place in your proof."

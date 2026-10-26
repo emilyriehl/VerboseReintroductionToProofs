@@ -22,14 +22,14 @@ The process of converting a function of type `A × B → C` to one of type `A �
 
 /-- Define the currying function, converting a function out of a product type into a function of two variables. -/
 Statement {A B C : Type} : (A × B → C) → (A → B → C) := by
-  Hint (hidden := true) "The goal is a function type, so start with `intro`."
-  intro f
-  Hint (hidden := true) "The goal is a function type, so start with `intro`."
-  intro a
-  Hint (hidden := true) "The goal is a function type, so start with `intro`."
-  intro b
+  Hint (hidden := true) "The goal is a function type, so start with `Fix`."
+  Fix f : A × B → C
+  Hint (hidden := true) "The goal is a function type, so start with `Fix`."
+  Fix a : A
+  Hint (hidden := true) "The goal is a function type, so start with `Fix`."
+  Fix b : B
   Hint (hidden := true) "What sort of inputs does the function `{f}` require?"
-  exact f ⟨a, b⟩
+  Let's use f ⟨a, b⟩
 
 Conclusion "Lean uses the name `Function.curry : (A × B → C) → (A → B → C)` for the function you have just defined. This function has been added to the library of definitions.
 

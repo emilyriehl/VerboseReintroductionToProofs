@@ -22,20 +22,20 @@ namespace ReintroductionToProofs
 
 /-- A function into a product type decomposes into a pair of component functions. -/
 Statement {X A B : Type} : (X → A × B) → (X → A) × (X → B) := by
-  Hint (hidden := true) "The goal is a function type, so start with `intro`."
-  intro f
-  Hint (hidden := true) "The goal is a product type. You can use `constructor` to split into two goals, defining each component function separately."
-  constructor
-  Hint (hidden := true) "The goal is a function type, so start with `intro`."
-  intro x
-  Hint (hidden := true) "What is the type of the term `{f} {x}`? If you're not sure, you can type `exact {f} {x}` and read the error message to find out."
+  Hint (hidden := true) "The goal is a function type, so start with `Fix`."
+  Fix f : X → A × B
+  Hint (hidden := true) "The goal is a product type. You can use `Let's construct the pair` to split into two goals, defining each component function separately."
+  Let's construct the pair
+  Hint (hidden := true) "The goal is a function type, so start with `Fix`."
+  Fix x : X
+  Hint (hidden := true) "What is the type of the term `{f} {x}`? If you're not sure, you can write `Let's use {f} {x}` and read the error message to find out."
   Hint (hidden := true) "If this is not the term you want, how can you use it to define the correct term?"
-  exact (f x).1
-  Hint (hidden := true) "The goal is a function type, so start with `intro`."
-  intro x
-  Hint (hidden := true) "What is the type of the term `{f} {x}`? If you're not sure, you can type `exact {f} {x}` and read the error message to find out."
+  Let's use (f x).1
+  Hint (hidden := true) "The goal is a function type, so start with `Fix`."
+  Fix x : X
+  Hint (hidden := true) "What is the type of the term `{f} {x}`? If you're not sure, you can write `Let's use {f} {x}` and read the error message to find out."
   Hint (hidden := true) "If this is not the term you want, how can you use it to define the correct term?"
-  exact (f x).2
+  Let's use (f x).2
 
 Conclusion "We've seen that functions `f : X → A × B` into product types can be decomposed into component functions `fun x ↦ (f x).1 : X → A` and `fun x ↦ (f x).2 : X → B`.
 

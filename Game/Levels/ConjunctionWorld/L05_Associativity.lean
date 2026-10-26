@@ -21,25 +21,30 @@ Your goal in this level is to prove the associativity of conjunction.
 
 /-- Conjunction is associative: `(P ∧ Q) ∧ R` is true if and only if `P ∧ (Q ∧ R)` is true. -/
 Statement {P Q R : Prop} : (P ∧ Q) ∧ R ↔ P ∧ (Q ∧ R) := by
-  constructor
-  intro h
-  constructor
+  Let's first prove that (P ∧ Q) ∧ R → P ∧ (Q ∧ R)
+  Assume h : (P ∧ Q) ∧ R
+  Let's first prove that P
   Hint (hidden := true) "Think carefully about what `{h}` proves and what proofs can be extracted from this."
   Hint (hidden := true) "Note the `.1` and `.2` notation can be iterated."
-  exact h.1.1
-  Hint (hidden := true) "What tactics can be used to break a goal involving conjunction into subgoals?"
-  constructor
-  exact h.1.2
-  exact h.2
-  intro k
-  Hint (hidden := true) "What tactics can be used to break a goal involving conjunction into subgoals?"
-  constructor
-  Hint (hidden := true) "What tactics can be used to break a goal involving conjunction into subgoals?"
-  constructor
+  We conclude by h.1.1
+  Hint (hidden := true) "Announce the remaining goal, then break it into subgoals again."
+  Let's now prove that Q ∧ R
+  Let's first prove that Q
+  We conclude by h.1.2
+  Let's now prove that R
+  We conclude by h.2
+  Let's now prove that P ∧ (Q ∧ R) → (P ∧ Q) ∧ R
+  Assume k : P ∧ (Q ∧ R)
+  Hint (hidden := true) "Which sentence breaks a goal involving conjunction into subgoals?"
+  Let's first prove that P ∧ Q
+  Hint (hidden := true) "Which sentence breaks a goal involving conjunction into subgoals?"
+  Let's first prove that P
   Hint (hidden := true) "Think carefully about what `{k}` proves and what proofs can be extracted from this."
-  exact k.1
+  We conclude by k.1
   Hint (hidden := true) "Note the `.1` and `.2` notation can be iterated."
-  exact k.2.1
-  exact k.2.2
+  Let's now prove that Q
+  We conclude by k.2.1
+  Let's now prove that R
+  We conclude by k.2.2
 
-Conclusion "To practice using the syntax for elements of conjunctions, try to solve this level with fewer uses of the `constructor` tactic. In fact, the `constructor` tactic can be avoided entirely by using expressions like `fun s ↦ t` to prove implications like `S → T`, writing `\\mapsto` to type `↦`."
+Conclusion "To practice using the syntax for elements of conjunctions, try to solve this level with fewer uses of `Let's first prove that`, for instance with `We conclude by ⟨⟨k.1, k.2.1⟩, k.2.2⟩`. Announcing the two implications can be avoided entirely by using expressions like `fun s ↦ t` to prove implications like `S ⇒ T`, writing `\\mapsto` to type `↦`."

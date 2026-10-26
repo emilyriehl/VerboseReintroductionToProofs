@@ -15,10 +15,10 @@ Your task in this level is to define the second projection function.
 
 /-- Define the canonical function projecting from a product type to its second argument. -/
 Statement {A B : Type} : A × B → B := by
-  Hint (hidden := true) "The goal is a term of a function type so type `intro p` to give yourself a term `p : A × B`."
-  intro p
-  Hint (hidden := true) "Now type `exact {p}.2` to return the first projection."
-  exact p.2
+  Hint (hidden := true) "The goal is a term of a function type so write `Fix p : A × B` to give yourself a term `p : A × B`."
+  Fix p : A × B
+  Hint (hidden := true) "Now write `Let's use {p}.2` to return the second projection."
+  Let's use p.2
 
 Conclusion "Lean uses the name `Prod.snd : A × B → B` for the function you have just defined. This function has been added to the library of definitions.
 

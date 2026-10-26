@@ -12,13 +12,13 @@ The process of converting a function of type  `A → B → C` to one of type `A 
 
 /-- Define the uncurrying function, converting a function of two variables into a function out of a product type. -/
 Statement {A B C : Type} : (A → B → C) → (A × B → C) := by
-  Hint (hidden := true) "The goal is a function type, so start with `intro`."
-  intro f
-  Hint (hidden := true) "The goal is a function type, so start with `intro`."
-  intro p
-  Hint (hidden := true) "The goal is a function type, so start with `intro`."
+  Hint (hidden := true) "The goal is a function type, so start with `Fix`."
+  Fix f : A → B → C
+  Hint (hidden := true) "The goal is a function type, so start with `Fix`."
+  Fix p : A × B
+  Hint (hidden := true) "The goal is a function type, so start with `Fix`."
   Hint (hidden := true) "What sort of inputs does the function `{f}` require and how can these be extracted from `{p}`?"
-  exact f p.1 p.2
+  Let's use f p.1 p.2
 
 Conclusion "Lean uses the name `Function.uncurry : (A → B → C) → (A × B → C)` for the function you have just defined. This function has been added to the library of definitions.
 

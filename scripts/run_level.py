@@ -56,7 +56,10 @@ stem = pathlib.Path(a.proof_file).stem if a.proof_file != "-" else "stdin"
 doc_path = out_dir / f"{a.world}_{a.level}_{stem}.lean"
 doc_path.write_text(doc)
 
-r = subprocess.run(["lake", "env", "lean", str(doc_path)], cwd=game_dir, capture_output=True, text=True)
+# The game server runs Lean with the package's leanOptions (in particular linter.all=false, which
+# silences Mathlib's unusedTactic/unreachableTactic linters); `lake env lean` does not, so pass them.
+opts = ["-Dlinter.all=false", "-Dpp.showLetValues=true", "-Dtactic.hygienic=false"]
+r = subprocess.run(["lake", "env", "lean", *opts, str(doc_path)], cwd=game_dir, capture_output=True, text=True)
 out = (r.stdout + r.stderr).strip()
 # Shift reported line numbers back to proof lines, like the relay does.
 def shift(m):

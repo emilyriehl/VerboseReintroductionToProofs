@@ -77,3 +77,13 @@ elab (name := gameConcludeBy) (priority := high) "We" " conclude by " e:maybeApp
     match hint? with
     | some h => throwError m!"{err.toMessageData}\n{h}"
     | none => throw err
+
+-- `Set x : A := e`: Verbose's version (`define` + `rewrite … at *` + an `x_def` hypothesis) leaves
+-- a `sorry` behind on some data goals and clutters the context; the original game used Lean's
+-- `let`, which does exactly what the levels need.
+elab (name := gameSet) (priority := high) "Set " n:maybeTypedIdent " := " val:term : tactic => do
+  let (name, ty?) := toMaybeTypedIdent n
+  let nId := mkIdent name
+  match ty? with
+  | some ty => evalTactic (← `(tactic| let $nId:ident : $ty := $val))
+  | none => evalTactic (← `(tactic| let $nId:ident := $val))

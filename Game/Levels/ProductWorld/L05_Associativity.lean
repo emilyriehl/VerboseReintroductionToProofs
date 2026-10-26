@@ -27,12 +27,12 @@ Given `a : A`, `b : B`, and `c : C`, we may write `⟨a,b,c⟩ : A × B × C` to
 
 /-- Product types are associative: for types `A`, `B`, and `C`, there are canonical functions in each direction between the types `(A × B) × C` and `A × (B × C)`. -/
 Statement {A B C : Type} : (((A × B) × C) → (A × (B × C))) × ((A × (B × C)) → ((A × B) × C)) := by
-  Hint (hidden := true) "The goal is a product of function types, so to define an element you need to define two different functions. Each will take some work, so start with the `constructor` tactic to split one goal into two goals."
-  constructor
-  Hint (hidden := true) "Now the goal is a function type. What tactic is used to define functions?"
-  intro p
-  exact ⟨p.1.1, p.1.2, p.2⟩
-  intro p
-  exact ⟨⟨p.1, p.2.1⟩, p.2.2⟩
+  Hint (hidden := true) "The goal is a product of function types, so to define an element you need to define two different functions. Each will take some work, so start with `Let's construct the pair` to split one goal into two goals."
+  Let's construct the pair
+  Hint (hidden := true) "Now the goal is a function type. Which sentence is used to define functions?"
+  Fix p : (A × B) × C
+  Let's use ⟨p.1.1, p.1.2, p.2⟩
+  Fix p : A × (B × C)
+  Let's use ⟨⟨p.1, p.2.1⟩, p.2.2⟩
 
 Conclusion "Are function types associative? Why or why not?"

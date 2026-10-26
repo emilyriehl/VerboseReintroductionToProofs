@@ -10,15 +10,16 @@ Introduction "To prove a conjunction `P ∧ Q` we need to supply a proof of both
 
 This expresses the introduction rule for the logical operation of conjunction.
 
-Use the tactic `constructor` to ask Lean to break up the goal or proving `P ∧ Q` into two steps, of first proving `P` and then proving `Q`.
+Write `Let's first prove that P` to ask Lean to break up the goal of proving `P ∧ Q` into two steps: proving `P` now, and proving `Q` afterwards, which you announce with `Let's now prove that Q` when you get there.
 "
 
 /-- If `P` is true and `Q` is true, then `P ∧ Q` is true. -/
 Statement {P Q : Prop} (p : P) (q : Q) : P ∧ Q := by
-  constructor
-  Hint (hidden := true) "Now the goal is just to prove `P`. Type `exact {p}` to supply this proof."
-  exact p
-  Hint (hidden := true) "Now Lean reminds you of the other goal, which is to prove `Q`. Which tactic applies here?"
-  exact q
+  Let's first prove that P
+  Hint (hidden := true) "Now the goal is just to prove `P`. Write `We conclude by {p}` to supply this proof."
+  We conclude by p
+  Hint (hidden := true) "Lean now reminds you of the other goal, which is to prove `Q`, and asks you to announce it: write `Let's now prove that Q`. Then which sentence applies?"
+  Let's now prove that Q
+  We conclude by q
 
-Conclusion "Alternatively, you can type `exact ⟨p,q⟩` using `\\<` and `\\>` to type the angle brackets."
+Conclusion "Alternatively, you can write `We conclude by ⟨p, q⟩` using `\\<` and `\\>` to type the angle brackets."
