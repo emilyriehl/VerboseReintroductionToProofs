@@ -27,12 +27,14 @@ Aside: Lean treats the functions `comp` and `∘` slightly differently because t
 
 /-- Define the composition of two functions as a multivariable function between function types. -/
 Statement {A B C : Type}: (B → C) → (A → B) → (A → C) := by
-  Hint (hidden := true) "To define a function with multiple variables you can apply the intro tactic twice, for instance by typing `intro g f` or even `intro g f a`."
-  intro g f a
-  Hint (hidden := true) "Now that the goal is an element of type `{C}` there are several ways to proceed. You can use `exact` or `apply`."
-  exact g (f a)
+  Hint (hidden := true) "To define a function with multiple variables, use one `Fix` sentence per input (`Fix g : _`, then `Fix f : _`, then `Fix a : _`), or `Fix (g : B → C) (f : A → B) (a : A)` all at once."
+  Fix g : B → C
+  Fix f : A → B
+  Fix a : A
+  Hint (hidden := true) "Now that the goal is an element of type `{C}` there are several ways to proceed. You can use `Let's use` or `We apply`."
+  Let's use g (f a)
 
-Conclusion "Can you solve this level in one line by using `exact fun g f a ↦ ?` with the appropriate thing in place of the `?`?
+Conclusion "Can you solve this level in one line by using `Let's use fun g f a ↦ ?` with the appropriate thing in place of the `?`?
 "
 
 /--

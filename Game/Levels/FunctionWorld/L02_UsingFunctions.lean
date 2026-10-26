@@ -17,7 +17,7 @@ In this level, the context contains the elements `a : A` and `f : A → B` and t
 
 /-- Given a function `f : A → B` and an element `a : A`, there is an element `f a : B` obtained by evaluating the function `f` at `a`. -/
 Statement {A B : Type} (a : A) (f : A → B) : B := by
-  Hint (hidden := true) "The syntax for the application of the function `f : A → B` to an element `a : A` is just `f a`. So to solve this level, type `exact f a` to obtain an element of type `B`."
-  exact f a
+  Hint (hidden := true) "The syntax for the application of the function `f : A → B` to an element `a : A` is just `f a`. So to solve this level, write `Let's use f a` to obtain an element of type `B`."
+  Let's use f a
 
-Conclusion "In the next level, we will introduce another tactic that can be used to solve this goal."
+Conclusion "In the next level, we will introduce another sentence that can be used to solve this goal."

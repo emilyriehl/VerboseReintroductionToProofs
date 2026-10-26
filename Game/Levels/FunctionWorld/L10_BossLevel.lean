@@ -16,11 +16,11 @@ Can you define it?
 
 /-- Given a function of type `((((V → F) → F) → F) → F)` there is a canonically defined function of type `(V → F) → F`. -/
 Statement {F V : Type} : ((((V → F) → F) → F) → F) → ((V → F) → F) := by
-  intro μ
-  intro φ
-  apply μ
-  intro α
-  apply α
-  exact φ
+  Fix μ : (((V → F) → F) → F) → F
+  Fix φ : V → F
+  We apply μ
+  Fix α : (V → F) → F
+  We apply α
+  Let's use φ
 
 Conclusion "Move on to Implication World to revisit these constructions from the prospective of propositions rather than types."

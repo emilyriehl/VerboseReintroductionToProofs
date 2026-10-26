@@ -195,30 +195,8 @@ TacticDoc «Type»
 TacticDoc «Sort»
 /-- The `exact` tactic of the original game; still accepted while the port is in progress. -/
 TacticDoc exact
-/-- `Since P ∧ Q we get (hp : P) (hq : Q)`, `Since ∃ x, P x we get x such that hx : P x`, `Since P and P ⇒ Q we conclude that Q`, `Since P ⇒ Q it suffices to prove that P`: use facts by *stating* them rather than naming hypotheses. -/
-TacticDoc «Since»
-/-- `Fact h : P from e`, `Fact h : P since …`, `Fact h : P by computation`, `Fact h : P by` followed by an indented proof: establish an intermediate fact named `h`. `Claim` is a synonym. -/
-TacticDoc «Fact»
-/-- Synonym of `Fact`. -/
-TacticDoc «Claim»
-/-- `Set x := e`: introduce a local definition `x` with value `e`. -/
-TacticDoc «Set»
-/-- `Calc a = b from h` followed by lines `_ = c by computation`: a chain of equalities or inequalities (editor mode, several lines). -/
-TacticDoc «Calc»
-/-- `It suffices to prove that P`: reduce the goal to `P` when an available fact turns `P` into the goal. -/
-TacticDoc «It»
-/-- `This is impossible because of e`: finish any goal from an element `e : Empty`, a proof `h : False`, or a contradiction such as `h applied to p` with `h : ¬ P` and `p : P`. -/
-TacticDoc «This»
-/-- `Assume h : P` / `Assume that P` / `Assume for contradiction h : ¬ Q`: see the level where it is introduced. -/
-TacticDoc «Assume»
-/-- `Fix x : A`: introduce an arbitrary element of `A` when the goal is a function type `A → B` or `∀ x : A, …`. -/
-TacticDoc «Fix»
-/-- `By h we get …`, `By h applied to a we get …`, `By h it suffices to prove that …`: use a named hypothesis. -/
-TacticDoc «By»
-/-- Phrases starting with `We`: `We conclude by …`, `We apply …`, `We rewrite using …`, `We compute`, `We proceed using …`, … -/
-TacticDoc «We»
 
 -- The game checks each sentence word by word against the library. Every word of every
 -- sentence must be allowed; these are the words that are not themselves the first word of a
 -- library entry. Declared once here, they are available in all later levels.
-NewHiddenTactic «and» «applied» «apply» «as» «assumption» «becomes» «choose» «combine» «computation» «compute» «conclude» «contradicting» «contradiction» «contradictory» «contrapose» «contrapositive:» «depending» «discuss» «everywhere» «finally» «first» «for» «forget» «from» «get» «hence» «hypothesis» «induction» «it» «it's» «negation» «now» «next» «observe» «obtain» «on» «or» «proceed» «prove» «push» «reformulate» «rename» «rewrite» «simply» «since» «since?» «such» «suffices» «that» «the» «to» «unfold» «we» «whether» «which» «works» «use» «an» «element» «of» «construct» «componentwise» «pair» «consider» «all» «cases» «case» «where» «is» «define» «recursion» «impossible» «because» «Calc?» «Since» «Fact» «Claim» «Set» «Calc» «It» «This» «Assume» «Fix» «By» «We» «Type» «Sort» exact
+NewHiddenTactic «and» «applied» «apply» «as» «assumption» «becomes» «choose» «combine» «computation» «compute» «conclude» «contradicting» «contradiction» «contradictory» «contrapose» «contrapositive:» «depending» «discuss» «everywhere» «finally» «first» «for» «forget» «from» «get» «hence» «hypothesis» «induction» «it» «it's» «negation» «now» «next» «observe» «obtain» «on» «or» «proceed» «prove» «push» «reformulate» «rename» «rewrite» «simply» «since» «since?» «such» «suffices» «that» «the» «to» «unfold» «we» «whether» «which» «works» «use» «an» «element» «of» «construct» «componentwise» «pair» «consider» «all» «cases» «case» «where» «is» «define» «recursion» «impossible» «because» «Calc?» «We» «Type» «Sort» exact

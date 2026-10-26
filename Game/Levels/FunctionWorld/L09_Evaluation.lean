@@ -19,11 +19,11 @@ Your task in this level is to define the evaluation function.
 
 /-- Define the *evaluation* function that takes `a : A` and `f : A → B` to `f a : B`. -/
 Statement {A B : Type} : A → (A → B) → B := by
-  Hint (hidden := true) "When in doubt, start defining a function by using the tactic `intro` followed by your preferred variable name."
-  intro a
-  Hint (hidden := true) "When in doubt, start defining a function by using the tactic `intro` followed by your preferred variable name."
-  intro f
-  exact f a
+  Hint (hidden := true) "When in doubt, start defining a function with `Fix` followed by your preferred variable name and its type."
+  Fix a : A
+  Hint (hidden := true) "When in doubt, start defining a function with `Fix` followed by your preferred variable name and its type."
+  Fix f : A → B
+  Let's use f a
 
 Conclusion "The evaluation function has type `ev : A → (A → B) → B` and is defined by the formula `fun a f ↦ f a`. By swapping variables, we can also think of evaluation as defining a function `(A → B) → A → B` where this latter function is defined by `fun f a ↦ f a`."
 

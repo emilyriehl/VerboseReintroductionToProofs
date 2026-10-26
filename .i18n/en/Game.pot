@@ -632,8 +632,8 @@ msgstr ""
 msgid "Boss level"
 msgstr ""
 
-#. §0: `exact b`
-#. §1: `assumption`
+#. §0: `Let's use b`
+#. §1: `Let's use an assumption`
 #: Game/Levels/FunctionWorld/L06_MultivariableFunctions.lean:37
 msgid "Both §0 and §1 can be used here."
 msgstr ""
@@ -683,9 +683,9 @@ msgstr ""
 msgid "Can you figure out how you would encode other logical equivalences involving proposition variables as equalities involving booleans?"
 msgstr ""
 
-#. §0: `exact fun g f a ↦ ?`
+#. §0: `Let's use fun g f a ↦ ?`
 #. §1: `?`
-#: Game/Levels/FunctionWorld/L08_CompositionRevisited.lean:35
+#: Game/Levels/FunctionWorld/L08_CompositionRevisited.lean:37
 msgid "Can you solve this level in one line by using §0 with the appropriate thing in place of the §1?"
 msgstr ""
 
@@ -1316,7 +1316,7 @@ msgstr ""
 #. §6: `a : A`
 #. §7: `p_a : P a`
 #. §8: `P a`
-#: Game/Levels/QuantifierWorld/L04_IntroducingExistence.lean:44
+#: Game/Levels/QuantifierWorld/L04_IntroducingExistence.lean:39
 msgid "For a family of propositions §0, §1 is the proposition that asserts that there is some element §2 so that §3 is true. An element of §4 may be thought of as a *dependent pair* §5 where the first component specifies an element §6 while the second component specifies a proof §7 of the corresponding proposition §8."
 msgstr ""
 
@@ -1811,20 +1811,6 @@ msgstr ""
 msgid "For functions §0 if §1 then §2."
 msgstr ""
 
-#. §0: `∃ (x : A), P x`
-#. §1: `use`
-#. §2: `a : A`
-#. §3: `P a`
-#. §4: `∃ (x y : A), P x y`
-#. §5: `use a, a'`
-#. §6: `use`
-#: Game/Levels/QuantifierWorld/L04_IntroducingExistence.lean:36
-#: Game/Levels/QuantifierWorld/L06_MultipleQuantifiers.lean:54
-msgid "For goals of the form §0 the tactic §1 can be used to provide an element §2 which will satisfy §3. For multiple constructors like §4, you can provide comma-separated values: §5.\n"
-"\n"
-"Note that the version of the §6 tactic for this game is somewhat weaker than the real one in Mathlib, which automatically tries to solve the remaining goal."
-msgstr ""
-
 #. §0: `P`
 #. §1: `Q`
 #. §2: `left`
@@ -2261,12 +2247,12 @@ msgstr ""
 #. §24: `b : B`
 #. §25: `f a`
 #. §26: `f a b : C`
-#. §27: `exact`
-#. §28: `apply`
-#. §29: `intro`
-#. §30: `intro`
-#. §31: `exact`
-#. §32: `apply`
+#. §27: `Let's use`
+#. §28: `We apply`
+#. §29: `Fix`
+#. §30: `Fix`
+#. §31: `Let's use`
+#. §32: `We apply`
 #: Game/Levels/FunctionWorld/L06_MultivariableFunctions.lean:9
 msgid "Function types can be iterated.\n"
 "\n"
@@ -2581,7 +2567,7 @@ msgstr ""
 #. §4: `x : A`
 #. §5: `f x : B`
 #. §6: `g (f x) : C`
-#. §7: `exact fun x ↦ ?`
+#. §7: `Let's use fun x ↦ ?`
 #. §8: `?`
 #. §9: `</>`
 #. §10: `editor mode`
@@ -2597,7 +2583,7 @@ msgid "Given functions §0 and §1 there is a *composite function* from §2 to �
 "\n"
 "Can you solve this level in one line by using §7 with the appropriate thing in place of the §8?\n"
 "\n"
-"Alternatively, you can use other tactics to define the required function step by step.\n"
+"Alternatively, you can use other sentences to define the required function step by step.\n"
 "\n"
 "To delete a proof (or proof attempt) and start over, you might find it helpful to click on the button labelled §9 in the upper right hand corner to enter §10. Then delete all the lines of your first proof (or proof attempt). Clicking on §11 takes you back to §12.\n"
 "\n"
@@ -3509,7 +3495,7 @@ msgid "In the next level, we will introduce another property that holds for some
 msgstr ""
 
 #: Game/Levels/FunctionWorld/L02_UsingFunctions.lean:23
-msgid "In the next level, we will introduce another tactic that can be used to solve this goal."
+msgid "In the next level, we will introduce another sentence that can be used to solve this goal."
 msgstr ""
 
 #: Game/Levels/TypeWorld/L01_Elements.lean:29
@@ -4200,7 +4186,7 @@ msgstr ""
 #. §8: `g`
 #. §9: `f`
 #. §10: `g ∘ f`
-#. §11: `exact g ∘ f`
+#. §11: `Let's use g ∘ f`
 #: Game/Levels/FunctionWorld/L04_ComposingFunctions.lean:29
 msgid "Lean has built in notation for the composite of §0 and §1 namely §2, using §3 to type §4.\n"
 "\n"
@@ -4768,10 +4754,10 @@ msgid "Now might be a good time to case split on the hypothesis §0."
 msgstr ""
 
 #. §0: `«{C}»`
-#. §1: `exact`
-#. §2: `apply`
+#. §1: `Let's use`
+#. §2: `We apply`
 #: Game/Levels/FunctionWorld/L04_ComposingFunctions.lean:26
-#: Game/Levels/FunctionWorld/L08_CompositionRevisited.lean:32
+#: Game/Levels/FunctionWorld/L08_CompositionRevisited.lean:34
 msgid "Now that the goal is an element of type §0 there are several ways to proceed. You can use §1 or §2."
 msgstr ""
 
@@ -4812,9 +4798,9 @@ msgstr ""
 #. §0: `«{A}»`
 #. §1: `«{x}» : «{A}»`
 #. §2: `«{x}» : «{A}»`
-#. §3: `exact «{x}»`
+#. §3: `Let's use «{x}»`
 #: Game/Levels/FunctionWorld/L01_IdentityFunction.lean:37
-msgid "Now the goal is an element of type §0, which should be thought of as result of applying the function to the element §1. In the case of the identity function, we want to return §2 again which is done by typing §3."
+msgid "Now the goal is an element of type §0, which should be thought of as result of applying the function to the element §1. In the case of the identity function, we want to return §2 again which is done by writing §3."
 msgstr ""
 
 #. §0: `P`
@@ -5090,16 +5076,6 @@ msgstr ""
 msgid "Part of a Verbose phrase (word §0)."
 msgstr ""
 
-#. §0: `We`
-#. §1: `We conclude by …`
-#. §2: `We apply …`
-#. §3: `We rewrite using …`
-#. §4: `We compute`
-#. §5: `We proceed using …`
-#: Game/Levels/TypeWorld/L01_Elements.lean:218
-msgid "Phrases starting with §0: §1, §2, §3, §4, §5, …"
-msgstr ""
-
 #: Game/Levels/NaturalNumbersWorld/L05_PredecessorOfSuccessor.lean:6
 msgid "Predecessor of Successor"
 msgstr ""
@@ -5270,7 +5246,8 @@ msgstr ""
 #. §11: `B`
 #. §12: `A`
 #. §13: `C`
-#. §14: `intro f b a`
+#. §14: `Fix`
+#. §15: `Fix f : _`
 #: Game/Levels/FunctionWorld/L07_SwappingInputs.lean:8
 msgid "Recall that an element of type §0 can be thought of as a function of two variables.\n"
 "\n"
@@ -5278,7 +5255,7 @@ msgid "Recall that an element of type §0 can be thought of as a function of two
 "\n"
 "From a function of type §8, we can define a function of type §9 by exchanging the order of the variables that are input into the function.\n"
 "\n"
-"Here the goal is a multivariable function type that takes three inputs &mdash; of types §10 and §11 and §12 &mdash; and returns one ouput, of type §13. If you like, you can start with §14 to introduce all three variables at once."
+"Here the goal is a multivariable function type that takes three inputs &mdash; of types §10 and §11 and §12 &mdash; and returns one ouput, of type §13. Introduce the three inputs one at a time with three §14 sentences (§15 lets Lean fill in the type)."
 msgstr ""
 
 #. §0: `constructor`
@@ -5892,7 +5869,7 @@ msgid "Since §0 is a compound implication, we have multiple hypothesis to satis
 msgstr ""
 
 #. §0: `«{f}»`
-#. §1: `apply «{f}»`
+#. §1: `We apply «{f}»`
 #. §2: `«{A}»`
 #. §3: `«{B}»`
 #: Game/Levels/FunctionWorld/L06_MultivariableFunctions.lean:35
@@ -5903,7 +5880,7 @@ msgstr ""
 msgid "Start by identifying the outermost logical connective and use the tactic corresponding to its introduction rule."
 msgstr ""
 
-#. §0: `apply f`
+#. §0: `We apply f`
 #. §1: `f`
 #: Game/Levels/FunctionWorld/L03_UsingFunctionsBackwards.lean:20
 msgid "Start with §0 to apply the function §1 to transform your goal."
@@ -6065,11 +6042,6 @@ msgstr ""
 msgid "Symmetry"
 msgstr ""
 
-#. §0: `Fact`
-#: Game/Levels/TypeWorld/L01_Elements.lean:202
-msgid "Synonym of §0."
-msgstr ""
-
 #. §0: `P`
 #. §1: `¬ ¬ P`
 #. §2: `P → ¬ ¬ P`
@@ -6108,33 +6080,35 @@ msgstr ""
 #. §2: `x : A`
 #. §3: `B`
 #. §4: `A → B`
-#. §5: `intro x`
+#. §5: `Fix x : A`
 #. §6: `x : A`
 #. §7: `B`
-#. §8: `A → B`
-#. §9: `A`
-#. §10: `B`
-#. §11: `intro`
-#. §12: `A`
-#. §13: `id : A → A`
-#. §14: `a : A`
-#. §15: `Show more help!`
+#. §8: `x`
+#. §9: `Fix x : _`
+#. §10: `A → B`
+#. §11: `A`
+#. §12: `B`
+#. §13: `Fix`
+#. §14: `A`
+#. §15: `id : A → A`
+#. §16: `a : A`
+#. §17: `Show more help!`
 #: Game/Levels/FunctionWorld/L01_IdentityFunction.lean:13
 msgid "The *introduction rule* for function types explains how functions may be constructed.\n"
 "\n"
 "To define a function from a type §0 to a type §1 one has the following obligation: for an arbitrary element §2 of the first type &mdash; a potential *input* to the function &mdash; one must specify an element of type §3 &mdash; the corresponding *output*.\n"
 "\n"
-"When the goal is a function type §4, start by typing §5 to add an arbitrary element §6 to the context and update the goal to a term of type §7.\n"
+"When the goal is a function type §4, start by writing §5 to add an arbitrary element §6 to the context and update the goal to a term of type §7. You choose the name §8; after the colon comes the type of the input (you may also write §9 and let Lean fill it in).\n"
 "\n"
-"In other words, one specifies a function of type §8 by giving a formula that converts an arbitrary input element of type §9 into its corresponding output element of type §10.\n"
+"In other words, one specifies a function of type §10 by giving a formula that converts an arbitrary input element of type §11 into its corresponding output element of type §12.\n"
 "\n"
-"Using the §11 tactic &mdash; which is now in the tactic library &mdash; plus the tactics introduced in Type World, you should be able to define your first function.\n"
+"Using the sentence §13 &mdash; which is now in the library &mdash; plus the sentences introduced in Type World, you should be able to define your first function.\n"
 "\n"
-"The identity function is a simple but important example of a function that may be defined for any type §12. The identity function, denoted §13, is defined to carry any element §14 to itself.\n"
+"The identity function is a simple but important example of a function that may be defined for any type §14. The identity function, denoted §15, is defined to carry any element §16 to itself.\n"
 "\n"
 "The goal in this level is to define this function.\n"
 "\n"
-"If you need help, click the button §15 for reminders/hints."
+"If you need help, click the button §17 for reminders/hints."
 msgstr ""
 
 #. §0: `P`
@@ -6356,21 +6330,21 @@ msgstr ""
 #. §2: `f : A → B`
 #. §3: `a : A`
 #. §4: `B`
-#. §5: `apply`
+#. §5: `We apply f`
 #. §6: `f : A → B`
 #. §7: `B`
-#. §8: `apply f`
+#. §8: `We apply f`
 #. §9: `A`
 #. §10: `f`
-#. §11: `apply`
+#. §11: `We apply`
 #: Game/Levels/FunctionWorld/L03_UsingFunctionsBackwards.lean:8
 msgid "The context and goal for this level is identical to the previous level. We are given types §0 and §1, a function §2 and an element §3. The goal is to define an element of type §4.\n"
 "\n"
-"Lean has another tactic called §5, which can be used in the presence of a function to transform the goal. If §6 is part of the context and the goal is to define an element of type §7 then §8 will update the goal to ask instead for an element of type §9.\n"
+"There is another sentence, §5, which can be used in the presence of a function to transform the goal. If §6 is part of the context and the goal is to define an element of type §7 then §8 will update the goal to ask instead for an element of type §9.\n"
 "\n"
 "This proof strategy asks Lean to solve the initial goal by applying the function §10 to the element you provide next.\n"
 "\n"
-"Try using the §11 tactic to solve this level."
+"Try using §11 to solve this level."
 msgstr ""
 
 #: Game/Levels/QuantifierWorld/L09_NegatingUniversality.lean:31
@@ -6511,8 +6485,8 @@ msgstr ""
 #. §1: `x : B`
 #. §2: `a : A`
 #. §3: `fun _ ↦ a`
-#. §4: `exact fun _ ↦ a`
-#: Game/Levels/FunctionWorld/L05_ConstantFunctions.lean:24
+#. §4: `Let's use fun _ ↦ a`
+#: Game/Levels/FunctionWorld/L05_ConstantFunctions.lean:25
 msgid "The formula for the constant function is §0. In other words, given any input §1, the output is always the specified term §2. Since the formula for the output does not depend on the input term, this can also be written as §3, so try solving this level with §4"
 msgstr ""
 
@@ -7089,10 +7063,10 @@ msgstr ""
 #. §0: `f : A → B`
 #. §1: `a : A`
 #. §2: `f a`
-#. §3: `exact f a`
+#. §3: `Let's use f a`
 #. §4: `B`
 #: Game/Levels/FunctionWorld/L02_UsingFunctions.lean:20
-msgid "The syntax for the application of the function §0 to an element §1 is just §2. So to solve this level, type §3 to obtain an element of type §4."
+msgid "The syntax for the application of the function §0 to an element §1 is just §2. So to solve this level, write §3 to obtain an element of type §4."
 msgstr ""
 
 #. §0: `match`
@@ -7245,7 +7219,7 @@ msgstr ""
 #. §3: `b : B`
 #. §4: `a : A`
 #. §5: `f a b : C`
-#: Game/Levels/FunctionWorld/L08_CompositionRevisited.lean:38
+#: Game/Levels/FunctionWorld/L08_CompositionRevisited.lean:40
 msgid "The §0 function exchanges the inputs of a function of two variables. For a function with two variables §1, §2 is the function that sends §3 and §4 to §5."
 msgstr ""
 
@@ -7287,20 +7261,6 @@ msgstr ""
 msgid "The §0 tactic can be used when the goal is a conjunction (among other settings) to split the goal into cases."
 msgstr ""
 
-#. §0: `apply`
-#. §1: `Q`
-#. §2: `h : P → Q`
-#. §3: `apply h`
-#. §4: `P`
-#. §5: `T`
-#. §6: `e : R → S → T`
-#. §7: `apply e`
-#. §8: `R`
-#. §9: `S`
-#: Game/Levels/FunctionWorld/L03_UsingFunctionsBackwards.lean:27
-msgid "The §0 tactic can be used when the goal matches the conclusion of an implication or the output type of a function. For example if the goal is §1 and there is a hypothesis §2, then §3 updates the goal to §4. If the goal is §5 and there is a hypothesis §6, then §7 produces two subgoals, one each for §8 and §9."
-msgstr ""
-
 #. §0: `let`
 #. §1: `have`
 #. §2: `let`
@@ -7325,20 +7285,6 @@ msgstr ""
 #. §0: `exact`
 #: Game/Levels/TypeWorld/L01_Elements.lean:196
 msgid "The §0 tactic of the original game; still accepted while the port is in progress."
-msgstr ""
-
-#. §0: `intro`
-#. §1: `P → Q`
-#. §2: `intro p`
-#. §3: `p : P`
-#. §4: `Q`
-#. §5: `P → Q → R`
-#. §6: `intro p q`
-#. §7: `p : P`
-#. §8: `q : Q`
-#. §9: `R`
-#: Game/Levels/FunctionWorld/L01_IdentityFunction.lean:45
-msgid "The §0 tactic, short for *introduction*, is used to introduce one or more hypotheses when the goal is a function type or an implication. It can be used by itself or followed by names for those hypotheses. For example, when the goal is §1, type §2 to add an assumption §3 and update the goal to §4. When the goal is §5, type §6 to add assumptions §7 and §8 and update the goal to §9."
 msgstr ""
 
 #. §0: `Empty ⊕ (Empty → Empty)`
@@ -7622,26 +7568,28 @@ msgstr ""
 
 #. §0: `«{A}»`
 #. §1: `«{C}»`
-#. §2: `intro x`
+#. §2: `Fix x : «{A}»`
 #. §3: `«{A}»`
 #: Game/Levels/FunctionWorld/L04_ComposingFunctions.lean:23
-msgid "To define a function from §0 to §1, type §2 to introduce an\n"
+msgid "To define a function from §0 to §1, write §2 to introduce an\n"
 "arbitrary element of type §3."
 msgstr ""
 
-#. §0: `intro g f`
-#. §1: `intro g f a`
+#. §0: `Fix`
+#. §1: `Fix g : _`
+#. §2: `Fix f : _`
+#. §3: `Fix a : _`
 #: Game/Levels/FunctionWorld/L08_CompositionRevisited.lean:30
-msgid "To define a function with multiple variables you can apply the intro tactic twice, for instance by typing §0 or even §1."
+msgid "To define a function with multiple variables, use one §0 sentence per input: §1, then §2, then §3."
 msgstr ""
 
 #. §0: `«{A}» → «{A}»`
 #. §1: `x : «{A}»`
 #. §2: `«{A}»`
-#. §3: `intro x`
+#. §3: `Fix x : «{A}»`
 #. §4: `«{A}»`
 #: Game/Levels/FunctionWorld/L01_IdentityFunction.lean:35
-msgid "To define a function, in this case an element of type §0, one must define a rule to convert an arbitrary element §1 to some element of type §2. Start by typing §3 to add an arbitrary element of type §4 to the context."
+msgid "To define a function, in this case an element of type §0, one must define a rule to convert an arbitrary element §1 to some element of type §2. Start by writing §3 to add an arbitrary element of type §4 to the context."
 msgstr ""
 
 #. §0: `A ⊕ B`
@@ -9149,13 +9097,13 @@ msgstr ""
 msgid "When in doubt, recall the introduction rule for equality types."
 msgstr ""
 
-#. §0: `intro`
+#. §0: `Fix`
 #: Game/Levels/FunctionWorld/L07_SwappingInputs.lean:19
 #: Game/Levels/FunctionWorld/L07_SwappingInputs.lean:21
 #: Game/Levels/FunctionWorld/L07_SwappingInputs.lean:23
 #: Game/Levels/FunctionWorld/L09_Evaluation.lean:22
 #: Game/Levels/FunctionWorld/L09_Evaluation.lean:24
-msgid "When in doubt, start defining a function by using the tactic §0 followed by your preferred variable name."
+msgid "When in doubt, start defining a function with §0 followed by your preferred variable name and its type."
 msgstr ""
 
 #. §0: `intro`
@@ -9219,7 +9167,7 @@ msgstr ""
 #. §1: `f`
 #. §2: `a`
 #: Game/Levels/FunctionWorld/L03_UsingFunctionsBackwards.lean:24
-msgid "While the tactics used in this level and the previous one are different, both solutions ultimately tell Lean to use the element §0 built by applying the function §1 to the element §2."
+msgid "While the sentences used in this level and the previous one are different, both solutions ultimately tell Lean to use the element §0 built by applying the function §1 to the element §2."
 msgstr ""
 
 #. §0: `We conclude by hypothesis`
@@ -9293,7 +9241,7 @@ msgstr ""
 msgid "You can solve the goal by explicitly referring to the named hypothesis that Lean supplied or by typing §0 to indicate that the goal matches an assumption."
 msgstr ""
 
-#. §0: `exact fun x ↦ x`
+#. §0: `Let's use fun x ↦ x`
 #. §1: `\\mapsto`
 #. §2: `↦`
 #. §3: `fun x ↦ x : A → A`
@@ -9302,13 +9250,6 @@ msgstr ""
 #: Game/Levels/FunctionWorld/L01_IdentityFunction.lean:40
 msgid "You can solve this level in one line by just giving the entire formula for the function as\n"
 "§0, using §1 to type §2. Here §3 is Lean syntax for the identity function. This tells Lean that the answer is the function defined on an input element §4 to have an output value §5."
-msgstr ""
-
-#. §0: `exact`
-#. §1: `«{f}»`
-#. §2: `apply`
-#: Game/Levels/FunctionWorld/L06_MultivariableFunctions.lean:33
-msgid "You can use the tactic §0 by supplying §1 with two arguments, in the correct order, with spaces in between (but no parentheses). Alternatively you can use the tactic §2."
 msgstr ""
 
 #. §0: `apply «{h}»`
@@ -9338,6 +9279,13 @@ msgstr ""
 #. §1: `rcases «{hpqr}» with hpq | hr`
 #: Game/Levels/DisjunctionWorld/L06_Associativity.lean:26
 msgid "You can use §0 to split your hypothesis into cases or §1 to name your own variables."
+msgstr ""
+
+#. §0: `Let's use`
+#. §1: `«{f}»`
+#. §2: `We apply «{f}»`
+#: Game/Levels/FunctionWorld/L06_MultivariableFunctions.lean:33
+msgid "You can write §0 followed by §1 with two arguments, in the correct order, with spaces in between (but no parentheses). Alternatively you can write §2."
 msgstr ""
 
 #: Game/Levels/EquivalenceWorld/L06_MoreComponentFunctions.lean:25
@@ -9430,24 +9378,11 @@ msgstr ""
 msgid "level completed! 🎉"
 msgstr ""
 
-#. §0: `Assume h : P`
-#. §1: `Assume that P`
-#. §2: `Assume for contradiction h : ¬ Q`
-#: Game/Levels/TypeWorld/L01_Elements.lean:212
-msgid "§0 / §1 / §2: see the level where it is introduced."
-msgstr ""
-
 #. §0: `Type`
 #. §1: `Sort`
 #. §2: `Let's use Type`
 #: Game/Levels/TypeWorld/L01_Elements.lean:192
 msgid "§0 and §1 may appear inside the element you supply (§2 is an instructive error)."
-msgstr ""
-
-#. §0: `Calc a = b from h`
-#. §1: `_ = c by computation`
-#: Game/Levels/TypeWorld/L01_Elements.lean:206
-msgid "§0 followed by lines §1: a chain of equalities or inequalities (editor mode, several lines)."
 msgstr ""
 
 #. §0: `(P ∨ Q) ∧ (R ∨ S)`
@@ -9486,6 +9421,20 @@ msgstr ""
 msgid "§0 is true if and only if §1 is true."
 msgstr ""
 
+#. §0: `Fix x : A`
+#. §1: `A → B`
+#. §2: `∀ x : A, …`
+#. §3: `x : A`
+#. §4: `B`
+#. §5: `Fix x : _`
+#. §6: `Fix`
+#. §7: `Fix`
+#. §8: `P ⇒ Q`
+#. §9: `Assume`
+#: Game/Levels/FunctionWorld/L01_IdentityFunction.lean:45
+msgid "§0 is used when the goal is a function type §1 (or a statement §2): it adds an arbitrary element §3 to the context and updates the goal to §4. Write §5 to let Lean fill in the type. One §6 sentence introduces one input; for a function of several inputs, write one sentence per input. (§7 is for *elements* of types; to introduce the hypothesis of an implication §8 you will later use §9.)"
+msgstr ""
+
 #. §0: `Bool.noConfusion`
 #. §1: `¬ (false = true)`
 #. §2: `¬ (true = false)`
@@ -9508,63 +9457,6 @@ msgstr ""
 #. §3: `(P → Q) ∧ (Q → P)`
 #: Game/Levels/ConjunctionWorld/L04_LogicalEquivalence.lean:9
 msgid "§0, read as &ldquo;§1 if and only if §2&rdquo; is an abbreviation for §3."
-msgstr ""
-
-#. §0: `Fact h : P from e`
-#. §1: `Fact h : P since …`
-#. §2: `Fact h : P by computation`
-#. §3: `Fact h : P by`
-#. §4: `h`
-#. §5: `Claim`
-#: Game/Levels/TypeWorld/L01_Elements.lean:200
-msgid "§0, §1, §2, §3 followed by an indented proof: establish an intermediate fact named §4. §5 is a synonym."
-msgstr ""
-
-#. §0: `Since P ∧ Q we get (hp : P) (hq : Q)`
-#. §1: `Since ∃ x, P x we get x such that hx : P x`
-#. §2: `Since P and P ⇒ Q we conclude that Q`
-#. §3: `Since P ⇒ Q it suffices to prove that P`
-#: Game/Levels/TypeWorld/L01_Elements.lean:198
-msgid "§0, §1, §2, §3: use facts by *stating* them rather than naming hypotheses."
-msgstr ""
-
-#. §0: `By h we get …`
-#. §1: `By h applied to a we get …`
-#. §2: `By h it suffices to prove that …`
-#: Game/Levels/TypeWorld/L01_Elements.lean:216
-msgid "§0, §1, §2: use a named hypothesis."
-msgstr ""
-
-#. §0: `This is impossible because of e`
-#. §1: `e : Empty`
-#. §2: `h : False`
-#. §3: `h applied to p`
-#. §4: `h : ¬ P`
-#. §5: `p : P`
-#: Game/Levels/TypeWorld/L01_Elements.lean:210
-msgid "§0: finish any goal from an element §1, a proof §2, or a contradiction such as §3 with §4 and §5."
-msgstr ""
-
-#. §0: `Set x := e`
-#. §1: `x`
-#. §2: `e`
-#: Game/Levels/TypeWorld/L01_Elements.lean:204
-msgid "§0: introduce a local definition §1 with value §2."
-msgstr ""
-
-#. §0: `Fix x : A`
-#. §1: `A`
-#. §2: `A → B`
-#. §3: `∀ x : A, …`
-#: Game/Levels/TypeWorld/L01_Elements.lean:214
-msgid "§0: introduce an arbitrary element of §1 when the goal is a function type §2 or §3."
-msgstr ""
-
-#. §0: `It suffices to prove that P`
-#. §1: `P`
-#. §2: `P`
-#: Game/Levels/TypeWorld/L01_Elements.lean:208
-msgid "§0: reduce the goal to §1 when an available fact turns §2 into the goal."
 msgstr ""
 
 #. §0: `cases «{p}»`
