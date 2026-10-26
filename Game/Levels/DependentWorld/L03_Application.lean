@@ -23,7 +23,8 @@ Given a pair of type families `B C : A → Type` and a fiberwise function `f : (
 -/
 Statement {A : Type} {B C : A → Type} (f : (x : A) → B x → C x) :
     ((y : A) → B y) → ((z : A) → C z) := by
-  intro s a
-  exact f a (s a)
+  Fix s : (y : A) → B y
+  Fix a : A
+  Let's use f a (s a)
 
 Conclusion "Note that from a function `g : ((y : A) → B y) → ((z : A) → C z)` it would not necessarily be possible to define a dependent function of type `(x : A) → B x → C x`. Can you use the analogy with the universal quantifier to understand why not?"

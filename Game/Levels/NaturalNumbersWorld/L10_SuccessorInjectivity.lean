@@ -7,7 +7,7 @@ Title "Successor Injectivity"
 Introduction "
 In this level, we will prove the third Peano axiom using the introduction and elimination rules for the type of natural numbers.
 
-Your objective is to show that the successor function is injective: `∀ m n : ℕ, succ m = succ n → m = n`.
+Your objective is to show that the successor function is injective: `∀ m n : ℕ, succ m = succ n ⇒ m = n`.
 
 There are several ways to make use of the function `pred : ℕ → ℕ` to prove this, either by applying results from the library or by stating and proving helpful lemmas.
 "
@@ -22,11 +22,14 @@ namespace ReintroductionToProofs
 
 /-- The successor function is injective. -/
 Statement Nat.succ_injective : ∀ m n : ℕ, succ m = succ n → m = n := by
-  apply Function.Injective.of_comp succ pred
-  rw [pred_comp_succ]
-  intro x y p
-  exact p
+  We apply Function.Injective.of_comp succ pred
+  We rewrite using Nat.pred_comp_succ
+  Fix (x : ℕ) (y : ℕ)
+  Assume p : id x = id y
+  We conclude by p
 
-Conclusion "One of several options is to start the proof with `apply Function.Injective.of_comp succ pred`, specializing a general result from Advanced Function World to this particular case. You are now ready for the Boss Level."
+Conclusion "One of several options is to start the proof with `We apply Function.Injective.of_comp succ pred`, specializing a general result from Advanced Function World to this particular case. You are now ready for the Boss Level."
 
 end ReintroductionToProofs
+
+DisabledTactic «compute»

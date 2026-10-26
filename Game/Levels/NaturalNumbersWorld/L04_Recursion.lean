@@ -9,11 +9,11 @@ Introduction "
 Recall the principle of mathematical induction, which applies to an arbitrary family of propositions
 `P : ℕ → Prop` and asserts that
 
-`P 0 → (∀ k : ℕ, P k → P (succ k)) → (∀ n : ℕ, P n)`
+`P 0 ⇒ (∀ k : ℕ, P k ⇒ P (succ k)) ⇒ (∀ n : ℕ, P n)`
 
 That is, to prove `∀ n : ℕ, P n` it suffices to verify:
 * the base case `P 0` and
-* the inductive step `∀ k : ℕ, P k → P (succ k)`.
+* the inductive step `∀ k : ℕ, P k ⇒ P (succ k)`.
 
 The full elimination rule of the type of natural numbers is known in traditional foundations as the
 *principle of mathematical recursion*. It applies to an arbitrary family of types `P : ℕ → Type` and defines an element of type
@@ -52,28 +52,28 @@ In Lean, a function of type `ℕ → A` can be defined recursively using the syn
 For example, using the data of `f_0 : A` and `f_succ : ℕ → A → A`, the corresponding recursively defined function is
 
 `fun n ↦ match n with | zero => f_0 | succ k => f_succ k (f k)`.
+
+In this game you can give such a function a name with `Set f : ℕ → A := fun n ↦ …`, and then announce it as the witness: `Let's prove that f works`. Alternatively, start with `Let's construct the pair`, `Fix n : ℕ` and `Let's define it by recursion on n`, and announce the two cases as you did for booleans; in the case where `n` is `succ k`, the previously defined value `f k` is introduced with `Fix r : A`.
 "
 
 open Nat
 
 /-- There is a function `pred : ℕ → ℕ` that sends `0` to `0` and `succ n` to `n`. -/
 Statement : ∃ f : ℕ → ℕ, (f 0 = 0) ∧ (∀ n : ℕ, f (succ n) = n) := by
-  Hint (hidden := true) "Use the tactic `constructor` to split the level into two goals, the first of which is to define the function `pred : ℕ → ℕ`."
-  constructor
-  Hint (hidden := true) "Now your goal is to define a function of type `ℕ → ℕ`. Lean will accept any function of this type, but be careful. If you define a *different* function than the predecessor function, the properties you will be asked to prove later will not hold."
-  Hint (hidden := true) "Use `intro n` to start your definition."
-  intro n
-  Hint (hidden := true) "To define the function `pred : Nat → Nat` by recursion type `match n with | zero => exact ? | succ k => exact ?` replacing the first `?` with the value of `pred zero` and the second `?` with the value of `pred (succ k)`."
-  match n with | zero => exact zero | succ k => exact k
-  Hint (hidden := true) "To check that your function was defined correctly, we ask you to calculate its values on `0` and on successors. Hopefully you will be able to solve the goals with `rfl`."
-  Hint (hidden := true) "While the goal is complicated to read, the outermost logical connective is a conjunction."
-  constructor
+  Hint (hidden := true) "First define the function `pred : ℕ → ℕ` and give it a name: `Set f : ℕ → ℕ := fun n ↦ match n with | zero => ? | succ k => ?`, replacing the first `?` with the value of `pred zero` and the second `?` with the value of `pred (succ k)`. Lean will accept any function of type `ℕ → ℕ`, but be careful. If you define a *different* function than the predecessor function, the properties you will be asked to prove later will not hold."
+  Set f : ℕ → ℕ := fun n ↦ match n with | zero => zero | succ k => k
+  Hint (hidden := true) "Now announce that your function is the one: `Let's prove that {f} works`."
+  Let's prove that f works
+  Hint (hidden := true) "To check that your function was defined correctly, we ask you to calculate its values on `0` and on successors. Hopefully you will be able to solve the goals with `We conclude by rfl`."
+  Hint (hidden := true) "The outermost logical connective is a conjunction: `Let's first prove that {f} 0 = 0`."
+  Let's first prove that f 0 = 0
   Hint "Here you are asked to show that the value of the function you have just defined at `0` equals `0`."
-  rfl
-  Hint (hidden := true) "Start with `intro n` to prove the universally quantified statement."
-  intro n
-  Hint "Here you are asked to show that the value of the function you have just defined at `{n}.succ`, i.e., at `succ {n}`, equals `{n}`."
-  rfl
+  We conclude by rfl
+  Let's now prove that ∀ n : ℕ, f (succ n) = n
+  Hint (hidden := true) "Start with `Fix n : ℕ` to prove the universally quantified statement."
+  Fix n : ℕ
+  Hint "Here you are asked to show that the value of the function you have just defined at `succ {n}` equals `{n}`."
+  We conclude by rfl
 
 Conclusion "The function `Nat.pred : ℕ → ℕ` that you have just defined is now in your library as well as the theorem `Nat.pred_succ n : Nat.pred (succ n) = n`."
 

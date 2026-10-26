@@ -21,8 +21,8 @@ open ReintroductionToProofs
 The polymorphic identity function has type `(A : Type) → A → A`.
 -/
 Statement : (A : Type) → A → A := by
-  intro A
-  exact id
+  Fix A : Type
+  Let's use id
 
 Conclusion ""
 

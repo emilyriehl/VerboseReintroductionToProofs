@@ -40,19 +40,20 @@ The type theoretic axiom of choice characterizes dependent functions into a depe
 -/
 Statement {A : Type} {B : A → Type} (C : (x : A) → B x → Type) :
      ((x : A) → (y : B x) × C x y) ≃ ((s : (x : A) → B x) × ((x : A) → C x (s x))) := by
-  constructor
-  intro p
-  constructor
-  intro x
-  exact (p x).1
-  intro x
-  exact (p x).2
-  intro p x
-  let ⟨f, g⟩ := p
-  exact ⟨f x, g x⟩
-  intro x
-  rfl
-  intro x
-  rfl
+  Let's construct it componentwise
+  Fix p : (x : A) → (y : B x) × C x y
+  Let's construct the pair
+  Fix x : A
+  Let's use (p x).1
+  Fix x : A
+  Let's use (p x).2
+  Fix p : (s : (x : A) → B x) × ((x : A) → C x (s x))
+  Fix x : A
+  By p we get f : (x : A) → B x and g : (x : A) → C x (f x)
+  Let's use ⟨f x, g x⟩
+  Fix p : (x : A) → (y : B x) × C x y
+  We conclude by rfl
+  Fix p : (s : (x : A) → B x) × ((x : A) → C x (s x))
+  We conclude by rfl
 
 Conclusion "Congratulations! You have completed the final Boss Level!"

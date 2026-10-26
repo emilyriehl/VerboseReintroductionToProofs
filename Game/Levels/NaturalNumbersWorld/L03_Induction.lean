@@ -13,7 +13,7 @@ where `P : ℕ → Prop` is a predicate on the natural numbers &mdash; also know
 
 The formal statement of this principle is given by the axiom:
 
-`∀ P : ℕ → Prop, P 0 → (∀ k : ℕ, P k → P (succ k)) → (∀ n : ℕ, P n)`
+`∀ P : ℕ → Prop, P 0 ⇒ (∀ k : ℕ, P k ⇒ P (succ k)) ⇒ (∀ n : ℕ, P n)`
 
 In plain language it says
 
@@ -24,74 +24,53 @@ That is, we can prove `∀ n : ℕ, P n` after verifying two things:
 * the *base case*: proving that `P 0` is true
 * the *inductive step*: proving that for any `k : ℕ`, `P k` implies `P (succ k)`.
 
-By combining these hypothesis, from the fact that `P 0` is true and `P 0 → P 1` is true, we can conclude that `P 1` is true. Then from the fact that `P 1 → P 2` is true, we can conclude that `P 2` is true. Then from the fact that `P 2 → P 3` is true, we can conclude that `P 3` is true. And so on.
+By combining these hypothesis, from the fact that `P 0` is true and `P 0 ⇒ P 1` is true, we can conclude that `P 1` is true. Then from the fact that `P 1 ⇒ P 2` is true, we can conclude that `P 2` is true. Then from the fact that `P 2 ⇒ P 3` is true, we can conclude that `P 3` is true. And so on.
 
 In this level, we will use induction to prove that every natural number is even or odd.
+
+To start a proof by induction, announce the statement you will prove: `Let's prove by induction that ∀ n : ℕ, …`, restating the goal. (When the statement is exactly the current goal, `Let's prove by induction that _` is accepted as a shorthand.) Lean then asks for the base case and, as a separate goal, the inductive step `∀ k : ℕ, P k ⇒ P (k + 1)`.
 "
 
 open Nat
 
 /-- Every natural number is even or odd. -/
 Statement : ∀ n : ℕ , (∃ m : ℕ, n = 2 * m) ∨ (∃ m : ℕ, n = 2 * m + 1) := by
-  Hint (hidden := true) "The goal is a universally quantified statement. Start with `intro n` to consider an arbitrary natural number `n`."
-  intro n
-  Hint "To start a proof by induction in Lean, type `induction {n} with k hk`. This will split the goal into two cases: proving the base case and the inductive step."
-  induction n with k hk
-  Hint "You are first asked to prove the base case assuming the natural number `n` from the original statement is `0`. Thus your goal is to prove `(∃ m : ℕ, 0 = 2 * m) ∨ (∃ m : ℕ, 0 = 2 * m + 1)`. Use the tactic `left` to indicate that you'd like to prove the left-hand statement or `right` to indicate that you'd like to prove the right-hand statement."
-  left
-  Hint (hidden := true) "To prove the existential quantifier, type `use ??` with an explicit numeral in the place of `??` to supply a well-chosen value of `m`."
-  use 0
-  Hint (hidden := true) "Recall arithmetical equations involving numerals can be proven with `rfl`."
-  rfl
-  Hint "Now that you have completed the base case, the next goal is to prove the inductive step. Here `{k}` is an arbitrary natural number and you are given a hypothesis that the predicate is true for `{k}`, i.e., that `{hk} : (∃ m, {k} = 2 * m) ∨ ∃ m, {k} = 2 * m + 1`. Your goal is to prove that the analogous result holds for `{k} + 1`, aka, the successor of `k`. Type `rcases {hk} with even | odd` to split into cases depending on whether or not `{k}` is even or odd."
-  rcases hk with even | odd
-  Hint (hidden := true) "Use the tactic `left` to indicate that you'd like to prove the left-hand statement or `right` to indicate that you'd like to prove the right-hand statement."
-  right
-  Hint (hidden := true) "Type `rcases {even} with ⟨d, hd⟩` or `let ⟨d, hd⟩ := {even}` to decompose the hypothesis."
-  rcases even with ⟨d, hd⟩
-  Hint (hidden := true) "Type `use ??` with a well-chosen element in place of the `??`."
-  use d
-  Hint (hidden := true) "This equality does not hold by definition, so `rfl` fails. But your context has a new hypothesis that can help."
-  rw [hd]
-  rfl
-  Hint (hidden := true) "Type `rcases {odd} with ⟨d, hd⟩` or `let ⟨d, hd⟩ := {odd}` to decompose the hypothesis."
-  rcases odd with ⟨d, hd⟩
-  Hint (hidden := true) "Use the tactic `left` to indicate that you'd like to prove the left-hand statement or `right` to indicate that you'd like to prove the right-hand statement."
-  left
-  Hint (hidden := true) "Type `use ??` with a well-chosen element in place of the `??`."
-  use d + 1
-  Hint (hidden := true) "This equality does not hold by definition, so `rfl` fails. But your context has a new hypothesis that can help."
-  rw [hd]
-  rfl
+  Hint "To start a proof by induction, write `Let's prove by induction that ∀ n : ℕ, (∃ m : ℕ, n = 2 * m) ∨ (∃ m : ℕ, n = 2 * m + 1)` (or the shorthand `Let's prove by induction that _`). This will split the goal into two cases: proving the base case and the inductive step."
+  Let's prove by induction that ∀ n : ℕ, (∃ m : ℕ, n = 2 * m) ∨ (∃ m : ℕ, n = 2 * m + 1)
+  Hint "You are first asked to prove the base case assuming the natural number `n` from the original statement is `0`. Thus your goal is to prove `(∃ m : ℕ, 0 = 2 * m) ∨ (∃ m : ℕ, 0 = 2 * m + 1)`. Announce the side of the disjunction you'd like to prove by restating it: `Let's prove that ∃ m : ℕ, 0 = 2 * m`."
+  Let's prove that ∃ m : ℕ, 0 = 2 * m
+  Hint (hidden := true) "To prove the existential quantifier, write `Let's prove that ?? works` with an explicit numeral in the place of `??` to supply a well-chosen value of `m`."
+  Let's prove that 0 works
+  Hint (hidden := true) "Recall arithmetical equations involving numerals can be proven with `We conclude by rfl`."
+  We conclude by rfl
+  Hint "Now that you have completed the base case, the next goal is to prove the inductive step `∀ k : ℕ, P k ⇒ P (k + 1)`. Write `Fix k : ℕ` to consider an arbitrary natural number, and then assume the inductive hypothesis that the predicate is true for `k`: `Assume hk : (∃ m : ℕ, k = 2 * m) ∨ (∃ m : ℕ, k = 2 * m + 1)`."
+  Fix k : ℕ
+  Assume hk : (∃ m : ℕ, k = 2 * m) ∨ (∃ m : ℕ, k = 2 * m + 1)
+  Hint "Your goal is to prove that the analogous result holds for `{k} + 1`, aka, the successor of `{k}`. Write `We proceed using {hk}` to split into cases depending on whether or not `{k}` is even or odd."
+  We proceed using hk
+  Hint (hidden := true) "Write `Assume even : ∃ m : ℕ, {k} = 2 * m` to name the hypothesis of this case."
+  Assume even : ∃ m : ℕ, k = 2 * m
+  Hint (hidden := true) "If `{k}` is even then `{k} + 1` is odd: announce the side of the disjunction you'd like to prove with `Let's prove that ∃ m : ℕ, {k} + 1 = 2 * m + 1`."
+  Let's prove that ∃ m : ℕ, k + 1 = 2 * m + 1
+  Hint (hidden := true) "Write `By {even} we get d such that hd : {k} = 2 * d` to decompose the hypothesis."
+  By even we get d such that hd : k = 2 * d
+  Hint (hidden := true) "Write `Let's prove that ?? works` with a well-chosen element in place of the `??`."
+  Let's prove that d works
+  Hint (hidden := true) "This equality does not hold by definition, so `We conclude by rfl` fails. But your context has a new hypothesis that can help: `We rewrite using {hd}`."
+  We rewrite using hd
+  We conclude by rfl
+  Hint (hidden := true) "Write `Assume odd : ∃ m : ℕ, {k} = 2 * m + 1` to name the hypothesis of this case."
+  Assume odd : ∃ m : ℕ, k = 2 * m + 1
+  Hint (hidden := true) "Announce the side of the disjunction you'd like to prove with `Let's prove that …`."
+  Let's prove that ∃ m : ℕ, k + 1 = 2 * m
+  Hint (hidden := true) "Write `By {odd} we get d such that hd : {k} = 2 * d + 1` to decompose the hypothesis."
+  By odd we get d such that hd : k = 2 * d + 1
+  Hint (hidden := true) "Write `Let's prove that ?? works` with a well-chosen element in place of the `??`."
+  Let's prove that d + 1 works
+  Hint (hidden := true) "This equality does not hold by definition, so `We conclude by rfl` fails. But your context has a new hypothesis that can help."
+  We rewrite using hd
+  We conclude by rfl
 
-Conclusion "The `induction` tactic is now in your library.
+Conclusion "It is a bit surprising that the last equation `2 * d + 1 + 1 = 2 * (d + 1)` holds by `rfl`. This has to do with the way that addition and multiplication are defined in Lean. We will explore the definition of addition in a future level."
 
-It is a bit surprising that the last equation `2 * d + 1 + 1 = 2 * (d + 1)` holds by `rfl`. This has to do with the way that addition and multiplication are defined in Lean. We will explore the definition of addition in a future level."
-
-/--
-## Summary
-
-If `n : ℕ` is an object, and the goal mentions `n`, then `induction n with d hd`
-attempts to prove the goal by induction on `n`, with the inductive
-variable in the successor case being `d`, and the inductive hypothesis being `hd`.
-
-### Example:
-If the goal is
-```
-0 + n = n
-```
-
-then
-
-`induction n with d hd`
-
-will turn it into two goals. The first is `0 + 0 = 0`;
-the second has an assumption `hd : 0 + d = d` and goal
-`0 + succ d = succ d`.
-
-Note that you must prove the first
-goal before you can access the second one.
--/
-TacticDoc «induction»
-
-NewTactic «induction»
+-- (the words of `Let's prove by induction that …` are declared game-wide in TypeWorld level 1)

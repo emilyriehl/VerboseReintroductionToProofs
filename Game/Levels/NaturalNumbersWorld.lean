@@ -21,11 +21,11 @@ In traditional foundations, the natural numbers are characterized by a series of
 
   2. There is a function `succ : ℕ → ℕ` that sends any natural number to its *successor*.
 
-  3. The successor function is injective: `∀ m n : ℕ, succ m = succ n → m = n`.
+  3. The successor function is injective: `∀ m n : ℕ, succ m = succ n ⇒ m = n`.
 
   4. Zero is not the successor of any natural number: `¬ (∃ n : ℕ, succ n = 0)`.
 
-  5. The principle of mathematical induction: `∀ P : ℕ → Prop, P 0 → (∀ k : ℕ, P k → P (succ k)) → (∀ n : ℕ, P n)`.
+  5. The principle of mathematical induction: `∀ P : ℕ → Prop, P 0 ⇒ (∀ k : ℕ, P k ⇒ P (succ k)) ⇒ (∀ n : ℕ, P n)`.
 
 In type theory, the type `ℕ` of natural numbers is instead characterized by introduction and elimination rules:
 

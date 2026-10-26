@@ -26,9 +26,8 @@ namespace ReintroductionToProofs
 
 /-- The composite of `succ : ℕ → ℕ` followed by `pred : ℕ → ℕ` is the identity function. -/
 Statement Nat.pred_comp_succ : pred ∘ succ = id := by
-  ext n
-  induction n with k hk
-  rfl
-  rfl
+  By funext it suffices to prove that ∀ n : ℕ, (pred ∘ succ) n = id n
+  Fix n : ℕ
+  We conclude by rfl
 
 end ReintroductionToProofs

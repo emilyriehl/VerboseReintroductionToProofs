@@ -29,11 +29,11 @@ open ReintroductionToProofs
 The dependent pair type `(x : A) × B x` has a pair of projection functions, sending a dependent pair to its first and second components respectively.
 -/
 Statement {A : Type} {B : A → Type} : ((x : A) × B x → A) × ((p : (x : A) × B x) → B p.1) := by
-  Hint (hidden := true) "Your goal is to define a pair of functions, so start with the tactic `constructor`."
-  constructor
-  intro p
-  exact p.1
-  intro p
-  exact p.2
+  Hint (hidden := true) "Your goal is to define a pair of functions, so start with `Let's construct the pair`."
+  Let's construct the pair
+  Fix p : (x : A) × B x
+  Let's use p.1
+  Fix p : (x : A) × B x
+  Let's use p.2
 
 Conclusion "In the next level, we will consider general functions mapping out of a dependent pair type."

@@ -38,5 +38,5 @@ An element `f : (x : A) → B x` of the dependent function type associated to a 
 
 An element `p : (x : A) × B x` of the dependent pair type associated to a type family `B : A → Type` is called a *dependent pair*. The introduction and elimination rules for dependent pair types are analogous to those for ordinary product types and for the existential quantifier. In particular, a dependent pair `p : (x : A) × B x` projects to define an element `p.1 : A` and an element `p.2 : B p.1`.
 
-Because of these analogies, you won't need any new tactics or syntax to solve the puzzles in this level. Let's begin!
+Because of these analogies, you won't need any new sentences or syntax to solve the puzzles in this world. Let's begin!
 "

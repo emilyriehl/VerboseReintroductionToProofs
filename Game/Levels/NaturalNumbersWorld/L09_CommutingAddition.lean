@@ -20,14 +20,16 @@ open Nat (zero_add add_zero)
 
 /-- For all natural numbers `m n`, `m + n = n + m`. -/
 Statement : ∀ m n : ℕ, m + n = n + m := by
-  intro m n
-  induction n with k hk
-  rw [zero_add]
-  rfl
-  rw [add_succ]
-  rw [hk]
-  rw [succ_add]
-  rfl
+  Fix (m : ℕ) (n : ℕ)
+  Let's prove by induction that ∀ n : ℕ, m + n = n + m
+  We rewrite using Nat.zero_add
+  We conclude by rfl
+  Fix k : ℕ
+  Assume hk : m + k = k + m
+  We rewrite using add_succ
+  We rewrite using hk
+  We rewrite using succ_add
+  We conclude by rfl
 
 Conclusion "This proves the theorem `Nat.add_comm : ∀ m n : ℕ, m + n = n + m`, which is now in your library."
 
@@ -39,3 +41,4 @@ TheoremDoc Nat.add_comm as "add_comm" in "ℕ"
 NewTheorem Nat.add_comm
 
 DisabledTheorem Nat.add_comm
+DisabledTactic «compute»

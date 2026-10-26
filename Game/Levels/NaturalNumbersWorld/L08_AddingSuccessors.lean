@@ -23,16 +23,19 @@ open Nat (zero_add add_zero)
 
 /-- For all natural numbers `m n`, `m + succ n = succ (m + n)` and `succ m + n = succ (m + n)`. -/
 Statement : ∀ m n : ℕ, m + succ n = succ (m + n) ∧ succ m + n = succ (m + n)  := by
-  intro m n
-  constructor
-  rfl
+  Fix (m : ℕ) (n : ℕ)
+  Let's first prove that m + succ n = succ (m + n)
+  We conclude by rfl
+  Let's now prove that succ m + n = succ (m + n)
   Hint "It is time to appeal to induction, but should induct in the variable `{m}` or `{n}`? If we had already proven that addition is commutative, the choice would not matter, but given what we have shown so far, you will find that to make progress you need to induct on the same variable we used to define the addition function."
-  induction n with k hk
-  rfl
-  rw [add_succ]
-  rw [hk]
-  rw [← add_succ]
-  rfl
+  Let's prove by induction that ∀ n : ℕ, succ m + n = succ (m + n)
+  We conclude by rfl
+  Fix k : ℕ
+  Assume hk : succ m + k = succ (m + k)
+  We rewrite using add_succ
+  We rewrite using hk
+  We rewrite using ← add_succ
+  We conclude by rfl
 
 Conclusion "The second half of this proves the theorem `Nat.succ_add : ∀ m n : ℕ, succ m + n = succ (m + n)`, which is now in your library."
 
@@ -44,3 +47,4 @@ TheoremDoc Nat.succ_add as "succ_add" in "ℕ"
 NewTheorem Nat.succ_add
 
 DisabledTheorem Nat.succ_add
+DisabledTactic «compute»

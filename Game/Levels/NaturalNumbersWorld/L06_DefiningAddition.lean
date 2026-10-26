@@ -27,12 +27,13 @@ open Nat
 
 /-- For all natural numbers `m` and `n`, `n + 0 = n` and `m + (succ n) = succ (m + n)`. -/
 Statement : (∀ n : ℕ, (n + 0 = n)) ∧ (∀ m n : ℕ, m + (succ n) = succ (m + n)) := by
-  Hint (hidden := true) "The goal asks you to prove two theorems, so start with `constructor`."
-  constructor
-  intro n
-  rfl
-  intro m n
-  rfl
+  Hint (hidden := true) "The goal asks you to prove two theorems, so start with `Let's first prove that ∀ n : ℕ, n + 0 = n`."
+  Let's first prove that ∀ n : ℕ, n + 0 = n
+  Fix n : ℕ
+  We conclude by rfl
+  Let's now prove that ∀ m n : ℕ, m + succ n = succ (m + n)
+  Fix (m : ℕ) (n : ℕ)
+  We conclude by rfl
 
 Conclusion "The theorems `Nat.add_zero : ∀ n : ℕ, n + 0 = n` and `Nat.add_succ : ∀ m n : ℕ, m + succ n = succ (m + n)` are now in your library for later use."
 
