@@ -23,7 +23,7 @@ Statement {A : Type} (P : A → Prop) : ¬ (∀ x : A, P x) → (∃ x : A, ¬ (
   intro ne
   apply na
   intro a
-  have p := em (P a)
+  have p := Classical.em (P a)
   rcases p with pa | npa
   assumption
   apply False.elim

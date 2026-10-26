@@ -21,7 +21,7 @@ open Classical
 /-- In classical logic, for any propositions `P` and `Q`, `¬ (P → Q)` implies `P ∧ ¬ Q`. -/
 Statement {P Q : Prop} : ¬ (P → Q) → P ∧ ¬ Q := by
   intro ni
-  have lemP := em P
+  have lemP := Classical.em P
   rcases lemP with p | np
   constructor
   exact p

@@ -11,7 +11,7 @@ Note Lean has an alternate notation `x || y` for `or x y`.
 "
 
 /-- The function `or : Bool → Bool → Bool` is symmetric. -/
-Statement (x y : Bool) : or x y = or y x := by
+Statement (x y : Bool) : Bool.or x y = Bool.or y x := by
   Hint (hidden := true) "Recall `cases h : {x}` and `cases k :
   {y}` may make it clearer which cases are which."
   cases x <;> cases y <;> rfl

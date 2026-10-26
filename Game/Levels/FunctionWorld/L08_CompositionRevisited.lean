@@ -40,12 +40,7 @@ The `swap` function exchanges the inputs of a function of two variables. For a f
 -/
 DefinitionDoc Function.swap as "Function.swap" in "Function"
 
--- hack: can be removed if naming the Statement in level 7 doesn't error anymore
-def Function.swap {A B C : Type} : (A → B → C) → (B → A → C) := by
-  intro f
-  intro b
-  intro a
-  exact f a b
+-- `Function.swap` is now Mathlib's (same definition), which Verbose Lean brings into scope.
 
 -- NewDefinition Function.swap
 

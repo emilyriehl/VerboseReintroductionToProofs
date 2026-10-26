@@ -25,6 +25,6 @@ Conclusion "While the tactics used in this level and the previous one are differ
 
 
 /-- The `apply` tactic can be used when the goal matches the conclusion of an implication or the output type of a function. For example if the goal is `Q` and there is a hypothesis `h : P → Q`, then `apply h` updates the goal to `P`. If the goal is `T` and there is a hypothesis `e : R → S → T`, then `apply e` produces two subgoals, one each for `R` and `S`. -/
-TacticDoc apply
+TacticDoc «apply»
 
-NewTactic apply
+NewTactic «apply»

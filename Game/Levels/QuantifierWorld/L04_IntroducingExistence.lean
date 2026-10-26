@@ -37,9 +37,9 @@ Conclusion "The next level will give more practice with the existential quantifi
 For goals of the form `∃ (x : A), P x` the tactic `use` can be used to provide an element `a : A` which will satisfy `P a`. For multiple constructors like `∃ (x y : A), P x y`, you can provide comma-separated values: `use a, a'`.
 
 Note that the version of the `use` tactic for this game is somewhat weaker than the real one in Mathlib, which automatically tries to solve the remaining goal.-/
-TacticDoc use
+TacticDoc «use»
 
-NewTactic use
+NewTactic «use»
 
 /--
 For a family of propositions `P : A → Prop`, `∃ x : A, P x` is the proposition that asserts that there is some element `a : A` so that `P a` is true. An element of `∃ x : A, P x` may be thought of as a *dependent pair* `⟨a, p_a⟩` where the first component specifies an element `a : A` while the second component specifies a proof `p_a : P a` of the corresponding proposition `P a`.

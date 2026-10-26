@@ -27,7 +27,7 @@ Statement {P Q : Prop} : ¬ (P ∧ Q) → ¬ P ∨ ¬ Q := by
   intro npq
   Hint (hidden := true) "Type `have lemP : P ∨ ¬ P := em P` or `have lemP := em P` to appeal to the law of excluded middle for `P`. Alternatively, you can appeal to the law of excluded middle for `Q` or for any other proposition."
   Branch
-    have lem := em Q
+    have lem := Classical.em Q
     Hint (hidden := true) "Now might be a good time to case split on the hypothesis `{lem}`."
     rcases lem with q | nq
     Hint (hidden := true) "Because  `{q} : Q`, it is unlikely that you will be able to prove `¬ Q`. So instead try to prove `¬ P`. You can focus on this goal by using the tactic `left`."
@@ -36,7 +36,7 @@ Statement {P Q : Prop} : ¬ (P ∧ Q) → ¬ P ∨ ¬ Q := by
     exact npq ⟨p,q⟩
     right
     assumption
-  have lem := em P
+  have lem := Classical.em P
   Hint (hidden := true) "Now might be a good time to case split on the hypothesis `{lem}`."
   rcases lem with p | np
   Hint (hidden := true) "Because  `{p} : P`, it is unlikely that you will be able to prove `¬ P`. So instead try to prove `¬ Q`. You can focus on this goal by using the tactic `right`."

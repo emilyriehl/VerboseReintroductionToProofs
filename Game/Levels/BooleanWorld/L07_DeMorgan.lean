@@ -25,7 +25,7 @@ The objective of this level is to prove these equalities.
 "
 
 /-- The DeMorgan equalities relate the operations of conjunction, disjunction, and negation on booleans. -/
-Statement (x y : Bool) : (not (and x y) = or (not x) (not y)) ∧ (not (or x y) = and (not x) (not y)) := by
+Statement (x y : Bool) : (not (Bool.and x y) = Bool.or (not x) (not y)) ∧ (not (Bool.or x y) = Bool.and (not x) (not y)) := by
   Hint (hidden := true) "What is the outermost logical connective?"
   constructor
   Hint (hidden := true) "Recall `cases h : x` and `cases k :

@@ -26,10 +26,10 @@ Solve the first three goals by `exact p`, `exact q`, and `exact r` &mdash; repla
 /-- The following expression in conjunctive normal form is satisfiable. -/
 Statement (preamble := refine let p := ?p; let q := ?q; let r := ?r ;  ⟨p, q, r, ?eq⟩) :
     ∃ p : Bool, ∃ q : Bool, ∃ r : Bool,
-    and (not p || q)
-    (and (not q || p)
-    (and (not p || not r)
-    (and (not q || not r)
+    Bool.and (not p || q)
+    (Bool.and (not q || p)
+    (Bool.and (not p || not r)
+    (Bool.and (not q || not r)
     (p || q)))) = true := by
   exact true
   exact true

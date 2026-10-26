@@ -25,9 +25,9 @@ open Classical
 /-- In classical logic, for any propositions `P` and `Q`, `P ∧ Q` is true or `P ∧ ¬ Q` is true or `¬ P ∧ Q` is true or `¬ P and ¬ Q` is true. -/
 Statement {P Q : Prop} : (P ∧ Q) ∨ (P ∧ ¬ Q) ∨ (¬ P ∧ Q) ∨ (¬ P ∧ ¬ Q) := by
   Hint (hidden := true) "To use the law of excluded middle in your proof, type `have lemP : P ∨ ¬ P := em P` to add an assumption that `P ∨ ¬ P` is true."
-  have lemP := em P
+  have lemP := Classical.em P
   Hint (hidden := true) "To use the law of excluded middle in your proof, type `have lemQ : Q ∨ ¬ Q := em Q` to add an assumption that `Q ∨ ¬ Q` is true."
-  have lemQ := em Q
+  have lemQ := Classical.em Q
   Hint (hidden := true) "What can you do with these assumptions?"
   rcases lemP with p | np
   rcases lemQ with q | nq
