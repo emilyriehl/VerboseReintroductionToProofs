@@ -27,19 +27,18 @@ We think of the elements `p : P` and `q : Q` as *proofs* that these propositions
 
 Just as type forming operations can be used to build more complicated types out of existing types, *logical connectives* can be used to build more complicated propositions out of existing propositions.
 
-In this level we study the logical connective *implication* denoted by `→`.
+In this world we study the logical connective *implication*, displayed as `⇒`.
 
-For arbitrary *propositions* `P` and `Q`, `P → Q` is a new proposition asserting that *if* `P` *is true then* `Q` *is true*.
+For arbitrary *propositions* `P` and `Q`, `P ⇒ Q` is a new proposition asserting that *if* `P` *is true then* `Q` *is true*.
 
 To understand how implications work in logic we must learn:
 
-* How to prove theorems of the form `P → Q`.
-* How to use a hypothesis of the form `P → Q` to prove something else.
+* How to prove theorems of the form `P ⇒ Q`.
+* How to use a hypothesis of the form `P ⇒ Q` to prove something else.
 
 We'll learn the rules for proving implications and using implications in the levels that follow.
 
 The introduction and elimination rules for implications precisely mirror the introduction and elimination rules for function types.
 
-This analogy is further emphasized by the fact that we use the same notation for implications `P → Q` as for
-function types `A → B`. The Lean tactics that were introduced to define and work with functions will play an analogous role when proving or using implications.
+Lean itself uses the same notation `→` for implications `P → Q` as for function types `A → B`. To help you tell the two apart, this game *displays* an implication between propositions as `P ⇒ Q`; you may type either `→` or `⇒` (`\\to` and `\\=>`). The sentences that were introduced to define and work with functions have close cousins for proving and using implications: `Assume` plays the role of `Fix`, while `We apply` and `We conclude by` work exactly as before.
 "

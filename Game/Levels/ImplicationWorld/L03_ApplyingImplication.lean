@@ -7,24 +7,24 @@ Title "Applying Implication"
 
 Introduction "We just proved modus ponens using backwards reasoning.
 
-We were given proofs `p : P` and `h : P → Q` were true and argued that it follows that `Q` is also true.
+We were given proofs `p : P` and `h : P ⇒ Q` were true and argued that it follows that `Q` is also true.
 
-To show this, we used the proof `h` of the implication `P → Q` to argue that to prove that `Q` is true it suffices to prove that `P` is true.
+To show this, we used the proof `h` of the implication `P ⇒ Q` to argue that to prove that `Q` is true it suffices to prove that `P` is true.
 
 We then noted that the element `p : P` proves that `P` is true.
 
-Lean also has a syntax that allows us to directly construct a proof of `Q` out of the proofs `p : P` and `h : P → Q`.
+Lean also has a syntax that allows us to directly construct a proof of `Q` out of the proofs `p : P` and `h : P ⇒ Q`.
 
 The proof `h` can be thought of as a *function* that converts proofs of `P` into proofs of `Q`.
 
 In particular, we can apply the function `h` to the proof `p` to obtain a proof of `Q` denoted by `h p`.
 
-Thus, you can solve this level, proving modus ponens again, simply by typing `exact h p`.
+Thus, you can solve this level, proving modus ponens again, simply by writing `We conclude by h applied to p`. (Lean's own notation for applying `h` to `p` is `h p`, and `We conclude by h p` works as well.)
 "
 
-/-- If `P` is true and `P → Q` is true, then `Q` is true. -/
+/-- If `P` is true and `P ⇒ Q` is true, then `Q` is true. -/
 Statement {P Q : Prop} (p : P) (h : P → Q) : Q := by
-  Hint (hidden := true) "Type `exact h p` to tell Lean that `h p : Q` is a proof of `Q`."
-  exact h p
+  Hint (hidden := true) "Write `We conclude by h applied to p` to tell Lean that `h p : Q` is a proof of `Q`."
+  We conclude by h applied to p
 
 Conclusion "Does this proof of modus ponens feel familiar?"
