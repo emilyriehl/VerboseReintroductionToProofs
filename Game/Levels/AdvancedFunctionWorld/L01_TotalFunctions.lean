@@ -30,9 +30,9 @@ namespace ReintroductionToProofs
 /-- A function `f : A → B` must be *total* meaning for each `a : A` there is some `b : B` so
 that `f a = b`. -/
 Statement Function.total {A B : Type} (f : A → B) : ∀ a : A, ∃ b : B, f a = b := by
-  intro a
-  use f a
-  rfl
+  Fix a : A
+  Let's prove that f a works
+  We conclude by rfl
 
 Conclusion "We will now study properties that hold of some functions, but not all functions."
 

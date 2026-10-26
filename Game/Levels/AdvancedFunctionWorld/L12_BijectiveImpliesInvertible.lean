@@ -31,25 +31,21 @@ namespace ReintroductionToProofs
 /-- A bijective function is invertible. -/
 Statement Function.invertible_of_bijective {A B : Type} (f : A → B) (inj : ∀ x y : A, f x = f y → x = y) (surj : ∀ b : B, ∃ x : A, f x = b) :
     ∃ g : B → A, (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b) := by
-  Hint (hidden := true) "Use `constructor` to isolate the goal of defining the inverse function."
-  constructor
-  intro b
-  Hint (hidden := true) "At this stage of the proof, the idea is to apply the surjectivity hypothesis at `{b}`, using the element `surj {b} : ∃ x : A, f x = {b}`. To extract an element of `a` satisfying this condition type `let a := (surj {b}).choose`."
-  let a := (surj b).choose
-  Hint "You can also add the proof that your element `{a}` satisfies the equation `f {a} = {b}` to the context by typing `have ha : f a = b := (surj b).choose_spec`."
-  have ha : f a = b := (surj b).choose_spec
-  Hint (hidden := true) "Now finish the definition of the inverse function with `exact {a}`."
-  exact a
-  Hint (hidden := true) "You have two things to prove. To break the goals into pieces, type `constructor."
-  constructor
-  intro x
-  Hint (hidden := true) "If `g : B → A` is the name of the inverse function you defined using the axiom of choice, you are now meant to show that `g (f {x}) = {x}` for an arbitrary element `{x} : A`. Here you can apply the injectivity hypothesis by typing `apply inj`."
-  apply inj
-  Hint (hidden := true) "If `g : B → A` is the name of the inverse function you defined using the axiom of choice, now you are now meant to show that `f (g (f {x})) = f {x}` for an arbitrary element `{x} : A`. This element `g (f ({x}))` was chosen using the surjectivity hypothesis so that when you apply `f` you get the element `f {x}` back. Type `apply (surj f {x}).choose_spec` to apply the other half of the surjectivity hypothesis at the element `f {x} : B`."
-  apply (surj (f x)).choose_spec
-  intro b
-  Hint "Type `apply (surj {b}).choose_spec` to apply the other half of the surjectivity hypothesis."
-  apply (surj b).choose_spec
+  Hint (hidden := true) "Start by defining the inverse function and giving it a name: `Set g : B → A := ??`. For each `b : B`, the surjectivity hypothesis provides `surj b : ∃ x : A, f x = b`, and the axiom of choice extracts an element satisfying this condition: `(surj b).choose : A`. So write `Set g : B → A := fun b ↦ (surj b).choose`."
+  Set g : B → A := fun b ↦ (surj b).choose
+  Hint "For each `b : B`, the theorem `(surj b).choose_spec` proves that the chosen element satisfies the equation `f ((surj b).choose) = b`. Now announce that `{g}` is the inverse: `Let's prove that {g} works`."
+  Let's prove that g works
+  Hint (hidden := true) "You have two things to prove. Announce the first with `Let's first prove that ∀ a : A, {g} (f a) = a`."
+  Let's first prove that ∀ a : A, g (f a) = a
+  Fix x : A
+  Hint (hidden := true) "You are now meant to show that `{g} (f {x}) = {x}` for an arbitrary element `{x} : A`. Here you can apply the injectivity hypothesis by writing `We apply inj`."
+  We apply inj
+  Hint (hidden := true) "Now you are meant to show that `f ({g} (f {x})) = f {x}` for an arbitrary element `{x} : A`. The element `{g} (f {x})` was chosen using the surjectivity hypothesis so that when you apply `f` you get the element `f {x}` back. Write `We apply (surj (f {x})).choose_spec` to apply the other half of the surjectivity hypothesis at the element `f {x} : B`."
+  We apply (surj (f x)).choose_spec
+  Let's now prove that ∀ b : B, f (g b) = b
+  Fix b : B
+  Hint "Write `We apply (surj {b}).choose_spec` to apply the other half of the surjectivity hypothesis."
+  We apply (surj b).choose_spec
 
 Conclusion "The upshot of this level and the previous one is that in classical logic at least, a function is bijective if and only if it is invertible."
 

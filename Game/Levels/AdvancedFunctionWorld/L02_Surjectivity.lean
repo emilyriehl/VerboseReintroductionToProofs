@@ -24,15 +24,17 @@ namespace ReintroductionToProofs
 
 /-- The function `not : Bool → Bool` is surjective. -/
 Statement Bool.not_surjective : ∀ b : Bool, ∃ x : Bool, not x = b := by
-  Hint (hidden := true) "To prove a universally quantified statement, start with `intro` to introduce an arbitrary element of type `Bool`. "
-  intro b
+  Hint (hidden := true) "To prove a universally quantified statement, start with `Fix b : Bool` to introduce an arbitrary element of type `Bool`."
+  Fix b : Bool
   Hint "Here Lean writes `! x` for `not x`, where `not : Bool → Bool` is the boolean negation function."
-  Hint (hidden := true) "Now you must give an explicit element `x : Bool`, so that `not x = {b}`. To do this, you need to know which boolean `{b}` is! Use `cases {b}` for this."
-  cases b
-  use true
-  rfl
-  use false
-  rfl
+  Hint (hidden := true) "Now you must give an explicit element `x : Bool`, so that `not x = {b}`. To do this, you need to know which boolean `{b}` is! Write `Let's first consider the case where {b} is false`, and later `Let's next consider the case where {b} is true`."
+  Let's first consider the case where b is false
+  Hint (hidden := true) "Announce the element with `Let's prove that ?? works`."
+  Let's prove that true works
+  We conclude by rfl
+  Let's next consider the case where b is true
+  Let's prove that false works
+  We conclude by rfl
 
 Conclusion "In the next levels, we will study general properties of surjective functions."
 

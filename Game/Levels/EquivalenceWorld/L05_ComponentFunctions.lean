@@ -18,16 +18,16 @@ namespace ReintroductionToProofs
 
 /-- For any types `X`, `A`, and `B`, the types `X → A × B` and `(X → A) × (X → B)` are equivalent. -/
 Statement {X A B : Type} : (X → A × B) ≃ (X → A) × (X → B) := by
-  Hint (hidden := true) "Type `constructor` to split the goal up into the four proof obligations."
-  constructor
+  Hint (hidden := true) "Write `Let's construct it componentwise` to split the goal up into the four proof obligations."
+  Let's construct it componentwise
   Hint (hidden := true) "This function is in the library. Rather than redefine it, can you use it?"
-  exact Prod.components
+  Let's use Prod.components
   Hint (hidden := true) "This function is in the library. Rather than redefine it, can you use it?"
-  exact Prod.lift
-  intro f
-  rfl
-  intro f
-  rfl
+  Let's use Prod.lift
+  Fix f : X → A × B
+  We conclude by rfl
+  Fix f : (X → A) × (X → B)
+  We conclude by rfl
 
 Conclusion "In the next level, we will prove a similar universal property for coproduct types."
 

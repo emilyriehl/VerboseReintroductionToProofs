@@ -17,19 +17,16 @@ namespace ReintroductionToProofs
 
 /-- If `f : A → B` and `g : B → C` are both surjective then `g ∘ f : A → C` is also surjective. -/
 Statement Function.Surjective.comp {A B C : Type} (f : A → B) (g : B → C) (f_is_surj : ∀ b : B, ∃ a : A, f a = b) (g_is_surj : ∀ c : C, ∃ b : B, g b = c) : ∀ c : C, ∃ a : A, (g ∘ f) a = c := by
-  Hint (hidden := true) "To prove a universally quantified statement, start with `intro c` to introduce an arbitrary element of type `C`. "
-  intro c
-  Hint (hidden := true) "To use the hypothesis `g_is_surj` at `{c}` type `have gc := g_is_surj {c}` or `let ⟨b, hb⟩ := g_is_surj c`."
-  have gc := g_is_surj c
-  Hint (hidden := true) "Try `cases {gc}` or `rcases {gc} with ⟨b, hb⟩`."
-  rcases gc with ⟨b, hb⟩
-  Hint (hidden := true) "To use the hypothesis `f_is_surj` at `{b}` type `have fb := f_is_surj {b}` or `let ⟨a, ha⟩ := f_is_surj b`."
-  have fb := f_is_surj b
-  rcases fb with ⟨a, ha⟩
-  use a
-  Hint (hidden := true) "You can either prove a lemma `have : (g ∘ f) {a} = ?? := rfl` by replacing the `??` with the definition of the composition function. Or you can try `rw [← ??]` using `\\l` to type the left arrow."
-  rw [← hb, ← ha]
-  rfl
+  Hint (hidden := true) "To prove a universally quantified statement, start with `Fix c : C` to introduce an arbitrary element of type `C`."
+  Fix c : C
+  Hint (hidden := true) "To use the hypothesis `g_is_surj` at `{c}`, write `By g_is_surj applied to {c} we get b such that hb : g b = {c}`."
+  By g_is_surj applied to c we get b such that hb : g b = c
+  Hint (hidden := true) "To use the hypothesis `f_is_surj` at `{b}`, write `By f_is_surj applied to {b} we get a such that ha : f a = {b}`."
+  By f_is_surj applied to b we get a such that ha : f a = b
+  Let's prove that a works
+  Hint (hidden := true) "You can either prove a lemma `Fact lem : (g ∘ f) {a} = ?? from rfl` by replacing the `??` with the definition of the composition function. Or you can try `We rewrite using [← ??, ← ??]` using `\\l` to type the left arrow."
+  We rewrite using [← hb, ← ha]
+  We conclude by rfl
 
 Conclusion "In the next level, we will introduce another property that holds for some, but not all, functions."
 

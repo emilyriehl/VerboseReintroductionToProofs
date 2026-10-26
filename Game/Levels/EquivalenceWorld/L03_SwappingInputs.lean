@@ -16,13 +16,13 @@ open ReintroductionToProofs
 
 /-- For any types `A`, `B`, and `C`, the function types `A → B → C` and `B → A → C` are equivalent. -/
 Statement {A B C : Type} : (A → B → C) ≃ (B → A → C) := by
-  Hint (hidden := true) "Type `constructor` to split the goal up into the four proof obligations."
-  constructor
-  exact Function.swap
-  exact Function.swap
-  intro f
-  rfl
-  intro f
-  rfl
+  Hint (hidden := true) "Write `Let's construct it componentwise` to split the goal up into the four proof obligations."
+  Let's construct it componentwise
+  Let's use Function.swap
+  Let's use Function.swap
+  Fix f : A → B → C
+  We conclude by rfl
+  Fix f : B → A → C
+  We conclude by rfl
 
 Conclusion "In the next level, we will establish another equivalence involving function types."

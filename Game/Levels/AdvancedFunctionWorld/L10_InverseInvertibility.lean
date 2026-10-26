@@ -13,7 +13,7 @@ In this level, we will see that the inverse function `g : B → A` is itself inv
 
 /-- The inverse of an invertible function is invertible. -/
 Statement {A B : Type} (f : A → B) (g : B → A) (inv : (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b)) : ∃ h : A → B, (∀ b : B, h (g b) = b) ∧ (∀ a : A, g (h a) = a) := by
-  use f
-  exact And.symm inv
+  Let's prove that f works
+  We conclude by And.symm applied to inv
 
 Conclusion "You might be able to shorten your proof by applying the theorem `And.symm` from our library at the appropriate point. In the next two levels, we will establish the precise relationship between bijective functions and invertible functions."

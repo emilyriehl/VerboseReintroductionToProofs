@@ -21,11 +21,11 @@ namespace ReintroductionToProofs
 
 /-- If `f : A → A → B` is surjective as a function from `A` to `A → B`, then any endomorphism of `B` has a fixed point. -/
 Statement Function.Lawvere_fixed_point {A B : Type} (f : A → A → B) : (∀ g : A → B, ∃ a : A, f a = g) → (∀ n : B → B, ∃ b : B, n b = b)  := by
-  intro surj
-  intro n
-  have ⟨a₀, p₀⟩ := surj (fun a ↦ n (f a a))
-  use f a₀ a₀
-  exact (congrFun p₀ a₀).symm
+  Assume surj : ∀ g : A → B, ∃ a : A, f a = g
+  Fix n : B → B
+  By surj applied to (fun a ↦ n (f a a)) we get a₀ such that p₀ : f a₀ = fun a ↦ n (f a a)
+  Let's prove that f a₀ a₀ works
+  We conclude by Eq.symm (congrFun p₀ a₀)
 
 Conclusion "Using our newly understood notion of bijective function, or invertible function, or isomorphism, we can now study what it means for a pair of types to be *equivalent*. Move on to Equivalence World next."
 

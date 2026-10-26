@@ -19,12 +19,14 @@ namespace ReintroductionToProofs
 
 /-- The composite of the function `not : Bool → Bool` with itself equals the identity function -/
 Statement Bool.not_involutive : not ∘ not = id := by
-  Hint (hidden := true) "Type `ext` to apply function extensionality or `ext b` to apply function extensionality with `b : Bool` the chosen variable."
-  ext b
-  Hint (hidden := true) "As our previous theorem is not in the library, we'll have to reprove it. Recall `rfl` only applies for *definitional* equalities, and we only have this for certain cases of Booleans. Try `cases {b}`."
-  cases b
-  rfl
-  rfl
+  Hint (hidden := true) "Write `By funext it suffices to prove that ∀ b : Bool, (not ∘ not) b = id b` to apply function extensionality, then `Fix b : Bool`."
+  By funext it suffices to prove that ∀ b : Bool, (not ∘ not) b = id b
+  Fix b : Bool
+  Hint (hidden := true) "As our previous theorem is not in the library, we'll have to reprove it. Recall `rfl` only applies for *definitional* equalities, and we only have this for certain cases of Booleans. Consider the cases for `{b}`."
+  Let's first consider the case where b is false
+  We conclude by rfl
+  Let's next consider the case where b is true
+  We conclude by rfl
 
 Conclusion "Next we will use function extensionality to prove a third characterization of bijective or invertible functions."
 

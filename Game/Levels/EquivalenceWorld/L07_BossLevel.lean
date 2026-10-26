@@ -19,25 +19,28 @@ open ReintroductionToProofs
 
 /-- The types `Unit ⊕ Unit` and `Bool` are equivalent. -/
 Statement : Unit ⊕ Unit ≃ Bool := by
-  Hint (hidden := true) "Type `constructor` to split the goal up into the four proof obligations."
-  constructor
-  intro x
-  cases x
-  exact false
-  exact true
-  intro b
-  cases b
-  left
-  exact ()
-  right
-  exact ()
-  intro x
-  cases x
-  rfl
-  rfl
-  intro b
-  cases b
-  rfl
-  rfl
+  Hint (hidden := true) "Write `Let's construct it componentwise` to split the goal up into the four proof obligations."
+  Let's construct it componentwise
+  Fix x : Unit ⊕ Unit
+  Let's first consider the case where x is inl u
+  Let's use false
+  Let's next consider the case where x is inr u
+  Let's use true
+  Fix b : Bool
+  Let's first consider the case where b is false
+  Hint (hidden := true) "Both summands are `Unit`, so name the injection explicitly: `Let's use Sum.inl ()` or `Let's use Sum.inr ()`."
+  Let's use Sum.inl ()
+  Let's next consider the case where b is true
+  Let's use Sum.inr ()
+  Fix x : Unit ⊕ Unit
+  Let's first consider the case where x is inl u
+  We conclude by rfl
+  Let's next consider the case where x is inr u
+  We conclude by rfl
+  Fix b : Bool
+  Let's first consider the case where b is false
+  We conclude by rfl
+  Let's next consider the case where b is true
+  We conclude by rfl
 
 Conclusion "The equivalence between the types `Unit ⊕ Unit` and `Bool` has to do with the fact that both are examples of *inductive types*. In Natural Numbers World, we will finally properly introduce another inductive type, namely the type `ℕ` of natural numbers. Go there next."

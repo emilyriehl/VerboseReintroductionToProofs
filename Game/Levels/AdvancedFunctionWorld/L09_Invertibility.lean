@@ -25,8 +25,20 @@ namespace ReintroductionToProofs
 
 /-- The function `not : Bool → Bool` is invertible. -/
 Statement Bool.not_invertible : ∃ g : Bool → Bool, (∀ b : Bool, g (not b) = b) ∧ (∀ b : Bool, not (g b) = b) := by
-  use not
-  constructor <;> intro b <;> cases b <;> rfl
+  Hint (hidden := true) "Announce the inverse function with `Let's prove that ?? works`."
+  Let's prove that not works
+  Let's first prove that ∀ b : Bool, not (not b) = b
+  Fix b : Bool
+  Let's first consider the case where b is false
+  We conclude by rfl
+  Let's next consider the case where b is true
+  We conclude by rfl
+  Let's now prove that ∀ b : Bool, not (not b) = b
+  Fix b : Bool
+  Let's first consider the case where b is false
+  We conclude by rfl
+  Let's next consider the case where b is true
+  We conclude by rfl
 
 Conclusion "We will explore the precise relationship between bijective functions and invertible functions soon. But first, we show that the inverse of an invertible function is again invertible."
 

@@ -16,7 +16,7 @@ The answer depends on what sort of things we are talking about.
 
 We have seen what it means for two elements of the same type to be the same. Given `x y : A`, we think of `x` and `y` as being &ldquo;the same&rdquo; if they are *equal*, meaning there is an element `p : x = y` in the equality type.
 
-We have also seen what it means for two propositions to be the same. Given propositions `P` and `Q`, we think of `P` and `Q` as being &ldquo;the same&rdquo; if they are *logically equivalent*, meaning there is an element `p : P ↔ Q`.
+We have also seen what it means for two propositions to be the same. Given propositions `P` and `Q`, we think of `P` and `Q` as being &ldquo;the same&rdquo; if they are *logically equivalent*, meaning there is an element `p : P ⇔ Q`.
 
 What does it mean for two types to be &ldquo;the same&rdquo;?
 
@@ -29,7 +29,7 @@ To define an equivalence between `A` and `B` we need four pieces of data:
 * a proof `α : ∀ a : A, g (f a) = a`
 * a proof `β : ∀ b : B, f (g b) = b`
 
-The first two pieces of data resemble the data required by a logical equivalence `P ↔ Q`. For that one needs proofs `f : P → Q` and `g : Q → P` of the implications in each direction.
+The first two pieces of data resemble the data required by a logical equivalence `P ⇔ Q`. For that one needs proofs `f : P ⇒ Q` and `g : Q ⇒ P` of the implications in each direction.
 
 The remaining data is relevant because functions carry more information than implications. In particular, there may be multiple functions from `A` to `B` and from `B` to `A`.
 

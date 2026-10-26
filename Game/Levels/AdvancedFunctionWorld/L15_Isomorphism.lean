@@ -27,27 +27,36 @@ namespace ReintroductionToProofs
 
 /-- The function `f : A → B` is an isomorphism if and only if `f` is invertible. -/
 Statement Function.isomorphism_iff_invertible {A B : Type} (f : A → B) : (∃ g : B → A, g ∘ f = id ∧ f ∘ g = id) ↔ (∃ g : B → A, (∀ a : A, g (f a) =a) ∧ (∀ b : B, f (g b) = b))  := by
-  constructor
-  intro ⟨g, iso⟩
-  use g
-  constructor
-  intro a
-  have lem₁ : (g ∘ f) a = g (f a) := rfl
-  rw [← lem₁]
-  rw [iso.1]
-  rfl
-  intro b
-  have lem₂ : (f ∘ g) b = f (g b) := rfl
-  rw [← lem₂]
-  rw [iso.2]
-  rfl
-  intro ⟨g, inv⟩
-  use g
-  constructor
-  ext
-  apply inv.1
-  ext
-  apply inv.2
+  Let's first prove that (∃ g : B → A, g ∘ f = id ∧ f ∘ g = id) → (∃ g : B → A, (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b))
+  Assume h : ∃ g : B → A, g ∘ f = id ∧ f ∘ g = id
+  By h we get g such that (lh : g ∘ f = id) and (rh : f ∘ g = id)
+  Let's prove that g works
+  Let's first prove that ∀ a : A, g (f a) = a
+  Fix a : A
+  Hint (hidden := true) "`{g} (f {a})` is by definition `({g} ∘ f) {a}`, and `{lh}` rewrites the latter. Record the definitional equality with `Fact lem : ({g} ∘ f) {a} = {g} (f {a}) from rfl`, then rewrite."
+  Fact lem₁ : (g ∘ f) a = g (f a) from rfl
+  We rewrite using ← lem₁
+  We rewrite using lh
+  We conclude by rfl
+  Let's now prove that ∀ b : B, f (g b) = b
+  Fix b : B
+  Fact lem₂ : (f ∘ g) b = f (g b) from rfl
+  We rewrite using ← lem₂
+  We rewrite using rh
+  We conclude by rfl
+  Let's now prove that (∃ g : B → A, (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b)) → (∃ g : B → A, g ∘ f = id ∧ f ∘ g = id)
+  Assume h : ∃ g : B → A, (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b)
+  By h we get g such that (linv : ∀ a : A, g (f a) = a) and (rinv : ∀ b : B, f (g b) = b)
+  Let's prove that g works
+  Let's first prove that g ∘ f = id
+  Hint (hidden := true) "An equality between functions: `By funext it suffices to prove that ∀ a : A, ({g} ∘ f) a = id a`."
+  By funext it suffices to prove that ∀ a : A, (g ∘ f) a = id a
+  Fix a : A
+  We conclude by linv applied to a
+  Let's now prove that f ∘ g = id
+  By funext it suffices to prove that ∀ b : B, (f ∘ g) b = id b
+  Fix b : B
+  We conclude by rinv applied to b
 
 Conclusion "Now you are ready for the Boss Level."
 

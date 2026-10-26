@@ -17,22 +17,23 @@ This suggests that it suffices to have a proof `p x : f x = g x` for all element
 
 To reduce the question of proving an equality `f = g` to the question of proving that `f x = g x` for all `x : A`, we must appeal to an axiom called *function extensionality*.
 
-Function extensionality is an instance of a general `ext` tactic that can be used to prove equality in many types.
+In Lean, function extensionality is the theorem `funext`. To use it, write `By funext it suffices to prove that ∀ x : A, f x = g x`: the goal `f = g` is replaced by the statement after &ldquo;prove that&rdquo;.
 "
 
 namespace ReintroductionToProofs
 
 /-- For functions `f g : A → B` if `∀ x : A, f x = g x` then `f = g`. -/
 Statement {A B : Type} {f g : A → B} (p : ∀ x : A, f x = g x) : f = g  := by
-  Hint "Type `ext x` to apply function extensionality and see how the goal state transforms."
-  ext x
-  exact p x
+  Hint "Write `By funext it suffices to prove that ∀ x : A, f x = g x` to apply function extensionality and see how the goal state transforms."
+  By funext it suffices to prove that ∀ x : A, f x = g x
+  Fix x : A
+  We conclude by p applied to x
 
 Conclusion "In the next level, we will practice using function extensionality to demonstrate an equality between functions."
 
 end ReintroductionToProofs
 
-/-- The `ext` tactic can be used to apply function extensionality, changing a goal involving proving equality between functions `f g : A → B` into a goal of proving `f x = g x` for an arbitrary `x : A`. The `ext` tactic  applies similar extensionality lemmas that have been proven for other types. -/
-TacticDoc ext
+/-- Function extensionality: for functions `f g : A → B`, `funext : (∀ x : A, f x = g x) → f = g`. To use it on a goal `f = g`, write `By funext it suffices to prove that ∀ x : A, f x = g x`. -/
+TheoremDoc funext as "funext" in "Function"
 
-NewTactic ext
+NewTheorem funext
