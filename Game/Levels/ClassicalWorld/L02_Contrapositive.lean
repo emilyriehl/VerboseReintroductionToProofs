@@ -28,7 +28,7 @@ Statement {P Q : Prop} : (¬ Q → ¬ P) → (P → Q) := by
   Hint (hidden := true) "Now that you are stuck, it is a good time to try classical reasoning. Try `Assume for contradiction nq : ¬ Q` and see how this transforms the goal."
   Assume for contradiction nq : ¬ Q
   Hint (hidden := true) "Think about where the contradiction will ultimately arise from."
-  Hint (hidden := true) "What can you prove using `{i}` and `{nq}`? Use `Fact` to add this to your context."
+  Hint (hidden := true) "What can you prove using `{i}` and `{nq}`? Use `Claim` to add this to your context."
   We conclude by i applied to nq and p
 
 end

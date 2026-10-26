@@ -39,3 +39,24 @@ elab (name := gameByWeGetAnd) "By " e:maybeApplied " we get " x:maybeTypedIdent 
 the right type, without naming it (the counterpart of the `assumption` tactic). -/
 elab "Let's" " use an assumption" : tactic => do
   evalTactic (← `(tactic| assumption))
+
+/-! ## `Claim P from e` without a name
+
+Verbose's `Claim h : P from e` (the game does not offer its synonym `Fact`) requires a name. As with
+`Assume that P`, the game also accepts the statement alone and names the new fact itself. -/
+section ClaimNameless
+open Lean Elab Tactic Verbose Verbose.English
+
+elab (priority := low) "Claim " stmt:term " from " prf:maybeApplied : tactic => withMainContext do
+  let e ← elabTerm stmt none
+  let name ← mk_hyp_name stmt e
+  let n := mkIdent name
+  evalTactic (← `(tactic| have $n : $stmt := by We conclude by $prf))
+
+elab (priority := low) "Claim " stmt:term " by " colGt prf:tacticSeq : tactic => withMainContext do
+  let e ← elabTerm stmt none
+  let name ← mk_hyp_name stmt e
+  let n := mkIdent name
+  evalTactic (← `(tactic| have $n : $stmt := by $prf))
+
+end ClaimNameless

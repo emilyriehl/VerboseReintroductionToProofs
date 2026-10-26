@@ -9,7 +9,7 @@ Introduction "The *law of excluded middle* asserts that for any proposition `P`,
 
 In other words, for any proposition `P`, `P ∨ ¬ P` is always true.
 
-Lean has a built-in name `Classical.em P : P ∨ ¬ P` for *the law of excluded middle* at the proposition `P`. To bring it into your context write `Fact lemP : P ∨ ¬ P from Classical.em P`, and then consider its two cases as for any disjunction. Verbose Lean also has a one-sentence version of this, which `help` will suggest: `We discuss depending on whether P or ¬ P` splits into the two cases directly, each starting with an assumption to introduce.
+Lean has a built-in name `Classical.em P : P ∨ ¬ P` for *the law of excluded middle* at the proposition `P`. To bring it into your context write `Claim lemP : P ∨ ¬ P from Classical.em P`, and then consider its two cases as for any disjunction. Verbose Lean also has a one-sentence version of this, which `help` will suggest: `We discuss depending on whether P or ¬ P` splits into the two cases directly, each starting with an assumption to introduce.
 
 Note that in contrast to `Classical.byContradiction : ¬ ¬ P ⇒ P`, the proposition `P` is an *explicit argument* of `Classical.em`.
 
@@ -24,10 +24,10 @@ open Classical
 
 /-- In classical logic, for any propositions `P` and `Q`, `P ∧ Q` is true or `P ∧ ¬ Q` is true or `¬ P ∧ Q` is true or `¬ P and ¬ Q` is true. -/
 Statement {P Q : Prop} : (P ∧ Q) ∨ (P ∧ ¬ Q) ∨ (¬ P ∧ Q) ∨ (¬ P ∧ ¬ Q) := by
-  Hint (hidden := true) "To use the law of excluded middle in your proof, write `Fact lemP : P ∨ ¬ P from Classical.em P` to add an assumption that `P ∨ ¬ P` is true."
-  Fact lemP : P ∨ ¬ P from Classical.em P
-  Hint (hidden := true) "Do the same for `Q`: `Fact lemQ : Q ∨ ¬ Q from Classical.em Q`."
-  Fact lemQ : Q ∨ ¬ Q from Classical.em Q
+  Hint (hidden := true) "To use the law of excluded middle in your proof, write `Claim lemP : P ∨ ¬ P from Classical.em P` to add an assumption that `P ∨ ¬ P` is true."
+  Claim lemP : P ∨ ¬ P from Classical.em P
+  Hint (hidden := true) "Do the same for `Q`: `Claim lemQ : Q ∨ ¬ Q from Classical.em Q`."
+  Claim lemQ : Q ∨ ¬ Q from Classical.em Q
   Hint (hidden := true) "What can you do with these assumptions?"
   Let's first consider the case where lemP is inl p
   Let's first consider the case where lemQ is inl q

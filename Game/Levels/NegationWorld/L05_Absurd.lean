@@ -22,7 +22,7 @@ While not necessary to solve this level, it is also possible to use the sentence
 Statement {P Q : Prop} : P → ¬ P → Q := by
   Assume (p : P) (np : ¬ P)
   Hint (hidden := true) "What is the logical structure of the type of `{np}`?"
-  Hint (hidden := true) "If you like, you can add a proof of `False` to your assumption list by `Fact f : False from {np} applied to {p}`."
+  Hint (hidden := true) "If you like, you can add a proof of `False` to your assumption list by `Claim f : False from {np} applied to {p}`."
   Hint (hidden := true) "This might be a useful time to apply one of the theorems proven earlier in Negation World."
   Let's prove it's contradictory
   We conclude by np applied to p

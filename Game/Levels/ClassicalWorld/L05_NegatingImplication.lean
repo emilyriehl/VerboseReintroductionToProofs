@@ -21,7 +21,7 @@ open Classical
 /-- In classical logic, for any propositions `P` and `Q`, `¬ (P ⇒ Q)` implies `P ∧ ¬ Q`. -/
 Statement {P Q : Prop} : ¬ (P → Q) → P ∧ ¬ Q := by
   Assume ni : ¬ (P → Q)
-  Fact lemP : P ∨ ¬ P from Classical.em P
+  Claim lemP : P ∨ ¬ P from Classical.em P
   Let's first consider the case where lemP is inl p
   Let's first prove that P
   We conclude by p

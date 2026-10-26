@@ -27,7 +27,7 @@ Statement {A : Type} (P : A → Prop) : (∀ x : A, ¬ (P x)) ↔ ¬ (∃ x : A,
   Assume ne : ∃ x : A, P x
   Hint (hidden := true) "How can you use the hypothesis `{ne}`?"
   By ne we get a such that ha : P a
-  Fact npa : ¬ P a from na applied to a
+  Claim npa : ¬ P a from na applied to a
   Hint (hidden := true) "There are various ways to use `{na}` and `{npa}` to get a contradiction."
   We conclude by npa applied to ha
   Let's now prove that ¬ (∃ x : A, P x) → ∀ x : A, ¬ P x

@@ -31,8 +31,8 @@ Statement : ¬ (false = true) := by
   Assume p : false = true
   Hint (strict:=true) (hidden := true) "Define a function `Bool → Prop` by `Set P : Bool → Prop := fun b ↦ match b with | false => False | true => True`."
   Set P : Bool → Prop := fun b ↦ match b with | false => False | true => True
-  Hint (strict:=true) (hidden := true) "Establish `P true → P false` by `Fact tr : P true → P false by Assume x : P true; We rewrite using p; We conclude by x`. In editor mode, start with `Fact tr : P true → P false by` then continue with each of the three sentences on three subsequent indented lines. This way you can see how the goal evolves with each step in the construction."
-  Fact tr : P true → P false by Assume x : P true; We rewrite using p; We conclude by x
+  Hint (strict:=true) (hidden := true) "Establish `P true → P false` by `Claim tr : P true → P false by Assume x : P true; We rewrite using p; We conclude by x`. In editor mode, start with `Claim tr : P true → P false by` then continue with each of the three sentences on three subsequent indented lines. This way you can see how the goal evolves with each step in the construction."
+  Claim tr : P true → P false by Assume x : P true; We rewrite using p; We conclude by x
   Hint (hidden := true) "By the definition of the family of propositions `P : Bool → Prop`, the function `tr : P true → P false` is a function `tr : True → False`. In particular, if we apply `tr` to an element of `True`, we get an element of `False`, which is what we want."
   Hint (hidden := true) "Write `We conclude by tr applied to ⟨⟩` to return an element of `False` defined using the function `tr` and the element `⟨⟩ : True`."
   We conclude by tr applied to ⟨⟩

@@ -25,6 +25,6 @@ Statement Function.Injective.comp {A B C : Type} (f : A → B) (g : B → C) (f_
   Hint (hidden := true) "Your goal `g (f {x}) = g (f {y})` is very similar to one of your assumptions `(g ∘ f) {x} = (g ∘ f) {y}`. Try `We conclude by {p}`."
   We conclude by p
 
-Conclusion "Alternatively, you could prove lemmas by `Fact eq : ∀ a : A, (g ∘ f) a = g (f a) from fun a ↦ rfl` and then use rewrites to convert the goal into one where you can apply the hypothesis `(g ∘ f) x = (g ∘ f) y`. Because the lemmas hold by definitional equality, you were able to skip that step."
+Conclusion "Alternatively, you could prove lemmas by `Claim eq : ∀ a : A, (g ∘ f) a = g (f a) from fun a ↦ rfl` and then use rewrites to convert the goal into one where you can apply the hypothesis `(g ∘ f) x = (g ∘ f) y`. Because the lemmas hold by definitional equality, you were able to skip that step."
 
 end ReintroductionToProofs

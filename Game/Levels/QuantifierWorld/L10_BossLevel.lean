@@ -22,7 +22,7 @@ Statement {A : Type} (P : A → Prop) : ¬ (∀ x : A, P x) → (∃ x : A, ¬ (
   Assume for contradiction ne : ¬ (∃ x : A, ¬ P x)
   We apply na
   Fix a : A
-  Fact p : P a ∨ ¬ P a from Classical.em (P a)
+  Claim p : P a ∨ ¬ P a from Classical.em (P a)
   Let's first consider the case where p is inl pa
   We conclude by pa
   Let's next consider the case where p is inr npa

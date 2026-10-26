@@ -23,7 +23,7 @@ Statement : ¬ (∃ n : ℕ, succ n = 0) := by
   Assume hyp : ∃ n : ℕ, succ n = 0
   By hyp we get n such that hn : succ n = 0
   Set P : ℕ → Prop := fun n ↦ match n with | zero => False | succ k => True
-  Fact tr : P (succ n) → P 0 by Assume x : P (succ n); We rewrite using ← hn; We conclude by x
+  Claim tr : P (succ n) → P 0 by Assume x : P (succ n); We rewrite using ← hn; We conclude by x
   We apply tr
   We conclude by ⟨⟩
 

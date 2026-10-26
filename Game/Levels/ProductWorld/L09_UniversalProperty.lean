@@ -15,7 +15,7 @@ These functions can be combined to define a single function of type `X → A × 
 
 Your task in this level is to define the operation that produces a function into a product type from a pair of component functions.
 
-While it is not strictly necessary to solve this level, we use this opportunity to introduce the sentence `Set`. `Set` is similar to `Fact` from Implication World, but it is used for creating elements of types rather than proofs of propositions.
+While it is not strictly necessary to solve this level, we use this opportunity to introduce the sentence `Set`. `Set` is similar to `Claim` from Implication World, but it is used for creating elements of types rather than proofs of propositions.
 
 Suppose your context contains an element `p : (X → A) × (X → B)`. Using this element it is possible to define functions of type `X → A` and `X → B`. `Set` can be used to add these to your context with explicit names.
 
@@ -52,7 +52,7 @@ def Prod.lift {X A B : Type} : (X → A) × (X → B) → (X → A × B) :=
 
 end ReintroductionToProofs
 
-/-- `Set x : A := e` adds a new element `x : A` to your context, defined to be `e` (`Set x := e` lets Lean work out the type). It is like `Fact`, but for elements of types rather than proofs of propositions. For example, given elements `a : A` and `b : B`, you can write `Set p : A × B := ⟨a, b⟩` to add their pair to the context, or `Set f : A → B := fun _ ↦ b` to add the constant function at `b`. -/
+/-- `Set x : A := e` adds a new element `x : A` to your context, defined to be `e` (`Set x := e` lets Lean work out the type). It is like `Claim`, but for elements of types rather than proofs of propositions. For example, given elements `a : A` and `b : B`, you can write `Set p : A × B := ⟨a, b⟩` to add their pair to the context, or `Set f : A → B := fun _ ↦ b` to add the constant function at `b`. -/
 TacticDoc «Set»
 
 NewTactic «Set»

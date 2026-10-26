@@ -25,7 +25,7 @@ Statement Function.Surjective.of_comp {A B C : Type} (f : A → B) (g : B → C)
   By gf_is_surj applied to c we get a such that ha : (g ∘ f) a = c
   Hint (hidden := true) "Which element of `B` does `g` send to `{c}`? Announce it with `Let's prove that ?? works`."
   Let's prove that f a works
-  Hint (hidden := true) "You can either prove a lemma `Fact lem : (g ∘ f) {a} = ?? from rfl` by replacing the `??` with the definition of the composition function. Or you can try `We rewrite using ← ??` for an appropriate proof of equality using `\\l` to type the left arrow."
+  Hint (hidden := true) "You can either prove a lemma `Claim lem : (g ∘ f) {a} = ?? from rfl` by replacing the `??` with the definition of the composition function. Or you can try `We rewrite using ← ??` for an appropriate proof of equality using `\\l` to type the left arrow."
   We rewrite using ← ha
   We conclude by rfl
 

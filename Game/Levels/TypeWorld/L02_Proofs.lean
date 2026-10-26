@@ -15,7 +15,7 @@ As we will see, it is useful to have an explicit name `p` for the proof that `P`
 
 Our goal, which is displayed to the right of the vertical line, is to prove the proposition `P`.
 
-We know that `P` is true because we have assumed that `P` is true. The sentence `Let's use an assumption` from the previous level works here too. When the goal is a proposition, there is a second sentence for the same step that reads more like a proof on paper: `We conclude by hypothesis`.
+Claim that `P` is true because we have assumed that `P` is true. The sentence `Let's use an assumption` from the previous level works here too. When the goal is a proposition, there is a second sentence for the same step that reads more like a proof on paper: `We conclude by hypothesis`.
 "
 
 /-- Under the hypothesis that we have a proposition `P` and a proof `p : P`, we may conclude that `P` is true. -/
@@ -30,6 +30,9 @@ Conclusion "In the next level, we will learn to be more precise about which assu
 Finishing:
 * `We conclude by hypothesis` closes the goal with an assumption, without naming it.
 * `We conclude by h` closes the goal with the hypothesis or proof term `h`; also `We conclude by h applied to x`, `We conclude by h applied to x and y`, and `We conclude by rfl` when both sides of an equation are equal by definition.
+
+Recording a fact (introduced in Implication World):
+* `Claim h : P from e` adds `h : P` to your assumptions, proved by `e`; also `Claim P from e` (Lean names the fact), `Claim h : P by …`, and `Claim h : P since h₁ and h₂`.
 
 Transforming the goal (introduced in later worlds):
 * `We apply h` when `h : P ⇒ Q` and the goal is `Q`: the goal becomes `P`.

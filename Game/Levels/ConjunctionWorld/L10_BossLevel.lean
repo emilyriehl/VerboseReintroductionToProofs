@@ -9,7 +9,7 @@ Introduction
 "
 For the Boss Level of Conjunction World, the task is to prove a complicated implication.
 
-After introducing all of the allowed hypotheses, you may find it helpful to prove that some intermediate propositions are true using `Fact`.
+After introducing all of the allowed hypotheses, you may find it helpful to prove that some intermediate propositions are true using `Claim`.
 
 Good luck!
 "

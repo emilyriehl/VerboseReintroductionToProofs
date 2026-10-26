@@ -20,8 +20,8 @@ Statement Function.Injective.of_comp {A B C : Type} (f : A → B) (g : B → C) 
   Assume p : f x = f y
   Hint (hidden := true) "Try applying the hypothesis that `g ∘ f` is injective, with `We apply`."
   We apply gf_is_inj
-  Hint (hidden := true) "Use `Fact eq1 : (g ∘ f) {x} = g (f {x}) from rfl` and a similar lemma to give yourself more equalities to rewrite along."
-  Fact eq : ∀ a : A, (g ∘ f) a = g (f a) from fun a ↦ rfl
+  Hint (hidden := true) "Use `Claim eq1 : (g ∘ f) {x} = g (f {x}) from rfl` and a similar lemma to give yourself more equalities to rewrite along."
+  Claim eq : ∀ a : A, (g ∘ f) a = g (f a) from fun a ↦ rfl
   We rewrite using [eq x, eq y, p]
   We conclude by rfl
 

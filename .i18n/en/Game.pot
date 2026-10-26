@@ -285,7 +285,7 @@ msgstr ""
 msgid "Alternatively, you can write §0 using §1 and §2 to type the angle brackets."
 msgstr ""
 
-#. §0: `Fact eq : ∀ a : A, (g ∘ f) a = g (f a) from fun a ↦ rfl`
+#. §0: `Claim eq : ∀ a : A, (g ∘ f) a = g (f a) from fun a ↦ rfl`
 #. §1: `(g ∘ f) x = (g ∘ f) y`
 #: Game/Levels/AdvancedFunctionWorld/L06_ComposingInjectivity.lean:28
 msgid "Alternatively, you could prove lemmas by §0 and then use rewrites to convert the goal into one where you can apply the hypothesis §1. Because the lemmas hold by definitional equality, you were able to skip that step."
@@ -1250,7 +1250,7 @@ msgid "Distributivity"
 msgstr ""
 
 #. §0: `Q`
-#. §1: `Fact lemQ : Q ∨ ¬ Q from Classical.em Q`
+#. §1: `Claim lemQ : Q ∨ ¬ Q from Classical.em Q`
 #: Game/Levels/ClassicalWorld/L03_ExcludedMiddle.lean:29
 msgid "Do the same for §0: §1."
 msgstr ""
@@ -1351,8 +1351,8 @@ msgid "Equivalence World"
 msgstr ""
 
 #. §0: `P true → P false`
-#. §1: `Fact tr : P true → P false by Assume x : P true; We rewrite using p; We conclude by x`
-#. §2: `Fact tr : P true → P false by`
+#. §1: `Claim tr : P true → P false by Assume x : P true; We rewrite using p; We conclude by x`
+#. §2: `Claim tr : P true → P false by`
 #: Game/Levels/BooleanWorld/L08_NotEqual.lean:34
 msgid "Establish §0 by §1. In editor mode, start with §2 then continue with each of the three sentences on three subsequent indented lines. This way you can see how the goal evolves with each step in the construction."
 msgstr ""
@@ -2016,7 +2016,7 @@ msgid "For propositions §0, §1, and §2, §3 is true if and only if §4 is tru
 "Your goal in this level is to prove the associativity of conjunction."
 msgstr ""
 
-#. §0: `Fact`
+#. §0: `Claim`
 #: Game/Levels/ConjunctionWorld/L10_BossLevel.lean:8
 msgid "For the Boss Level of Conjunction World, the task is to prove a complicated implication.\n"
 "\n"
@@ -3025,12 +3025,12 @@ msgid "If this was too easy, you might find it interesting to learn that the gen
 msgstr ""
 
 #. §0: `False`
-#. §1: `Fact f : False from «{np}» applied to «{p}»`
+#. §1: `Claim f : False from «{np}» applied to «{p}»`
 #: Game/Levels/NegationWorld/L05_Absurd.lean:25
 msgid "If you like, you can add a proof of §0 to your assumption list by §1."
 msgstr ""
 
-#. §0: `Fact np : ¬ P by`
+#. §0: `Claim np : ¬ P by`
 #: Game/Levels/ClassicalWorld/L06_BossLevel.lean:41
 msgid "If you used editor mode to prove some lemmas in the middle of this proof, the lines that form the proof of the lemma following §0 must be indented. This makes it more clear which steps are used to prove the lemma and which are used to prove the main goal. Go next to Equality World where we will finally introduce the slippery notion of mathematical equality."
 msgstr ""
@@ -3250,10 +3250,10 @@ msgstr ""
 #. §5: `P`
 #. §6: `We conclude by Classical.em P`
 #. §7: `Assume for contradiction nlem : ¬ (P ∨ ¬ P)`
-#. §8: `Fact np : ¬ P from ?`
+#. §8: `Claim np : ¬ P from ?`
 #. §9: `?`
 #. §10: `fun p ↦ nlem (Or.inl p)`
-#. §11: `Fact np : ¬ P by`
+#. §11: `Claim np : ¬ P by`
 #. §12: `¬ P`
 #: Game/Levels/ClassicalWorld/L06_BossLevel.lean:8
 msgid "In Negation World, we proved that for any proposition §0: §1\n"
@@ -3741,7 +3741,7 @@ msgid "In this level, we consider a proposition §0 in place of a type §1.\n"
 "\n"
 "Our goal, which is displayed to the right of the vertical line, is to prove the proposition §14.\n"
 "\n"
-"We know that §15 is true because we have assumed that §16 is true. The sentence §17 from the previous level works here too. When the goal is a proposition, there is a second sentence for the same step that reads more like a proof on paper: §18."
+"Claim that §15 is true because we have assumed that §16 is true. The sentence §17 from the previous level works here too. When the goal is a proposition, there is a second sentence for the same step that reads more like a proof on paper: §18."
 msgstr ""
 
 #. §0: `A → Empty`
@@ -4923,17 +4923,17 @@ msgstr ""
 #. §8: `Q ⇒ R`
 #. §9: `R`
 #. §10: `We apply`
-#. §11: `Fact`
-#. §12: `Fact`
+#. §11: `Claim`
+#. §12: `Claim`
 #. §13: `p : P`
 #. §14: `h1 : P ⇒ Q`
-#. §15: `Fact q : Q from h1 applied to p`
+#. §15: `Claim q : Q from h1 applied to p`
 #. §16: `q : Q`
 #. §17: `Q`
-#. §18: `Fact`
+#. §18: `Claim`
 #. §19: `R`
-#. §20: `Fact r : R from h2 applied to q`
-#. §21: `Fact`
+#. §20: `Claim r : R from h2 applied to q`
+#. §21: `Claim`
 #: Game/Levels/ImplicationWorld/L04_ComposingImplication.lean:8
 msgid "Now we are in the setting of three proposition variables §0, §1, and §2 with several hypotheses.\n"
 "\n"
@@ -5338,6 +5338,7 @@ msgstr ""
 #. §14: `Fix`
 #. §15: `Fix f : _`
 #. §16: `Fix (f : A → B → C) (b : B) (a : A)`
+#. §17: `Fix f b a`
 #: Game/Levels/FunctionWorld/L07_SwappingInputs.lean:8
 msgid "Recall that an element of type §0 can be thought of as a function of two variables.\n"
 "\n"
@@ -5345,7 +5346,7 @@ msgid "Recall that an element of type §0 can be thought of as a function of two
 "\n"
 "From a function of type §8, we can define a function of type §9 by exchanging the order of the variables that are input into the function.\n"
 "\n"
-"Here the goal is a multivariable function type that takes three inputs &mdash; of types §10 and §11 and §12 &mdash; and returns one ouput, of type §13. Introduce the three inputs one at a time with three §14 sentences (§15 lets Lean fill in the type), or all at once with §16."
+"Here the goal is a multivariable function type that takes three inputs &mdash; of types §10 and §11 and §12 &mdash; and returns one ouput, of type §13. Introduce the three inputs one at a time with three §14 sentences (§15 lets Lean fill in the type), or all at once with §16, or simply §17 when you are happy to let Lean fill in all the types."
 msgstr ""
 
 #. §0: `Let's construct it componentwise`
@@ -5857,21 +5858,27 @@ msgstr ""
 #. §4: `We conclude by h applied to x`
 #. §5: `We conclude by h applied to x and y`
 #. §6: `We conclude by rfl`
-#. §7: `We apply h`
-#. §8: `h : P ⇒ Q`
-#. §9: `Q`
-#. §10: `P`
-#. §11: `We rewrite using h`
-#. §12: `h : a = b`
-#. §13: `a`
-#. §14: `b`
-#. §15: `We rewrite using ← h`
-#. §16: `… at h'`
-#. §17: `We compute`
-#. §18: `We proceed using h`
-#. §19: `h : P ∨ Q`
-#. §20: `h : A ⊕ B`
-#. §21: `We discuss depending on whether P or ¬ P`
+#. §7: `Claim h : P from e`
+#. §8: `h : P`
+#. §9: `e`
+#. §10: `Claim P from e`
+#. §11: `Claim h : P by …`
+#. §12: `Claim h : P since h₁ and h₂`
+#. §13: `We apply h`
+#. §14: `h : P ⇒ Q`
+#. §15: `Q`
+#. §16: `P`
+#. §17: `We rewrite using h`
+#. §18: `h : a = b`
+#. §19: `a`
+#. §20: `b`
+#. §21: `We rewrite using ← h`
+#. §22: `… at h'`
+#. §23: `We compute`
+#. §24: `We proceed using h`
+#. §25: `h : P ∨ Q`
+#. §26: `h : A ⊕ B`
+#. §27: `We discuss depending on whether P or ¬ P`
 #: Game/Levels/TypeWorld/L02_Proofs.lean:28
 msgid "Sentences starting with §0 finish or transform the goal.\n"
 "\n"
@@ -5879,12 +5886,15 @@ msgid "Sentences starting with §0 finish or transform the goal.\n"
 "* §1 closes the goal with an assumption, without naming it.\n"
 "* §2 closes the goal with the hypothesis or proof term §3; also §4, §5, and §6 when both sides of an equation are equal by definition.\n"
 "\n"
+"Recording a fact (introduced in Implication World):\n"
+"* §7 adds §8 to your assumptions, proved by §9; also §10 (Lean names the fact), §11, and §12.\n"
+"\n"
 "Transforming the goal (introduced in later worlds):\n"
-"* §7 when §8 and the goal is §9: the goal becomes §10.\n"
-"* §11 when §12 replaces §13 by §14 in the goal (backwards: §15; in a hypothesis: §16).\n"
-"* §17 normalises arithmetic on both sides of an equation (Natural Numbers World).\n"
-"* §18 when §19 or §20: one goal per case.\n"
-"* §21: case split on a proposition."
+"* §13 when §14 and the goal is §15: the goal becomes §16.\n"
+"* §17 when §18 replaces §19 by §20 in the goal (backwards: §21; in a hypothesis: §22).\n"
+"* §23 normalises arithmetic on both sides of an equation (Natural Numbers World).\n"
+"* §24 when §25 or §26: one goal per case.\n"
+"* §27: case split on a proposition."
 msgstr ""
 
 #. §0: `By`
@@ -6221,7 +6231,7 @@ msgstr ""
 #. §4: `P ∨ ¬ P`
 #. §5: `Classical.em P : P ∨ ¬ P`
 #. §6: `P`
-#. §7: `Fact lemP : P ∨ ¬ P from Classical.em P`
+#. §7: `Claim lemP : P ∨ ¬ P from Classical.em P`
 #. §8: `help`
 #. §9: `We discuss depending on whether P or ¬ P`
 #. §10: `Classical.byContradiction : ¬ ¬ P ⇒ P`
@@ -7861,7 +7871,7 @@ msgstr ""
 msgid "To use the hypothesis §0 to reach this conclusion write §1."
 msgstr ""
 
-#. §0: `Fact lemP : P ∨ ¬ P from Classical.em P`
+#. §0: `Claim lemP : P ∨ ¬ P from Classical.em P`
 #. §1: `P ∨ ¬ P`
 #: Game/Levels/ClassicalWorld/L03_ExcludedMiddle.lean:27
 msgid "To use the law of excluded middle in your proof, write §0 to add an assumption that §1 is true."
@@ -7908,13 +7918,13 @@ msgstr ""
 msgid "Try solving the goal by rewriting in both directions. You can also perform several rewrites at once, separating the equalities by commas inside square brackets: §0. Why does §1 work but §2 not? Why does §3 or §4 work but §5 not?"
 msgstr ""
 
-#. §0: `Fact pq : P ∧ Q from ⟨«{p}», «{nq}»⟩`
+#. §0: `Claim pq : P ∧ Q from ⟨«{p}», «{nq}»⟩`
 #. §1: `We apply «{npq}»`
 #: Game/Levels/ClassicalWorld/L04_NegatingConjunction.lean:47
 msgid "Try §0 or try §1."
 msgstr ""
 
-#. §0: `Fact q : Q from «{i}» applied to «{p}»`
+#. §0: `Claim q : Q from «{i}» applied to «{p}»`
 #. §1: `Q`
 #: Game/Levels/NegationWorld/L07_NegatingImplication.lean:33
 msgid "Try §0 to add a proof of §1 to your assumptions."
@@ -8034,7 +8044,7 @@ msgstr ""
 msgid "Universal property"
 msgstr ""
 
-#. §0: `Fact eq1 : (g ∘ f) «{x}» = g (f «{x}») from rfl`
+#. §0: `Claim eq1 : (g ∘ f) «{x}» = g (f «{x}») from rfl`
 #: Game/Levels/AdvancedFunctionWorld/L07_CancelingInjectivity.lean:23
 msgid "Use §0 and a similar lemma to give yourself more equalities to rewrite along."
 msgstr ""
@@ -8142,7 +8152,7 @@ msgid "We are now ready for the Boss Level of Equivalence World."
 msgstr ""
 
 #. §0: `Assume (h1 : _) (h2 : _) (h3 : _)`
-#. §1: `Fact`
+#. §1: `Claim`
 #. §2: `</>`
 #. §3: `editor mode`
 #. §4: `>_`
@@ -8413,7 +8423,7 @@ msgstr ""
 #. §4: `P`
 #. §5: `Q`
 #. §6: `P ∨ ¬ P`
-#. §7: `Fact lem : P ∨ ¬ P from Classical.em P`
+#. §7: `Claim lem : P ∨ ¬ P from Classical.em P`
 #. §8: `P ∨ ¬ P`
 #: Game/Levels/ClassicalWorld/L04_NegatingConjunction.lean:8
 msgid "We have seen that §0 implies §1.\n"
@@ -8750,7 +8760,7 @@ msgstr ""
 #. §8: `h`
 #. §9: `Set`
 #. §10: `Set`
-#. §11: `Fact`
+#. §11: `Claim`
 #. §12: `p : (X → A) × (X → B)`
 #. §13: `X → A`
 #. §14: `X → B`
@@ -8816,7 +8826,7 @@ msgstr ""
 
 #. §0: `«{i}»`
 #. §1: `«{nq}»`
-#. §2: `Fact`
+#. §2: `Claim`
 #: Game/Levels/ClassicalWorld/L02_Contrapositive.lean:31
 msgid "What can you prove using §0 and §1? Use §2 to add this to your context."
 msgstr ""
@@ -9178,7 +9188,7 @@ msgstr ""
 msgid "Write §0 on a line by itself and Lean lists the sentences that apply to the current goal, with the statements filled in. §1 does the same for a hypothesis §2."
 msgstr ""
 
-#. §0: `Fact lem : P ∨ ¬ P from Classical.em P`
+#. §0: `Claim lem : P ∨ ¬ P from Classical.em P`
 #. §1: `P`
 #. §2: `Q`
 #: Game/Levels/ClassicalWorld/L04_NegatingConjunction.lean:28
@@ -9340,7 +9350,7 @@ msgstr ""
 msgid "You can click on §0 to attempt a different proof."
 msgstr ""
 
-#. §0: `Fact lem : (g ∘ f) «{a}» = ?? from rfl`
+#. §0: `Claim lem : (g ∘ f) «{a}» = ?? from rfl`
 #. §1: `??`
 #. §2: `We rewrite using ← ??`
 #. §3: `\\l`
@@ -9348,7 +9358,7 @@ msgstr ""
 msgid "You can either prove a lemma §0 by replacing the §1 with the definition of the composition function. Or you can try §2 for an appropriate proof of equality using §3 to type the left arrow."
 msgstr ""
 
-#. §0: `Fact lem : (g ∘ f) «{a}» = ?? from rfl`
+#. §0: `Claim lem : (g ∘ f) «{a}» = ?? from rfl`
 #. §1: `??`
 #. §2: `We rewrite using [← ??, ← ??]`
 #. §3: `\\l`
@@ -9489,7 +9499,7 @@ msgstr ""
 #. §1: `x : A`
 #. §2: `e`
 #. §3: `Set x := e`
-#. §4: `Fact`
+#. §4: `Claim`
 #. §5: `a : A`
 #. §6: `b : B`
 #. §7: `Set p : A × B := ⟨a, b⟩`
@@ -9499,17 +9509,16 @@ msgstr ""
 msgid "§0 adds a new element §1 to your context, defined to be §2 (§3 lets Lean work out the type). It is like §4, but for elements of types rather than proofs of propositions. For example, given elements §5 and §6, you can write §7 to add their pair to the context, or §8 to add the constant function at §9."
 msgstr ""
 
-#. §0: `Fact h : P from e`
+#. §0: `Claim h : P from e`
 #. §1: `h : P`
 #. §2: `e`
-#. §3: `Fact q : Q from h1 applied to p`
-#. §4: `Fact h : P since …`
-#. §5: `Fact h : P by computation`
-#. §6: `Fact h : P by`
-#. §7: `Claim`
-#. §8: `Fact`
+#. §3: `Claim q : Q from h1 applied to p`
+#. §4: `Claim P from e`
+#. §5: `Claim h : P since …`
+#. §6: `Claim h : P by computation`
+#. §7: `Claim h : P by`
 #: Game/Levels/ImplicationWorld/L04_ComposingImplication.lean:42
-msgid "§0 adds a new hypothesis §1 to the context, proved by §2 (for example §3). Other forms: §4 (prove it from stated facts), §5, and §6 followed by an indented proof on the next lines (editor mode). §7 is a synonym of §8."
+msgid "§0 adds a new hypothesis §1 to the context, proved by §2 (for example §3). You may leave out the name, §4, and Lean picks one. Other forms: §5 (prove it from stated facts), §6, and §7 followed by an indented proof on the next lines (editor mode)."
 msgstr ""
 
 #. §0: `Type`
@@ -9575,7 +9584,7 @@ msgstr ""
 #. §0: `«{g}» (f «{a}»)`
 #. §1: `(«{g}» ∘ f) «{a}»`
 #. §2: `«{lh}»`
-#. §3: `Fact lem : («{g}» ∘ f) «{a}» = «{g}» (f «{a}») from rfl`
+#. §3: `Claim lem : («{g}» ∘ f) «{a}» = «{g}» (f «{a}») from rfl`
 #: Game/Levels/AdvancedFunctionWorld/L15_Isomorphism.lean:36
 msgid "§0 is by definition §1, and §2 rewrites the latter. Record the definitional equality with §3, then rewrite."
 msgstr ""

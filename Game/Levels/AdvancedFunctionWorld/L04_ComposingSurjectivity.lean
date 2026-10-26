@@ -24,7 +24,7 @@ Statement Function.Surjective.comp {A B C : Type} (f : A → B) (g : B → C) (f
   Hint (hidden := true) "To use the hypothesis `f_is_surj` at `{b}`, write `By f_is_surj applied to {b} we get a such that ha : f a = {b}`."
   By f_is_surj applied to b we get a such that ha : f a = b
   Let's prove that a works
-  Hint (hidden := true) "You can either prove a lemma `Fact lem : (g ∘ f) {a} = ?? from rfl` by replacing the `??` with the definition of the composition function. Or you can try `We rewrite using [← ??, ← ??]` using `\\l` to type the left arrow."
+  Hint (hidden := true) "You can either prove a lemma `Claim lem : (g ∘ f) {a} = ?? from rfl` by replacing the `??` with the definition of the composition function. Or you can try `We rewrite using [← ??, ← ??]` using `\\l` to type the left arrow."
   We rewrite using [← hb, ← ha]
   We conclude by rfl
 

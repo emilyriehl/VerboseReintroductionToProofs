@@ -33,14 +33,14 @@ Statement Function.isomorphism_iff_invertible {A B : Type} (f : A → B) : (∃ 
   Let's prove that g works
   Let's first prove that ∀ a : A, g (f a) = a
   Fix a : A
-  Hint (hidden := true) "`{g} (f {a})` is by definition `({g} ∘ f) {a}`, and `{lh}` rewrites the latter. Record the definitional equality with `Fact lem : ({g} ∘ f) {a} = {g} (f {a}) from rfl`, then rewrite."
-  Fact lem₁ : (g ∘ f) a = g (f a) from rfl
+  Hint (hidden := true) "`{g} (f {a})` is by definition `({g} ∘ f) {a}`, and `{lh}` rewrites the latter. Record the definitional equality with `Claim lem : ({g} ∘ f) {a} = {g} (f {a}) from rfl`, then rewrite."
+  Claim lem₁ : (g ∘ f) a = g (f a) from rfl
   We rewrite using ← lem₁
   We rewrite using lh
   We conclude by rfl
   Let's now prove that ∀ b : B, f (g b) = b
   Fix b : B
-  Fact lem₂ : (f ∘ g) b = f (g b) from rfl
+  Claim lem₂ : (f ∘ g) b = f (g b) from rfl
   We rewrite using ← lem₂
   We rewrite using rh
   We conclude by rfl

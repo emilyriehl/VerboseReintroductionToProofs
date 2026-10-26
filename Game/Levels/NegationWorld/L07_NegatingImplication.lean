@@ -30,8 +30,8 @@ Statement {P Q : Prop} : P ∧ ¬ Q → ¬ (P → Q) := by
   Hint (hidden := true) "Try `We apply {nq}`."
   We apply nq
   Hint (hidden := true) "What can we prove with the hypotheses `{i}` and `{p}`?"
-  Hint (hidden := true) "Try `Fact q : Q from {i} applied to {p}` to add a proof of `Q` to your assumptions."
-  Fact q : Q from i applied to p
+  Hint (hidden := true) "Try `Claim q : Q from {i} applied to {p}` to add a proof of `Q` to your assumptions."
+  Claim q : Q from i applied to p
   We conclude by q
 
 Conclusion "The converse implication is more subtle, and will be addressed in the Classical World."

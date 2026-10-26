@@ -9,7 +9,7 @@ Introduction "We are now ready for the Boss Level of Implication World.
 
 Multiple hypotheses can be introduced at once by writing `Assume (h1 : _) (h2 : _) (h3 : _)` etc. You might consider using names that will help you remember which propositions are proven by each hypothesis!
 
-While it is not necessary to solve this level, you may enjoy experimenting with the sentence `Fact` that was recently added to the library.
+While it is not necessary to solve this level, you may enjoy experimenting with the sentence `Claim` that was recently added to the library.
 
 To delete a proof (or proof attempt) and start over click on the button labelled `</>` in the upper right hand corner to enter `editor mode`. Then delete all the lines of your first proof (or proof attempt). Clicking on `>_` takes you back to `typewriter mode`."
 
