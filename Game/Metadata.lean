@@ -18,9 +18,9 @@ Verbose Lean's controlled English (`Assume h : P`, `We conclude by h`, `Let's pr
 works`, …) plus the game's own construction phrases (`Let's use a`, `Let's construct it
 componentwise`, `Let's consider all cases for b`, …) defined in `Game/Metadata/Tactic/`.
 
-`Game.Metadata.Tactic` still provides the original game's custom tactics (`rw`, `use`,
-`induction … with`, `constructor`) for the levels that have not been ported yet; it goes away once
-the port is complete. The `ℕ` notation now comes from Mathlib (through Verbose).
+All seventeen worlds are ported, so the original game's custom tactics (`rw`, `use`,
+`induction … with`, `constructor`) are no longer imported (see `Game/Metadata/Tactic.lean`). The
+`ℕ` notation comes from Mathlib (through Verbose).
 
 Verbose configuration: classical case analysis is enabled; the ProofWidgets suggestion panel and
 Verbose's own `help` are disabled because the game server cannot render widgets

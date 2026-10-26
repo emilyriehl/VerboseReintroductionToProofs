@@ -29,9 +29,6 @@ Statement {A : Type} {x y : A} (p : x = y) : y = x  := by
 
 Conclusion "We will now explore other applications of `We rewrite using`. (`We rewrite using h at h'` rewrites inside a hypothesis `h'` instead of the goal.)"
 
--- Temporary, while later worlds are still being ported: the original's `rw`.
-NewHiddenTactic rw
-
 /-- Given elements `x y : A` and a proof `p : x = y`, `Eq.symm p` or `p.symm` are two names for the corresponding proof `y = x`. -/
 TheoremDoc Eq.symm as "symm" in "Eq"
 

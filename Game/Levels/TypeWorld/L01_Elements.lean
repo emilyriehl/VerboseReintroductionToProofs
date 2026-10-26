@@ -191,10 +191,8 @@ TacticDoc «Calc?»
 TacticDoc «Type»
 /-- See `Type`. -/
 TacticDoc «Sort»
-/-- The `exact` tactic of the original game; still accepted while the port is in progress. -/
-TacticDoc exact
 
 -- The game checks each sentence word by word against the library. Every word of every
 -- sentence must be allowed; these are the words that are not themselves the first word of a
 -- library entry. Declared once here, they are available in all later levels.
-NewHiddenTactic «and» «applied» «apply» «as» «assumption» «becomes» «choose» «combine» «computation» «conclude» «contradicting» «contradiction» «contradictory» «contrapose» «contrapositive:» «depending» «discuss» «everywhere» «finally» «first» «for» «forget» «from» «get» «hence» «hypothesis» «induction» «it» «it's» «negation» «now» «next» «observe» «obtain» «on» «or» «proceed» «prove» «push» «reformulate» «rename» «rewrite» «simply» «since» «since?» «such» «suffices» «that» «the» «to» «unfold» «we» «whether» «which» «works» «use» «an» «element» «of» «construct» «componentwise» «pair» «consider» «all» «cases» «case» «where» «is» «define» «recursion» «impossible» «because» «Calc?» «We» «Type» «Sort» exact
+NewHiddenTactic «and» «applied» «apply» «as» «assumption» «becomes» «choose» «combine» «computation» «conclude» «contradicting» «contradiction» «contradictory» «contrapose» «contrapositive:» «depending» «discuss» «everywhere» «finally» «first» «for» «forget» «from» «get» «hence» «hypothesis» «induction» «it» «it's» «negation» «now» «next» «observe» «obtain» «on» «or» «proceed» «prove» «push» «reformulate» «rename» «rewrite» «simply» «since» «since?» «such» «suffices» «that» «the» «to» «unfold» «we» «whether» «which» «works» «use» «an» «element» «of» «construct» «componentwise» «pair» «consider» «all» «cases» «case» «where» «is» «define» «recursion» «impossible» «because» «Calc?» «We» «Type» «Sort»

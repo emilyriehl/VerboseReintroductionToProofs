@@ -30,5 +30,3 @@ NewDefinition Sum.inl
 Conclusion "The function `Sum.inl : A → A ⊕ B` provides the first introduction rule for coproduct types. In the next level, we will explore the second introduction rule."
 
 -- `Let's construct an element of A` is documented under `Let's`.
--- Temporary, while later worlds are still being ported: the original tactics they use.
-NewHiddenTactic left right rcases

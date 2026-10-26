@@ -2639,7 +2639,7 @@ msgstr ""
 #. §2: `Eq.symm p`
 #. §3: `p.symm`
 #. §4: `y = x`
-#: Game/Levels/EqualityWorld/L04_Symmetry.lean:35
+#: Game/Levels/EqualityWorld/L04_Symmetry.lean:32
 msgid "Given elements §0 and a proof §1, §2 or §3 are two names for the corresponding proof §4."
 msgstr ""
 
@@ -7379,11 +7379,6 @@ msgstr ""
 #. §5: `f a b : C`
 #: Game/Levels/FunctionWorld/L08_CompositionRevisited.lean:40
 msgid "The §0 function exchanges the inputs of a function of two variables. For a function with two variables §1, §2 is the function that sends §3 and §4 to §5."
-msgstr ""
-
-#. §0: `exact`
-#: Game/Levels/TypeWorld/L01_Elements.lean:194
-msgid "The §0 tactic of the original game; still accepted while the port is in progress."
 msgstr ""
 
 #. §0: `Empty ⊕ (Empty → Empty)`
