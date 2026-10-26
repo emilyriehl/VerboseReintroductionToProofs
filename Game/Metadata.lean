@@ -9,6 +9,7 @@ import Game.Metadata.Tactic.Synonyms
 import Game.Metadata.Tactic.Help
 import Game.Metadata.Tactic.Overrides
 import Game.Metadata.Tactic.Cases
+import Game.Metadata.Tactic.HelpProviders
 
 /-! Everything that should be available in every level.
 
@@ -26,5 +27,12 @@ Verbose's own `help` are disabled because the game server cannot render widgets
 (`Game/Metadata/Tactic/Help.lean` provides a plain-text `help` instead). -/
 
 configureAnonymousCaseSplittingLemmas Classical.em
+-- Verbose's default goal providers, with its implication provider replaced by a propositions-only
+-- wrapper, plus the game's providers for assumptions matching the goal and for data goals.
+configureHelpProviders DefaultHypHelp
+  helpFalseGoal helpMemGoal helpIneqGoal helpEqualGoal helpEquivalenceGoal gameImplicationGoal
+  helpDisjunctionGoal helpConjunctionGoal helpExistsSimpleGoal helpExistsRelGoal
+  helpForallSimpleGoal helpForallRelGoal helpSubsetGoal helpNeGoal helpNegationGoal
+  gameHypothesisGoal gameDataGoal
 disableWidget
 disableHelpTactic

@@ -50,7 +50,7 @@ doc = (f'import {level["module"]} import GameServer.Runner \n' + opens +
        f'(inventory := [{",".join(json.dumps(s) for s in inventory)}]) '
        f':= by\n{proof}\n')
 
-out_dir = pathlib.Path(__file__).resolve().parent.parent / "runner-tests"
+out_dir = pathlib.Path(__file__).resolve().parent.parent / ".lake" / "runner-out"
 out_dir.mkdir(exist_ok=True)
 stem = pathlib.Path(a.proof_file).stem if a.proof_file != "-" else "stdin"
 doc_path = out_dir / f"{a.world}_{a.level}_{stem}.lean"
