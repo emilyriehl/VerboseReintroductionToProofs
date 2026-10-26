@@ -1,0 +1,82 @@
+name: sync-upstream
+run-name: Merge changes from the original game
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 1"   # Mondays 05:17 UTC
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Fetch upstream
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add upstream https://github.com/emilyriehl/ReintroductionToProofs
+          git fetch --quiet upstream main
+      - name: Anything new?
+        id: new
+        run: |
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "uptodate=true" >> "$GITHUB_OUTPUT"; echo "Already up to date."
+          else
+            echo "uptodate=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Merge
+        if: steps.new.outputs.uptodate == 'false'
+        id: merge
+        run: |
+          set +e
+          SHORT=$(git rev-parse --short upstream/main)
+          BRANCH="sync/upstream-$SHORT"
+          git checkout -b "$BRANCH"
+          git merge --no-ff --no-commit upstream/main
+          # These three files always keep this repository's version (different Lean toolchain).
+          git checkout HEAD -- lean-toolchain lakefile.lean lake-manifest.json 2>/dev/null
+          git add lean-toolchain lakefile.lean lake-manifest.json
+          CONFLICTS=$(git diff --name-only --diff-filter=U)
+          git rev-parse upstream/main > UPSTREAM_COMMIT
+          git add -A
+          if [ -z "$CONFLICTS" ]; then
+            git commit -q -m "Merge upstream ReintroductionToProofs ($SHORT)"
+            echo "conflicts=" >> "$GITHUB_OUTPUT"
+          else
+            git commit -q -m "Merge upstream ReintroductionToProofs ($SHORT) — CONFLICTS TO RESOLVE"
+            printf 'conflicts<<EOF\n%s\nEOF\n' "$CONFLICTS" >> "$GITHUB_OUTPUT"
+          fi
+          git push --quiet -u origin "$BRANCH"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          echo "short=$SHORT" >> "$GITHUB_OUTPUT"
+          git log --oneline HEAD~1..upstream/main > /tmp/upstream-commits.txt || true
+      - name: Open pull request
+        if: steps.new.outputs.uptodate == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BODY=$(mktemp)
+          {
+            echo "Automated merge of https://github.com/emilyriehl/ReintroductionToProofs at ${{ steps.merge.outputs.short }}."
+            echo
+            if [ -n "${{ steps.merge.outputs.conflicts }}" ]; then
+              echo "**Conflicts to resolve by hand** (the branch contains conflict markers):"
+              echo
+              echo '```'; echo "${{ steps.merge.outputs.conflicts }}"; echo '```'
+              echo
+              echo "Recipe: check out the branch, write the Verbose version of the conflicting proofs/hints, remove the markers, run \`lake build\`, push."
+            else
+              echo "Merged cleanly. Check that the build and the parity check are green, then merge."
+            fi
+            echo
+            echo "Upstream commits:"; echo '```'; cat /tmp/upstream-commits.txt; echo '```'
+          } > "$BODY"
+          gh pr create --base main --head "${{ steps.merge.outputs.branch }}" \
+            --title "Sync with upstream ReintroductionToProofs (${{ steps.merge.outputs.short }})" \
+            --body-file "$BODY" ${{ steps.merge.outputs.conflicts != '' && '--label needs-manual-merge' || '' }} || \
+          gh pr create --base main --head "${{ steps.merge.outputs.branch }}" \
+            --title "Sync with upstream ReintroductionToProofs (${{ steps.merge.outputs.short }})" --body-file "$BODY"

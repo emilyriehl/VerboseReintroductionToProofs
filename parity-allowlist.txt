@@ -1,0 +1,2 @@
+# Lines of the form <World>/<file-stem>:<field> (field: statement, title, docstring, level)
+# or world:<World>, for deliberate deviations from the original game.
