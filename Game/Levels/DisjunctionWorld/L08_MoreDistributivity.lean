@@ -16,89 +16,39 @@ Demonstrate the following logical equivalence."
 /-- `(P ∨ Q) ∧ (R ∨ S)` holds if and only if `(P ∧ R) ∨ (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S)` holds. -/
 Statement {P Q R S : Prop} : (P ∨ Q) ∧ (R ∨ S) ↔ (P ∧ R) ∨ (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S) := by
   Hint (hidden := true) "What is the outermost logical connective?"
-  constructor
-  intro h
+  Let's first prove that (P ∨ Q) ∧ (R ∨ S) → (P ∧ R) ∨ (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S)
+  Assume h : (P ∨ Q) ∧ (R ∨ S)
   Hint (hidden := true) "What can you conclude from the hypothesis `{h}`?"
-  Hint (hidden := true) "Try `have pq : P ∨ Q := {h}.1` to start to break apart the hypothesis `{h}`. Alternatively, `rcases {h} with ⟨p | q, r | s⟩` will break out both the components and the cases associated to this hypothesis."
-  Branch
-    rcases h with ⟨p | q, r | s⟩
-    Hint (hidden := true) "The implicit parentheses in the goal are to the right `(P ∧ R) ∨ ((P ∧ S) ∨ ((Q ∧ R) ∨ (Q ∧ S)))`."
-    Hint (hidden := true) "Thus the outermost logical connective is the `∨` combining `P ∧ R` and `(P ∧ S) ∨ ((Q ∧ R) ∨ (Q ∧ S))`."
-    left
-    constructor
-    assumption
-    assumption
-    right
-    left
-    constructor
-    assumption
-    assumption
-    right
-    right
-    left
-    constructor
-    assumption
-    assumption
-    right
-    right
-    right
-    constructor
-    assumption
-    assumption
-  have pq := h.1
-  Hint (hidden := true) "Try `have rs : R ∨ S := {h}.2`."
-  have rs := h.2
-  cases pq
-  cases rs
+  Hint (hidden := true) "Write `By {h} we get pq : P ∨ Q and rs : R ∨ S` to break apart the hypothesis `{h}`; then consider the cases of `pq`, and inside each of them the cases of `rs`."
+  By h we get pq : P ∨ Q and rs : R ∨ S
+  Let's first consider the case where pq is inl p
+  Let's first consider the case where rs is inl r
   Hint (hidden := true) "The implicit parentheses in the goal are to the right `(P ∧ R) ∨ ((P ∧ S) ∨ ((Q ∧ R) ∨ (Q ∧ S)))`."
   Hint (hidden := true) "Thus the outermost logical connective is the `∨` combining `P ∧ R` and `(P ∧ S) ∨ ((Q ∧ R) ∨ (Q ∧ S))`."
-  apply Or.inl
-  constructor
-  assumption
-  assumption
-  Hint (hidden := true) "The implicit parentheses in the goal are to the right `(P ∧ R) ∨ ((P ∧ S) ∨ ((Q ∧ R) ∨ (Q ∧ S)))`."
-  Hint (hidden := true) "Thus the outermost logical connective is the `∨` combining `P ∧ R` and `(P ∧ S) ∨ ((Q ∧ R) ∨ (Q ∧ S))`."
-  apply Or.inr
-  apply Or.inl
-  constructor
-  assumption
-  assumption
-  Hint (hidden := true) "This completes the proof in the case where `P ∨ Q` holds because `P` holds. Now we've started the case where `Q` holds, which requires another case split over the proof `{rs} : {R} ∨ {S}`."
-  cases rs
-  apply Or.inr
-  apply Or.inr
-  apply Or.inl
-  constructor
-  assumption
-  assumption
-  apply Or.inr
-  apply Or.inr
-  apply Or.inr
-  constructor
-  assumption
-  assumption
-  intro h
-  Hint (hidden := true) "Uses `cases {h}` or `rcases {h} with pr | ps | qr | qs` to break the hypothesis into the constituent cases"
-  rcases h with pr | ps | qr | qs
-  constructor
-  left
-  exact pr.1
-  apply Or.inl
-  exact pr.2
-  constructor
-  apply Or.inl
-  exact ps.1
-  apply Or.inr
-  exact ps.2
-  constructor
-  apply Or.inr
-  exact qr.1
-  apply Or.inl
-  exact qr.2
-  constructor
-  apply Or.inr
-  exact qs.1
-  apply Or.inr
-  exact qs.2
+  Let's prove that P ∧ R
+  We conclude by ⟨p, r⟩
+  Let's next consider the case where rs is inr s
+  Let's prove that (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S)
+  Let's prove that P ∧ S
+  We conclude by ⟨p, s⟩
+  Hint (hidden := true) "This completes the proof in the case where `P ∨ Q` holds because `P` holds. Now announce the case where `Q` holds, which requires another case split over the proof `{rs} : {R} ∨ {S}`."
+  Let's next consider the case where pq is inr q
+  Let's first consider the case where rs is inl r
+  We conclude by Or.inr (Or.inr (Or.inl ⟨q, r⟩))
+  Let's next consider the case where rs is inr s
+  We conclude by Or.inr (Or.inr (Or.inr ⟨q, s⟩))
+  Let's now prove that (P ∧ R) ∨ (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S) → (P ∨ Q) ∧ (R ∨ S)
+  Assume h : (P ∧ R) ∨ (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S)
+  Hint (hidden := true) "Consider the cases of `{h}`, one after the other: `Let's first consider the case where {h} is inl pr`, and the remaining disjunction in the `inr` case splits further."
+  Let's first consider the case where h is inl pr
+  We conclude by ⟨Or.inl pr.1, Or.inl pr.2⟩
+  Let's next consider the case where h is inr h'
+  Let's first consider the case where h' is inl ps
+  We conclude by ⟨Or.inl ps.1, Or.inr ps.2⟩
+  Let's next consider the case where h' is inr h''
+  Let's first consider the case where h'' is inl qr
+  We conclude by ⟨Or.inr qr.1, Or.inl qr.2⟩
+  Let's next consider the case where h'' is inr qs
+  We conclude by ⟨Or.inr qs.1, Or.inr qs.2⟩
 
 Conclusion "We are now ready for the Boss Level of Disjunction World."

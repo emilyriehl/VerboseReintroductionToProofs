@@ -25,19 +25,19 @@ open ReintroductionToProofs
 /-- For any type `A`, there are functions in both directions between the types `Empty` and `A × Empty`. -/
 Statement {A : Type} : (Empty → A × Empty) × (A × Empty → Empty) := by
   Hint (hidden := true) "What is the logical structure of this type?"
-  constructor
+  Let's construct the pair
   Branch
-    intro x
-    Hint (hidden := true) "Try `cases {x}` to ask Lean to consider all possible cases involving an element `{x} : Empty`."
-    cases x
-    exact Prod.snd
+    Fix x : Empty
+    Hint (hidden := true) "An element `{x} : Empty` cannot exist: `This is impossible because of {x}`."
+    This is impossible because of x
+    Let's use Prod.snd
   Hint (hidden := true) "Have a look at the library of definitions for a function whose domain is the empty type."
-  exact Empty.elim
+  Let's use Empty.elim
   Hint (hidden := true) "How do you construct elements of a function type?"
   Branch
-    intro x
+    Fix x : A × Empty
     Hint (hidden := true) "Can you extract the second component of the element `{x} : A × Empty`?"
-    exact x.2
-  exact Prod.snd
+    Let's use x.2
+  Let's use Prod.snd
 
 Conclusion "If your answer does not use the functions `Empty.elim` and `Prod.snd`, you might have fun trying to solve this level again using them in appropriate places."

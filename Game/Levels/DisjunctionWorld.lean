@@ -35,5 +35,5 @@ Using a hypothesis `h : P ∨ Q` leads to a proof strategy of arguing &ldquo;by 
 
 Like the analogy between function types and implication, and product types and conjunction, there is a close analogy between coproduct types and the logical operation of disjunction.
 
-In particular, we will use similar notations and the same tactics introduced in Coproduct World.
+In particular, we will use similar notations and the same kind of sentences introduced in Coproduct World: to prove `P ∨ Q` you announce the side you will prove with `Let's prove that P` (the counterpart of `Let's construct an element of A`), and to use a hypothesis `h : P ∨ Q` you consider its cases with `Let's first consider the case where h is inl p` and `Let's next consider the case where h is inr q`, exactly as for an element of a coproduct type. The symbol `∨` is typed `\\or`.
 "

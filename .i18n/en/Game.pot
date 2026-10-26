@@ -298,11 +298,10 @@ msgid "Advanced Function World"
 msgstr ""
 
 #. §0: `«{h}» : «{P}» ∨ «{Q}»`
-#. §1: `cases h`
-#. §2: `P`
-#. §3: `Q`
-#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:32
-msgid "After introducing the hypothesis §0, type §1 to ask Lean to consider both cases: the first being that §2 is true and the second being that §3 is true."
+#. §1: `Let's consider all cases for «{h}»`
+#. §2: `Let's first consider the case where «{h}» is inl p`
+#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:30
+msgid "After introducing the hypothesis §0, write §1, then announce the first case with §2."
 msgstr ""
 
 #. §0: `Retry`
@@ -322,6 +321,17 @@ msgstr ""
 #. §1: `(g ∘ f) x = (g ∘ f) y`
 #: Game/Levels/AdvancedFunctionWorld/L06_ComposingInjectivity.lean:27
 msgid "Alternatively, you could prove lemmas by §0 and then use rewrites to convert the goal into one where you can apply the hypothesis §1. Because the lemmas hold by definitional equality, you were able to skip that step."
+msgstr ""
+
+#. §0: `Empty`
+#: Game/Levels/EmptyWorld/L03_ThroughEmpty.lean:26
+msgid "An element of §0 cannot exist. Which sentence from the first level of this world settles the goal?"
+msgstr ""
+
+#. §0: `«{x}» : Empty`
+#. §1: `This is impossible because of «{x}»`
+#: Game/Levels/EmptyWorld/L05_ProductWithEmpty.lean:31
+msgid "An element §0 cannot exist: §1."
 msgstr ""
 
 #. §0: `(p || !q || r) && (q || !r) && (!p || r)`
@@ -425,10 +435,21 @@ msgstr ""
 msgid "Announce the remaining goal, then break it into subgoals again."
 msgstr ""
 
+#. §0: `Let's next consider the case where «{p}» is inr x`
+#: Game/Levels/EmptyWorld/L06_CoproductWithEmpty.lean:36
+msgid "Announce the second case, §0, and then explain why it cannot occur."
+msgstr ""
+
 #. §0: `Let's next consider the case where «{x}» is inr b`
 #: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:34
 #: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:52
 msgid "Announce the second case: §0."
+msgstr ""
+
+#. §0: `«{Q}» ∨ «{P}»`
+#. §1: `Let's prove that «{P}»`
+#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:34
+msgid "Announce which side of §0 you will prove: §1."
 msgstr ""
 
 #. §0: `A ⊕ B → C`
@@ -1069,6 +1090,13 @@ msgid "Consider a type §0. For any two elements §1 there is a proposition §2\
 "Lean provides a tactic that can be applied to the proof §28 to convert a goal involving the element §29 to an analogous goal with §30 substituted in place of §31."
 msgstr ""
 
+#. §0: `«{h}»`
+#. §1: `Let's first consider the case where «{h}» is inl pr`
+#. §2: `inr`
+#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:42
+msgid "Consider the cases of §0, one after the other: §1, and the remaining disjunction in the §2 case splits further."
+msgstr ""
+
 #. §0: `«{x}» : A ⊕ B`
 #. §1: `Let's first consider the case where «{x}» is inl a`
 #: Game/Levels/CoproductWorld/L05_Symmetry.lean:19
@@ -1166,9 +1194,9 @@ msgid "Dependent World"
 msgstr ""
 
 #. §0: `Or.symm`
-#. §1: `exact Or.symm`
-#: Game/Levels/DisjunctionWorld/L04_Symmetry.lean:24
-msgid "Did you give the same proof twice? If so, why does this make sense? If not, could you have done this? If your proof does not make use of the name §0 that Lean has assigned to the proof given in the previous level, try typing §1 at an appropriate place in your proof."
+#. §1: `We conclude by Or.symm`
+#: Game/Levels/DisjunctionWorld/L04_Symmetry.lean:25
+msgid "Did you give the same proof twice? If so, why does this make sense? If not, could you have done this? If your proof does not make use of the name §0 that Lean has assigned to the proof given in the previous level, try writing §1 at an appropriate place in your proof."
 msgstr ""
 
 #. §0: `And.symm`
@@ -1732,7 +1760,7 @@ msgstr ""
 #. flip Function.comp : (A → B) → (B → C) → (A → C)`
 #. §4: `C`
 #. §5: `Empty`
-#. §6: `exact flip Function.comp`
+#. §6: `Let's use flip Function.comp`
 #: Game/Levels/EmptyWorld/L04_Composition.lean:32
 msgid "For any types §0, §1, and §2, we have the function §3 defined by exchanging the inputs. This specializes in the case where §4 is the type §5 to define the function we seek here. Indeed, this level can be solved with §6. Does this perspective make this construction feel less strange?"
 msgstr ""
@@ -1827,7 +1855,7 @@ msgstr ""
 #. §0: `P`
 #. §1: `Q`
 #. §2: `Or.inl`
-#. §3: `P → (P ∨ Q)`
+#. §3: `P ⇒ (P ∨ Q)`
 #: Game/Levels/DisjunctionWorld/L01_IntroducingOr.lean:35
 #: Game/Levels/DisjunctionWorld/L01_IntroducingOr.lean:38
 #: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:8
@@ -2372,20 +2400,24 @@ msgstr ""
 #. §10: `R`
 #. §11: `P`
 #. §12: `h : P ∨ Q`
-#. §13: `cases h`
+#. §13: `Let's consider all cases for h`
 #. §14: `P`
 #. §15: `Q`
-#. §16: `cases`
-#. §17: `h : P ∨ Q`
-#. §18: `rcases h with p | q`
-#. §19: `cases h`
-#. §20: `p : P`
-#. §21: `q : Q`
-#. §22: `p`
-#. §23: `q`
+#. §16: `Let's first consider the case where h is inl p`
+#. §17: `p : P`
+#. §18: `Let's next consider the case where h is inr q`
+#. §19: `q : Q`
+#. §20: `p`
+#. §21: `q`
+#. §22: `all cases`
+#. §23: `Let's first consider …`
 #. §24: `A ⊕ B`
-#. §25: `P ∨ Q`
-#. §26: `Q ∨ P`
+#. §25: `help`
+#. §26: `We proceed using h`
+#. §27: `Assume p : P`
+#. §28: `Assume q : Q`
+#. §29: `P ∨ Q`
+#. §30: `Q ∨ P`
 #: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:13
 msgid "Given a hypothesis §0, we know that *either* §1 or §2 is true (or possibly both are true).\n"
 "\n"
@@ -2393,15 +2425,13 @@ msgid "Given a hypothesis §0, we know that *either* §1 or §2 is true (or poss
 "\n"
 "If we want to use a hypothesis like this to prove some other proposition §5 is true we need proofs that cover either of the two cases: that is, we need to show that §6 implies §7 (whether or not §8 is true) and also that §9 implies §10 (whether or not §11 is true).\n"
 "\n"
-"If we have an assumption of the form §12, then type §13 to ask Lean to consider both cases: the first being that §14 is true and the second being that §15 is true.\n"
+"If we have an assumption of the form §12, write §13 to ask Lean to consider both cases: the first being that §14 is true and the second being that §15 is true. Then announce each case in turn, naming the proof it provides: §16 gives §17, and §18 gives §19. (You can choose any names for §20 and §21, and you may skip the §22 line and start directly with §23.)\n"
 "\n"
-"There is another tactic, similar to §16, which allows you to give explicit names for the hypotheses assumed in each case.\n"
+"This proof strategy should be reminiscent of a definition by cases of a function mapping out of a coproduct type §24. The same sentences are used for that sort of construction.\n"
 "\n"
-"When given a hypothesis §17, then §18 can be used in place of §19 to give hypotheses §20 in the first case and §21 in the second. (Here you can choose any variable names for §22 and §23.)\n"
+"Verbose Lean also offers a shorter sentence for the same step, which §25 will suggest: §26 splits into the two cases at once, each starting with an implication to be assumed with §27 or §28.\n"
 "\n"
-"This proof strategy should be reminiscent of a definition by cases of a function mapping out of a coproduct type §24. Recall the same tactics may be used for that sort of construction.\n"
-"\n"
-"In this level, use the strategy of arguing by cases to prove that or is symmetric, that is that §25 implies §26."
+"In this level, use the strategy of arguing by cases to prove that or is symmetric, that is that §29 implies §30."
 msgstr ""
 
 #. §0: `B C : A → Type`
@@ -2717,7 +2747,7 @@ msgstr ""
 
 #. §0: `«{P}» ∨ («{Q}» ∨ «{R}»)`
 #: Game/Levels/DisjunctionWorld/L06_Associativity.lean:31
-#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:33
+#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:36
 msgid "Here the goal is parenthesized as §0. Using your hypothesis, are you trying to prove the left-hand proposition or the right-hand one?"
 msgstr ""
 
@@ -2914,10 +2944,12 @@ msgid "If this is your first time solving this level, delete your code and prove
 msgstr ""
 
 #. §0: `P ∨ Q`
-#. §1: `Or.inl : P → P ∨ Q`
-#. §2: `Or.inr : Q → P ∨ Q`
+#. §1: `Or.inl : P ⇒ P ∨ Q`
+#. §2: `Or.inr : Q ⇒ P ∨ Q`
+#. §3: `We apply Or.inl`
+#. §4: `We conclude by Or.inl p`
 #: Game/Levels/DisjunctionWorld/L01_IntroducingOr.lean:32
-msgid "If this is your first time solving this level, delete your code and prove the same theorem another way. Alternatively, you can prove §0 by applying either of the implications §1 and §2 that are now in the library."
+msgid "If this is your first time solving this level, delete your code and prove the same theorem another way. Alternatively, you can prove §0 by applying either of the implications §1 and §2 that are now in the library: §3, or in one line §4."
 msgstr ""
 
 #: Game/Levels/ConjunctionWorld/L02_UsingAnd.lean:22
@@ -2954,7 +2986,7 @@ msgid "If you used editor mode to prove some lemmas in the middle of this proof,
 msgstr ""
 
 #. §0: `Sum.inl`
-#: Game/Levels/EmptyWorld/L06_CoproductWithEmpty.lean:39
+#: Game/Levels/EmptyWorld/L06_CoproductWithEmpty.lean:40
 msgid "If your answer does not use the function §0, you might have fun trying to solve this level again using it in an appropriate place."
 msgstr ""
 
@@ -2964,11 +2996,11 @@ msgstr ""
 msgid "If your answer does not use the functions §0 and §1, you might have fun trying to solve this level again using them in appropriate places."
 msgstr ""
 
-#. §0: `T ∨ U → V ∧ Y`
-#. §1: `Q → P → T`
-#. §2: `Y → Q → W`
-#. §3: `(V ∧ W) ∨ (X ∧ Y) → Z`
-#. §4: `(R → S → U) ∧ (V → R → X)`
+#. §0: `T ∨ U ⇒ V ∧ Y`
+#. §1: `Q ⇒ P ⇒ T`
+#. §2: `Y ⇒ Q ⇒ W`
+#. §3: `(V ∧ W) ∨ (X ∧ Y) ⇒ Z`
+#. §4: `(R ⇒ S ⇒ U) ∧ (V ⇒ R ⇒ X)`
 #. §5: `P ∧ (Q ∨ R) ∧ S`
 #. §6: `Z`
 #: Game/Levels/DisjunctionWorld/L09_BossLevel.lean:15
@@ -4156,7 +4188,7 @@ msgid "Lean has a built in type of propositions denoted §0.\n"
 msgstr ""
 
 #. §0: `Empty.elim : Empty → A`
-#. §1: `exact Empty.elim`
+#. §1: `Let's use Empty.elim`
 #: Game/Levels/EmptyWorld/L01_FromEmpty.lean:22
 msgid "Lean has a built-in name §0 for the function you have just defined. Thus §1 will also solve this level. This function has been added to the library."
 msgstr ""
@@ -4635,12 +4667,13 @@ msgid "Not Equal"
 msgstr ""
 
 #. §0: `«{Q}» ∨ «{P}»`
-#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:34
+#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:33
 msgid "Note now that Lean provides two goals, both of which are to prove that §0 is true, under two different hypotheses. Your first task is to prove the theorem in the first case."
 msgstr ""
 
-#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:39
-msgid "Note now that you've completed the proof in the first case, Lean expects you to provide a proof in the second case."
+#. §0: `Let's next consider the case where «{h}» is inr q`
+#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:38
+msgid "Note now that you've completed the proof in the first case, Lean expects you to announce the second case: §0."
 msgstr ""
 
 #. §0: `Prop`
@@ -4973,7 +5006,7 @@ msgstr ""
 
 #. §0: `(P ∨ Q) ∨ R`
 #. §1: `P ∨ (Q ∨ R)`
-#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:21
+#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:19
 msgid "Or is associative: §0 is true if and only if §1 is true."
 msgstr ""
 
@@ -5311,14 +5344,6 @@ msgid "Recall that every function is *well-defined*. For any function §0, we ha
 "Recall that when §12, Lean writes §13 for §14."
 msgstr ""
 
-#. §0: `B`
-#. §1: `Empty.elim : Empty → B`
-#. §2: `Empty`
-#. §3: `B`
-#: Game/Levels/EmptyWorld/L03_ThroughEmpty.lean:26
-msgid "Recall that for any type §0, there is a function §1. Using this and your element of §2 can you define an element of type §3?"
-msgstr ""
-
 #. §0: `A`
 #. §1: `B`
 #. §2: `A ⊕ B`
@@ -5516,14 +5541,10 @@ msgstr ""
 
 #. §0: `«{h}».1 : «{P}»`
 #. §1: `«{h}».2 : «{Q}» ∨ «{R}»`
-#. §2: `have p := «{h}».1`
-#. §3: `have qr := «{h}».2`
-#. §4: `p`
-#. §5: `qr`
-#. §6: `cases «{h}».2`
-#. §7: `rcases`
+#. §2: `By «{h}» we get p : «{P}» and qr : «{Q}» ∨ «{R}»`
+#. §3: `qr`
 #: Game/Levels/DisjunctionWorld/L07_Distributivity.lean:20
-msgid "Recall that §0 and §1. We can introduce these as named variables in the context by typing §2 and §3 where §4 and §5 are variable names you get to pick. This allows you to case split on an explicitly named variable. Alternatively, type §6, or use §7 to name your own variables."
+msgid "Recall that §0 and §1. Name them with §2, so that you can consider the cases of §3."
 msgstr ""
 
 #. §0: `¬ Q`
@@ -5709,12 +5730,6 @@ msgstr ""
 msgid "Recall you can rewrite along multiple hypothesized equalities at once by typing §0."
 msgstr ""
 
-#. §0: `cases «{x}»`
-#. §1: `«{x}»`
-#: Game/Levels/EmptyWorld/L06_CoproductWithEmpty.lean:36
-msgid "Recall you can type §0 to ask Lean to consider which cases are actually possible for the hypothetical element §1."
-msgstr ""
-
 #. §0: `cases h : x`
 #. §1: `cases k :
 #. cases y`
@@ -5723,13 +5738,6 @@ msgstr ""
 #: Game/Levels/BooleanWorld/L06_DisjunctionSymmetry.lean:15
 #: Game/Levels/BooleanWorld/L07_DeMorgan.lean:31
 msgid "Recall §0 and §1 may make it clearer which cases are which."
-msgstr ""
-
-#. §0: `Or.inl`
-#. §1: `Or.inr`
-#. §2: `S ∨ T`
-#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:35
-msgid "Recall §0 and §1 refer to the left and right propositions in a disjunction §2."
 msgstr ""
 
 #: Game/Levels/NaturalNumbersWorld/L04_Recursion.lean:6
@@ -5844,32 +5852,26 @@ msgstr ""
 #. §5: `P ∨ Q ∨ R`
 #. §6: `P ∨ (Q ∨ R)`
 #. §7: `h₁ : (P ∨ Q) ∨ R`
-#. §8: `cases h₁`
+#. §8: `Let's consider all cases for h₁`
 #. §9: `P ∨ Q`
 #. §10: `R`
-#. §11: `h₂ : P ∨ Q ∨ R`
-#. §12: `cases h₂`
-#. §13: `P`
-#. §14: `Q ∨ R`
-#. §15: `rcases`
-#. §16: `h₁ : (P ∨ Q) ∨ R`
-#. §17: `rcases h₁ with (p | q) | r`
-#. §18: `h₂ : P ∨ Q ∨ R`
-#. §19: `rcases h₂ with p | q | r`
-#. §20: `\\7`
-#. §21: `₇`
+#. §11: `Let's first consider the case where h₁ is inl hpq`
+#. §12: `hpq : P ∨ Q`
+#. §13: `h₂ : P ∨ Q ∨ R`
+#. §14: `P`
+#. §15: `Q ∨ R`
+#. §16: `\\7`
+#. §17: `₇`
 #: Game/Levels/DisjunctionWorld/L06_Associativity.lean:8
 msgid "Similarly, for propositions §0, §1, and §2, §3 holds if and only if §4 holds.\n"
 "\n"
 "Similarly to the conventions used for products, conjunctions, and coproducts, Lean uses §5 as an abbreviation for §6.\n"
 "\n"
-"Given a hypothesis §7, §8 will split the hypothesis into two cases: one assuming that §9 is true and the other assuming §10 is true.\n"
+"Given a hypothesis §7, §8 will split the hypothesis into two cases: one assuming that §9 is true and the other assuming §10 is true. The first of these, announced with §11, provides a hypothesis §12 whose cases can be considered in turn.\n"
 "\n"
-"Similarly given a hypothesis §11, §12 the hypothesis into two cases: one assuming that §13 is true and the other assuming §14 is true.\n"
+"Similarly given a hypothesis §13, its two cases assume that §14 is true, respectively that §15 is true.\n"
 "\n"
-"Note the §15 tactic allows more general patterns of disjunctions. Given §16 try §17. Similarly, given §18, try §19.\n"
-"\n"
-"Aside: Typing §20 using any single digit number produces a subscript with that number, like §21. You can use this if you'd like to use numerical subscripts in your variable names."
+"Aside: Typing §16 using any single digit number produces a subscript with that number, like §17. You can use this if you'd like to use numerical subscripts in your variable names."
 msgstr ""
 
 #. §0: `h`
@@ -5892,6 +5894,11 @@ msgstr ""
 #: Game/Levels/CoproductWorld/L06_Associativity.lean:28
 #: Game/Levels/CoproductWorld/L06_Associativity.lean:43
 msgid "Split into cases: §0 and later §1."
+msgstr ""
+
+#. §0: `Let's first consider the case where «{hpqr}» is inl hpq`
+#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:24
+msgid "Split your hypothesis into cases: §0."
 msgstr ""
 
 #: Game/Levels/ConjunctionWorld/L03_Symmetry.lean:23
@@ -6461,7 +6468,7 @@ msgstr ""
 msgid "The empty type is a proposition: for §0, §1."
 msgstr ""
 
-#: Game/Levels/EmptyWorld/L07_BossLevel.lean:31
+#: Game/Levels/EmptyWorld/L07_BossLevel.lean:32
 msgid "The empty type is a weird type, so what was the point of this world? The hope is that your experience defining functions involving the empty type will prepare you to think about what it means to prove that a proposition is false in Negation World. Go there next."
 msgstr ""
 
@@ -6596,13 +6603,16 @@ msgstr ""
 msgid "The goal is a function type, so start with §0."
 msgstr ""
 
+#: Game/Levels/NegationWorld/L04_Noncontradiction.lean:22
+msgid "The goal is a function type. What tactic can be used to define an element?"
+msgstr ""
+
 #: Game/Levels/EmptyWorld/L01_FromEmpty.lean:17
 #: Game/Levels/EmptyWorld/L02_ToEmpty.lean:21
 #: Game/Levels/EmptyWorld/L02_ToEmpty.lean:23
 #: Game/Levels/EmptyWorld/L03_ThroughEmpty.lean:19
 #: Game/Levels/EmptyWorld/L03_ThroughEmpty.lean:21
-#: Game/Levels/NegationWorld/L04_Noncontradiction.lean:22
-msgid "The goal is a function type. What tactic can be used to define an element?"
+msgid "The goal is a function type. Which sentence can be used to define an element?"
 msgstr ""
 
 #. §0: `Let's construct the pair`
@@ -6636,9 +6646,9 @@ msgstr ""
 msgid "The goal is a universally quantified statement. Start with §0 to consider an arbitrary natural number §1."
 msgstr ""
 
-#. §0: `exact`
+#. §0: `We conclude by`
 #: Game/Levels/DisjunctionWorld/L04_Symmetry.lean:19
-#: Game/Levels/DisjunctionWorld/L04_Symmetry.lean:21
+#: Game/Levels/DisjunctionWorld/L04_Symmetry.lean:22
 msgid "The goal is an implication you've already proven. You can use §0 together with the name of that result, to solve this goal in one line. Alternatively, you can just prove it again."
 msgstr ""
 
@@ -6664,14 +6674,6 @@ msgstr ""
 msgid "The goal is to prove an implication. What tactic can be used to get started?"
 msgstr ""
 
-#. §0: `cases`
-#. §1: `cases «{hpq}»`
-#. §2: `rcases «{hpq}» with hp | hq`
-#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:28
-#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:38
-msgid "The hypothesis generated by the §0 tactic isn't directly useable yet. Try §1 again, or §2 to name your own variables."
-msgstr ""
-
 #. §0: `«{h}»`
 #. §1: `«{P}»`
 #. §2: `«{Q}»`
@@ -6689,10 +6691,20 @@ msgstr ""
 msgid "The hypothesis §0 is a proof that §1. So try §2."
 msgstr ""
 
+#. §0: `«{hpq}»`
+#. §1: `Let's first consider the case where «{hpq}» is inl hp`
+#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:26
+msgid "The hypothesis §0 isn't directly usable yet. Consider its cases too: §1."
+msgstr ""
+
+#. §0: `«{hqr}»`
+#. §1: `Let's first consider the case where «{hqr}» is inl hq`
+#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:43
+msgid "The hypothesis §0 isn't directly usable yet. Consider its cases: §1."
+msgstr ""
+
 #. §0: `(P ∧ R) ∨ ((P ∧ S) ∨ ((Q ∧ R) ∨ (Q ∧ S)))`
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:25
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:53
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:59
+#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:26
 msgid "The implicit parentheses in the goal are to the right §0."
 msgstr ""
 
@@ -6849,6 +6861,14 @@ msgstr ""
 #. §16: `Q`
 #. §17: `h : P ∨ Q`
 #. §18: `h : P ∨ Q`
+#. §19: `P ∨ Q`
+#. §20: `Let's prove that P`
+#. §21: `Let's construct an element of A`
+#. §22: `h : P ∨ Q`
+#. §23: `Let's first consider the case where h is inl p`
+#. §24: `Let's next consider the case where h is inr q`
+#. §25: `∨`
+#. §26: `\\or`
 #: Game/Levels/DisjunctionWorld.lean:14
 msgid "The logical connective of *disjunction*, denoted by §0, is the mathematical version of *or*.\n"
 "\n"
@@ -6873,7 +6893,7 @@ msgid "The logical connective of *disjunction*, denoted by §0, is the mathemati
 "\n"
 "Like the analogy between function types and implication, and product types and conjunction, there is a close analogy between coproduct types and the logical operation of disjunction.\n"
 "\n"
-"In particular, we will use similar notations and the same tactics introduced in Coproduct World."
+"In particular, we will use similar notations and the same kind of sentences introduced in Coproduct World: to prove §19 you announce the side you will prove with §20 (the counterpart of §21), and to use a hypothesis §22 you consider its cases with §23 and §24, exactly as for an element of a coproduct type. The symbol §25 is typed §26."
 msgstr ""
 
 #. §0: `not : Bool → Bool`
@@ -6890,7 +6910,7 @@ msgstr ""
 msgid "The next level will give more practice with the existential quantifier."
 msgstr ""
 
-#: Game/Levels/DisjunctionWorld/L09_BossLevel.lean:34
+#: Game/Levels/DisjunctionWorld/L09_BossLevel.lean:36
 msgid "The next topic in our study of propositional logic is *negation*, which is used to assert that a proposition is false rather than true. But to help us understand it, move on to Empty World to learn about the empty type."
 msgstr ""
 
@@ -7013,9 +7033,9 @@ msgstr ""
 
 #. §0: `P ∧ Q`
 #. §1: `P ∨ Q`
-#. §2: `P ∧ Q → P ∨ Q`
-#. §3: `P ∨ Q → P ∧ Q`
-#. §4: `P ∧ Q → P ∨ Q`
+#. §2: `P ∧ Q ⇒ P ∨ Q`
+#. §3: `P ∨ Q ⇒ P ∧ Q`
+#. §4: `P ∧ Q ⇒ P ∨ Q`
 #. §5: `P`
 #. §6: `Q`
 #. §7: `P ∨ Q`
@@ -7394,8 +7414,8 @@ msgstr ""
 #. §1: `P`
 #. §2: `Q`
 #. §3: `«{rs}» : «{R}» ∨ «{S}»`
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:66
-msgid "This completes the proof in the case where §0 holds because §1 holds. Now we've started the case where §2 holds, which requires another case split over the proof §3."
+#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:34
+msgid "This completes the proof in the case where §0 holds because §1 holds. Now announce the case where §2 holds, which requires another case split over the proof §3."
 msgstr ""
 
 #. §0: `rfl`
@@ -7468,11 +7488,11 @@ msgid "This level contains another tautology whose proof you have seen before.\n
 msgstr ""
 
 #. §0: `A → Empty`
-#: Game/Levels/EmptyWorld/L03_ThroughEmpty.lean:30
+#: Game/Levels/EmptyWorld/L03_ThroughEmpty.lean:29
 msgid "This level illustrates another strange construction that can be made from an element of type §0."
 msgstr ""
 
-#: Game/Levels/DisjunctionWorld/L05_UniversalProperty.lean:44
+#: Game/Levels/DisjunctionWorld/L05_UniversalProperty.lean:47
 msgid "This logical equivalence captures the *universal property* of disjunction, explaining how the mathematical or is used in a proof."
 msgstr ""
 
@@ -7487,17 +7507,16 @@ msgstr ""
 msgid "This proof can be written in one line as §0 where the §1 means &ldquo;do the following in all cases&rdquo;."
 msgstr ""
 
-#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:43
+#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:49
 msgid "This proves the associativity of disjunction."
 msgstr ""
 
-#. §0: `cases`
-#. §1: `rcases`
+#. §0: `We proceed using h`
 #: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:44
-msgid "This proves the symmetry of disjunction. Practice using both the §0 and §1 tactics to get used to them."
+msgid "This proves the symmetry of disjunction. Try solving it again with §0 to compare the two styles."
 msgstr ""
 
-#: Game/Levels/DisjunctionWorld/L07_Distributivity.lean:40
+#: Game/Levels/DisjunctionWorld/L07_Distributivity.lean:39
 msgid "This proves the that conjunction distributes over disjunction. A more involved form of distributivity appears in the next level."
 msgstr ""
 
@@ -7532,9 +7551,7 @@ msgstr ""
 #. §0: `∨`
 #. §1: `P ∧ R`
 #. §2: `(P ∧ S) ∨ ((Q ∧ R) ∨ (Q ∧ S))`
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:26
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:54
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:60
+#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:27
 msgid "Thus the outermost logical connective is the §0 combining §1 and §2."
 msgstr ""
 
@@ -7655,12 +7672,12 @@ msgstr ""
 #. §5: `P ∨ Q`
 #. §6: `p : P`
 #. §7: `q : Q`
-#. §8: `exact p`
-#. §9: `exact q`
+#. §8: `We conclude by p`
+#. §9: `We conclude by q`
 #. §10: `P`
 #. §11: `Q`
-#. §12: `left`
-#. §13: `right`
+#. §12: `Let's prove that P`
+#. §13: `Let's prove that Q`
 #: Game/Levels/DisjunctionWorld/L01_IntroducingOr.lean:9
 msgid "To prove a disjunction §0 it suffices to supply a proof of either §1 or of §2.\n"
 "\n"
@@ -7670,7 +7687,7 @@ msgid "To prove a disjunction §0 it suffices to supply a proof of either §1 or
 "\n"
 "To give a proof you have two choices: to reduce to the case of proving the left proposition or to reduce to the case of proving the right proposition.\n"
 "\n"
-"Type §12 to tell Lean you'd like to prove the left proposition or type §13 to tell Lean you'd like to prove the right proposition."
+"Write §12 to tell Lean you'd like to prove the left proposition or §13 to tell Lean you'd like to prove the right proposition: you announce the side by *stating* it."
 msgstr ""
 
 #. §0: `∀ x : A, P x`
@@ -7829,7 +7846,7 @@ msgstr ""
 
 #. §0: `«{h}»`
 #: Game/Levels/DisjunctionWorld/L05_UniversalProperty.lean:28
-#: Game/Levels/DisjunctionWorld/L05_UniversalProperty.lean:32
+#: Game/Levels/DisjunctionWorld/L05_UniversalProperty.lean:33
 msgid "Try applying the hypothesis §0."
 msgstr ""
 
@@ -7860,21 +7877,7 @@ msgstr ""
 msgid "Try §0 to add a proof of §1 to your assumptions."
 msgstr ""
 
-#. §0: `cases «{x}»`
-#. §1: `«{x}» : Empty`
-#: Game/Levels/EmptyWorld/L05_ProductWithEmpty.lean:31
-msgid "Try §0 to ask Lean to consider all possible cases involving an element §1."
-msgstr ""
-
-#. §0: `have pq : P ∨ Q := «{h}».1`
-#. §1: `«{h}»`
-#. §2: `rcases «{h}» with ⟨p | q, r | s⟩`
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:22
-msgid "Try §0 to start to break apart the hypothesis §1. Alternatively, §2 will break out both the components and the cases associated to this hypothesis."
-msgstr ""
-
-#. §0: `have rs : R ∨ S := «{h}».2`
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:49
+#. §0: `apply «{nq}»`
 #: Game/Levels/NegationWorld/L07_NegatingImplication.lean:30
 msgid "Try §0."
 msgstr ""
@@ -7972,11 +7975,6 @@ msgstr ""
 #. §0: `cases «{p}»`
 #: Game/Levels/NegationWorld/L01_ExFalso.lean:22
 msgid "Type §0 to ask Lean to consider all possible cases involving a proof of false. As there are no cases, this will complete the proof."
-msgstr ""
-
-#. §0: `cases «{p}»`
-#: Game/Levels/EmptyWorld/L01_FromEmpty.lean:19
-msgid "Type §0 to ask Lean to consider all possible cases involving an element of the empty type. As there are no cases, this will complete the proof."
 msgstr ""
 
 #. §0: `rcases «{h}» with ⟨b, hb⟩`
@@ -8093,8 +8091,8 @@ msgstr ""
 msgid "Use §0 and a similar lemma to give yourself more equalities to rewrite along."
 msgstr ""
 
-#. §0: `let e := «{f}» «{a}»`
-#. §1: `let e : Empty := «{f}» «{a}»`
+#. §0: `Set e := «{f}» «{a}»`
+#. §1: `Set e : Empty := «{f}» «{a}»`
 #: Game/Levels/EmptyWorld/L03_ThroughEmpty.lean:24
 msgid "Use §0 or §1 to add an element of the empty type to the list of assumptions."
 msgstr ""
@@ -8114,12 +8112,6 @@ msgstr ""
 #. §0: `intro n`
 #: Game/Levels/NaturalNumbersWorld/L04_Recursion.lean:64
 msgid "Use §0 to start your definition."
-msgstr ""
-
-#. §0: `cases «{h}»`
-#. §1: `rcases «{h}» with pr | ps | qr | qs`
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:81
-msgid "Uses §0 or §1 to break the hypothesis into the constituent cases"
 msgstr ""
 
 #: Game/Levels/ConjunctionWorld/L02_UsingAnd.lean:6
@@ -8197,7 +8189,7 @@ msgstr ""
 msgid "Was it necessary to consider all four cases of two boolean elements or can you define this function by considering fewer cases? The function §0 is now in your library."
 msgstr ""
 
-#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:104
+#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:54
 msgid "We are now ready for the Boss Level of Disjunction World."
 msgstr ""
 
@@ -8972,7 +8964,7 @@ msgid "What does it mean if §0 holds?\n"
 msgstr ""
 
 #. §0: `«{h}»`
-#: Game/Levels/DisjunctionWorld/L05_UniversalProperty.lean:38
+#: Game/Levels/DisjunctionWorld/L05_UniversalProperty.lean:40
 msgid "What implications can you extract from §0?"
 msgstr ""
 
@@ -9011,10 +9003,10 @@ msgid "What is the logical structure of this type?"
 msgstr ""
 
 #: Game/Levels/DisjunctionWorld/L02_AndImpliesOr.lean:19
-#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:30
+#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:28
 #: Game/Levels/DisjunctionWorld/L04_Symmetry.lean:17
 #: Game/Levels/DisjunctionWorld/L05_UniversalProperty.lean:23
-#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:23
+#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:21
 #: Game/Levels/DisjunctionWorld/L07_Distributivity.lean:16
 #: Game/Levels/DisjunctionWorld/L07_Distributivity.lean:18
 #: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:18
@@ -9039,22 +9031,22 @@ msgstr ""
 msgid "What is the type of the term §0? If you're not sure, you can write §1 and read the error message to find out."
 msgstr ""
 
-#. §0: `P ∨ Q → R`
-#. §1: `P ∨ Q → R`
-#. §2: `P → R`
+#. §0: `P ∨ Q ⇒ R`
+#. §1: `P ∨ Q ⇒ R`
+#. §2: `P ⇒ R`
 #. §3: `P`
 #. §4: `P ∨ Q`
 #. §5: `R`
-#. §6: `P ∨ Q → R`
-#. §7: `Q → R`
-#. §8: `P → R`
-#. §9: `Q → R`
-#. §10: `P ∨ Q → R`
-#. §11: `P → R`
-#. §12: `Q → R`
-#. §13: `P ∨ Q → R`
-#. §14: `P ∨ Q → R`
-#. §15: `(P → R) ∧ (Q → R)`
+#. §6: `P ∨ Q ⇒ R`
+#. §7: `Q ⇒ R`
+#. §8: `P ⇒ R`
+#. §9: `Q ⇒ R`
+#. §10: `P ∨ Q ⇒ R`
+#. §11: `P ⇒ R`
+#. §12: `Q ⇒ R`
+#. §13: `P ∨ Q ⇒ R`
+#. §14: `P ∨ Q ⇒ R`
+#. §15: `(P ⇒ R) ∧ (Q ⇒ R)`
 #: Game/Levels/DisjunctionWorld/L05_UniversalProperty.lean:8
 msgid "What must be true in order to have §0?\n"
 "\n"
@@ -9067,10 +9059,6 @@ msgid "What must be true in order to have §0?\n"
 "However, if *both* §11 and §12 are true, then §13 is true, as you can argue using the strategy of proof by cases.\n"
 "\n"
 "The aim of this level is to establish a logical equivalence between §14 and §15."
-msgstr ""
-
-#: Game/Levels/EmptyWorld/L06_CoproductWithEmpty.lean:33
-msgid "What proof strategy is available with an element of a coproduct type?"
 msgstr ""
 
 #. §0: `«{hyp}»`
@@ -9097,6 +9085,10 @@ msgstr ""
 #. §0: `«{f}»`
 #: Game/Levels/ProductWorld/L09_UniversalProperty.lean:39
 msgid "What sort of type does §0 belong to? Can we extract other elements from an element of this type?"
+msgstr ""
+
+#: Game/Levels/EmptyWorld/L06_CoproductWithEmpty.lean:33
+msgid "What strategy is available with an element of a coproduct type?"
 msgstr ""
 
 #. §0: `«{f}».1`
@@ -9233,6 +9225,14 @@ msgstr ""
 msgid "Write §0 on a line by itself and Lean lists the sentences that apply to the current goal, with the statements filled in. §1 does the same for a hypothesis §2."
 msgstr ""
 
+#. §0: `By «{h}» we get pq : P ∨ Q and rs : R ∨ S`
+#. §1: `«{h}»`
+#. §2: `pq`
+#. §3: `rs`
+#: Game/Levels/DisjunctionWorld/L08_MoreDistributivity.lean:22
+msgid "Write §0 to break apart the hypothesis §1; then consider the cases of §2, and inside each of them the cases of §3."
+msgstr ""
+
 #. §0: `Let's consider all cases for «{x}»`
 #. §1: `«{x}» : A ⊕ B`
 #. §2: `Let's first consider the case where «{x}» is inl a`
@@ -9253,6 +9253,23 @@ msgstr ""
 #. §2: `A`
 #: Game/Levels/TypeWorld/L01_Elements.lean:26
 msgid "Write §0 to tell Lean to use the assumed element of §1 to define an element of §2."
+msgstr ""
+
+#. §0: `We conclude by «{p}»`
+#. §1: `We conclude by hypothesis`
+#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:36
+msgid "Write §0, or §1 to indicate that the goal matches an assumption."
+msgstr ""
+
+#. §0: `We conclude by «{q}»`
+#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:41
+msgid "Write §0."
+msgstr ""
+
+#. §0: `This is impossible because of «{p}»`
+#. §1: `Let's consider all cases for «{p}»`
+#: Game/Levels/EmptyWorld/L01_FromEmpty.lean:19
+msgid "Write §0: an element of the empty type cannot exist, so whatever the goal is, it is settled. (Alternatively, §1 asks Lean to consider all possible cases for an element of the empty type; as there are none, this completes the construction too.)"
 msgstr ""
 
 #. §0: `n`
@@ -9299,12 +9316,6 @@ msgstr ""
 msgid "You can either prove a lemma §0 by replacing the §1 with the definition of the composition function. Or you can try §2 using §3 to type the left arrow."
 msgstr ""
 
-#. §0: `assumption`
-#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:37
-#: Game/Levels/DisjunctionWorld/L03_UsingOr.lean:41
-msgid "You can solve the goal by explicitly referring to the named hypothesis that Lean supplied or by typing §0 to indicate that the goal matches an assumption."
-msgstr ""
-
 #. §0: `Let's use fun x ↦ x`
 #. §1: `\\mapsto`
 #. §2: `↦`
@@ -9329,12 +9340,6 @@ msgstr ""
 #. §4: `¬ Q`
 #: Game/Levels/NegationWorld/L07_NegatingImplication.lean:27
 msgid "You can use §0 to apply the elimination rule for conjunctions to obtain a proof §1 of §2 and a proof §3 of §4."
-msgstr ""
-
-#. §0: `cases «{hpqr}»`
-#. §1: `rcases «{hpqr}» with hpq | hr`
-#: Game/Levels/DisjunctionWorld/L06_Associativity.lean:26
-msgid "You can use §0 to split your hypothesis into cases or §1 to name your own variables."
 msgstr ""
 
 #. §0: `Let's use`
@@ -9462,6 +9467,16 @@ msgstr ""
 #. §2: `Let's use Type`
 #: Game/Levels/TypeWorld/L01_Elements.lean:192
 msgid "§0 and §1 may appear inside the element you supply (§2 is an instructive error)."
+msgstr ""
+
+#. §0: `This is impossible because of e`
+#. §1: `e : Empty`
+#. §2: `h : False`
+#. §3: `h applied to p`
+#. §4: `h : ¬ P`
+#. §5: `p : P`
+#: Game/Levels/EmptyWorld/L01_FromEmpty.lean:35
+msgid "§0 finishes any goal, whether a proposition or a type, from something that cannot exist: an element §1, a proof §2, or a contradiction such as §3 with §4 and §5 (Negation World)."
 msgstr ""
 
 #. §0: `(P ∨ Q) ∧ (R ∨ S)`

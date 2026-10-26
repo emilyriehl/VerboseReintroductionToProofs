@@ -18,11 +18,11 @@ Can you construct this element?
 
 /-- For any type `A`, if there is a function `f : A → Empty` and there is an element `a : A`, then there is an element of the `Empty` type. -/
 Statement {A : Type} : (A → Empty) → A → Empty := by
-  Hint (hidden := true) "The goal is a function type. What tactic can be used to define an element?"
-  intro f
-  Hint (hidden := true) "The goal is a function type. What tactic can be used to define an element?"
-  intro a
+  Hint (hidden := true) "The goal is a function type. Which sentence can be used to define an element?"
+  Fix f : A → Empty
+  Hint (hidden := true) "The goal is a function type. Which sentence can be used to define an element?"
+  Fix a : A
   Hint (hidden := true) "We have an assumption `{f} : A → Empty`. What can be done with an element of a function type?"
-  exact f a
+  Let's use f a
 
 Conclusion "In summary, something very strange happens if the types `A` and `A → Empty` both have elements."

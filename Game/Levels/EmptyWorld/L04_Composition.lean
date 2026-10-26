@@ -24,10 +24,10 @@ This construction will be analogous to something we will encounter in Negation W
 
 /-- For any types `A` and `B`, there is a function `(A → B) → (B → Empty) → (A → Empty)` defined by composition. -/
 Statement {A B : Type} : (A → B) → (B → Empty) → (A → Empty) := by
-  intro f
-  intro nb
-  intro a
-  exact nb (f a)
+  Fix f : A → B
+  Fix nb : B → Empty
+  Fix a : A
+  Let's use nb (f a)
 
 Conclusion "For any types `A`, `B`, and `C`, we have the function `
-flip Function.comp : (A → B) → (B → C) → (A → C)` defined by exchanging the inputs. This specializes in the case where `C` is the type `Empty` to define the function we seek here. Indeed, this level can be solved with `exact flip Function.comp`. Does this perspective make this construction feel less strange?"
+flip Function.comp : (A → B) → (B → C) → (A → C)` defined by exchanging the inputs. This specializes in the case where `C` is the type `Empty` to define the function we seek here. Indeed, this level can be solved with `Let's use flip Function.comp`. Does this perspective make this construction feel less strange?"

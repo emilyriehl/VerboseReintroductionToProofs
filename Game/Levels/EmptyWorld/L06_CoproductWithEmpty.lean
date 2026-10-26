@@ -25,15 +25,16 @@ open ReintroductionToProofs
 /-- For any type `A`, there are functions in both directions between the types `A` and `A ⊕ Empty`. -/
 Statement {A : Type} : (A → A ⊕ Empty) × (A ⊕ Empty → A) := by
   Hint (hidden := true) "What is the logical structure of this type?"
-  constructor
+  Let's construct the pair
   Hint (hidden := true) "Have a look at the library of definitions for a function whose domain is the empty type."
-  exact Sum.inl
+  Let's use Sum.inl
   Hint (hidden := true) "How do you construct elements of a function type?"
-  intro p
-  Hint (hidden := true) "What proof strategy is available with an element of a coproduct type?"
-  rcases p with a | x
-  exact a
-  Hint (hidden := true) "Recall you can type `cases {x}` to ask Lean to consider which cases are actually possible for the hypothetical element `{x}`."
-  cases x
+  Fix p : A ⊕ Empty
+  Hint (hidden := true) "What strategy is available with an element of a coproduct type?"
+  Let's first consider the case where p is inl a
+  Let's use a
+  Hint (hidden := true) "Announce the second case, `Let's next consider the case where {p} is inr x`, and then explain why it cannot occur."
+  Let's next consider the case where p is inr x
+  This is impossible because of x
 
 Conclusion "If your answer does not use the function `Sum.inl`, you might have fun trying to solve this level again using it in an appropriate place."

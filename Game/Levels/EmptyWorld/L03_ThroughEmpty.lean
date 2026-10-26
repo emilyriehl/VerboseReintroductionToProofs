@@ -16,15 +16,14 @@ The proof requires a bit of cleverness, but you can ask for a few hints if you g
 
 /-- For any types `A` and `B`, if there is a function `f : A → Empty` then there is also a function `A → B`.-/
 Statement {A B : Type} : (A → Empty) → A → B := by
-  Hint (hidden := true) "The goal is a function type. What tactic can be used to define an element?"
-  intro f
-  Hint (hidden := true) "The goal is a function type. What tactic can be used to define an element?"
-  intro a
+  Hint (hidden := true) "The goal is a function type. Which sentence can be used to define an element?"
+  Fix f : A → Empty
+  Hint (hidden := true) "The goal is a function type. Which sentence can be used to define an element?"
+  Fix a : A
   Hint (hidden := true) "We have assumptions `{f} : A → Empty` and `{a} : A`? What can you construct using this?"
-  Hint (hidden := true) "Use `let e := {f} {a}` or `let e : Empty := {f} {a}` to add an element of the empty type to the list of assumptions."
-  let e : Empty := f a
-  Hint (hidden := true) "Recall that for any type `B`, there is a function `Empty.elim : Empty → B`. Using this and your element of `Empty` can you define an element of type `B`?"
-  apply Empty.elim
-  assumption
+  Hint (hidden := true) "Use `Set e := {f} {a}` or `Set e : Empty := {f} {a}` to add an element of the empty type to the list of assumptions."
+  Set e : Empty := f a
+  Hint (hidden := true) "An element of `Empty` cannot exist. Which sentence from the first level of this world settles the goal?"
+  This is impossible because of e
 
 Conclusion "This level illustrates another strange construction that can be made from an element of type `A → Empty`."
