@@ -7371,6 +7371,12 @@ msgstr ""
 msgid "The upshot of this level and the previous one is that in classical logic at least, a function is bijective if and only if it is invertible."
 msgstr ""
 
+#. §0: `Prop`
+#. §1: `Let's use Prop`
+#: Game/Levels/TypeWorld/L01_Elements.lean:194
+msgid "The word §0 names the type of propositions; it is listed here so that sentences such as §1 are accepted."
+msgstr ""
+
 #. §0: `swap`
 #. §1: `f : A → B → C`
 #. §2: `swap f : B → A → C`
