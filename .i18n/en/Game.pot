@@ -125,25 +125,23 @@ msgstr ""
 #. §15: `h`
 #. §16: `h b : C`
 #. §17: `x : A ⊕ B`
-#. §18: `cases x`
+#. §18: `Let's consider all cases for x`
 #. §19: `x`
 #. §20: `Sum.inl a`
 #. §21: `a : A`
 #. §22: `x`
 #. §23: `Sum.inr b`
 #. §24: `b : B`
-#. §25: `cases`
-#. §26: `x : A ⊕ B`
-#. §27: `rcases x with a | b`
-#. §28: `cases x`
-#. §29: `a : A`
-#. §30: `b : B`
-#. §31: `a`
-#. §32: `b`
-#. §33: `cases x`
-#. §34: `rcases x with a | b`
-#. §35: `a : A`
-#. §36: `b : B`
+#. §25: `Let's first consider the case where x is inl a`
+#. §26: `a : A`
+#. §27: `Let's next consider the case where x is inr b`
+#. §28: `b : B`
+#. §29: `a`
+#. §30: `b`
+#. §31: `all cases`
+#. §32: `Let's first consider the case where x is inl a`
+#. §33: `a : A`
+#. §34: `b : B`
 #: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:8
 msgid "A function §0 mapping out of a coproduct type may be *broken apart* into component functions of types §1 and §2.\n"
 "\n"
@@ -153,15 +151,13 @@ msgid "A function §0 mapping out of a coproduct type may be *broken apart* into
 "\n"
 "In the first case, the function §13 can be used to define an element §14, while in the second case the function §15 can be used to define an element §16.\n"
 "\n"
-"Given an element §17, type §18 to ask Lean to consider both cases arising from the introduction rules for coproduct types: the first being that §19 is of the form §20 for some §21 and the second being that §22 is of the form §23 for some §24.\n"
+"Given an element §17, write §18 to ask Lean to consider both cases arising from the introduction rules for coproduct types: the first being that §19 is of the form §20 for some §21 and the second being that §22 is of the form §23 for some §24.\n"
 "\n"
-"There is another tactic, similar to §25, which allows you to give explicit names for the elements appearing in each case.\n"
+"Each case then has to be *announced* before you work on it. Writing §25 selects the first case and names the element it comes from §26; later, §27 selects the second case and names its element §28. (You can choose any names for §29 and §30, and you may take the cases in either order.) Until a case has been announced, its goal is displayed as &ldquo;You need to announce: …&rdquo;.\n"
 "\n"
-"Given an element §26, then §27 can be used in place of §28 to provide an element §29 in the first case and an element §30 in the second. (Here you can choose any variable names for §31 and §32.)\n"
+"If you prefer, you can skip the §31 sentence: writing §32 directly splits into the cases and selects that one.\n"
 "\n"
-"Either §33 or §34 can be used to split into the two cases mentioned above.\n"
-"\n"
-"Both cases will have the same goal type but will have a different context of objects, one of which contains the element §35 and the other of which contains the element §36."
+"Both cases will have the same goal type but will have a different context of objects, one of which contains the element §33 and the other of which contains the element §34."
 msgstr ""
 
 #. §0: `f : A → B`
@@ -429,6 +425,12 @@ msgstr ""
 msgid "Announce the remaining goal, then break it into subgoals again."
 msgstr ""
 
+#. §0: `Let's next consider the case where «{x}» is inr b`
+#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:34
+#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:52
+msgid "Announce the second case: §0."
+msgstr ""
+
 #. §0: `A ⊕ B → C`
 #. §1: `(A → C) × (B → C)`
 #: Game/Levels/EquivalenceWorld/L06_MoreComponentFunctions.lean:8
@@ -577,20 +579,6 @@ msgstr ""
 #: Game/Levels/CoproductWorld/L06_Associativity.lean:6
 #: Game/Levels/DisjunctionWorld/L06_Associativity.lean:6
 msgid "Associativity"
-msgstr ""
-
-#. §0: `x`
-#. §1: `cases x`
-#. §2: `x`
-#. §3: `cases`
-#. §4: `h : P ∨ Q`
-#. §5: `cases h`
-#. §6: `P`
-#. §7: `Q`
-#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:57
-msgid "Assuming §0 is a variable in the local context with an inductive type, §1 splits the main goal, producing one goal for each constructor of the inductive type, in which the target is replaced by a general instance of that constructor. If the type of an element in the local context depends on §2, that element is reverted and reintroduced afterward, so that the case split affects that hypothesis as well. §3 detects unreachable cases and closes them automatically.\n"
-"\n"
-"For example, given an assumption §4, §5 splits the main goal into two goals, one assuming §6 holds and the other assuming §7 holds."
 msgstr ""
 
 #. §0: `«{b}»`
@@ -1081,6 +1069,12 @@ msgid "Consider a type §0. For any two elements §1 there is a proposition §2\
 "Lean provides a tactic that can be applied to the proof §28 to convert a goal involving the element §29 to an analogous goal with §30 substituted in place of §31."
 msgstr ""
 
+#. §0: `«{x}» : A ⊕ B`
+#. §1: `Let's first consider the case where «{x}» is inl a`
+#: Game/Levels/CoproductWorld/L05_Symmetry.lean:19
+msgid "Consider the possible cases for the variable §0, starting with §1."
+msgstr ""
+
 #: Game/Levels/FunctionWorld/L05_ConstantFunctions.lean:6
 msgid "Constant Functions"
 msgstr ""
@@ -1317,6 +1311,13 @@ msgstr ""
 
 #: Game/Levels/ProductWorld/L02_FirstProjection.lean:6
 msgid "First Projection"
+msgstr ""
+
+#. §0: `«{p}»`
+#. §1: `By «{p}» we get a : A and z : B ⊕ C`
+#. §2: `z`
+#: Game/Levels/CoproductWorld/L07_Distributivity.lean:28
+msgid "First take the pair §0 apart with §1, then consider the cases for §2."
 msgstr ""
 
 #. §0: `P : A → Prop`
@@ -1825,21 +1826,6 @@ msgstr ""
 
 #. §0: `P`
 #. §1: `Q`
-#. §2: `left`
-#. §3: `P ∨ Q`
-#. §4: `P`
-#. §5: `A`
-#. §6: `B`
-#. §7: `left`
-#. §8: `A ⊕ B`
-#. §9: `A`
-#: Game/Levels/CoproductWorld/L01_LeftInclusion.lean:32
-#: Game/Levels/CoproductWorld/L02_RightInclusion.lean:34
-msgid "For propositions §0 and §1, the §2 tactic converts a goal of §3 to a goal of §4. For types §5 and §6, the §7 tactic converts a goal of §8 into a goal of §9."
-msgstr ""
-
-#. §0: `P`
-#. §1: `Q`
 #. §2: `Or.inl`
 #. §3: `P → (P ∨ Q)`
 #: Game/Levels/DisjunctionWorld/L01_IntroducingOr.lean:35
@@ -2036,24 +2022,23 @@ msgstr ""
 #. §4: `A ⊕ B`
 #. §5: `Sum.inl : A → A ⊕ B`
 #. §6: `A ⊕ B`
-#. §7: `apply Sum.inl`
+#. §7: `We apply Sum.inl`
 #. §8: `A`
-#. §9: `left`
+#. §9: `Let's construct an element of A`
 #. §10: `A ⊕ B`
-#. §11: `left`
-#. §12: `A`
-#. §13: `A ⊕ B`
-#. §14: `Sum.inl : A → A ⊕ B`
-#. §15: `left`
-#. §16: `A`
+#. §11: `A`
+#. §12: `A ⊕ B`
+#. §13: `Sum.inl : A → A ⊕ B`
+#. §14: `Let's construct an element of A`
+#. §15: `A`
 #: Game/Levels/CoproductWorld/L01_LeftInclusion.lean:8
 msgid "For types §0 and §1, the coproduct type §2 has two kinds of elements. The first kind can be thought of as copies of elements §3 included into the coproduct §4 *on the left*.\n"
 "\n"
 "Lean has a built in function called §5, which can now be found in your library.\n"
 "\n"
-"If the goal is to produce an element of §6, typing §7 will convert this to a goal of producing an element of §8.\n"
+"If the goal is to produce an element of §6, writing §7 will convert this to a goal of producing an element of §8.\n"
 "\n"
-"The tactic §9 has the same effect. When the goal is a coproduct type §10, using the tactic §11 tells Lean that you plan to provide an element of type §12, which should then be converted to an element of type §13 by applying the function §14. Thus, typing §15 will update the goal to type §16."
+"The sentence §9 has the same effect. When the goal is a coproduct type §10, writing it tells Lean that you plan to provide an element of type §11, which should then be converted to an element of type §12 by applying the function §13. Thus, writing §14 will update the goal to type §15."
 msgstr ""
 
 #. §0: `A`
@@ -2063,28 +2048,27 @@ msgstr ""
 #. §4: `A ⊕ B`
 #. §5: `Sum.inr : B → A ⊕ B`
 #. §6: `A ⊕ B`
-#. §7: `apply Sum.inr`
+#. §7: `We apply Sum.inr`
 #. §8: `B`
-#. §9: `right`
+#. §9: `Let's construct an element of B`
 #. §10: `A ⊕ B`
-#. §11: `right`
-#. §12: `B`
-#. §13: `A ⊕ B`
-#. §14: `Sum.inr : B → A ⊕ B`
-#. §15: `right`
-#. §16: `B`
-#. §17: `Sum.inl, Sum.inr : A → A ⊕ A`
-#. §18: `A`
+#. §11: `B`
+#. §12: `A ⊕ B`
+#. §13: `Sum.inr : B → A ⊕ B`
+#. §14: `Let's construct an element of B`
+#. §15: `B`
+#. §16: `Sum.inl, Sum.inr : A → A ⊕ A`
+#. §17: `A`
 #: Game/Levels/CoproductWorld/L02_RightInclusion.lean:8
 msgid "For types §0 and §1, the coproduct type §2 has two kinds of elements. The second kind can be thought of as copies of elements §3 included into the coproduct §4 *on the right*.\n"
 "\n"
 "Lean has a built in function called §5, which can now be found in your library.\n"
 "\n"
-"If the goal is to produce an element of §6, typing §7 will convert this to a goal of producing an element of §8.\n"
+"If the goal is to produce an element of §6, writing §7 will convert this to a goal of producing an element of §8.\n"
 "\n"
-"The tactic §9 has the same effect. When the goal is a coproduct type §10, using the tactic §11 tells Lean that you plan to provide an element of type §12, which should then be converted to an element of type §13 by applying the function §14. Thus, typing §15 will update the goal to type §16.\n"
+"The sentence §9 has the same effect. When the goal is a coproduct type §10, writing it tells Lean that you plan to provide an element of type §11, which should then be converted to an element of type §12 by applying the function §13. Thus, writing §14 will update the goal to type §15.\n"
 "\n"
-"Note that §17 are *different functions* (as long as the type §18 has at least one element) in a way we will be able to make more precise later."
+"Note that §16 are *different functions* (as long as the type §17 has at least one element) in a way we will be able to make more precise later."
 msgstr ""
 
 #. §0: `A`
@@ -2123,7 +2107,7 @@ msgstr ""
 #. §4: `Sum.inr a`
 #. §5: `Sum.inr b`
 #. §6: `Sum.inl b`
-#: Game/Levels/CoproductWorld/L05_Symmetry.lean:31
+#: Game/Levels/CoproductWorld/L05_Symmetry.lean:32
 msgid "For types §0 and §1, the function §2 is defined to send elements of the form §3 to §4 and elements of the form §5 to §6."
 msgstr ""
 
@@ -2172,7 +2156,7 @@ msgstr ""
 #. §5: `X → B`
 #. §6: `X → A × B`
 #: Game/Levels/ProductWorld/L09_UniversalProperty.lean:60
-#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:27
+#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:25
 msgid "For types §0, §1, and §2, §3 combines a pair of functions of types §4 and §5 to define a single function of type §6."
 msgstr ""
 
@@ -2524,6 +2508,9 @@ msgstr ""
 #. §18: `C`
 #. §19: `A`
 #. §20: `B`
+#. §21: `Let's construct an element of A`
+#. §22: `Let's consider all cases for x`
+#. §23: `x : A ⊕ B`
 #: Game/Levels/CoproductWorld.lean:13
 msgid "Given any types §0 and §1 we have studied\n"
 "\n"
@@ -2538,7 +2525,7 @@ msgid "Given any types §0 and §1 we have studied\n"
 "\n"
 "Together, these constructions define the two *introduction rules* for coproduct types. Coproduct types also have an *elimination rule*, which gives a strategy for defining a function §17 whose inputs belong to a coproduct type and whose outputs take values in an arbitrary type §18.\n"
 "\n"
-"This elimination rule tells us that functions out of a coproduct can be defined &ldquo;by cases&rdquo; &mdash; that is, by independently specifying the images of those elements that come from §19 and those elements that come from §20.\n"
+"This elimination rule tells us that functions out of a coproduct can be defined &ldquo;by cases&rdquo; &mdash; that is, by independently specifying the images of those elements that come from §19 and those elements that come from §20. In this world you will learn the sentences for both directions: §21 chooses a side when the goal is a coproduct, and §22 splits a construction according to where an element §23 comes from.\n"
 "\n"
 "Collectively, these rules characterize coproduct types and can be used to establish their properties, which we will explore in the levels that follow."
 msgstr ""
@@ -2638,15 +2625,15 @@ msgstr ""
 #. §14: `A ⊕ B ⊕ C`
 #. §15: `A ⊕ (B ⊕ C)`
 #. §16: `x : A ⊕ B ⊕ C`
-#. §17: `rcases x with a | b | c`
-#. §18: `a : A`
-#. §19: `b : B`
-#. §20: `c : C`
-#. §21: `y : (A ⊕ B) ⊕ C`
-#. §22: `rcases y with (a | b) | c`
-#. §23: `a : A`
-#. §24: `b : B`
-#. §25: `c : C`
+#. §17: `x is inr y`
+#. §18: `y : B ⊕ C`
+#. §19: `Let's consider all cases for y`
+#. §20: `a : A`
+#. §21: `b : B`
+#. §22: `c : C`
+#. §23: `y : (A ⊕ B) ⊕ C`
+#. §24: `y is inl z`
+#. §25: `z : A ⊕ B`
 #: Game/Levels/CoproductWorld/L06_Associativity.lean:9
 msgid "Given three types §0, §1, and §2, the coproduct type construction may be iterated to define types §3 and §4.\n"
 "\n"
@@ -2656,9 +2643,9 @@ msgid "Given three types §0, §1, and §2, the coproduct type construction may 
 "\n"
 "§13\n"
 "\n"
-"By convention, the notation §14 is an abbreviation for the coproduct type §15. For an element §16, typing §17 will split directly into the three cases corresponding to elements §18, §19, or §20.\n"
+"By convention, the notation §14 is an abbreviation for the coproduct type §15. For an element §16, the case §17 yields an element §18, which can itself be split into cases with §19: three cases in total, corresponding to elements §20, §21, or §22.\n"
 "\n"
-"Similarly, for an element §21, §22 will split directly into the three cases corresponding to elements §23, §24, or §25."
+"Similarly, for an element §23, the case §24 yields §25, which splits further."
 msgstr ""
 
 #. §0: `A`
@@ -2847,7 +2834,7 @@ msgid "How should we think about an element of type §0?.\n"
 "\n"
 "While it may be complicated to think about the entire construction at once, you can use the context and goal types at each stage of the construction to help guide you.\n"
 "\n"
-"The introduction rules and their associated tactics can be used to transform the goal state into simpler goal states. Simultaneously, the elimination rules can be used to define new elements out of any elements that appear in your context of objects."
+"The introduction rules and their associated sentences can be used to transform the goal state into simpler goal states. Simultaneously, the elimination rules can be used to define new elements out of any elements that appear in your context of objects."
 msgstr ""
 
 #. §0: `∃ x : A, P x`
@@ -4619,7 +4606,7 @@ msgstr ""
 msgid "Next move on to Coproduct World to learn about another type forming operation, which is in some sense &ldquo;dual&rdquo; to product types."
 msgstr ""
 
-#: Game/Levels/CoproductWorld/L08_BossLevel.lean:30
+#: Game/Levels/CoproductWorld/L08_BossLevel.lean:31
 msgid "Next move on to Disjunction World to study the logical operation that is analogous to coproduct types."
 msgstr ""
 
@@ -4627,7 +4614,7 @@ msgstr ""
 msgid "Next move on to Product World to meet a second type forming operation, which will again have a corresponding logical connective."
 msgstr ""
 
-#: Game/Levels/CoproductWorld/L06_Associativity.lean:50
+#: Game/Levels/CoproductWorld/L06_Associativity.lean:57
 msgid "Next we will study the relationship between products and coproducts."
 msgstr ""
 
@@ -4786,21 +4773,18 @@ msgstr ""
 msgid "Now that you have completed the base case, the next goal is to prove the inductive step. Here §0 is an arbitrary natural number and you are given a hypothesis that the predicate is true for §1, i.e., that §2. Your goal is to prove that the analogous result holds for §3, aka, the successor of §4. Type §5 to split into cases depending on whether or not §6 is even or odd."
 msgstr ""
 
+#: Game/Levels/ProductWorld/L05_Associativity.lean:32
 #: Game/Levels/CoproductWorld/L06_Associativity.lean:26
 #: Game/Levels/CoproductWorld/L07_Distributivity.lean:26
-#: Game/Levels/CoproductWorld/L07_Distributivity.lean:32
-msgid "Now the goal is a function type. What tactic is used to define functions?"
-msgstr ""
-
-#: Game/Levels/ProductWorld/L05_Associativity.lean:32
+#: Game/Levels/CoproductWorld/L07_Distributivity.lean:36
 msgid "Now the goal is a function type. Which sentence is used to define functions?"
 msgstr ""
 
-#. §0: `constructor`
+#. §0: `Let's construct the pair`
 #. §1: `«{A}» → «{C}»`
 #. §2: `«{B}» → «{C}»`
 #: Game/Levels/CoproductWorld/L03_ComponentFunctions.lean:25
-msgid "Now the goal is a product type. The §0 tactic will split into two subgoals, defining the functions §1 and §2 respectively."
+msgid "Now the goal is a product type. §0 will split into two subgoals, defining the functions §1 and §2 respectively."
 msgstr ""
 
 #: Game/Levels/ProductWorld/L04_Symmetry.lean:29
@@ -4838,13 +4822,6 @@ msgstr ""
 #. §2: `«{p}» : «{P}»`
 #: Game/Levels/ImplicationWorld/L07_ProvingAssumedImplication.lean:20
 msgid "Now the goal is to prove §0 using the hypotheses §1 and §2. Is this a problem we have seen before?"
-msgstr ""
-
-#. §0: `cases «{p}»`
-#. §1: `rcases «{p}» with x | c`
-#: Game/Levels/CoproductWorld/L06_Associativity.lean:28
-#: Game/Levels/CoproductWorld/L06_Associativity.lean:39
-msgid "Now use §0 or §1 or similar to give your own variable names."
 msgstr ""
 
 #. §0: `P`
@@ -5910,6 +5887,13 @@ msgstr ""
 msgid "Since §0 is a function with two variables, after §1 we now have two goals, where we need to supply first an element of type §2 and then an element of type §3. Lean records the first of these as the &ldquo;Active Goal&rdquo; and the second of these as &ldquo;Goal 2&rdquo;."
 msgstr ""
 
+#. §0: `Let's first consider the case where «{p}» is inl y`
+#. §1: `Let's next consider the case where «{p}» is inr c`
+#: Game/Levels/CoproductWorld/L06_Associativity.lean:28
+#: Game/Levels/CoproductWorld/L06_Associativity.lean:43
+msgid "Split into cases: §0 and later §1."
+msgstr ""
+
 #: Game/Levels/ConjunctionWorld/L03_Symmetry.lean:23
 msgid "Start by identifying the outermost logical connective and use the sentence corresponding to its introduction rule."
 msgstr ""
@@ -6397,18 +6381,17 @@ msgid "The converse implication is more subtle, and will be addressed in the Cla
 msgstr ""
 
 #. §0: `A ⊕ B → B ⊕ A`
-#. §1: `cases`
-#. §2: `rcases`
+#. §1: `Let's consider all cases for x`
+#. §2: `Let's first consider the case where x is inl a`
 #. §3: `A ⊕ B`
-#. §4: `left`
-#. §5: `right`
-#. §6: `B ⊕ A`
+#. §4: `Let's construct an element of …`
+#. §5: `B ⊕ A`
 #: Game/Levels/CoproductWorld/L05_Symmetry.lean:8
 msgid "The coproduct type, like the product type, is *symmetric*, and in particular has a canonical map of type §0. Your task in this level is to define it.\n"
 "\n"
-"Use the elimination rule for coproduct types and the associated tactics §1 or §2 to map out of the type §3.\n"
+"Use the elimination rule for coproduct types and the associated sentences (§1, §2, …) to map out of the type §3.\n"
 "\n"
-"Then use the introduction rules for coproduct types and the associated tactics §4 and §5 to map into the type §6."
+"Then use the introduction rules for coproduct types and the associated sentence §4 to map into the type §5."
 msgstr ""
 
 #. §0: `(x : A) × B x`
@@ -6622,14 +6605,10 @@ msgstr ""
 msgid "The goal is a function type. What tactic can be used to define an element?"
 msgstr ""
 
-#. §0: `constructor`
-#: Game/Levels/CoproductWorld/L06_Associativity.lean:24
-#: Game/Levels/CoproductWorld/L07_Distributivity.lean:24
-msgid "The goal is a product of function types, so to define an element you need to define two different functions. Each will take some work, so start with the §0 tactic to split one goal into two goals."
-msgstr ""
-
 #. §0: `Let's construct the pair`
 #: Game/Levels/ProductWorld/L05_Associativity.lean:30
+#: Game/Levels/CoproductWorld/L06_Associativity.lean:24
+#: Game/Levels/CoproductWorld/L07_Distributivity.lean:24
 msgid "The goal is a product of function types, so to define an element you need to define two different functions. Each will take some work, so start with §0 to split one goal into two goals."
 msgstr ""
 
@@ -7047,7 +7026,7 @@ msgid "The proposition §0 is *stronger* than the proposition §1 because §2 is
 msgstr ""
 
 #. §0: `B ⊕ A → A ⊕ B`
-#: Game/Levels/CoproductWorld/L05_Symmetry.lean:29
+#: Game/Levels/CoproductWorld/L05_Symmetry.lean:30
 msgid "The same construction defines a function of type §0, demonstrating the symmetry of the coproduct."
 msgstr ""
 
@@ -7069,6 +7048,11 @@ msgstr ""
 msgid "The sentence §0 can also decompose an element of an iterated product type into all of its components at once. For example, using an element §1, writing §2 will add elements §3, §4, §5, §6, and §7 to your context.\n"
 "\n"
 "Move on to Conjunction World to learn about the logical operation that is analogous to product types."
+msgstr ""
+
+#. §0: `Let's construct an element of …`
+#: Game/Levels/CoproductWorld/L02_RightInclusion.lean:32
+msgid "The sentence §0 is useful for defining elements of coproduct types or defining functions valued in coproduct types. In the next level, we will begin to consider functions mapping out of coproduct types."
 msgstr ""
 
 #. §0: `constructor`
@@ -7159,12 +7143,6 @@ msgstr ""
 #. §0: `rfl`
 #: Game/Levels/EqualityWorld/L01_Reflexivity.lean:27
 msgid "The tactic §0 tries to solve a goal whose type is an equality where the left hand side and right hand side are equal by definition."
-msgstr ""
-
-#. §0: `left`
-#. §1: `right`
-#: Game/Levels/CoproductWorld/L02_RightInclusion.lean:32
-msgid "The tactics §0 and §1 are useful for defining elements of coproduct types or defining functions valued in coproduct types. In the next level, we will begin to consider functions mapping out of coproduct types."
 msgstr ""
 
 #. §0: `(P ⇒ Q) ∧ (P ⇒ R)`
@@ -7465,7 +7443,7 @@ msgid "This level can be solved in one line with §0 where the §1 indicates tha
 "tactic §2 should be applied in each of the cases. It follows that §3 is equal to the identity function by something called *function extensionality* that will be discussed in Advanced Function World."
 msgstr ""
 
-#. §0: `exact fun f ↦ ⟨f ∘ Sum.inl, f ∘ Sum.inr⟩`
+#. §0: `Let's use fun f ↦ ⟨f ∘ Sum.inl, f ∘ Sum.inr⟩`
 #: Game/Levels/CoproductWorld/L03_ComponentFunctions.lean:30
 msgid "This level can be solved in one line with §0. Can you make sense of this construction?"
 msgstr ""
@@ -7628,9 +7606,9 @@ msgstr ""
 #. §0: `A ⊕ B`
 #. §1: `A`
 #. §2: `Sum.inl : A → A ⊕ B`
-#. §3: `left`
+#. §3: `Let's construct an element of A`
 #: Game/Levels/CoproductWorld/L01_LeftInclusion.lean:24
-msgid "To define an element of type §0 by defining an element of type §1 and applying the function §2, start by typing §3."
+msgid "To define an element of type §0 by defining an element of type §1 and applying the function §2, start by writing §3."
 msgstr ""
 
 #. §0: `pred : Nat → Nat`
@@ -7792,9 +7770,9 @@ msgstr ""
 #. §0: `Sum.inr : B → A ⊕ B`
 #. §1: `A ⊕ B`
 #. §2: `B`
-#. §3: `apply Sum.inr`
+#. §3: `We apply Sum.inr`
 #: Game/Levels/CoproductWorld/L02_RightInclusion.lean:26
-msgid "To use the built in function §0 to change the goal from §1 to §2 type §3."
+msgid "To use the built in function §0 to change the goal from §1 to §2 write §3."
 msgstr ""
 
 #. §0: `g_is_surj`
@@ -7904,7 +7882,7 @@ msgstr ""
 #. §0: `g : A → C`
 #. §1: `h : B → C`
 #. §2: `A ⊕ B → C`
-#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:42
+#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:43
 msgid "Two functions §0 and §1 combine to define a single function of type §2."
 msgstr ""
 
@@ -8091,14 +8069,6 @@ msgstr ""
 msgid "Universal property"
 msgstr ""
 
-#. §0: `cases «{x}»`
-#. §1: `rcases «{x}» with a | b`
-#. §2: `«{x}» : A ⊕ B`
-#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:46
-#: Game/Levels/CoproductWorld/L05_Symmetry.lean:19
-msgid "Use either §0 or §1 to consider the possible cases for the variable §2."
-msgstr ""
-
 #. §0: `left`
 #. §1: `right`
 #: Game/Levels/NaturalNumbersWorld/L03_Induction.lean:48
@@ -8118,13 +8088,6 @@ msgstr ""
 msgid "Use the §0 tactic to consider all possible cases for elements of §1."
 msgstr ""
 
-#. §0: `intro`
-#: Game/Levels/CoproductWorld/L03_ComponentFunctions.lean:23
-#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:44
-#: Game/Levels/CoproductWorld/L05_Symmetry.lean:17
-msgid "Use the §0 tactic to define a term in a function type."
-msgstr ""
-
 #. §0: `have eq1 : (g ∘ f) «{x}» = g (f «{x}») := rfl`
 #: Game/Levels/AdvancedFunctionWorld/L07_CancelingInjectivity.lean:22
 msgid "Use §0 and a similar lemma to give yourself more equalities to rewrite along."
@@ -8134,6 +8097,13 @@ msgstr ""
 #. §1: `let e : Empty := «{f}» «{a}»`
 #: Game/Levels/EmptyWorld/L03_ThroughEmpty.lean:24
 msgid "Use §0 or §1 to add an element of the empty type to the list of assumptions."
+msgstr ""
+
+#. §0: `Fix`
+#: Game/Levels/CoproductWorld/L03_ComponentFunctions.lean:23
+#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:45
+#: Game/Levels/CoproductWorld/L05_Symmetry.lean:17
+msgid "Use §0 to define a term in a function type."
 msgstr ""
 
 #. §0: `constructor`
@@ -8718,7 +8688,7 @@ msgstr ""
 
 #. §0: `A ⊕ B → C`
 #. §1: `(A → C) × (B → C)`
-#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:53
+#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:57
 msgid "We will see later that functions of type §0 are uniquely determined by their component functions §1."
 msgstr ""
 
@@ -9197,11 +9167,6 @@ msgstr ""
 msgid "Where have you seen this construction before? Can you solve this level in a different way?"
 msgstr ""
 
-#: Game/Levels/CoproductWorld/L05_Symmetry.lean:21
-#: Game/Levels/CoproductWorld/L05_Symmetry.lean:24
-msgid "Which function might be useful to apply here?"
-msgstr ""
-
 #: Game/Levels/ConjunctionWorld/L05_Associativity.lean:38
 #: Game/Levels/ConjunctionWorld/L05_Associativity.lean:40
 msgid "Which sentence breaks a goal involving conjunction into subgoals?"
@@ -9210,6 +9175,12 @@ msgstr ""
 #. §0: `«{P}» ⇒ «{Q}»`
 #: Game/Levels/ImplicationWorld/L07_ProvingAssumedImplication.lean:17
 msgid "Which sentences can be used to prove §0 with our given assumptions?"
+msgstr ""
+
+#. §0: `B ⊕ A`
+#: Game/Levels/CoproductWorld/L05_Symmetry.lean:21
+#: Game/Levels/CoproductWorld/L05_Symmetry.lean:25
+msgid "Which side of §0 can you construct an element of?"
 msgstr ""
 
 #. §0: `A → (B → C)`
@@ -9260,6 +9231,13 @@ msgstr ""
 #. §2: `h`
 #: Game/Levels/TypeWorld/L01_Elements.lean:39
 msgid "Write §0 on a line by itself and Lean lists the sentences that apply to the current goal, with the statements filled in. §1 does the same for a hypothesis §2."
+msgstr ""
+
+#. §0: `Let's consider all cases for «{x}»`
+#. §1: `«{x}» : A ⊕ B`
+#. §2: `Let's first consider the case where «{x}» is inl a`
+#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:47
+msgid "Write §0 to consider the possible cases for the variable §1, then announce the first one: §2."
 msgstr ""
 
 #. §0: `We conclude by «{p}»`
@@ -9344,14 +9322,6 @@ msgstr ""
 msgid "You can use §0 or conclude with §1. Can you understand the meaning of both proofs?"
 msgstr ""
 
-#. §0: `cases`
-#. §1: `rcases`
-#. §2: `«{p}»`
-#. §3: `B ⊕ C`
-#: Game/Levels/CoproductWorld/L07_Distributivity.lean:28
-msgid "You can use §0 or §1 either on §2 to split it up into components or directly on its component in §3.Be careful to use the syntax that is appropriate for terms of product or coproduct types, respectively."
-msgstr ""
-
 #. §0: `have ⟨p, nq⟩ := «{pnq}»`
 #. §1: `p`
 #. §2: `P`
@@ -9393,16 +9363,12 @@ msgstr ""
 msgid "You might be able to shorten your proof by applying the theorem §0 from our library at the appropriate point. In the next two levels, we will establish the precise relationship between bijective functions and invertible functions."
 msgstr ""
 
-#. §0: `x : A × (B ⊕ C)`
-#. §1: `rcases x with ⟨a, b | c⟩`
-#. §2: `a : A`
-#. §3: `b : B`
-#. §4: `a : A`
-#. §5: `c : C`
-#. §6: `x : (A × B) ⊕ (A × C)`
-#. §7: `rcases x with ⟨a, b⟩ | ⟨a, c⟩`
-#: Game/Levels/CoproductWorld/L07_Distributivity.lean:38
-msgid "You might enjoy solving this level again with the following syntactic tricks. If given an element §0, then §1 will split into two cases, one of which involves elements §2 and §3 and the other of which involves elements §4 and §5. Similarly, if given §6, then §7 will split into the same pair of cases."
+#. §0: `p.1 : A`
+#. §1: `p.2 : B ⊕ C`
+#. §2: `Set z := p.2`
+#. §3: `Let's consider all cases for z`
+#: Game/Levels/CoproductWorld/L07_Distributivity.lean:43
+msgid "You might enjoy solving this level again without taking the pair apart first: the projections §0 and §1 are always available, and §2 followed by §3 also works."
 msgstr ""
 
 #. §0: `! «{x}» = ! «{y}»`
@@ -9513,15 +9479,9 @@ msgstr ""
 msgid "§0 implies §1."
 msgstr ""
 
-#. §0: `rcases`
-#. §1: `cases`
-#. §2: `h : P ∨ Q`
-#. §3: `rcases h with p | q`
-#. §4: `cases h`
-#. §5: `p : P`
-#. §6: `q : Q`
-#: Game/Levels/CoproductWorld/L04_UniversalProperty.lean:62
-msgid "§0 is a tactic that will perform §1 recursively, according to a pattern. One use is to provide explicit names for variables in each subgoal. For example, given a hypothesis §2, §3 can be used in place of §4 to give hypotheses §5 in the first case and §6."
+#. §0: `«{y}»`
+#: Game/Levels/CoproductWorld/L06_Associativity.lean:30
+msgid "§0 is itself an element of a coproduct type, so consider its cases too."
 msgstr ""
 
 #. §0: `P ∧ Q`

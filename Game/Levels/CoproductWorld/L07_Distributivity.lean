@@ -16,23 +16,28 @@ Your challenge in this level is to define these functions.
 
 While it may be complicated to think about the entire construction at once, you can use the context and goal types at each stage of the construction to help guide you.
 
-The introduction rules and their associated tactics can be used to transform the goal state into simpler goal states. Simultaneously, the elimination rules can be used to define new elements out of any elements that appear in your context of objects.
+The introduction rules and their associated sentences can be used to transform the goal state into simpler goal states. Simultaneously, the elimination rules can be used to define new elements out of any elements that appear in your context of objects.
 "
 
 /-- For types `A`, `B`, and `C`, there are canonical functions between the types `A × (B ⊕ C)` and `(A × B) ⊕ (A × C)`. -/
 Statement {A B C : Type} : (A × (B ⊕ C) → (A × B) ⊕ (A × C)) × ((A × B) ⊕ (A × C) → A × (B ⊕ C)) := by
-  Hint (hidden := true) "The goal is a product of function types, so to define an element you need to define two different functions. Each will take some work, so start with the `constructor` tactic to split one goal into two goals."
-  constructor
-  Hint (hidden := true) "Now the goal is a function type. What tactic is used to define functions?"
-  intro p
-  Hint (hidden := true) "You can use `cases` or `rcases` either on `{p}` to split it up into components or directly on its component in `B ⊕ C`.Be careful to use the syntax that is appropriate for terms of product or coproduct types, respectively."
-  rcases p.2 with b | c
-  exact Sum.inl ⟨p.1, b⟩
-  exact Sum.inr ⟨p.1, c⟩
-  Hint (hidden := true) "Now the goal is a function type. What tactic is used to define functions?"
-  intro p
-  rcases p with q | r
-  exact ⟨q.1, Sum.inl q.2⟩
-  exact ⟨r.1, Sum.inr r.2⟩
+  Hint (hidden := true) "The goal is a product of function types, so to define an element you need to define two different functions. Each will take some work, so start with `Let's construct the pair` to split one goal into two goals."
+  Let's construct the pair
+  Hint (hidden := true) "Now the goal is a function type. Which sentence is used to define functions?"
+  Fix p : A × (B ⊕ C)
+  Hint (hidden := true) "First take the pair `{p}` apart with `By {p} we get a : A and z : B ⊕ C`, then consider the cases for `z`."
+  By p we get a : A and z : B ⊕ C
+  Let's first consider the case where z is inl b
+  Let's construct an element of A × B
+  Let's use ⟨a, b⟩
+  Let's next consider the case where z is inr c
+  Let's construct an element of A × C
+  Let's use ⟨a, c⟩
+  Hint (hidden := true) "Now the goal is a function type. Which sentence is used to define functions?"
+  Fix p : (A × B) ⊕ (A × C)
+  Let's first consider the case where p is inl q
+  Let's use ⟨q.1, Sum.inl q.2⟩
+  Let's next consider the case where p is inr r
+  Let's use ⟨r.1, Sum.inr r.2⟩
 
-Conclusion "You might enjoy solving this level again with the following syntactic tricks. If given an element `x : A × (B ⊕ C)`, then `rcases x with ⟨a, b | c⟩` will split into two cases, one of which involves elements `a : A` and `b : B` and the other of which involves elements `a : A` and `c : C`. Similarly, if given `x : (A × B) ⊕ (A × C)`, then `rcases x with ⟨a, b⟩ | ⟨a, c⟩` will split into the same pair of cases."
+Conclusion "You might enjoy solving this level again without taking the pair apart first: the projections `p.1 : A` and `p.2 : B ⊕ C` are always available, and `Set z := p.2` followed by `Let's consider all cases for z` also works."

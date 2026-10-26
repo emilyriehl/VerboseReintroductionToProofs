@@ -13,13 +13,11 @@ This function is defined by introducing a variable element `x : A ⊕ B` and the
 
 In the first case, the function `g` can be used to define an element `g a : C`, while in the second case the function `h` can be used to define an element `h b : C`.
 
-Given an element `x : A ⊕ B`, type `cases x` to ask Lean to consider both cases arising from the introduction rules for coproduct types: the first being that `x` is of the form `Sum.inl a` for some `a : A` and the second being that `x` is of the form `Sum.inr b` for some `b : B`.
+Given an element `x : A ⊕ B`, write `Let's consider all cases for x` to ask Lean to consider both cases arising from the introduction rules for coproduct types: the first being that `x` is of the form `Sum.inl a` for some `a : A` and the second being that `x` is of the form `Sum.inr b` for some `b : B`.
 
-There is another tactic, similar to `cases`, which allows you to give explicit names for the elements appearing in each case.
+Each case then has to be *announced* before you work on it. Writing `Let's first consider the case where x is inl a` selects the first case and names the element it comes from `a : A`; later, `Let's next consider the case where x is inr b` selects the second case and names its element `b : B`. (You can choose any names for `a` and `b`, and you may take the cases in either order.) Until a case has been announced, its goal is displayed as &ldquo;You need to announce: …&rdquo;.
 
-Given an element `x : A ⊕ B`, then `rcases x with a | b` can be used in place of `cases x` to provide an element `a : A` in the first case and an element `b : B` in the second. (Here you can choose any variable names for `a` and `b`.)
-
-Either `cases x` or `rcases x with a | b` can be used to split into the two cases mentioned above.
+If you prefer, you can skip the `all cases` sentence: writing `Let's first consider the case where x is inl a` directly splits into the cases and selects that one.
 
 Both cases will have the same goal type but will have a different context of objects, one of which contains the element `a : A` and the other of which contains the element `b : B`.
 "
@@ -28,12 +26,15 @@ Both cases will have the same goal type but will have a different context of obj
 DefinitionDoc ReintroductionToProofs.Sum.lift as "lift" in "Sum"
 
 def ReintroductionToProofs.Sum.lift {A B C : Type} (g : A → C) (h : B → C) : (A ⊕ B → C) := by
-  intro x
-  rcases x with a | b
-  apply g
-  exact a
-  apply h
-  exact b
+  Fix x : A ⊕ B
+  Let's consider all cases for x
+  Let's first consider the case where x is inl a
+  We apply g
+  Let's use a
+  Hint (hidden := true) "Announce the second case: `Let's next consider the case where {x} is inr b`."
+  Let's next consider the case where x is inr b
+  We apply h
+  Let's use b
 
 NewDefinition ReintroductionToProofs.Sum.lift
 
@@ -41,26 +42,20 @@ namespace ReintroductionToProofs
 
 /-- Two functions `g : A → C` and `h : B → C` combine to define a single function of type `A ⊕ B → C`. -/
 Statement {A B C : Type} (g : A → C) (h : B → C) : (A ⊕ B → C) := by
-  Hint (hidden := true) "Use the `intro` tactic to define a term in a function type."
-  intro x
-  Hint (hidden := true) "Use either `cases {x}` or `rcases {x} with a | b` to consider the possible cases for the variable `{x} : A ⊕ B`."
-  rcases x with a | b
-  apply g
-  exact a
-  apply h
-  exact b
+  Hint (hidden := true) "Use `Fix` to define a term in a function type."
+  Fix x : A ⊕ B
+  Hint (hidden := true) "Write `Let's consider all cases for {x}` to consider the possible cases for the variable `{x} : A ⊕ B`, then announce the first one: `Let's first consider the case where {x} is inl a`."
+  Let's consider all cases for x
+  Let's first consider the case where x is inl a
+  We apply g
+  Let's use a
+  Hint (hidden := true) "Announce the second case: `Let's next consider the case where {x} is inr b`."
+  Let's next consider the case where x is inr b
+  We apply h
+  Let's use b
 
 Conclusion "We will see later that functions of type `A ⊕ B → C` are uniquely determined by their component functions `(A → C) × (B → C)`."
 
 end ReintroductionToProofs
 
-/-- Assuming `x` is a variable in the local context with an inductive type, `cases x` splits the main goal, producing one goal for each constructor of the inductive type, in which the target is replaced by a general instance of that constructor. If the type of an element in the local context depends on `x`, that element is reverted and reintroduced afterward, so that the case split affects that hypothesis as well. `cases` detects unreachable cases and closes them automatically.
-
-For example, given an assumption `h : P ∨ Q`, `cases h` splits the main goal into two goals, one assuming `P` holds and the other assuming `Q` holds. -/
-TacticDoc «cases»
-
-/-- `rcases` is a tactic that will perform `cases` recursively, according to a pattern. One use is to provide explicit names for variables in each subgoal. For example, given a hypothesis `h : P ∨ Q`, `rcases h with p | q` can be used in place of `cases h` to give hypotheses `p : P` in the first case and `q : Q`. -/
-TacticDoc rcases
-
-/- Use these commands to add items to the game's inventory. -/
-NewTactic «cases» rcases
+-- The case-analysis sentences (`Let's consider all cases for x`, `Let's first consider the case where x is inl a`, …) are documented under `Let's`.
