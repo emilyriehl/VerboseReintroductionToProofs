@@ -1,2 +1,8 @@
 # Lines of the form <World>/<file-stem>:<field> (field: statement, title, docstring, level)
 # or world:<World>, for deliberate deviations from the original game.
+# Verbose Lean reserves the words `and` and `or`, so the Boolean functions are written
+# `Bool.and` / `Bool.or` here (same functions as `and` / `or` in the original).
+BooleanWorld/L04_ConjunctionSymmetry:statement
+BooleanWorld/L06_DisjunctionSymmetry:statement
+BooleanWorld/L07_DeMorgan:statement
+BooleanWorld/L09_BossLevel:statement
