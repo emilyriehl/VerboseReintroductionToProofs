@@ -20,21 +20,24 @@ Statement (preamble := refine let f := ?f; ⟨f, ?eq⟩) :
     f true false = false ∧
     f false false = false := by
   -- first, define the function
-  intro x y
-  Hint (hidden := true) "If you are using typewriter mode, try `cases h : {x}` to add hypotheses `h : {x} = false` and `h : {x} = true` that clarify which case you are in. Similarly, try `cases k : {y}` whenever you are ready to consider cases on the second boolean variable. Alternatively, you can define the function on one line with `match {x} , {y} with | ? , ? => exact ? | ? , ? => exact ? | ? , ? => exact ? | ? , ? => exact ?` replacing each `?` with appropriate boolean elements."
-  cases x
-  exact false
-  cases y
-  exact false
-  exact true
+  Fix x : Bool
+  Fix y : Bool
+  Hint (hidden := true) "Consider the cases for `{x}` first: `Let's first consider the case where {x} is false`. Inside the case where `{x}` is `true`, consider the cases for `{y}`. Alternatively, you can define the function on one line with `Let's use fun x y ↦ match x, y with | ?, ? => ? | ?, ? => ? | ?, ? => ? | ?, ? => ?` replacing each `?` with appropriate boolean elements."
+  Let's first consider the case where x is false
+  Let's use false
+  Let's next consider the case where x is true
+  Let's first consider the case where y is false
+  Let's use false
+  Let's next consider the case where y is true
+  Let's use true
   Hint "Now you are asked to check that the function `f : Bool → Bool → Bool` that you just defined actually *is* the conjunction function. Specifically, you are asked to check that `f true true = true ∧ f false true = false ∧ f true false = false ∧ f false false = false`."
   -- now prove that you defined the right thing
-  exact ⟨rfl, rfl, rfl, rfl⟩
+  We conclude by ⟨rfl, rfl, rfl, rfl⟩
 
 Conclusion "Was it necessary to consider all four cases of two boolean elements or can you define
-this function by considering fewer cases? If using the tactic `match`, try replacing one of the input booleans with `_` to indicate that the value does not matter. The function `and` is now in your library."
+this function by considering fewer cases? If using `match`, try replacing one of the input booleans with `_` to indicate that the value does not matter. The function `Bool.and`, written `x && y`, is now in your library."
 
-/-- The function `and : Bool → Bool → Bool` captures the logical operation of conjunction. -/
-DefinitionDoc Bool.and as "and" in "Bool"
+/-- The function `Bool.and : Bool → Bool → Bool`, written `x && y`, captures the logical operation of conjunction. -/
+DefinitionDoc Bool.and as "&&" in "Bool"
 
 NewDefinition Bool.and

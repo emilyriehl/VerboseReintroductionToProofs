@@ -21,11 +21,11 @@ In this level we will prove `∃ x : A, ¬ (P x)` implies
 
 /-- Given a family of propositions `P : A → Prop`,  `∃ x : A, ¬ (P x)` implies `¬ (∀ x : A, P x)` -/
 Statement {A : Type} (P : A → Prop) : (∃ x : A, ¬ (P x)) → ¬ (∀ x : A, P x)  := by
-  intro en
-  Hint (hidden := true) "The goal is still an implication, so try another `intro`."
-  intro na
+  Assume en : ∃ x : A, ¬ P x
+  Hint (hidden := true) "The goal is a negation, that is, an implication: use `Assume`."
+  Assume na : ∀ x : A, P x
   Hint (hidden := true) "To apply the hypothesis `{na}` it would help to have a specific element of `A` to apply it to. Can you see where this might come from?"
-  rcases en with ⟨a, ha⟩
-  exact ha (na a)
+  By en we get a such that ha : ¬ P a
+  We conclude by ha applied to na a
 
 Conclusion "The converse implication is classical but not constructive as you will show in the Boss Level."

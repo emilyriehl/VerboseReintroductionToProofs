@@ -10,18 +10,12 @@ Introduction "Recall the type `Bool` of booleans has two elements denoted `false
 
 In this level, our aim is to define a function `Bool → Bool` that encodes the logical operation of negation, i.e., sends `false` to `true` and `true` to `false`.
 
-You can start to define this function in the usual way, by typing `intro b`. Lean will then update the goal to ask you to supply an element of type `Bool`. But which element should you pick?
+You can start to define this function in the usual way, by writing `Fix b : Bool`. Lean will then update the goal to ask you to supply an element of type `Bool`. But which element should you pick?
 
 The correct answer depends on whether `b` is `false` or `true`. The type of Booleans is an example of an *inductive type*, which is
-similar to a coproduct type, and thus you can type `cases b` to split into the two possible cases.
+similar to a coproduct type, and thus you can write `Let's consider all cases for b` to split into the two possible cases, and then announce each case: `Let's first consider the case where b is false` and later `Let's next consider the case where b is true`. Because every case is announced, you always know which one you are working on.
 
-Note the first case provided by Lean is the case of `false` while the second case is the case of `true`.
-
-Unfortunately, it is difficult to see which case is which in typewriter mode. Try toggling to editor mode and perhaps add a few blank lines at the bottom to see if you can see what case you are in.
-
-Alternatively, if you prefer to stay in typewriter mode, you can avoid the `cases` tactic and define the entire function at once in one line.
-
-After `intro b`, try typing `match b with | false => exact ? | true => exact ?` where each `?` should be replaced by the appropriate element of `Bool`.
+Alternatively, you can define the entire function at once in one line, with Lean's syntax for definitions by cases: `Let's use fun b ↦ match b with | false => ? | true => ?` where each `?` should be replaced by the appropriate element of `Bool`.
 
 Note this level comes with two pre-defined goals: the first is to define the negation function `Bool → Bool` and the second is to check that your definition is correct by calculating the values of the function you defined on the booleans `true` and `false`.
 "
@@ -29,15 +23,20 @@ Note this level comes with two pre-defined goals: the first is to define the neg
 /-- The negation function `not : Bool → Bool` sends the boolean `false` to `true` and `true` to `false`. -/
 Statement (preamble := refine let f := ?f; ⟨f, ?eq⟩) :
   ∃ f : Bool → Bool, f true = false ∧ f false = true := by
-  Hint "Your first objective is to define the negation function."
-  intro b
-  match b with
-  | false => exact true
-  | true => exact false
-  Hint "Now you are asked to check that the function `f : Bool → Bool` that you just defined actually *is* the negation function. Specifically, you are asked to check that `f true = false ∧ f false = true`."
-  constructor
-  rfl
-  rfl
+  Hint "Your first objective is to define the negation function. Write `Fix b : Bool`."
+  Fix b : Bool
+  Hint (hidden := true) "Write `Let's consider all cases for {b}`, then announce a case, e.g. `Let's first consider the case where {b} is false`."
+  Let's consider all cases for b
+  Let's first consider the case where b is false
+  Hint (hidden := true) "Which boolean should the negation of `false` be? Write `Let's use ??`."
+  Let's use true
+  Let's next consider the case where b is true
+  Let's use false
+  Hint "Now you are asked to check that the function `f : Bool → Bool` that you just defined actually *is* the negation function. Specifically, you are asked to check that `f true = false ∧ f false = true`. Both halves hold by definition: `Let's first prove that f true = false`, `We conclude by rfl`, and so on; or in one go, `We conclude by ⟨rfl, rfl⟩`."
+  Let's first prove that f true = false
+  We conclude by rfl
+  Let's now prove that f false = true
+  We conclude by rfl
 
 Conclusion "Lean has a built in name `not` for this function. It is now in your library."
 
@@ -55,9 +54,7 @@ DefinitionDoc Bool.true as "true" in "Bool"
 
 NewDefinition Bool Bool.not Bool.false Bool.true
 
-/-- The tactic `match` can be used to define a function by cases. For example, in the context of an
-element `b : Bool`, `match b with | false => ? | true => ?` splits the construction into the case where `b` is false followed by the case where `b` is true. Here both `?` should be replaced by the appropriate sequence of tactics for each case, using semicolons if more than one tactic is needed. In the context of `x y : Bool`,
-`match x y with | false, false => ? | false, true => ? | true, false => ? | true, true => ?` splits into the four possible cases. -/
+/-- `match` is Lean's keyword for definitions by cases inside an element: `fun b ↦ match b with | false => … | true => …` defines a function on `Bool` by giving its two values. It is not a sentence of its own; it appears inside `Let's use …` or `Set f := …`. -/
 TacticDoc «match»
 
-NewTactic «match»
+NewHiddenTactic «match»

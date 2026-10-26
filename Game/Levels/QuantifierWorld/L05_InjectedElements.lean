@@ -17,13 +17,16 @@ Show that for any `x : A ⊕ B`, either `∃ a : A, x = Sum.inl a` or `∃ b : B
 /-- If `a : A` and `b : B` then the projections of `⟨a, b⟩ : A × B` are definitionally equal to `a : A` and `b : B`, respectively. -/
 Statement {A B : Type} (x : A ⊕ B) : (∃ a : A, x = Sum.inl a) ∨ (∃ b : B, x = Sum.inr b)  := by
   Hint (hidden := true) "For a generic `x : A ⊕ B`, how do you know which statement to prove? It may help to consider possible cases."
-  rcases x with a | b
-  Hint (hidden := true) "Recall the tactics `left` and `right` can isolate the appropriate clause of a disjunction."
-  left
-  exact ⟨a, rfl⟩
-  Hint (hidden := true) "Recall the tactics `left` and `right` can isolate the appropriate clause of a disjunction."
-  right
-  exact ⟨b, rfl⟩
+  Let's first consider the case where x is inl a
+  Hint (hidden := true) "Announce the appropriate clause of the disjunction with `Let's prove that …`, restating it; then announce the witness."
+  Let's prove that ∃ a' : A, Sum.inl a = Sum.inl a'
+  Let's prove that a works
+  We conclude by rfl
+  Let's next consider the case where x is inr b
+  Hint (hidden := true) "Announce the appropriate clause of the disjunction with `Let's prove that …`; or finish in one line with `We conclude by Or.inr ⟨b, rfl⟩`."
+  Let's prove that ∃ b' : B, Sum.inr b = Sum.inr b'
+  Let's prove that b works
+  We conclude by rfl
 
 
 Conclusion "Here the proofs that `x = Sum.inl a` or `x = Sum.inr b` are by reflexivity but only after splitting into cases for which these statements hold by definition."

@@ -30,5 +30,5 @@ The first method uses the *universal quantifier* `∀`:
 The second method uses the *existential quantifier* `∃`:
 `∃ x : A, P x` is the proposition that asserts that there is some `a : A` so that `P a` is true.
 
-In this world, we will learn how to prove propositions and use hypotheses involving the *universal quantifier* `∀` and *existential quantifier* `∃`.
+In this world, we will learn how to prove propositions and use hypotheses involving the *universal quantifier* `∀` and *existential quantifier* `∃`. The symbols are typed `\\all` and `\\ex`.
 "

@@ -18,17 +18,17 @@ open Classical
 
 /-- Given a family of propositions `P : A → Prop`, using classical logic, `¬ (∀ x : A, P x)` implies `∃ x : A, ¬ (P x)`.  -/
 Statement {A : Type} (P : A → Prop) : ¬ (∀ x : A, P x) → (∃ x : A, ¬ (P x)) := by
-  intro na
-  apply byContradiction
-  intro ne
-  apply na
-  intro a
-  have p := Classical.em (P a)
-  rcases p with pa | npa
-  assumption
-  apply False.elim
-  apply ne
-  use a
-  assumption
+  Assume na : ¬ (∀ x : A, P x)
+  Assume for contradiction ne : ¬ (∃ x : A, ¬ P x)
+  We apply na
+  Fix a : A
+  Fact p : P a ∨ ¬ P a from Classical.em (P a)
+  Let's first consider the case where p is inl pa
+  We conclude by pa
+  Let's next consider the case where p is inr npa
+  Let's prove it's contradictory
+  We apply ne
+  Let's prove that a works
+  We conclude by npa
 
 Conclusion "Move on to Advanced Function World to use quantifiers to study important properties of functions."

@@ -45,11 +45,10 @@ The final statement `∀ x : A, ∃ y : A, x = y` is just true for any type `A`.
 /-- For any type `A`, for all elements `x : A`, there exists an element `y : A`, so that `x = y`. -/
 Statement {A : Type} : ∀ x : A, ∃ y : A, x = y
  := by
-  intro a
-  use a
-  rfl
+  Fix x : A
+  Let's prove that x works
+  We conclude by rfl
 
 Conclusion "In the next level, we will explore the consequences of exchanging the order of universal and existential quantifiers."
 
 
--- (the word `use` is declared game-wide in TypeWorld level 1)

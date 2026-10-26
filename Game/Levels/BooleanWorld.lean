@@ -19,7 +19,7 @@ Formally these elements are just two elements with distinct names.
 
 But the terminology suggests that we can think of `Bool` as the type of truth values, with `true : Bool` representing the true proposition and `false : Bool` representing the false proposition.
 
-In this world, we will define various functions involving the type of booleans.
+In this world, we will define various functions involving the type of booleans. A function out of `Bool` is defined by cases, with the sentences you met for coproducts: `Let's consider all cases for b`, `Let's first consider the case where b is false`, `Let's next consider the case where b is true`.
 
 We will also show that the type of booleans is *not* a proposition by proving that `¬(true = false)`.
 "

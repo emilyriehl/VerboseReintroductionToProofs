@@ -9,7 +9,7 @@ Introduction "Let `P : A → Prop` be a predicate over a type `A`.
 
 To prove the proposition `∃ x : A, P x` it suffices to find any element `a : A` so that `P a` holds.
 
-If you have a proof `p_a : P a`, then the same notation used for conjunctions and product types can be used to define an element `⟨a, p_a⟩ : ∃ x : A, P x`.
+If you have a proof `p_a : P a`, then the same notation used for conjunctions and product types can be used to define an element `⟨a, p_a⟩ : ∃ x : A, P x`. In this game you usually proceed in two steps instead: announce the witness with `Let's prove that a works`, and then prove `P a`.
 
 Here the element `⟨a, p_a⟩` can be thought of as a *dependent pair*, where the type `P a` of the right component `p_a : P a` depends on the left component `a : A`.
 
@@ -19,17 +19,15 @@ Recall also the function `or : Bool → Bool → Bool` capturing the logical not
 
 In this level, you are asked to prove that there exists some boolean `b : B` so that `b && b = b || b`.
 
-The tactic `use` is used to introduce proofs of existentially quantified predicates.
-
-If the goal is to prove `∃ x : A, P x`, one can type `use a` referencing a specific element `a : A` to reduce the goal to proving `P a`.
+If the goal is to prove `∃ x : A, P x`, write `Let's prove that a works` referencing a specific element `a : A` to reduce the goal to proving `P a`.
 "
 
 /-- There is some boolean `b` so that `b && b = b || b` -/
 Statement : ∃ b : Bool, (b && b) = (b || b) := by
-  Hint "Type `use` followed by the name of an element of `Bool` that you believe will satisfy the predicate."
-  use false
-  Hint "Now you are asked to prove a special case of the indexed family of propositions, where the indexing element `b` is specialized to the element you provided."
-  rfl
+  Hint "Write `Let's prove that ?? works` with the name of an element of `Bool` that you believe will satisfy the predicate in place of `??`."
+  Let's prove that false works
+  Hint "Now you are asked to prove a special case of the indexed family of propositions, where the indexing element `b` is specialized to the element you provided. Both sides compute to the same boolean, so `We conclude by rfl`."
+  We conclude by rfl
 
 Conclusion "The next level will give more practice with the existential quantifier."
 

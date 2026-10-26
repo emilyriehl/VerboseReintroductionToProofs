@@ -12,16 +12,17 @@ The negation has the property that for any boolean `b : Bool`, `b = not (not b)`
 
 Interestingly the proof is not by reflexivity! This is because we only defined `not b` to have a particular value when `b` is one of the elements `false` or `true`.
 
-See if this is enough of a hint to solve this level.
+See if this is enough of a hint to solve this level. (The case sentences work on a proposition about `b` just as well as on a construction.)
 
 Note Lean has an alternate notation `! b` for `not b`.
 "
 
 /-- For any `b : Bool`, `b = not (not b)`. -/
 Statement (b : Bool) : b = not (not b)  := by
-  cases b
-  rfl
-  rfl
+  Let's consider all cases for b
+  Let's first consider the case where b is false
+  We conclude by rfl
+  Let's next consider the case where b is true
+  We conclude by rfl
 
-Conclusion "This level can be solved in one line with `cases b <;> rfl` where the `<;>` indicates that the
-tactic `rfl` should be applied in each of the cases. It follows that `not ∘ not : Bool → Bool` is equal to the identity function by something called *function extensionality* that will be discussed in Advanced Function World."
+Conclusion "It follows that `not ∘ not : Bool → Bool` is equal to the identity function by something called *function extensionality* that will be discussed in Advanced Function World."

@@ -7,7 +7,7 @@ Title "Disjunction"
 
 Introduction "We have seen that the logical operation of negation can be encoded as a function `not : Bool → Bool`.
 
-We have also defined a function `and : Bool → Bool → Bool` that encodes the logical operation of conjunction.
+We have also defined a function `Bool.and : Bool → Bool → Bool`, written `&&`, that encodes the logical operation of conjunction.
 
 In this level, we will define a function `Bool → Bool → Bool` that encodes the logical operation of disjunction.
 
@@ -22,20 +22,22 @@ Statement (preamble := refine let f := ?f; ⟨f, ?eq⟩) :
     f true false = true ∧
     f false false = false := by
   -- first, define the function
-  intro x y
-  Hint (hidden := true) "Recall `cases h : {x}` and `cases k :
-  cases {y}` may make it clearer which cases are which."
-  cases x
-  cases y
-  exact false
-  exact true
-  exact true
+  Fix x : Bool
+  Fix y : Bool
+  Hint (hidden := true) "Consider the cases for `{x}` first, and inside the case where `{x}` is `false`, the cases for `{y}`."
+  Let's first consider the case where x is false
+  Let's first consider the case where y is false
+  Let's use false
+  Let's next consider the case where y is true
+  Let's use true
+  Let's next consider the case where x is true
+  Let's use true
   -- now prove that you defined the right thing
-  exact ⟨rfl, rfl, rfl, rfl⟩
+  We conclude by ⟨rfl, rfl, rfl, rfl⟩
 
-Conclusion "Was it necessary to consider all four cases of two boolean elements or can you define this function by considering fewer cases? The function `or` is now in your library."
+Conclusion "Was it necessary to consider all four cases of two boolean elements or can you define this function by considering fewer cases? The function `Bool.or`, written `x || y`, is now in your library."
 
-/-- The function `or : Bool → Bool → Bool` captures the logical operation of conjunction. -/
-DefinitionDoc Bool.or as "or" in "Bool"
+/-- The function `Bool.or : Bool → Bool → Bool`, written `x || y`, captures the logical operation of disjunction. -/
+DefinitionDoc Bool.or as "||" in "Bool"
 
 NewDefinition Bool.or

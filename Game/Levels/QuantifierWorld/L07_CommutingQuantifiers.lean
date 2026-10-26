@@ -28,19 +28,17 @@ and secondly a proof `hb : ∀ w : A, P w b`. Note that the element `b` gets sub
 
 We can think of the proof `h` as being given by this pair of data `⟨b, hb⟩ : ∃ z : B, ∀ w : A, P w z`. Indeed `h = ⟨b, hb⟩`.
 
-To extract this data from the proof `h`, type `rcases h with ⟨b, hb⟩` to replace `h` by the pair of assumptions `b : B` and `hb : ∀ w : A, P w b`.
-
-Alternatively, type `let ⟨b, hb⟩ := h` to extract the elements `b : B` and `hb : ∀ w : A, P w b` from `h`.
+To extract this data from the proof `h`, write `By h we get b such that hb : ∀ w : A, P w b`, which adds the assumptions `b : B` and `hb : ∀ w : A, P w b` to your context. (You may also leave the fact unnamed, `By h we get b such that ∀ w : A, P w b`, and Lean names it for you.)
 "
 
 /-- Given a family of propositions `P : A → B → Prop`, `∃ z : B, ∀ w : A, P w z`implies `∀ x : A, ∃ y : B, P x y` -/
 Statement {A B : Type} (P : A → B → Prop) : (∃ z : B, ∀ w : A, P w z) → ∀ x : A, ∃ y : B, P x y := by
-  intro h
-  intro a
-  Hint (hidden := true) "Type `rcases {h} with ⟨b, hb⟩` to replace `{h}` by the pair of assumptions `b : B` and
-  `hb : ∀ w : A, P w b`."
-  rcases h with ⟨b, hb⟩
-  use b
-  exact hb a
+  Assume h : ∃ z : B, ∀ w : A, P w z
+  Fix a : A
+  Hint (hidden := true) "Write `By {h} we get b such that hb : ∀ w : A, P w b` to extract the pair of assumptions `b : B` and
+  `hb : ∀ w : A, P w b` from `{h}`."
+  By h we get b such that hb : ∀ w : A, P w b
+  Let's prove that b works
+  We conclude by hb applied to a
 
 Conclusion "In the next levels, we will study the effect of negating existential and universal quantifiers."
