@@ -89,3 +89,11 @@ package Game where
 lean_lib Game
 
 require "leanprover-community" / mathlib @ git leanVersion
+
+/-
+Verbose Lean (Patrick Massot, Apache-2.0) provides the controlled-natural-language phrases.
+The branch `lean4game-compat` of the fork is Verbose Lean v4.31.0 plus a one-line rename of an
+internal environment extension (`gameExt` -> `verboseConfigExt`) that otherwise clashes with
+lean4game's GameServer. Switch back to the upstream repository once that change is merged there.
+-/
+require verbose from git "https://github.com/emilyriehl/verbose-lean4" @ "lean4game-compat"
