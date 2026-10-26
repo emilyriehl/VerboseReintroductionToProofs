@@ -36,9 +36,10 @@ elab "Let's" " construct an element of " t:term : tactic => withMainContext do
   try attempt (← `(tactic| refine Sum.inr (?_ : $t)))
   catch _ => throwError m!"The goal is neither {t} nor a sum type having {t} as one of its summands."
 
-/-- `This is impossible because of e`: close any goal from `e : Empty`, `h : False`, or a
-contradiction such as `h applied to p` with `h : ¬ P` and `p : P`. -/
+/-- `This is impossible because of e`: close any goal from `e : Empty`, `h : False`, a
+contradiction such as `h applied to p` with `h : ¬ P` and `p : P`, or an impossible equation such as
+`p : false = true`. -/
 elab "This is impossible because of " e:maybeApplied : tactic => withMainContext do
   let t ← maybeAppliedToTerm e
-  try withoutRecover <| evalTactic (← `(tactic| first | exact Empty.elim $t | exact False.elim $t | exact absurd $t (by assumption)))
+  try withoutRecover <| evalTactic (← `(tactic| first | exact Empty.elim $t | exact False.elim $t | exact absurd $t (by assumption) | (cases $t:term; done) | exact nomatch $t))
   catch _ => throwError m!"{t} is not an impossibility: it should be an element of `Empty`, a proof of `False`, or a contradiction."

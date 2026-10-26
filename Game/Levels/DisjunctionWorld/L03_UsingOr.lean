@@ -35,7 +35,7 @@ Statement {P Q : Prop} : P ∨ Q → Q ∨ P := by
   Let's prove that P
   Hint (hidden := true) "Write `We conclude by {p}`, or `We conclude by hypothesis` to indicate that the goal matches an assumption."
   We conclude by p
-  Hint "Note now that you've completed the proof in the first case, Lean expects you to announce the second case: `Let's next consider the case where {h} is inr q`."
+  Hint "Note now that you've completed the proof in the first case, Lean expects you to announce the second case: `Let's next consider the case where h is inr q`."
   Let's next consider the case where h is inr q
   Let's prove that Q
   Hint (hidden := true) "Write `We conclude by {q}`."

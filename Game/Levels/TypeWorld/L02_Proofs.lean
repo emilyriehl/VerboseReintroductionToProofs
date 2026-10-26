@@ -34,7 +34,7 @@ Finishing:
 Transforming the goal (introduced in later worlds):
 * `We apply h` when `h : P ⇒ Q` and the goal is `Q`: the goal becomes `P`.
 * `We rewrite using h` when `h : a = b` replaces `a` by `b` in the goal (backwards: `We rewrite using ← h`; in a hypothesis: `… at h'`).
-* `We compute` normalises arithmetic on both sides of an equation.
+* `We compute` normalises arithmetic on both sides of an equation (Natural Numbers World).
 * `We proceed using h` when `h : P ∨ Q` or `h : A ⊕ B`: one goal per case.
 * `We discuss depending on whether P or ¬ P`: case split on a proposition. -/
 TacticDoc «We»

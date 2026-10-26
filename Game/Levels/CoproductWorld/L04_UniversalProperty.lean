@@ -31,7 +31,7 @@ def ReintroductionToProofs.Sum.lift {A B C : Type} (g : A → C) (h : B → C) :
   Let's first consider the case where x is inl a
   We apply g
   Let's use a
-  Hint (hidden := true) "Announce the second case: `Let's next consider the case where {x} is inr b`."
+  Hint (hidden := true) "Announce the second case: `Let's next consider the case where x is inr b`."
   Let's next consider the case where x is inr b
   We apply h
   Let's use b
@@ -49,7 +49,7 @@ Statement {A B C : Type} (g : A → C) (h : B → C) : (A ⊕ B → C) := by
   Let's first consider the case where x is inl a
   We apply g
   Let's use a
-  Hint (hidden := true) "Announce the second case: `Let's next consider the case where {x} is inr b`."
+  Hint (hidden := true) "Announce the second case: `Let's next consider the case where x is inr b`."
   Let's next consider the case where x is inr b
   We apply h
   Let's use b

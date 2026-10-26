@@ -25,7 +25,9 @@ elab "Let's" " use " e:term : tactic => withMainContext do
 
 /-- `By h we get m such that k = 2 * m`: like `By h we get m such that hm : k = 2 * m` but the
 new fact is named automatically (here `hm`). -/
-elab "By " e:maybeApplied " we get " colGt news:newObjectNameLess : tactic => do
+-- Low priority: `(h : P)` is also a term, so Verbose's typed forms `… such that (h : P)` and
+-- `… such that (h : P) and (h' : Q)` must win whenever both parse.
+elab (name := gameByWeGetNameless) (priority := low) "By " e:maybeApplied " we get " colGt news:newObjectNameLess : tactic => do
   obtainTac (← maybeAppliedToTerm e) (newObjectNameLessToArray news)
 
 /-- `By p we get a : A and b : B` (also `(a : A) and (b : B)`, or just `a and b`): destructure a

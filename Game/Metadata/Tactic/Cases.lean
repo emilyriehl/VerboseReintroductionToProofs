@@ -47,7 +47,7 @@ private def ctorFieldNames (ctorName : Name) : MetaM (List String) := do
       pure (toString n.eraseMacroScopes)
 
 /-- Wrap goal `g` into a `CaseBlocker descr`. Returns the new (blocked) goal. -/
-private def blockGoal (g : MVarId) (descr : String) : MetaM MVarId := do
+private def blockGoal (g : MVarId) (descr : String) : MetaM MVarId := g.withContext do
   let ty ← g.getType
   let lvl ← getLevel ty
   let blocked ← mkFreshExprMVar (mkApp2 (mkConst ``CaseBlocker [lvl]) (mkStrLit descr) ty)

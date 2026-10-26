@@ -31,7 +31,7 @@ Statement {P Q R S : Prop} : (P ∨ Q) ∧ (R ∨ S) ↔ (P ∧ R) ∨ (P ∧ S)
   Let's prove that (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S)
   Let's prove that P ∧ S
   We conclude by ⟨p, s⟩
-  Hint (hidden := true) "This completes the proof in the case where `P ∨ Q` holds because `P` holds. Now announce the case where `Q` holds, which requires another case split over the proof `{rs} : {R} ∨ {S}`."
+  Hint (hidden := true) "This completes the proof in the case where `P ∨ Q` holds because `P` holds. Now announce the case where `Q` holds, which requires another case split over the proof `rs : {R} ∨ {S}`."
   Let's next consider the case where pq is inr q
   Let's first consider the case where rs is inl r
   We conclude by Or.inr (Or.inr (Or.inl ⟨q, r⟩))

@@ -33,7 +33,7 @@ Statement {A : Type} : (A → A ⊕ Empty) × (A ⊕ Empty → A) := by
   Hint (hidden := true) "What strategy is available with an element of a coproduct type?"
   Let's first consider the case where p is inl a
   Let's use a
-  Hint (hidden := true) "Announce the second case, `Let's next consider the case where {p} is inr x`, and then explain why it cannot occur."
+  Hint (hidden := true) "Announce the second case, `Let's next consider the case where p is inr x`, and then explain why it cannot occur."
   Let's next consider the case where p is inr x
   This is impossible because of x
 
