@@ -36,4 +36,4 @@ Statement {P Q R : Prop} : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
   Let's next consider the case where h is inr pr
   We conclude by ⟨pr.1, Or.inr pr.2⟩
 
-Conclusion "This proves the that conjunction distributes over disjunction. A more involved form of distributivity appears in the next level."
+Conclusion "This proves that conjunction distributes over disjunction. A more involved form of distributivity appears in the next level."

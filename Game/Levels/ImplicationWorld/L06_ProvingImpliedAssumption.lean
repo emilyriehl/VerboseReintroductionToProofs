@@ -18,5 +18,5 @@ Statement {P Q : Prop} (p : P) : Q → P := by
   Hint (hidden := true) "Now the goal is to prove `{P}` using *any* of our given hypotheses. Which sentence can be used to supply this proof?"
   We conclude by p
 
-Conclusion "The proof of an implication constructs a function which converts a proof of the first proposition into a proof of the second function. Try solving this level again by writing `We conclude by fun _ ↦ p`, using `\\mapsto` to type the `↦` symbol.
+Conclusion "The proof of an implication constructs a function which converts a proof of the first proposition into a proof of the second. Try solving this level again by writing `We conclude by fun _ ↦ p`, using `\\mapsto` to type the `↦` symbol.
 "

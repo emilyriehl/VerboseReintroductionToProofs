@@ -13,7 +13,7 @@ Mathematical statements of this second form `P ⇒ (Q ⇒ R)` are much more comm
 
 More generally, `P ⇒ Q ⇒ R ⇒ S ⇒ T` refers to `P ⇒ (Q ⇒ (R ⇒ (S ⇒ T)))`.
 
-Explicit parentheses must be used to express statements with any other parenthesizations.
+Explicit parentheses must be used to express statements with any other order of application.
 
 Your objective in this level is to prove the transitivity of implication."
 

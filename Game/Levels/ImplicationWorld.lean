@@ -19,7 +19,7 @@ We begin our study of proofs with *propositional logic*.
 
 Many mathematical propositions are built out of simpler propositions using logical connectives. The structure of a compound proposition &mdash; that is, which connectives appear where &mdash; often suggests proof techniques, as we will discover.
 
-To study these connectives, we require *proposition variables* &mdash; denoted with letters like `P`, `Q`, `R` &mdash; which stand for generic propositions, which may be true or false.
+To study these connectives, we require *proposition variables* &mdash; denoted with letters like `P`, `Q`, `R` &mdash; that stand for generic propositions, which may be true or false.
 
 The slogan *propositions as types* tells us that we can consider propositions as special cases of *types*.
 
@@ -40,5 +40,5 @@ We'll learn the rules for proving implications and using implications in the lev
 
 The introduction and elimination rules for implications precisely mirror the introduction and elimination rules for function types.
 
-Lean itself uses the same notation `→` for implications `P → Q` as for function types `A → B`. To help you tell the two apart, this game *displays* an implication between propositions as `P ⇒ Q`; you may type either `→` or `⇒` (`\\to` and `\\=>`). The sentences that were introduced to define and work with functions have close cousins for proving and using implications: `Assume` plays the role of `Fix`, while `We apply` and `We conclude by` work exactly as before.
+Lean itself uses the same notation `→` for implications `P → Q` as for function types `A → B`. To help you tell the two apart, this game *displays* an implication between propositions as `P ⇒ Q`; you may type either `→` or `⇒` (`\\to` and `\\=>`). The sentences introduced to define and work with functions have close cousins for proving and using implications: `Assume` plays the role of `Fix`, while `We apply` and `We conclude by` work exactly as before.
 "
