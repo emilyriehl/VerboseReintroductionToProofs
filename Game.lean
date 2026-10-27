@@ -34,7 +34,7 @@ While the idea of a mathematical proof is over 2000 years old, the practice of p
 
 The aim of this game will be to introduce proof writing in a computer proof assistant while developing skills that can be used to develop proofs in other contexts: on paper, in conversation with a friend, or in your head.
 
-In this edition of the game you will talk to the proof assistant in a controlled form of English, provided by *Verbose Lean*: you write things like `Assume h : P` or `We conclude by h`, and the computer checks every step. There is a sister version of the game, *Reintroduction to Proofs*, in which the same levels are solved with Lean's own, terser commands.
+In this edition of the game you will talk to the proof assistant in a controlled form of English, provided by [Verbose Lean](https://github.com/PatrickMassot/verbose-lean4): you write things like `Assume h : P` or `We conclude by h`, and the computer checks every step. There is a sister version of the game, [Reintroduction to Proofs](https://adam.math.hhu.de/#/g/emilyriehl/ReintroductionToProofs), in which the same levels are solved with Lean's own, terser commands.
 
 There is one caveat to this introduction to proof writing, which we now address explicitly. The formal vocabulary we will introduce to discuss mathematical proofs is somewhat different from the one that most mathematicians learn. The mathematics we will be developing is essentially unchanged but the formal language introduced here will make it easier to be fully precise about every step in a proof, as is required to convince a computer that a logical argument is sound.
 
@@ -56,7 +56,7 @@ Let's begin!
 
 Info
 "
-This is the Verbose Lean edition of *Reintroduction to Proofs*. It was created using the GameSkeleton Github Repo from the Lean Games Server hosted by ADAM: Anticipating the Digital Age of Mathematics at Heinrich Heine University Düsseldorf, and uses Verbose Lean by Patrick Massot (Apache-2.0) for its controlled natural language. The original game was designed for a first year seminar course taught at Johns Hopkins University in Fall 2025 with the title `Computer-Verified Proof: a Hands-On Introduction to Interactive Theorem Proving`.
+This is the Verbose Lean edition of [Reintroduction to Proofs](https://adam.math.hhu.de/#/g/emilyriehl/ReintroductionToProofs). It was created using the GameSkeleton Github Repo from the Lean Games Server hosted by ADAM: Anticipating the Digital Age of Mathematics at Heinrich Heine University Düsseldorf, and uses [Verbose Lean](https://github.com/PatrickMassot/verbose-lean4) by Patrick Massot (Apache-2.0) for its controlled natural language. Source code and issue tracker: [github.com/emilyriehl/VerboseReintroductionToProofs](https://github.com/emilyriehl/VerboseReintroductionToProofs). The original game was designed for a first year seminar course taught at Johns Hopkins University in Fall 2025 with the title `Computer-Verified Proof: a Hands-On Introduction to Interactive Theorem Proving`.
 "
 
 /-! Information to be displayed on the servers landing page. -/
@@ -67,6 +67,8 @@ CaptionShort "An introduction to proofs in dependent type theory, in controlled 
 CaptionLong "This game introduces mathematical proof writing in a formal vocabulary that is designed to make it easier to be fully precise about every step in a proof, as is required to convince a computer that a logical argument is sound.
 
 The language of dependent type theory can be used in parallel to state and prove mathematical theorems as well as to specify and define examples of mathematical objects.
+
+This edition uses the controlled English of [Verbose Lean](https://github.com/PatrickMassot/verbose-lean4); the same levels can also be played with Lean's own tactics in [Reintroduction to Proofs](https://adam.math.hhu.de/#/g/emilyriehl/ReintroductionToProofs).
 "
 
 -- Prerequisites "" -- add this if your game depends on other games
