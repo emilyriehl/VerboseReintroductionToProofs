@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.31.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27\n"
+"POT-Creation-Date: 2026-10-30\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -1039,7 +1039,7 @@ msgstr ""
 #. §17: `(2 + 2) 4 : ℕ`
 #. §18: `0 = 1`
 #. §19: `0 1 : ℕ`
-#. §20: `0 = 1`
+#. §20: `¬(0 = 1)`
 #. §21: `x = y`
 #. §22: `x y : A`
 #. §23: `x = y`
@@ -1069,7 +1069,7 @@ msgid "Consider a type §0. For any two elements §1 there is a proposition §2\
 "But the proposition §18 is false, again for\n"
 "§19.\n"
 "\n"
-"In Natural Numbers World, we will see how to prove its *negation*, in other words that §20 is false.\n"
+"In Natural Numbers World, we will see how to prove its *negation*, in other words that §20 is true.\n"
 "\n"
 "To understand the proposition §21 for elements §22, we must understand:\n"
 "\n"
