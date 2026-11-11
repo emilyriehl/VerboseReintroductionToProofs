@@ -1,0 +1,7 @@
+Fix x : A ⊕ B
+Let's first consider the case where x is inl a
+Let's construct an element of A
+Let's use a
+Let's next consider the case where x is inr b
+Let's construct an element of B
+Let's use b

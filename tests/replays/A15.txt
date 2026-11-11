@@ -1,0 +1,28 @@
+Let's first prove that (∃ g : B → A, g ∘ f = id ∧ f ∘ g = id) → (∃ g : B → A, (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b))
+Assume h : ∃ g : B → A, g ∘ f = id ∧ f ∘ g = id
+By h we get g such that (lh : g ∘ f = id) and (rh : f ∘ g = id)
+Let's prove that g works
+Let's first prove that ∀ a : A, g (f a) = a
+Fix a : A
+Claim lem₁ : (g ∘ f) a = g (f a) from rfl
+We rewrite using ← lem₁
+We rewrite using lh
+We conclude by rfl
+Let's now prove that ∀ b : B, f (g b) = b
+Fix b : B
+Claim lem₂ : (f ∘ g) b = f (g b) from rfl
+We rewrite using ← lem₂
+We rewrite using rh
+We conclude by rfl
+Let's now prove that (∃ g : B → A, (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b)) → (∃ g : B → A, g ∘ f = id ∧ f ∘ g = id)
+Assume h : ∃ g : B → A, (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b)
+By h we get g such that (linv : ∀ a : A, g (f a) = a) and (rinv : ∀ b : B, f (g b) = b)
+Let's prove that g works
+Let's first prove that g ∘ f = id
+By funext it suffices to prove that ∀ a : A, (g ∘ f) a = id a
+Fix a : A
+We conclude by linv applied to a
+Let's now prove that f ∘ g = id
+By funext it suffices to prove that ∀ b : B, (f ∘ g) b = id b
+Fix b : B
+We conclude by rinv applied to b

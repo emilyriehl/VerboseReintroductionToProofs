@@ -1,0 +1,6 @@
+Assume h1 : P ⇒ Q
+Assume h2 : _
+Assume p : P
+We apply h2
+We apply h1
+We conclude by p

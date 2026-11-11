@@ -1,0 +1,27 @@
+Let's construct the pair
+Fix p : (A ⊕ B) ⊕ C
+Let's first consider the case where p is inl y
+Let's first consider the case where y is inl a
+Let's construct an element of A
+Let's use a
+Let's next consider the case where y is inr b
+Let's construct an element of B ⊕ C
+Let's construct an element of B
+Let's use b
+Let's next consider the case where p is inr c
+Let's construct an element of B ⊕ C
+Let's construct an element of C
+Let's use c
+Fix p : A ⊕ (B ⊕ C)
+Let's first consider the case where p is inl a
+Let's construct an element of A ⊕ B
+Let's construct an element of A
+Let's use a
+Let's next consider the case where p is inr y
+Let's first consider the case where y is inl b
+Let's construct an element of A ⊕ B
+Let's construct an element of B
+Let's use b
+Let's next consider the case where y is inr c
+Let's construct an element of C
+Let's use c

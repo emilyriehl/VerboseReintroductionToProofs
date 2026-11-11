@@ -1,0 +1,2 @@
+By inv we get g such that hg : (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b)
+By hg we get linv : ∀ a : A, g (f a) = a and rinv : ∀ b : B, f (g b) = b

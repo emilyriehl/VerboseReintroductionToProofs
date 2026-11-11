@@ -1,0 +1,7 @@
+Let's construct it componentwise
+Let's use Prod.swap
+Let's use Prod.swap
+Fix p : A × B
+We conclude by rfl
+Fix p : B × A
+We conclude by rfl

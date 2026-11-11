@@ -1,0 +1,5 @@
+Let's construct the pair
+Fix p : (x : A) × B x
+Let's use p.1
+Fix p : (x : A) × B x
+Let's use p.2

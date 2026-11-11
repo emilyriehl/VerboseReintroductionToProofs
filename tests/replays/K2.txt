@@ -1,0 +1,4 @@
+Let's first prove that P
+We conclude by h.1
+Let's now prove that Q
+We conclude by h.2

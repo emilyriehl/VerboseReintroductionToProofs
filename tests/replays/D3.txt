@@ -1,0 +1,8 @@
+Assume h : P ∨ Q
+Let's consider all cases for h
+Let's first consider the case where h is inl p
+Let's prove that P
+We conclude by p
+Let's next consider the case where h is inr q
+Let's prove that Q
+We conclude by q

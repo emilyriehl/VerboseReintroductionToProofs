@@ -1,0 +1,4 @@
+Let's first prove that _
+We conclude by rfl
+Let's now prove that _
+We conclude by rfl

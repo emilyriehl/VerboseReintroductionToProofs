@@ -1,0 +1,3 @@
+By funext it suffices to prove that ∀ x : A, f x = g x
+Fix x : A
+We conclude by p applied to x

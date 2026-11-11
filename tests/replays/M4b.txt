@@ -1,0 +1,13 @@
+Let's construct the pair
+Fix n : ℕ
+Let's define it by recursion on n
+Let's first consider the case where n is zero
+Let's use zero
+Let's next consider the case where n is succ k
+Fix r : ℕ
+Let's use k
+Let's first prove that _
+We conclude by rfl
+Let's now prove that _
+Fix n : ℕ
+We conclude by rfl

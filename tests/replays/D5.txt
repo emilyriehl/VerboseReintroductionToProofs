@@ -1,0 +1,19 @@
+Let's first prove that (P ∨ Q → R) → (P → R) ∧ (Q → R)
+Assume h : P ∨ Q → R
+Let's first prove that P → R
+Assume p : P
+We apply h
+We conclude by Or.inl p
+Let's now prove that Q → R
+Assume q : Q
+We apply h
+We conclude by Or.inr q
+Let's now prove that (P → R) ∧ (Q → R) → (P ∨ Q → R)
+Assume h : (P → R) ∧ (Q → R)
+Assume k : P ∨ Q
+Let's first consider the case where k is inl p
+We apply h.1
+We conclude by p
+Let's next consider the case where k is inr q
+We apply h.2
+We conclude by q

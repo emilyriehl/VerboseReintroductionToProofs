@@ -1,0 +1,5 @@
+Assume h : ∃ z : B, ∀ w : A, P w z
+Fix a : A
+By h we get b such that ∀ w : A, P w b
+Let's prove that b works
+We conclude by hb applied to a

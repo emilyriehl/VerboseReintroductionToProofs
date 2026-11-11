@@ -1,0 +1,12 @@
+Let's construct it componentwise
+Fix f : (p : (x : A) × B x) → C p
+Fix x : A
+Fix y : B x
+Let's use f ⟨x, y⟩
+Fix f : (x : A) → (y : B x) → C ⟨x, y⟩
+Fix p : (x : A) × B x
+Let's use f p.1 p.2
+Fix f : (p : (x : A) × B x) → C p
+We conclude by rfl
+Fix f : (x : A) → (y : B x) → C ⟨x, y⟩
+We conclude by rfl

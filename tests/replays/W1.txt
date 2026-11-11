@@ -1,0 +1,6 @@
+Fix b : Bool
+Let's consider all cases for b
+Let's first consider the case where b is false
+Let's use Empty
+Let's next consider the case where b is true
+Let's use Unit

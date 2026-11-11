@@ -1,0 +1,5 @@
+Fix (x : A) (y : A)
+Assume p : (g ∘ f) x = (g ∘ f) y
+We apply f_is_inj
+We apply g_is_inj
+We conclude by p

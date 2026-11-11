@@ -1,0 +1,21 @@
+Let's first prove that (P ∨ Q) ∨ R → P ∨ Q ∨ R
+Assume hpqr : (P ∨ Q) ∨ R
+Let's first consider the case where hpqr is inl hpq
+Let's first consider the case where hpq is inl hp
+Let's prove that P
+We conclude by hp
+Let's next consider the case where hpq is inr hq
+Let's prove that Q ∨ R
+Let's prove that Q
+We conclude by hq
+Let's next consider the case where hpqr is inr hr
+We conclude by Or.inr (Or.inr hr)
+Let's now prove that P ∨ Q ∨ R → (P ∨ Q) ∨ R
+Assume hpqr : P ∨ Q ∨ R
+Let's first consider the case where hpqr is inl hp
+We conclude by Or.inl (Or.inl hp)
+Let's next consider the case where hpqr is inr hqr
+Let's first consider the case where hqr is inl hq
+We conclude by Or.inl (Or.inr hq)
+Let's next consider the case where hqr is inr hr
+We conclude by Or.inr hr

@@ -1,0 +1,19 @@
+Let's first prove that P ∧ (Q ∨ R) → (P ∧ Q) ∨ (P ∧ R)
+Assume h : P ∧ (Q ∨ R)
+By h we get p : P and qr : Q ∨ R
+Let's first consider the case where qr is inl q
+Let's prove that P ∧ Q
+We conclude by ⟨p, q⟩
+Let's next consider the case where qr is inr r
+Let's prove that P ∧ R
+We conclude by ⟨p, r⟩
+Let's now prove that (P ∧ Q) ∨ (P ∧ R) → P ∧ (Q ∨ R)
+Assume h : (P ∧ Q) ∨ (P ∧ R)
+Let's first consider the case where h is inl pq
+Let's first prove that P
+We conclude by pq.1
+Let's now prove that Q ∨ R
+Let's prove that Q
+We conclude by pq.2
+Let's next consider the case where h is inr pr
+We conclude by ⟨pr.1, Or.inr pr.2⟩

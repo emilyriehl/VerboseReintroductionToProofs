@@ -1,0 +1,2 @@
+Fix p : A × B
+Let's use p.2

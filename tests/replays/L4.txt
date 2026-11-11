@@ -1,0 +1,10 @@
+Assume npq : ¬ (P ∧ Q)
+Claim lem : P ∨ ¬ P from Classical.em P
+Let's first consider the case where lem is inl p
+Let's prove that ¬ Q
+Assume nq : Q
+Claim pq : P ∧ Q from ⟨p, nq⟩
+We apply npq
+We conclude by pq
+Let's next consider the case where lem is inr np
+We conclude by Or.inl np

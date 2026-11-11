@@ -1,0 +1,3 @@
+Let's construct the pair
+Let's use Empty.elim
+Let's use Prod.snd

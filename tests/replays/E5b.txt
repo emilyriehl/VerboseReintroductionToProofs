@@ -1,0 +1,5 @@
+Let's construct the pair
+Fix x : Empty
+This is impossible because of x
+Fix x : A × Empty
+Let's use x.2

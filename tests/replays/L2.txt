@@ -1,0 +1,4 @@
+Assume i : ¬ Q → ¬ P
+Assume p : P
+Assume for contradiction nq : ¬ Q
+We conclude by i applied to nq and p

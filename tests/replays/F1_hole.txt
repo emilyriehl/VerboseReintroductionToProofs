@@ -1,0 +1,2 @@
+Fix x : _
+Let's use an assumption

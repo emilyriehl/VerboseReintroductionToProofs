@@ -1,0 +1,19 @@
+Let's prove by induction that _
+Let's prove that ∃ m : ℕ, 0 = 2 * m
+Let's prove that 0 works
+We conclude by rfl
+Fix k : ℕ
+Assume hk : (∃ m : ℕ, k = 2 * m) ∨ (∃ m : ℕ, k = 2 * m + 1)
+We proceed using hk
+Assume even : ∃ m : ℕ, k = 2 * m
+By even we get d such that hd : k = 2 * d
+Let's prove that ∃ m : ℕ, k + 1 = 2 * m + 1
+Let's prove that d works
+We rewrite using hd
+We conclude by rfl
+Assume odd : ∃ m : ℕ, k = 2 * m + 1
+By odd we get d such that hd : k = 2 * d + 1
+Let's prove that ∃ m : ℕ, k + 1 = 2 * m
+Let's prove that d + 1 works
+We rewrite using hd
+We conclude by rfl

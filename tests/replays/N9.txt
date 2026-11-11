@@ -1,0 +1,9 @@
+Assume hyp : ¬ P ∨ ¬ Q
+Let's first consider the case where hyp is inl np
+Assume pq : P ∧ Q
+We apply np
+We conclude by pq.1
+Let's next consider the case where hyp is inr nq
+Assume pq : P ∧ Q
+We apply nq
+We conclude by pq.2

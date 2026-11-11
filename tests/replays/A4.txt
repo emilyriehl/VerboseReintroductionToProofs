@@ -1,0 +1,6 @@
+Fix c : C
+By g_is_surj applied to c we get b such that hb : g b = c
+By f_is_surj applied to b we get a such that ha : f a = b
+Let's prove that a works
+We rewrite using [← hb, ← ha]
+We conclude by rfl

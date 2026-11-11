@@ -1,0 +1,2 @@
+Assume (h1 : P ⇒ Q) (h2 : Q ⇒ R) (p : P)
+We conclude by h2 (h1 p)

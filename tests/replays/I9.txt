@@ -1,0 +1,3 @@
+Assume p : P
+Assume h : P → Q
+We conclude by h applied to p

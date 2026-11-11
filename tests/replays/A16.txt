@@ -1,0 +1,5 @@
+Assume surj : ∀ g : A → B, ∃ a : A, f a = g
+Fix n : B → B
+By surj applied to (fun a ↦ n (f a a)) we get a₀ such that p₀ : f a₀ = fun a ↦ n (f a a)
+Let's prove that f a₀ a₀ works
+We conclude by Eq.symm (congrFun p₀ a₀)

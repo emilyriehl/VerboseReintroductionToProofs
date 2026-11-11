@@ -1,0 +1,15 @@
+Let's construct it componentwise
+Fix p : (x : A) → (y : B x) × C x y
+Let's construct the pair
+Fix x : A
+Let's use (p x).1
+Fix x : A
+Let's use (p x).2
+Fix p : (s : (x : A) → B x) × ((x : A) → C x (s x))
+Fix x : A
+By p we get f : (x : A) → B x and g : (x : A) → C x (f x)
+Let's use ⟨f x, g x⟩
+Fix p : (x : A) → (y : B x) × C x y
+We conclude by rfl
+Fix p : (s : (x : A) → B x) × ((x : A) → C x (s x))
+We conclude by rfl

@@ -1,0 +1,10 @@
+Let's construct the pair
+Fix b : B
+Let's use (surj b).choose
+Let's first prove that _
+Fix x : A
+We apply inj
+We apply (surj (f x)).choose_spec
+Let's now prove that _
+Fix b : B
+We apply (surj b).choose_spec

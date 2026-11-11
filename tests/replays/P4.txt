@@ -1,0 +1,3 @@
+Fix p : A × B
+By p we get a : A and b : B
+Let's use ⟨b, a⟩

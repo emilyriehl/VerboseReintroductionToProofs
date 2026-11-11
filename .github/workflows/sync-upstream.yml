@@ -7,6 +7,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -75,8 +76,24 @@ jobs:
             echo
             echo "Upstream commits:"; echo '```'; cat /tmp/upstream-commits.txt; echo '```'
           } > "$BODY"
-          gh pr create --base main --head "${{ steps.merge.outputs.branch }}" \
-            --title "Sync with upstream ReintroductionToProofs (${{ steps.merge.outputs.short }})" \
-            --body-file "$BODY" ${{ steps.merge.outputs.conflicts != '' && '--label needs-manual-merge' || '' }} || \
-          gh pr create --base main --head "${{ steps.merge.outputs.branch }}" \
-            --title "Sync with upstream ReintroductionToProofs (${{ steps.merge.outputs.short }})" --body-file "$BODY"
+          BRANCH="${{ steps.merge.outputs.branch }}"
+          TITLE="Sync with upstream ReintroductionToProofs (${{ steps.merge.outputs.short }})"
+          LABEL="${{ steps.merge.outputs.conflicts != '' && '--label needs-manual-merge' || '' }}"
+          gh pr create --base main --head "$BRANCH" --title "$TITLE" --body-file "$BODY" $LABEL \
+          || gh pr create --base main --head "$BRANCH" --title "$TITLE" --body-file "$BODY" \
+          || {
+            # GitHub refuses pull requests from workflows unless "Allow GitHub Actions to create and
+            # approve pull requests" (Settings → Actions → General) is on. Fall back to an issue,
+            # once per upstream commit.
+            if [ "$(gh issue list --state open --search "\"$TITLE\" in:title" --json number --jq length)" != "0" ]; then
+              echo "Issue already open."; exit 0
+            fi
+            {
+              echo "The weekly sync could not open a pull request (turn on *Allow GitHub Actions to create and approve pull requests* under Settings → Actions → General to get pull requests instead of issues)."
+              echo
+              echo "The merge is on branch \`$BRANCH\`: open a pull request from it, or follow docs/handoff/maintenance.md §1."
+              echo
+              cat "$BODY"
+            } > "$BODY.issue"
+            gh issue create --title "$TITLE" --body-file "$BODY.issue"
+          }

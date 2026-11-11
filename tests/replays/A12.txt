@@ -1,0 +1,9 @@
+Set g : B → A := fun b ↦ (surj b).choose
+Let's prove that g works
+Let's first prove that ∀ a : A, g (f a) = a
+Fix x : A
+We apply inj
+We apply (surj (f x)).choose_spec
+Let's now prove that ∀ b : B, f (g b) = b
+Fix b : B
+We apply (surj b).choose_spec

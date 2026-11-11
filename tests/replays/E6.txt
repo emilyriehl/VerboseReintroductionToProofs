@@ -1,0 +1,7 @@
+Let's construct the pair
+Let's use Sum.inl
+Fix p : A ⊕ Empty
+Let's first consider the case where p is inl a
+Let's use a
+Let's next consider the case where p is inr x
+This is impossible because of x

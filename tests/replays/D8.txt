@@ -1,0 +1,28 @@
+Let's first prove that (P ∨ Q) ∧ (R ∨ S) → (P ∧ R) ∨ (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S)
+Assume h : (P ∨ Q) ∧ (R ∨ S)
+By h we get pq : P ∨ Q and rs : R ∨ S
+Let's first consider the case where pq is inl p
+Let's first consider the case where rs is inl r
+Let's prove that P ∧ R
+We conclude by ⟨p, r⟩
+Let's next consider the case where rs is inr s
+Let's prove that (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S)
+Let's prove that P ∧ S
+We conclude by ⟨p, s⟩
+Let's next consider the case where pq is inr q
+Let's first consider the case where rs is inl r
+We conclude by Or.inr (Or.inr (Or.inl ⟨q, r⟩))
+Let's next consider the case where rs is inr s
+We conclude by Or.inr (Or.inr (Or.inr ⟨q, s⟩))
+Let's now prove that (P ∧ R) ∨ (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S) → (P ∨ Q) ∧ (R ∨ S)
+Assume h : (P ∧ R) ∨ (P ∧ S) ∨ (Q ∧ R) ∨ (Q ∧ S)
+Let's first consider the case where h is inl pr
+We conclude by ⟨Or.inl pr.1, Or.inl pr.2⟩
+Let's next consider the case where h is inr h'
+Let's first consider the case where h' is inl ps
+We conclude by ⟨Or.inl ps.1, Or.inr ps.2⟩
+Let's next consider the case where h' is inr h''
+Let's first consider the case where h'' is inl qr
+We conclude by ⟨Or.inr qr.1, Or.inl qr.2⟩
+Let's next consider the case where h'' is inr qs
+We conclude by ⟨Or.inr qs.1, Or.inr qs.2⟩

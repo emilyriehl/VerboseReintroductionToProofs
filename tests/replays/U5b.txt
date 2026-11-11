@@ -1,0 +1,4 @@
+Let's first consider the case where x is inl a
+We conclude by Or.inl ⟨a, rfl⟩
+Let's next consider the case where x is inr b
+We conclude by Or.inr ⟨b, rfl⟩

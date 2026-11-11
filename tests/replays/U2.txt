@@ -1,0 +1,4 @@
+Fix (w : A) (x : A) (y : A) (z : A)
+Assume (p : w = x) (q : x = y) (r : y = z)
+We rewrite using [p, q, r]
+We conclude by rfl

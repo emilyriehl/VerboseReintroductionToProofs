@@ -1,0 +1,4 @@
+Assume p : P
+Assume q : Q
+We apply h
+We conclude by ⟨p, q⟩

@@ -1,0 +1,8 @@
+Assume h : P ∨ Q
+We proceed using h
+Assume p : P
+Let's prove that P
+We conclude by p
+Assume q : Q
+Let's prove that Q
+We conclude by q

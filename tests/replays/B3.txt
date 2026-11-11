@@ -1,0 +1,10 @@
+Fix x : Bool
+Fix y : Bool
+Let's first consider the case where x is false
+Let's use false
+Let's next consider the case where x is true
+Let's first consider the case where y is false
+Let's use false
+Let's next consider the case where y is true
+Let's use true
+We conclude by ⟨rfl, rfl, rfl, rfl⟩

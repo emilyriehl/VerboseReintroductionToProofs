@@ -1,0 +1,6 @@
+Fix (x : A) (y : A)
+Assume p : f x = f y
+We apply gf_is_inj
+Claim eq : ∀ a : A, (g ∘ f) a = g (f a) from fun a ↦ rfl
+We rewrite using [eq x, eq y, p]
+We conclude by rfl

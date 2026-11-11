@@ -1,0 +1,10 @@
+By inv we get g such that (linv : ∀ a : A, g (f a) = a) and (rinv : ∀ b : B, f (g b) = b)
+Let's first prove that ∀ x y : A, f x = f y → x = y
+Fix (x : A) (y : A)
+Assume p : f x = f y
+We rewrite using [← linv x, ← linv y, p]
+We conclude by rfl
+Let's now prove that ∀ b : B, ∃ x : A, f x = b
+Fix b : B
+Let's prove that g b works
+We conclude by rinv applied to b

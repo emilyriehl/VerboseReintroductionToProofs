@@ -1,0 +1,7 @@
+Let's construct it componentwise
+Let's use Function.curry
+Let's use Function.uncurry
+Fix f : A × B → C
+We conclude by rfl
+Fix f : A → B → C
+We conclude by rfl

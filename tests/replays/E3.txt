@@ -1,0 +1,4 @@
+Fix f : A → Empty
+Fix a : A
+Set e : Empty := f a
+This is impossible because of e

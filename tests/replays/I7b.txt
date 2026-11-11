@@ -1,0 +1,3 @@
+Assume p : P
+We apply h
+We conclude by p

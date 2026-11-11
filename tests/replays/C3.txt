@@ -1,0 +1,4 @@
+Fix f : A ⊕ B → C
+Let's construct the pair
+Let's use fun a ↦ f (Sum.inl a)
+Let's use fun b ↦ f (Sum.inr b)

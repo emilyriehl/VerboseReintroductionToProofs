@@ -1,0 +1,5 @@
+Let's consider all cases for b
+Let's first consider the case where b is false
+We conclude by rfl
+Let's next consider the case where b is true
+We conclude by rfl

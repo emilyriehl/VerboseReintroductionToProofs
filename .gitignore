@@ -3,3 +3,8 @@ lake-packages/
 .lake/
 **/.DS_Store
 .i18n/**/*.mo
+scripts/ux-tests/node_modules/
+scripts/ux-tests/shots/
+scripts/ux-tests/progress.log
+scripts/ux-tests/report.md
+__pycache__/

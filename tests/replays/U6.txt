@@ -1,0 +1,3 @@
+Fix x : A
+Let's prove that x works
+We conclude by rfl

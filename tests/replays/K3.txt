@@ -1,0 +1,5 @@
+Assume h : P ∧ Q
+Let's first prove that Q
+We conclude by h.2
+Let's now prove that P
+We conclude by h.1

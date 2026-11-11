@@ -1,0 +1,12 @@
+Fix (x : Bool) (y : Bool)
+Assume p : not x = not y
+Let's first consider the case where x is false
+Let's first consider the case where y is false
+We conclude by rfl
+Let's next consider the case where y is true
+This is impossible because of p
+Let's next consider the case where x is true
+Let's first consider the case where y is false
+This is impossible because of p
+Let's next consider the case where y is true
+We conclude by rfl

@@ -1,0 +1,10 @@
+Let's construct the pair
+Fix f : A ⊕ B → C × D
+Let's use ⟨fun a ↦ (f (Sum.inl a)).1, fun b ↦ (f (Sum.inr b)).1, fun a ↦ (f (Sum.inl a)).2, fun b ↦ (f (Sum.inr b)).2⟩
+Fix p : (A → C) × (B → C) × (A → D) × (B → D)
+By p we get (f : A → C) (g : B → C) (h : A → D) (k : B → D)
+Fix x : A ⊕ B
+Let's first consider the case where x is inl a
+Let's use ⟨f a, h a⟩
+Let's next consider the case where x is inr b
+Let's use ⟨g b, k b⟩

@@ -1,0 +1,595 @@
+From 9fadcf2eee5047572373656ac8f99c4b5ea25126 Mon Sep 17 00:00:00 2001
+From: local <local@spike>
+Date: Sun, 25 Oct 2026 13:15:16 +0100
+Subject: [PATCH 1/9] Local fixes for the Verbose spike
+
+- Validate level completion against the goal state (adapted from upstream PR #455,
+  fixes the spurious 'Level completed' flashes of issues #402/#453 in editor mode).
+- Typewriter: strip trailing periods from submitted phrases.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ client/src/components/infoview/goals.tsx      | 26 ++++++++++++++++++-
+ client/src/components/infoview/rpc_api.ts     |  4 +++
+ client/src/components/infoview/typewriter.tsx |  4 ++-
+ 3 files changed, 32 insertions(+), 2 deletions(-)
+
+diff --git a/client/src/components/infoview/goals.tsx b/client/src/components/infoview/goals.tsx
+index 862f8d3..c6e62be 100644
+--- a/client/src/components/infoview/goals.tsx
++++ b/client/src/components/infoview/goals.tsx
+@@ -360,6 +360,25 @@ export const FilteredGoals = React.memo(({ headerChildren, goals }: FilteredGoal
+     </div>
+ })
+ 
++/**
++ * Check whether the proof goals actually demonstrate completion.
++ *
++ * Adapted from lean4game PR #455 (fix for issues #402/#453). The server sets `completed` from the
++ * absence of diagnostics, which is transiently true while it is still processing fast edits in
++ * editor mode. It sets `column` to a number only when it found tactic info at a position, so
++ * zero goals with `column == null` means "no data yet", not "all goals solved".
++ */
++function isProofGoalsComplete(proof: ProofState): boolean {
++  if (proof.steps.length < 2) return false
++  if (proof.steps[0].goals.length === 0) return false
++  const lastIdx = lastStepHasErrors(proof)
++    ? proof.steps.length - 2
++    : proof.steps.length - 1
++  if (lastIdx < 1) return false
++  const lastStep = proof.steps[lastIdx]
++  return lastStep.goals.length === 0 && lastStep.column != null
++}
++
+ export function loadGoals(
+   rpcSess: RpcSessionAtPos,
+   uri: string,
+@@ -379,7 +398,12 @@ rpcSess.call('Game.getProofState',
+     if (typeof proof !== 'undefined') {
+       console.info(`received a proof state!`)
+       console.log(proof)
+-      setProof(proof as ProofState)
++      let proofState = proof as ProofState
++      // Cross-validate `completed` against the goal state (see isProofGoalsComplete).
++      if ((proofState.completed || proofState.completedWithWarnings) && !isProofGoalsComplete(proofState)) {
++        proofState = { ...proofState, completed: false, completedWithWarnings: false }
++      }
++      setProof(proofState)
+       setCrashed(false)
+     } else {
+       console.warn('received undefined proof state!')
+diff --git a/client/src/components/infoview/rpc_api.ts b/client/src/components/infoview/rpc_api.ts
+index aebdd8b..a49ca26 100644
+--- a/client/src/components/infoview/rpc_api.ts
++++ b/client/src/components/infoview/rpc_api.ts
+@@ -61,6 +61,10 @@ export interface InteractiveGoalsWithHints {
+   goals: InteractiveGoalWithHints[];
+   command: string;
+   diags: InteractiveDiagnostic[];
++  line?: number;
++  /** Set to a number when the server found tactic info at this position,
++   *  null/undefined when it did not (e.g. while still processing an edit). */
++  column?: number;
+ }
+ 
+ /**
+diff --git a/client/src/components/infoview/typewriter.tsx b/client/src/components/infoview/typewriter.tsx
+index 64db45f..c500afb 100644
+--- a/client/src/components/infoview/typewriter.tsx
++++ b/client/src/components/infoview/typewriter.tsx
+@@ -68,7 +68,9 @@ export function Typewriter({disabled}: {disabled?: boolean}) {
+           pos,
+           editor.getModel()?.getFullModelRange().getEndPosition()
+         ),
+-        text: typewriter.trim() + "\n",
++        // Verbose-style phrases read like sentences, so players may end them with a period.
++        // Lean would read a trailing `.` as the start of a projection (`p.1`), so drop it.
++        text: typewriter.trim().replace(/\.+$/, "").trimEnd() + "\n",
+         forceMoveMarkers: false
+       }])
+       setTypewriter('')
+-- 
+2.53.0
+
+
+From 77903877cef35dd074757551355bd1a48bb41bef Mon Sep 17 00:00:00 2001
+From: local <local@spike>
+Date: Sun, 25 Oct 2026 15:19:05 +0100
+Subject: [PATCH 2/9] Editor mode: validate completion in the infoview path
+ too; stop retrying requests for closed documents
+
+The infoview (editor mode) fetched the proof state through its own call site, bypassing the
+completion validation added for the typewriter. It also retried every ContentModified error
+immediately, which loops forever once the document is closed (observed at ~170 requests/s).
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ client/src/components/infoview/goals.tsx | 11 ++++++++++-
+ client/src/components/infoview/info.tsx  | 13 +++++++++----
+ 2 files changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/client/src/components/infoview/goals.tsx b/client/src/components/infoview/goals.tsx
+index c6e62be..a081835 100644
+--- a/client/src/components/infoview/goals.tsx
++++ b/client/src/components/infoview/goals.tsx
+@@ -368,7 +368,7 @@ export const FilteredGoals = React.memo(({ headerChildren, goals }: FilteredGoal
+  * editor mode. It sets `column` to a number only when it found tactic info at a position, so
+  * zero goals with `column == null` means "no data yet", not "all goals solved".
+  */
+-function isProofGoalsComplete(proof: ProofState): boolean {
++export function isProofGoalsComplete(proof: ProofState): boolean {
+   if (proof.steps.length < 2) return false
+   if (proof.steps[0].goals.length === 0) return false
+   const lastIdx = lastStepHasErrors(proof)
+@@ -379,6 +379,15 @@ function isProofGoalsComplete(proof: ProofState): boolean {
+   return lastStep.goals.length === 0 && lastStep.column != null
+ }
+ 
++/** Return the proof state with `completed` flags cleared unless the goals confirm completion. */
++export function validateProofCompletion(proof: ProofState | undefined): ProofState | undefined {
++  if (!proof) return proof
++  if ((proof.completed || proof.completedWithWarnings) && !isProofGoalsComplete(proof)) {
++    return { ...proof, completed: false, completedWithWarnings: false }
++  }
++  return proof
++}
++
+ export function loadGoals(
+   rpcSess: RpcSessionAtPos,
+   uri: string,
+diff --git a/client/src/components/infoview/info.tsx b/client/src/components/infoview/info.tsx
+index e1198fb..ce9d9b7 100644
+--- a/client/src/components/infoview/info.tsx
++++ b/client/src/components/infoview/info.tsx
+@@ -13,7 +13,7 @@ import { RpcContext, useRpcSessionAtPos } from '../../../../node_modules/vscode-
+ import { GoalsLocation, Locations, LocationsContext } from '../../../../node_modules/vscode-lean4/lean4-infoview/src/infoview/goalLocation'
+ 
+ import { AllMessages, lspDiagToInteractive } from './messages'
+-import { goalsToString, Goal, MainAssumptions, OtherGoals } from './goals'
++import { goalsToString, Goal, MainAssumptions, OtherGoals, validateProofCompletion } from './goals'
+ import { InteractiveTermGoal, InteractiveGoals, ProofState } from './rpc_api'
+ import { MonacoEditorContext, InfoStatus } from './context'
+ import { useTranslation } from 'react-i18next'
+@@ -354,7 +354,8 @@ function InfoAux(props: InfoProps) {
+                 pos,
+                 status: 'ready',
+                 messages,
+-                proof : proof as any,
++                // Editor mode: same completion validation as the typewriter (issues #402/#453).
++                proof : validateProofCompletion(proof as any),
+                 goals: goals as any,
+                 termGoal,
+                 error: undefined,
+@@ -362,8 +363,12 @@ function InfoAux(props: InfoProps) {
+                 rpcSess
+             }),
+             ex => {
+-                if (ex?.code === RpcErrorCode.ContentModified ||
+-                    ex?.code === RpcErrorCode.RpcNeedsReconnect) {
++                // Lean answers requests for a document that has been closed (e.g. after a level
++                // or mode switch) with ContentModified and the message "Cannot process request to
++                // closed file …". Retrying that is pointless and used to loop at ~170 requests/s.
++                const fileClosed = typeof ex?.message === 'string' && ex.message.includes('closed file')
++                if (!fileClosed && (ex?.code === RpcErrorCode.ContentModified ||
++                    ex?.code === RpcErrorCode.RpcNeedsReconnect)) {
+                     // Document has been changed since we made the request, or we need to reconnect
+                     // to the RPC sessions. Try again.
+                     setUpdaterTick(t => t + 1)
+-- 
+2.53.0
+
+
+From adb1ba3ab84e3f0b4e91fa01816745d5a9b5b3f7 Mon Sep 17 00:00:00 2001
+From: emilyriehl <eriehl@jhu.edu>
+Date: Mon, 26 Oct 2026 16:43:23 +0100
+Subject: [PATCH 3/9] Typewriter: do not show the Crashed banner for a
+ closed-document race on level change
+
+After a level switch the first proof-state request can hit the document that was just closed; with requests to closed documents no longer retried, the rejection reached loadGoals and set the crashed flag until the next successful response, flashing the banner. Treat that error like a missing connection.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ client/src/components/infoview/goals.tsx | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/client/src/components/infoview/goals.tsx b/client/src/components/infoview/goals.tsx
+index a081835..5f2ae6b 100644
+--- a/client/src/components/infoview/goals.tsx
++++ b/client/src/components/infoview/goals.tsx
+@@ -420,7 +420,11 @@ rpcSess.call('Game.getProofState',
+     }
+   }
+ ).catch((error) => {
+-  if (error === 'No connection to Lean') {
++  const message = String((error && typeof error === 'object' && 'message' in error) ? error.message : error)
++  // 'No connection to Lean': the server is still starting. 'closed file': the request raced a
++  // level change and hit the document that was just closed; the next request targets the new
++  // document. Neither is a crash of the player's proof, so don't flash the "Crashed!" banner.
++  if (message === 'No connection to Lean' || /closed file/i.test(message)) {
+     console.warn(error)
+     return
+   }
+-- 
+2.53.0
+
+
+From 7d9fc0a543695dfad5727c69e7ff57ea83faa38c Mon Sep 17 00:00:00 2001
+From: emilyriehl <eriehl@jhu.edu>
+Date: Mon, 26 Oct 2026 17:11:03 +0100
+Subject: [PATCH 4/9] World unlock: check the prerequisite world, not the world
+ itself; quieter level switches
+
+worldDependenciesCompletedAtomFamily looked up worldCompletedAtom(worldId) for every incoming edge instead of the edge's source, so at difficulty 2 a world could only be entered once it was already completed. Also: requests that fail because the previous level's file worker was terminated or cancelled no longer flash the Crashed banner, and the proof state is summarised in the console.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ client/src/components/infoview/goals.tsx | 6 +++++-
+ client/src/store/world-tree-atoms.ts     | 5 ++++-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/client/src/components/infoview/goals.tsx b/client/src/components/infoview/goals.tsx
+index 5f2ae6b..0af166d 100644
+--- a/client/src/components/infoview/goals.tsx
++++ b/client/src/components/infoview/goals.tsx
+@@ -408,6 +408,10 @@ rpcSess.call('Game.getProofState',
+       console.info(`received a proof state!`)
+       console.log(proof)
+       let proofState = proof as ProofState
++      console.info('proof state summary: ' + JSON.stringify({
++        completed: proofState.completed, completedWithWarnings: proofState.completedWithWarnings,
++        steps: proofState.steps.map(s => ({ goals: s.goals.length, line: s.line, column: s.column, cmd: s.command })),
++        diagnostics: proofState.diagnostics.length }))
+       // Cross-validate `completed` against the goal state (see isProofGoalsComplete).
+       if ((proofState.completed || proofState.completedWithWarnings) && !isProofGoalsComplete(proofState)) {
+         proofState = { ...proofState, completed: false, completedWithWarnings: false }
+@@ -424,7 +428,7 @@ rpcSess.call('Game.getProofState',
+   // 'No connection to Lean': the server is still starting. 'closed file': the request raced a
+   // level change and hit the document that was just closed; the next request targets the new
+   // document. Neither is a crash of the player's proof, so don't flash the "Crashed!" banner.
+-  if (message === 'No connection to Lean' || /closed file/i.test(message)) {
++  if (message === 'No connection to Lean' || /closed file|has been terminated|cancel/i.test(message) || message === '') {
+     console.warn(error)
+     return
+   }
+diff --git a/client/src/store/world-tree-atoms.ts b/client/src/store/world-tree-atoms.ts
+index 0a035d8..8ccf78a 100644
+--- a/client/src/store/world-tree-atoms.ts
++++ b/client/src/store/world-tree-atoms.ts
+@@ -56,8 +56,11 @@ export const firstIncompleteLevelAtomFamily = atomFamily((worldId: string) => at
+ /** A world is unlocked if all dependency worlds have been completed */
+ export const worldDependenciesCompletedAtomFamily = atomFamily((worldId: string) => atom<boolean>(get => {
+   const { data: gameInfo } = get(gameInfoAtom)
++  // For each edge `prerequisite → worldId`, the *prerequisite* (`it[0]`) must be completed.
++  // (Upstream checked `worldId` itself here, so at difficulty ≥ 2 no world after the first could
++  // ever unlock.)
+   const prerequisitesCompleted: boolean[] = gameInfo?.worlds?.edges.filter(it => it[1] == worldId)?.map(it => {
+-    return get(worldCompletedAtom(worldId)) ?? false
++    return get(worldCompletedAtom(it[0])) ?? false
+   }) ?? []
+   return prerequisitesCompleted.every(it => it)
+ }))
+-- 
+2.53.0
+
+
+From f37a748c33c7210667539470766e1df7ec89bdc8 Mon Sep 17 00:00:00 2001
+From: emilyriehl <eriehl@jhu.edu>
+Date: Mon, 26 Oct 2026 17:48:21 +0100
+Subject: [PATCH 5/9] Typewriter: retry the proof-state request before showing
+ the Crashed banner; show the error text
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ client/src/components/infoview/goals.tsx | 16 ++++++++++++++--
+ client/src/components/infoview/main.tsx  |  3 ++-
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/client/src/components/infoview/goals.tsx b/client/src/components/infoview/goals.tsx
+index 0af166d..af71cdb 100644
+--- a/client/src/components/infoview/goals.tsx
++++ b/client/src/components/infoview/goals.tsx
+@@ -388,13 +388,17 @@ export function validateProofCompletion(proof: ProofState | undefined): ProofSta
+   return proof
+ }
+ 
++/** The last error that made `loadGoals` give up; shown under the "Crashed!" banner. */
++export const lastGoalsError = { message: '' }
++
+ export function loadGoals(
+   rpcSess: RpcSessionAtPos,
+   uri: string,
+   worldId: string,
+   levelId: number,
+   setProof: React.Dispatch<React.SetStateAction<ProofState | undefined>>,
+-  setCrashed: React.Dispatch<React.SetStateAction<boolean>>) {
++  setCrashed: React.Dispatch<React.SetStateAction<boolean>>,
++  retriesLeft: number = 2) {
+ console.info('sending rpc request to load the proof state')
+ 
+ rpcSess.call('Game.getProofState',
+@@ -432,8 +436,16 @@ rpcSess.call('Game.getProofState',
+     console.warn(error)
+     return
+   }
++  // Anything else is usually transient too (the Lean worker is restarting for the new level,
++  // the RPC session is outdated, …): try again a couple of times before declaring a crash.
++  if (retriesLeft > 0) {
++    console.warn(`loadGoals failed (${message}); retrying in 1.5s`)
++    setTimeout(() => loadGoals(rpcSess, uri, worldId, levelId, setProof, setCrashed, retriesLeft - 1), 1500)
++    return
++  }
++  lastGoalsError.message = message
++  console.error('loadGoals failed: ' + message, error)
+   setCrashed(true)
+-  console.warn(error)
+ })
+ }
+ 
+diff --git a/client/src/components/infoview/main.tsx b/client/src/components/infoview/main.tsx
+index b5e9fff..afd34cd 100644
+--- a/client/src/components/infoview/main.tsx
++++ b/client/src/components/infoview/main.tsx
+@@ -23,7 +23,7 @@ import { Markdown } from '../markdown';
+ 
+ import { Infos } from './infos';
+ import { Errors, WithLspDiagnosticsContext } from './messages';
+-import { Goal, isLastStepWithErrors, lastStepHasErrors, loadGoals } from './goals';
++import { Goal, isLastStepWithErrors, lastStepHasErrors, loadGoals, lastGoalsError } from './goals';
+ import { MonacoEditorContext } from './context';
+ import { Typewriter, getInteractiveDiagsAt, hasInteractiveErrors } from './typewriter';
+ import { Button } from '../button';
+@@ -583,6 +583,7 @@ export function TypewriterInterface() {
+         <ExerciseStatement showLeanStatement={true} />
+         {((crashed && (interimDiags.length > 0 || proof?.steps.length > 0))) ? <div>
+           <p className="crashed_message">{t("Crashed! Go to editor mode and fix your proof! Last server response:")}</p>
++          {lastGoalsError.message && <p className="crashed_message"><code>{lastGoalsError.message}</code></p>}
+           {interimDiags.map((diag, index) => {
+             const severityClass = diag.severity ? {
+               [DiagnosticSeverity.Error]: 'error',
+-- 
+2.53.0
+
+
+From 18b8e858c6b22926a1fdfe90422edfce73af226a Mon Sep 17 00:00:00 2001
+From: emilyriehl <eriehl@jhu.edu>
+Date: Mon, 26 Oct 2026 17:54:36 +0100
+Subject: [PATCH 6/9] Typewriter: keep requesting the proof state while the new
+ level's worker starts; drop superseded retries
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ client/src/components/infoview/goals.tsx | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/client/src/components/infoview/goals.tsx b/client/src/components/infoview/goals.tsx
+index af71cdb..5a6439b 100644
+--- a/client/src/components/infoview/goals.tsx
++++ b/client/src/components/infoview/goals.tsx
+@@ -391,6 +391,10 @@ export function validateProofCompletion(proof: ProofState | undefined): ProofSta
+ /** The last error that made `loadGoals` give up; shown under the "Crashed!" banner. */
+ export const lastGoalsError = { message: '' }
+ 
++/** Each new `loadGoals` call starts a generation; retries from older generations stop, so a slow
++ *  failure chain for the previous level/session can never override a newer success. */
++let goalsGeneration = 0
++
+ export function loadGoals(
+   rpcSess: RpcSessionAtPos,
+   uri: string,
+@@ -398,7 +402,8 @@ export function loadGoals(
+   levelId: number,
+   setProof: React.Dispatch<React.SetStateAction<ProofState | undefined>>,
+   setCrashed: React.Dispatch<React.SetStateAction<boolean>>,
+-  retriesLeft: number = 2) {
++  retriesLeft: number = 20, generation?: number) {
++const myGeneration = generation ?? ++goalsGeneration
+ console.info('sending rpc request to load the proof state')
+ 
+ rpcSess.call('Game.getProofState',
+@@ -408,6 +413,7 @@ rpcSess.call('Game.getProofState',
+     }
+ ).then(
+   (proof) => {
++    if (myGeneration !== goalsGeneration) return // a newer request superseded this one
+     if (typeof proof !== 'undefined') {
+       console.info(`received a proof state!`)
+       console.log(proof)
+@@ -428,6 +434,7 @@ rpcSess.call('Game.getProofState',
+     }
+   }
+ ).catch((error) => {
++  if (myGeneration !== goalsGeneration) return // a newer request superseded this one
+   const message = String((error && typeof error === 'object' && 'message' in error) ? error.message : error)
+   // 'No connection to Lean': the server is still starting. 'closed file': the request raced a
+   // level change and hit the document that was just closed; the next request targets the new
+@@ -438,9 +445,11 @@ rpcSess.call('Game.getProofState',
+   }
+   // Anything else is usually transient too (the Lean worker is restarting for the new level,
+   // the RPC session is outdated, …): try again a couple of times before declaring a crash.
++  // The Lean worker for a freshly opened level needs several seconds to import the level, so keep
++  // asking (up to ~30 s) before declaring a crash.
+   if (retriesLeft > 0) {
+     console.warn(`loadGoals failed (${message}); retrying in 1.5s`)
+-    setTimeout(() => loadGoals(rpcSess, uri, worldId, levelId, setProof, setCrashed, retriesLeft - 1), 1500)
++    setTimeout(() => loadGoals(rpcSess, uri, worldId, levelId, setProof, setCrashed, retriesLeft - 1, myGeneration), 1500)
+     return
+   }
+   lastGoalsError.message = message
+-- 
+2.53.0
+
+
+From 00595d2602f7fbbdeffbed49e971d830413460e4 Mon Sep 17 00:00:00 2001
+From: emilyriehl <eriehl@jhu.edu>
+Date: Mon, 26 Oct 2026 17:57:11 +0100
+Subject: [PATCH 7/9] Clear the previous level's proof state as soon as the
+ level changes
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ client/src/components/infoview/main.tsx | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/client/src/components/infoview/main.tsx b/client/src/components/infoview/main.tsx
+index afd34cd..d2fd79c 100644
+--- a/client/src/components/infoview/main.tsx
++++ b/client/src/components/infoview/main.tsx
+@@ -186,6 +186,13 @@ export function Main() {
+   const uri = model?.uri.toString()
+   const rpcSess = useRpcSessionAtPos({ uri: uri ?? '', line: 0, character: 0 })
+ 
++  // A new level: forget the previous level's proof state at once, instead of showing its goals
++  // for the seconds the new Lean worker needs to start.
++  React.useEffect(() => {
++    setProof(undefined)
++    setCrashed(false)
++  }, [worldId, levelId, setProof, setCrashed])
++
+   React.useEffect(() => {
+     if (!uri || !worldId || !levelId) {
+       return
+-- 
+2.53.0
+
+
+From cdf6054ef35fcd8b045838af69c67c3d736278d6 Mon Sep 17 00:00:00 2001
+From: emilyriehl <eriehl@jhu.edu>
+Date: Tue, 27 Oct 2026 11:06:39 +0100
+Subject: [PATCH 8/9] Relay: close the previous level's document before opening
+ the next one
+
+All levels map to the same server-side file. When the client opens the next level without closing the previous document, the old file worker keeps serving the previous level's environment and every Game.getProofState for the new level fails with "Level not found" (server trace "no world id"). The relay now sends a didClose for the previous document itself. Also logs which level each proof-state request targets.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ client/src/components/infoview/goals.tsx |  2 +-
+ relay/src/serverProcess.ts               | 13 +++++++++++++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/client/src/components/infoview/goals.tsx b/client/src/components/infoview/goals.tsx
+index 5a6439b..ec5ea8a 100644
+--- a/client/src/components/infoview/goals.tsx
++++ b/client/src/components/infoview/goals.tsx
+@@ -404,7 +404,7 @@ export function loadGoals(
+   setCrashed: React.Dispatch<React.SetStateAction<boolean>>,
+   retriesLeft: number = 20, generation?: number) {
+ const myGeneration = generation ?? ++goalsGeneration
+-console.info('sending rpc request to load the proof state')
++console.info(`sending rpc request to load the proof state for ${worldId}/${levelId} (${uri})`)
+ 
+ rpcSess.call('Game.getProofState',
+     {
+diff --git a/relay/src/serverProcess.ts b/relay/src/serverProcess.ts
+index 8d950c6..d8c7ec1 100644
+--- a/relay/src/serverProcess.ts
++++ b/relay/src/serverProcess.ts
+@@ -181,6 +181,8 @@ export class GameManager {
+     let levelId: string
+ 
+     let semanticTokenRequestIds = new Set<number>()
++    // Whether a level document is currently open on this connection (all levels map to one server file).
++    let documentOpen = false
+ 
+     const PROOF_START_LINE = 2
+ 
+@@ -212,6 +214,16 @@ export class GameManager {
+ 
+       if (message.method === "textDocument/didOpen") {
+         console.info(`[${new Date()}] didOpen: ${message.params?.textDocument?.uri}`)
++        if (documentOpen) {
++          // The client does not always close the previous level's document before opening the
++          // next one, and both map to the same server-side file. Without a `didClose` the old
++          // file worker keeps answering with the previous level's environment, and every request
++          // for the new level fails with "Level not found". So close it here first.
++          console.info(`[${new Date()}] closing the previous level's document before didOpen`)
++          serverConnection.writer.write({ jsonrpc: '2.0', method: 'textDocument/didClose',
++            params: { textDocument: { uri: `file://${gameDir}/Game/Metadata.lean` } } } as any)
++        }
++        documentOpen = true
+         // Parse the URI to get world and level
+         const uri = new URL(message.params.textDocument.uri)
+         const pathParts = path.parse(uri.pathname)
+@@ -241,6 +253,7 @@ export class GameManager {
+           `(inventory := [${inventory.map(s => JSON.stringify(s)).join(',')}]) ` +
+           `:= by\n${content}\n`
+       } else {
++        if (message.method === "textDocument/didClose") documentOpen = false
+         replaceUri(message, `file://${gameDir}/Game/Metadata.lean`)
+       }
+ 
+-- 
+2.53.0
+
+
+From 459c12673f070326a77658d14566d57727a41124 Mon Sep 17 00:00:00 2001
+From: emilyriehl <eriehl@jhu.edu>
+Date: Tue, 27 Oct 2026 11:15:10 +0100
+Subject: [PATCH 9/9] One virtual folder for all level documents
+
+vscode-lean4 keeps one Lean client per folder, so naming levels file:///<world>/<level>.lean made the client open a second server connection on a world change while the infoview kept using the first; every proof-state request for the new level then failed with "Level not found" until a page reload. Levels are now file:///levels/<world>__<level>.lean; the relay parses that and maps server messages back to it.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ client/src/components/infoview/main.tsx | 2 +-
+ client/src/components/level.tsx         | 2 +-
+ relay/src/serverProcess.ts              | 9 ++++++---
+ 3 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/client/src/components/infoview/main.tsx b/client/src/components/infoview/main.tsx
+index d2fd79c..26c3edf 100644
+--- a/client/src/components/infoview/main.tsx
++++ b/client/src/components/infoview/main.tsx
+@@ -457,7 +457,7 @@ export function TypewriterInterface() {
+ 
+   const worldSize = gameInfo?.worldSize?.[worldId ?? ""] ?? 0
+ 
+-  const fallbackUri = `file:///${worldId}/${levelId}.lean`
++  const fallbackUri = `file:///levels/${worldId}__${levelId}.lean`
+   const effectiveUri = uri || fallbackUri
+   let image: string | undefined = gameInfo?.worlds?.nodes[worldId!]?.image
+ 
+diff --git a/client/src/components/level.tsx b/client/src/components/level.tsx
+index 5f20140..15a8048 100644
+--- a/client/src/components/level.tsx
++++ b/client/src/components/level.tsx
+@@ -243,7 +243,7 @@ function PlayableLevel() {
+   useEffect(() => {
+     if (leanMonaco) {
+       const leanMonacoEditor = new LeanMonacoEditor()
+-      const uriStr = `file:///${worldId}/${levelId}.lean`
++      const uriStr = `file:///levels/${worldId}__${levelId}.lean` // one folder for all levels, see relay/serverProcess.ts
+ 
+       ;(async () => {
+         await leanMonaco!.whenReady
+diff --git a/relay/src/serverProcess.ts b/relay/src/serverProcess.ts
+index d8c7ec1..b41b1a1 100644
+--- a/relay/src/serverProcess.ts
++++ b/relay/src/serverProcess.ts
+@@ -225,10 +225,13 @@ export class GameManager {
+         }
+         documentOpen = true
+         // Parse the URI to get world and level
++        // The client names the document `file:///levels/<world>__<level>.lean` (one folder for all
++        // levels, so that the Lean client library keeps a single server connection across worlds).
+         const uri = new URL(message.params.textDocument.uri)
+         const pathParts = path.parse(uri.pathname)
+-        worldId = path.basename(pathParts.dir)
+-        levelId = pathParts.name
++        const sep = pathParts.name.lastIndexOf('__')
++        worldId = sep >= 0 ? pathParts.name.slice(0, sep) : path.basename(pathParts.dir)
++        levelId = sep >= 0 ? pathParts.name.slice(sep + 2) : pathParts.name
+ 
+         replaceUri(message, `file://${gameDir}/Game/Metadata.lean`)
+ 
+@@ -279,7 +282,7 @@ export class GameManager {
+       if (usesCustomLeanServer) return message
+ 
+       shiftLines(message, -PROOF_START_LINE);
+-      replaceUri(message, `file:///${worldId}/${levelId}.lean`) // as defined in `level.tsx`
++      replaceUri(message, `file:///levels/${worldId}__${levelId}.lean`) // as defined in `level.tsx`
+ 
+       // Disable range semantic tokens because they are difficult to shift
+       if ((message as any)?.result?.capabilities?.semanticTokensProvider?.range) {
+-- 
+2.53.0
+

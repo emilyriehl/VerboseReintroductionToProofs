@@ -1,0 +1,7 @@
+Let's construct it componentwise
+Let's use Prod.components
+Let's use Prod.lift
+Fix f : X → A × B
+We conclude by rfl
+Fix f : (X → A) × (X → B)
+We conclude by rfl

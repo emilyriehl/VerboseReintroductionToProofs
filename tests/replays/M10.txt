@@ -1,0 +1,5 @@
+We apply Function.Injective.of_comp succ pred
+We rewrite using Nat.pred_comp_succ
+Fix (x : ℕ) (y : ℕ)
+Assume p : id x = id y
+We conclude by p

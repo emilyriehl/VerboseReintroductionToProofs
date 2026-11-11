@@ -1,0 +1,4 @@
+Let's first prove that (P ∧ Q → R) → (P → Q → R)
+We conclude by And.curry
+Let's now prove that (P → Q → R) → (P ∧ Q → R)
+We conclude by And.uncurry

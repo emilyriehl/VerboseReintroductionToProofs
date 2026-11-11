@@ -1,0 +1,4 @@
+Assume en : ∃ x : A, ¬ P x
+Assume na : ∀ x : A, P x
+By en we get a such that ha : ¬ P a
+We conclude by ha applied to na a

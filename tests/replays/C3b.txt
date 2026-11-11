@@ -1,0 +1,1 @@
+Let's use fun f ↦ ⟨f ∘ Sum.inl, f ∘ Sum.inr⟩

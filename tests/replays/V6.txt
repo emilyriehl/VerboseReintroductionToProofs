@@ -1,0 +1,12 @@
+Let's construct it componentwise
+Let's use Sum.components
+Let's use Function.uncurry Sum.lift
+Fix f : A ⊕ B → C
+By funext it suffices to prove that ∀ x : A ⊕ B, Function.uncurry Sum.lift (Sum.components f) x = f x
+Fix x : A ⊕ B
+Let's first consider the case where x is inl a
+We conclude by rfl
+Let's next consider the case where x is inr b
+We conclude by rfl
+Fix f : (A → C) × (B → C)
+We conclude by rfl

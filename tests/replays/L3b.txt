@@ -1,0 +1,13 @@
+We discuss depending on whether P or ¬ P
+Assume p : P
+We discuss depending on whether Q or ¬ Q
+Assume q : Q
+We conclude by Or.inl ⟨p, q⟩
+Assume nq : ¬ Q
+We conclude by Or.inr (Or.inl ⟨p, nq⟩)
+Assume np : ¬ P
+We discuss depending on whether Q or ¬ Q
+Assume q : Q
+We conclude by Or.inr (Or.inr (Or.inl ⟨np, q⟩))
+Assume nq : ¬ Q
+We conclude by Or.inr (Or.inr (Or.inr ⟨np, nq⟩))

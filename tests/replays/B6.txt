@@ -1,0 +1,10 @@
+Let's first consider the case where x is false
+Let's first consider the case where y is false
+We conclude by rfl
+Let's next consider the case where y is true
+We conclude by rfl
+Let's next consider the case where x is true
+Let's first consider the case where y is false
+We conclude by rfl
+Let's next consider the case where y is true
+We conclude by rfl

@@ -1,0 +1,6 @@
+Let's first prove that ∀ n : ℕ, n + 0 = n
+Fix n : ℕ
+We conclude by rfl
+Let's now prove that ∀ m n : ℕ, m + succ n = succ (m + n)
+Fix (m : ℕ) (n : ℕ)
+We conclude by rfl

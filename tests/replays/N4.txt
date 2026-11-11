@@ -1,0 +1,3 @@
+Assume c : P ∧ ¬ P
+We apply c.2
+We conclude by c.1

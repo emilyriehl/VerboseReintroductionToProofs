@@ -1,0 +1,18 @@
+Fix (f : B × D → M) (g : E → Y × N) (h : A → M → X) (k : C → N → Z) (p : A × B × C × D × E)
+Set a := p.1
+Set b := p.2.1
+Set c := p.2.2.1
+Set d := p.2.2.2.1
+Set e := p.2.2.2.2
+Let's construct the pair
+We apply h
+Let's use a
+We apply f
+Let's construct the pair
+Let's use b
+Let's use d
+Let's construct the pair
+Let's use (g e).1
+We apply k
+Let's use c
+Let's use (g e).2

@@ -1,0 +1,2 @@
+We rewrite using [← q, ← p]
+We conclude by rfl

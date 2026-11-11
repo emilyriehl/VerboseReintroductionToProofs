@@ -1,0 +1,7 @@
+Fix b : Bool
+Let's first consider the case where b is false
+Let's prove that true works
+We conclude by rfl
+Let's next consider the case where b is true
+Let's prove that false works
+We conclude by rfl

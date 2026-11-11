@@ -1,0 +1,4 @@
+Let's first prove that (⟨a , b⟩ : A × B).fst = a
+We conclude by rfl
+Let's now prove that (⟨a , b⟩ : A × B).snd = b
+We conclude by rfl

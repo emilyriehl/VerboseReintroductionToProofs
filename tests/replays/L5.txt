@@ -1,0 +1,14 @@
+Assume ni : ¬ (P → Q)
+Claim lemP : P ∨ ¬ P from Classical.em P
+Let's first consider the case where lemP is inl p
+Let's first prove that P
+We conclude by p
+Let's now prove that ¬ Q
+Assume q : Q
+We apply ni
+We conclude by fun _ ↦ q
+Let's next consider the case where lemP is inr np
+Let's prove it's contradictory
+We apply ni
+Assume p : P
+We conclude by absurd p np

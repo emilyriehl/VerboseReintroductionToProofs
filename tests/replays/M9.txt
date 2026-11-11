@@ -1,0 +1,10 @@
+Fix (m : ℕ) (n : ℕ)
+Let's prove by induction that ∀ n : ℕ, m + n = n + m
+We rewrite using Nat.zero_add
+We conclude by rfl
+Fix k : ℕ
+Assume hk : m + k = k + m
+We rewrite using add_succ
+We rewrite using hk
+We rewrite using succ_add
+We conclude by rfl

@@ -1,0 +1,3 @@
+Assume c : P ∧ ¬ P
+By c we get p : P and np : ¬ P
+We conclude by np applied to p

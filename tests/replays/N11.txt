@@ -1,0 +1,6 @@
+Assume hyp : P ∨ ¬ P
+Assume nnp : ¬ ¬ P
+Let's first consider the case where hyp is inl p
+We conclude by p
+Let's next consider the case where hyp is inr np
+This is impossible because of nnp applied to np

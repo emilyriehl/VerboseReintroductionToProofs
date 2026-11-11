@@ -20,6 +20,10 @@ as the website does:
 
     python3 scripts/run_level.py . ImplicationWorld 5 my_attempt.txt
 
+`tests/replays/` holds recorded inputs for every level (`<letter><level>.txt`, letters listed in
+`scripts/replay_all.py`); `python3 scripts/replay_all.py` replays them all. Please add or update
+the file of any level whose proof you change.
+
 **Keeping the two games aligned**
 
 - `UPSTREAM_COMMIT` records the commit of the original this game was last merged with.
@@ -28,3 +32,9 @@ as the website does:
   `parity-allowlist.txt`.
 - `lean-toolchain`, `lakefile.lean` and `lake-manifest.json` always keep this repository's
   versions when merging.
+
+**Maintainers and coding agents**
+
+[docs/handoff/README.md](docs/handoff/README.md) is a complete handoff: how the two games are
+linked, runbooks for syncing, testing and publishing, open work, and the working conventions
+agreed with the author.

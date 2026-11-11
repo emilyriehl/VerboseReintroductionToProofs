@@ -1,0 +1,12 @@
+Assume (sx : _) (tw : _) (ry : _) (wq : _) (us : _) (yt : _) (xv : _) (qu : _) (vz : _) (pr : _) (p : _)
+We apply vz
+We apply xv
+We apply sx
+We apply us
+We apply qu
+We apply wq
+We apply tw
+We apply yt
+We apply ry
+We apply pr
+We conclude by p

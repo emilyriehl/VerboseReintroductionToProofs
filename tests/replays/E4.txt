@@ -1,0 +1,4 @@
+Fix f : A → B
+Fix nb : B → Empty
+Fix a : A
+Let's use nb (f a)

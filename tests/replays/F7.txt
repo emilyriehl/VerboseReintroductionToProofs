@@ -1,0 +1,4 @@
+Fix f : A → B → C
+Fix b : B
+Fix a : A
+Let's use f a b

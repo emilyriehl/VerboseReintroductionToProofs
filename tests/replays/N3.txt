@@ -1,0 +1,3 @@
+Assume p : P
+Assume np : ¬ P
+We conclude by np applied to p

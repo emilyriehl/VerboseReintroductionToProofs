@@ -1,0 +1,3 @@
+Assume h : ¬ ¬ P
+Assume for contradiction np : ¬ P
+We conclude by h applied to np

@@ -1,0 +1,8 @@
+Let's first consider the case where x is inl a
+Let's prove that ∃ a' : A, Sum.inl a = Sum.inl a'
+Let's prove that a works
+We conclude by rfl
+Let's next consider the case where x is inr b
+Let's prove that ∃ b' : B, Sum.inr b = Sum.inr b'
+Let's prove that b works
+We conclude by rfl

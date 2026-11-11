@@ -1,0 +1,6 @@
+Fix μ : _
+Fix φ : _
+We apply μ
+Fix α : _
+We apply α
+Let's use φ

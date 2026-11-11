@@ -1,0 +1,3 @@
+Fix f : (X → A) × (X → B)
+Fix x : X
+Let's use ⟨f.1 x, f.2 x⟩

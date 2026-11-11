@@ -1,0 +1,3 @@
+Claim q : Q from h1 applied to p
+Claim r : R from h2 applied to q
+We conclude by r

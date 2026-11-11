@@ -18,6 +18,10 @@ guide: clone `lean4game` next to this folder, run `lake build` here (`lake exe c
 if Mathlib starts compiling), then `npm start` in `lean4game` and open
 `http://localhost:3000/#/g/local/VerboseReintroductionToProofs`.
 
+## Maintaining
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and, for the full picture, [docs/handoff/README.md](docs/handoff/README.md).
+
 ## Credits
 
 Built on the [Lean Game Server](https://github.com/leanprover-community/lean4game) (ADAM,

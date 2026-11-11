@@ -1,0 +1,5 @@
+Let's construct the pair
+Fix p : (A × B) × C
+Let's use ⟨p.1.1, p.1.2, p.2⟩
+Fix p : A × (B × C)
+Let's use ⟨⟨p.1, p.2.1⟩, p.2.2⟩

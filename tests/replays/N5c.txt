@@ -1,0 +1,2 @@
+Assume (p : P) (np : ¬ P)
+This is impossible because of np applied to p

@@ -1,0 +1,5 @@
+Fix c : C
+By gf_is_surj applied to c we get a such that ha : (g ∘ f) a = c
+Let's prove that f a works
+We rewrite using ← ha
+We conclude by rfl

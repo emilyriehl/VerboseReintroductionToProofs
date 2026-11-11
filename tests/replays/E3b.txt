@@ -1,0 +1,3 @@
+Fix f : A → Empty
+Fix a : A
+This is impossible because of f a

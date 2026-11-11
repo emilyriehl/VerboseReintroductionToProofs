@@ -1,0 +1,12 @@
+Assume na : ¬ (∀ x : A, P x)
+Assume for contradiction ne : ¬ (∃ x : A, ¬ P x)
+We apply na
+Fix a : A
+Claim p : P a ∨ ¬ P a from Classical.em (P a)
+Let's first consider the case where p is inl pa
+We conclude by pa
+Let's next consider the case where p is inr npa
+Let's prove it's contradictory
+We apply ne
+Let's prove that a works
+We conclude by npa

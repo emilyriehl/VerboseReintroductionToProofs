@@ -1,0 +1,4 @@
+Assume for contradiction nlem : ¬ (P ∨ ¬ P)
+Claim np : ¬ P from fun p ↦ nlem (Or.inl p)
+Claim nnp : ¬ ¬ P from fun np ↦ nlem (Or.inr np)
+We conclude by nnp applied to np

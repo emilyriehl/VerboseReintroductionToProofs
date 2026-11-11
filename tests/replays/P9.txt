@@ -1,0 +1,7 @@
+Fix f : (X → A) × (X → B)
+Set g : X → A := f.1
+Set h : X → B := f.2
+Fix x : X
+Let's construct the pair
+Let's use g x
+Let's use h x

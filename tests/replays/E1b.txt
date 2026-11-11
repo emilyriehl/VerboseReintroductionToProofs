@@ -1,0 +1,2 @@
+Fix p : Empty
+Let's consider all cases for p

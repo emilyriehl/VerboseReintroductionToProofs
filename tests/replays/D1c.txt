@@ -1,0 +1,2 @@
+We apply Or.inl
+We conclude by p

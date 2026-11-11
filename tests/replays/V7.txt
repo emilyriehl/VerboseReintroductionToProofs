@@ -1,0 +1,21 @@
+Let's construct it componentwise
+Fix x : Unit ⊕ Unit
+Let's first consider the case where x is inl u
+Let's use false
+Let's next consider the case where x is inr u
+Let's use true
+Fix b : Bool
+Let's first consider the case where b is false
+Let's use Sum.inl ()
+Let's next consider the case where b is true
+Let's use Sum.inr ()
+Fix x : Unit ⊕ Unit
+Let's first consider the case where x is inl u
+We conclude by rfl
+Let's next consider the case where x is inr u
+We conclude by rfl
+Fix b : Bool
+Let's first consider the case where b is false
+We conclude by rfl
+Let's next consider the case where b is true
+We conclude by rfl

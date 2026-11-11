@@ -1,0 +1,5 @@
+We rewrite using [← p, ← q]
+Claim eq1 : (h ∘ f) ⟨a, b⟩ = h (f ⟨a, b⟩) from rfl
+We rewrite using ← eq1
+We rewrite using r
+We conclude by rfl

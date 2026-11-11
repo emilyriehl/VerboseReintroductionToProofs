@@ -1,0 +1,14 @@
+Let's construct the pair
+Fix p : A × (B ⊕ C)
+By p we get a : A and z : B ⊕ C
+Let's first consider the case where z is inl b
+Let's construct an element of A × B
+Let's use ⟨a, b⟩
+Let's next consider the case where z is inr c
+Let's construct an element of A × C
+Let's use ⟨a, c⟩
+Fix p : (A × B) ⊕ (A × C)
+Let's first consider the case where p is inl q
+Let's use ⟨q.1, Sum.inl q.2⟩
+Let's next consider the case where p is inr r
+Let's use ⟨r.1, Sum.inr r.2⟩

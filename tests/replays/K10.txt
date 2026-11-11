@@ -1,0 +1,4 @@
+Assume (p : P) (h : R → S ∧ T) (k : U → P → R) (l : (U → Y) → Z) (g : W ∧ T ∧ V → X ∧ Y) (f : S → V ∧ W)
+We apply l
+Assume u : U
+We conclude by (g ⟨(f (h (k u p)).1).2, (h (k u p)).2 , (f (h (k u p)).1).1⟩).2

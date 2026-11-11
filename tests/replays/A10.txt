@@ -1,0 +1,2 @@
+Let's prove that f works
+We conclude by And.symm applied to inv

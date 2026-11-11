@@ -1,0 +1,1 @@
+By inv we get g such that (linv : ∀ a : A, g (f a) = a)

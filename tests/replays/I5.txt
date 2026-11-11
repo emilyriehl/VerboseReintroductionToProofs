@@ -1,0 +1,2 @@
+Assume p : P
+We conclude by p

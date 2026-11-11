@@ -1,0 +1,13 @@
+Let's construct the pair
+Fix p : A × (B ⊕ C)
+Set z := p.2
+Let's consider all cases for z
+Let's first consider the case where z is inl b
+Let's use Sum.inl ⟨p.1, b⟩
+Let's next consider the case where z is inr c
+Let's use Sum.inr ⟨p.1, c⟩
+Fix p : (A × B) ⊕ (A × C)
+Let's first consider the case where p is inl q
+Let's use ⟨q.1, Sum.inl q.2⟩
+Let's next consider the case where p is inr r
+Let's use ⟨r.1, Sum.inr r.2⟩

@@ -1,0 +1,3 @@
+By funext it suffices to prove that ∀ n : ℕ, (pred ∘ succ) n = id n
+Fix n : ℕ
+We conclude by rfl

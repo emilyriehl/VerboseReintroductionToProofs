@@ -1,0 +1,4 @@
+Assume pq : P ∧ Q
+We apply h
+We conclude by pq.1
+We conclude by pq.2

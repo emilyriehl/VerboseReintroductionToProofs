@@ -1,0 +1,4 @@
+Fix b : B
+We apply f
+Let's use a
+Let's use b

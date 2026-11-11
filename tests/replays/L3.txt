@@ -1,0 +1,12 @@
+Claim lemP : P ∨ ¬ P from Classical.em P
+Claim lemQ : Q ∨ ¬ Q from Classical.em Q
+Let's first consider the case where lemP is inl p
+Let's first consider the case where lemQ is inl q
+We conclude by Or.inl ⟨p, q⟩
+Let's next consider the case where lemQ is inr nq
+We conclude by Or.inr (Or.inl ⟨p, nq⟩)
+Let's next consider the case where lemP is inr np
+Let's first consider the case where lemQ is inl q
+We conclude by Or.inr (Or.inr (Or.inl ⟨np, q⟩))
+Let's next consider the case where lemQ is inr nq
+We conclude by Or.inr (Or.inr (Or.inr ⟨np, nq⟩))

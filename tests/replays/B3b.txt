@@ -1,0 +1,2 @@
+Let's use fun x y ↦ match x, y with | true, true => true | _, _ => false
+We conclude by ⟨rfl, rfl, rfl, rfl⟩

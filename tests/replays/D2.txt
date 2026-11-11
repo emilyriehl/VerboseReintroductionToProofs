@@ -1,0 +1,3 @@
+Assume h : P ∧ Q
+Let's prove that Q
+We conclude by h.2

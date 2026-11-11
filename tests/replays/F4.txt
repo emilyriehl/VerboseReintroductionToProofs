@@ -1,0 +1,2 @@
+Fix x : A
+Let's use g (f x)

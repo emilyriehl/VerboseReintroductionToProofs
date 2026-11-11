@@ -1,0 +1,5 @@
+Assume (h : P → Q) (nq : ¬ Q)
+Assume p : P
+We apply nq
+We apply h
+We conclude by p

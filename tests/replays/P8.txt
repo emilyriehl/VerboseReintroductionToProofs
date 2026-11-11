@@ -1,0 +1,6 @@
+Fix f : X → A × B
+Let's construct the pair
+Fix x : X
+Let's use (f x).1
+Fix x : X
+Let's use (f x).2

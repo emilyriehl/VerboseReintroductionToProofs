@@ -1,0 +1,4 @@
+Let's first prove that P ∨ Q ⇒ Q ∨ P
+We conclude by Or.symm
+Let's now prove that Q ∨ P ⇒ P ∨ Q
+We conclude by Or.symm

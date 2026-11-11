@@ -1,0 +1,1 @@
+Let's use ⟨fun f x y ↦ f ⟨x, y⟩, fun f p ↦ f p.1 p.2, fun _ ↦ rfl, fun _ ↦ rfl⟩

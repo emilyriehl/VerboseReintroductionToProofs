@@ -1,0 +1,11 @@
+Let's first prove that ¬ P → ¬ ¬ ¬ P
+Assume np : ¬ P
+Assume nnp : ¬ ¬ P
+We conclude by nnp applied to np
+Let's now prove that ¬ ¬ ¬ P → ¬ P
+Assume nnnp : ¬ ¬ ¬ P
+Assume p : P
+We apply nnnp
+Assume np : ¬ P
+We apply np
+We conclude by p

@@ -1,0 +1,13 @@
+Let's first prove that (∀ x : A, ¬ P x) → ¬ (∃ x : A, P x)
+Assume na : ∀ x : A, ¬ P x
+Assume ne : ∃ x : A, P x
+By ne we get a such that ha : P a
+Claim npa : ¬ P a from na applied to a
+We conclude by npa applied to ha
+Let's now prove that ¬ (∃ x : A, P x) → ∀ x : A, ¬ P x
+Assume ne : ¬ (∃ x : A, P x)
+Fix a : A
+Assume pa : P a
+We apply ne
+Let's prove that a works
+We conclude by pa

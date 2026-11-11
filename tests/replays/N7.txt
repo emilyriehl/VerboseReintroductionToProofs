@@ -1,0 +1,6 @@
+Assume pnq : P ∧ ¬ Q
+Assume i : P → Q
+By pnq we get p : P and nq : ¬ Q
+We apply nq
+Claim q : Q from i applied to p
+We conclude by q

@@ -1,0 +1,5 @@
+Fix p : A × B
+By p we get a and b
+Let's construct the pair
+Let's use b
+Let's use a

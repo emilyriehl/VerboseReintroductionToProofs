@@ -1,0 +1,4 @@
+Fix f : A × B → C
+Fix a : A
+Fix b : B
+Let's use f ⟨a, b⟩

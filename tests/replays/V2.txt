@@ -1,0 +1,13 @@
+Let's construct it componentwise
+Let's use Sum.swap
+Let's use Sum.swap
+Fix p : A ⊕ B
+Let's first consider the case where p is inl a
+We conclude by rfl
+Let's next consider the case where p is inr b
+We conclude by rfl
+Fix p : B ⊕ A
+Let's first consider the case where p is inl b
+We conclude by rfl
+Let's next consider the case where p is inr a
+We conclude by rfl

@@ -1,0 +1,7 @@
+Set f : ℕ → ℕ := fun n ↦ match n with | zero => zero | succ k => k
+Let's prove that f works
+Let's first prove that f 0 = 0
+We conclude by rfl
+Let's now prove that ∀ n : ℕ, f (succ n) = n
+Fix n : ℕ
+We conclude by rfl

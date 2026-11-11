@@ -1,0 +1,8 @@
+Fix x : A ⊕ B
+Let's consider all cases for x
+Let's first consider the case where x is inl a
+We apply g
+Let's use a
+Let's next consider the case where x is inr b
+We apply h
+Let's use b

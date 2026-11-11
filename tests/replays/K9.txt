@@ -1,0 +1,15 @@
+Let's first prove that (P → Q) ∧ (P → R) → (P → Q ∧ R)
+Assume gh : (P → Q) ∧ (P → R)
+Assume p : P
+Let's first prove that Q
+We conclude by gh.1 applied to p
+Let's now prove that R
+We conclude by gh.2 applied to p
+Let's now prove that (P → Q ∧ R) → (P → Q) ∧ (P → R)
+Assume h : P → Q ∧ R
+Let's first prove that P → Q
+Assume p : P
+We conclude by (h p).1
+Let's now prove that P → R
+Assume p : P
+We conclude by (h p).2

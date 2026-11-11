@@ -1,0 +1,6 @@
+Let's first prove that P ∧ Q → Q ∧ P
+Assume h : P ∧ Q
+We conclude by ⟨h.2, h.1⟩
+Let's now prove that Q ∧ P → P ∧ Q
+Assume k : Q ∧ P
+We conclude by ⟨k.2, k.1⟩

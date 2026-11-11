@@ -1,0 +1,2 @@
+Assume p : False
+This is impossible because of p

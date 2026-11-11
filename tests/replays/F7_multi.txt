@@ -1,0 +1,2 @@
+Fix (f : A → B → C) (b : B) (a : A)
+Let's use f a b

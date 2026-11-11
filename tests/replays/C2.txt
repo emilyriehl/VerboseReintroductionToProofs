@@ -1,0 +1,2 @@
+We apply Sum.inr
+Let's use b

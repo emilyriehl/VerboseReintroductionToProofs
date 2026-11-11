@@ -1,0 +1,7 @@
+Let's construct it componentwise
+Let's use Function.swap
+Let's use Function.swap
+Fix f : A → B → C
+We conclude by rfl
+Fix f : B → A → C
+We conclude by rfl
