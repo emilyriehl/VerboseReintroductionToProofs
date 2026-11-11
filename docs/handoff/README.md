@@ -40,10 +40,10 @@ depends on a particular agent product. Emily's own instructions to agents are in
   client passes; Emily played the whole game.
 - **This repository's `main` is merged with the original's `main` at commit `9a2c07f`**
   (`UPSTREAM_COMMIT`), i.e. through the original's PR #50. Nothing is pending from upstream.
-- **The weekly `sync-upstream` workflow currently cannot open pull requests** (repository
-  setting; see `roadmap.md` §1). Since 2026-11-11 it opens an issue instead. Its two failed
-  runs (2026-11-02, 2026-11-09) left a branch `sync/upstream-9a2c07f` on GitHub that is now
-  obsolete (its content was merged by hand on 2026-11-11) and can be deleted.
+- **The weekly `sync-upstream` workflow works again.** Its runs of 2026-11-02 and 2026-11-09
+  failed because the repository did not let Actions open pull requests; Emily enabled that
+  setting on 2026-11-11 (and the workflow now falls back to an issue if PR creation fails).
+  A manual run on 2026-11-11 completed with nothing to merge.
 - **Upstream contributions**: four PRs to the original are merged (#45, #46, #47, #50). Nothing
   has been opened at Verbose Lean or lean4game; the drafts and patches are in this folder and
   Emily opens them when she chooses.

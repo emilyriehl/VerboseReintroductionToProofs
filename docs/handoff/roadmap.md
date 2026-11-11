@@ -6,11 +6,10 @@ review and her hand on the Open/Push button.
 
 ## 1. Housekeeping in this repository
 
-- **Enable the sync workflow's pull requests.** The weekly `sync-upstream` workflow fails at
-  `gh pr create` because the repository setting *Settings → Actions → General → Allow GitHub
-  Actions to create and approve pull requests* is off (confirmed through the API on 2026-11-11).
-  Since 2026-11-11 the workflow falls back to opening an issue when it cannot open a PR, so
-  nothing is lost, but a PR is nicer. Only Emily can change the setting.
+- **Sync workflow pull requests: resolved 2026-11-11.** The weekly `sync-upstream` workflow had
+  failed at `gh pr create` because the repository setting *Settings → Actions → General → Allow
+  GitHub Actions to create and approve pull requests* was off; Emily enabled it on 2026-11-11.
+  The workflow also falls back to opening an issue should PR creation ever fail again.
 - **Back up the lean4game client fixes.** The branch `local-fixes` of the lean4game clone
   exists only on Emily's laptop. `lean4game-local-fixes.patch` in this folder is a copy
   (`git am`-able on tag v4.31.0). A fork `emilyriehl/lean4game` would be the natural home;
@@ -18,9 +17,8 @@ review and her hand on the Open/Push button.
 - **Retire dead files.** `Game/Metadata/Tactic/{Rw,Use,Induction,Constructor}.lean` are the
   original game's custom tactics, kept only so that upstream merges touching them stay
   conflict-free; they are not imported. `sofi.sh` is a stray script inherited from the template.
-  The remote branches `prose-edits` (merged as PR #1) and `sync/upstream-9a2c07f` (the failed
-  workflow's conflict branch, superseded by the manual merge of 2026-11-11) can be deleted;
-  the agent tooling refused to delete remote branches, so Emily does it.
+  (Obsolete remote branches were deleted by Emily on 2026-11-11; agent tooling cannot delete
+  remote branches, so leave that to her.)
 - **Original's documentation**: a line in the original's README pointing to this edition and a
   writing convention (tactic-specific sentences in their own paragraph at the end of an
   Introduction or Hint) would keep the weekly merges conflict-free. Suggested in

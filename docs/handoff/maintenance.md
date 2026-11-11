@@ -40,7 +40,7 @@ branch `sync/upstream-<sha>`, keeps this repository's `lean-toolchain`, `lakefil
 `lake-manifest.json`, advances `UPSTREAM_COMMIT`, pushes the branch and opens a pull request. If
 the merge has conflicts the commit contains the conflict markers and the PR says so. If GitHub
 refuses to let the workflow open a PR (repository setting *Allow GitHub Actions to create and
-approve pull requests*, off as of 2026-11-11) it opens an issue instead. Either way a human
+approve pull requests*; enabled since 2026-11-11) it opens an issue instead. Either way a human
 finishes the job with the manual recipe.
 
 **Manual recipe** (used on 2026-10-30 and 2026-11-11):
@@ -211,4 +211,4 @@ of her agent tooling sometimes refuses the push, in which case she pushes). PRs 
 | `By h we get x such that (h1 : P) and (h2 : Q)` silently produces `sorry` | ambiguity between the game's nameless synonym and Verbose's form | synonym declared `(priority := low)` in `Synonyms.lean` |
 | Case goals show hypotheses from before the case split | goal blocker created outside the goal's context | `blockGoal` uses `g.withContext` in `Cases.lean` |
 | `lake build` says `'gameExt' has already been used` | Verbose dependency does not have the rename | lakefile must point at the `lean4game-compat` branch (or a Verbose release containing the rename) |
-| Weekly sync run fails at the last step | workflow may not create PRs | enable the repository setting, or use the issue it opened |
+| Weekly sync run fails at the last step | workflow may not create PRs (repository setting switched off again) | re-enable the setting, or use the issue it opened |
