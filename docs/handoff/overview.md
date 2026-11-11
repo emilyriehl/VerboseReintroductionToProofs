@@ -154,7 +154,7 @@ the code:
 
 ## How it was tested
 
-- 263 recorded inputs replayed through the server's own `Runner` at difficulty 2
+- 253 recorded inputs replayed through the server's own `Runner` at difficulty 2
   (`scripts/replay_all.py`), after every build.
 - A headless-Chrome playthrough of all 158 levels through the real client and relay
   (`scripts/ux-tests/playthrough.mjs`), plus spot checks against adam.

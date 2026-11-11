@@ -35,7 +35,7 @@ depends on a particular agent product. Emily's own instructions to agents are in
   <https://adam.math.hhu.de/#/g/emilyriehl/VerboseReintroductionToProofs> and
   <https://adam.math.hhu.de/#/g/emilyriehl/ReintroductionToProofs>. Last imports 2026-10-30.
   Not listed on adam's landing page (unlisted games need a request to the HHU team).
-- **All 17 worlds, 159 levels, are ported and verified**: 263 recorded inputs pass the server's
+- **All 17 worlds, 159 levels, are ported and verified**: 253 recorded inputs pass the server's
   own `Runner` at difficulty 2; a headless-Chrome playthrough of every level through the real
   client passes; Emily played the whole game.
 - **This repository's `main` is merged with the original's `main` at commit `9a2c07f`**

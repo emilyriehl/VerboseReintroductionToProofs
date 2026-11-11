@@ -1,3 +1,0 @@
-Let's first prove that (∃ g : B → A, g ∘ f = id ∧ f ∘ g = id) → (∃ g : B → A, (∀ a : A, g (f a) = a) ∧ (∀ b : B, f (g b) = b))
-Assume h : ∃ g : B → A, g ∘ f = id ∧ f ∘ g = id
-By h we get g such that (lh : g ∘ f = id) and (rh : f ∘ g = id)

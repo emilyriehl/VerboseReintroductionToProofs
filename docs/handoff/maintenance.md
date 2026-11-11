@@ -89,7 +89,7 @@ sets ignoring order, not by reading the raw diff (entries move around).
 
 ## 3. Replaying levels (the regression suite)
 
-`tests/replays/*.txt` are 263 recorded player inputs, at least one per level plus variants,
+`tests/replays/*.txt` are 253 recorded player inputs, at least one per level plus variants,
 named `<letter><level>[variant].txt`; the letter→world table is in `scripts/replay_all.py`
 (T Type, F Function, I Implication, P Product, K Conjunction, C Coproduct, D Disjunction,
 E Empty, N Negation, L Classical, Q Equality, B Boolean, U Quantifier, A AdvancedFunction,
