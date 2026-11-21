@@ -1,4 +1,4 @@
-import GameServer
+import GameApi
 import Verbose.English.All
 
 import Game.Metadata.Equivalence

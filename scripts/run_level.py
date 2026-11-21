@@ -4,7 +4,7 @@
 usage: run_level.py GAME_DIR WORLD LEVEL PROOF_FILE [--difficulty N] [--inventory all|level|none]
 
 The generated document mirrors relay/src/serverProcess.ts (lean4game v4.31.0):
-    import <level module> import GameServer.Runner
+    import <level module> import GameApi.Runner
     Runner "<game name>" "<world>" <level> (difficulty := N) (inventory := [...]) := by
     <proof lines>
 Line numbers in Lean's output are therefore proof line + 2.
@@ -44,7 +44,7 @@ else:
 proof = sys.stdin.read() if a.proof_file == "-" else open(a.proof_file).read()
 opens = ''.join(f'open {ns}\n' for ns in a.open)
 SHIFT = 2 + len(a.open)
-doc = (f'import {level["module"]} import GameServer.Runner \n' + opens +
+doc = (f'import {level["module"]} import GameApi.Runner \n' + opens +
        f'Runner {json.dumps(game["name"])} {json.dumps(a.world)} {a.level} '
        f'(difficulty := {a.difficulty}) '
        f'(inventory := [{",".join(json.dumps(s) for s in inventory)}]) '
